@@ -1,0 +1,253 @@
+:META:
+#+title: Ja0nz Blog
+#+author: Ja0nz
+#+email: mail@ja.nz
+:END:
+:ORGCONFIG:
+#+startup: fold
+#+seq_todo: TODO DRAFT DONE
+#+tags: toto zulu | @catA @catB
+:END:
+:OXHUGOCONFIG:
+#+hugo_base_dir: .
+#+hugo_section: .
+#+hugo_front_matter_format: yaml
+#+hugo_front_matter_key_replace: description>summary
+#+property: header-args :eval never-export
+#+startup: logdone
+:END:
+
+* Manual :noexport:
+jus a little manual
+
+* Microblog
+:PROPERTIES:
+:CATEGORY: /mirco
+:export_hugo_custom_front_matter+: :id (org-id-get)
+:export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
+:END:
+** DONE Hello
+CLOSED: [2022-03-03 Do 15:15]
+:PROPERTIES:
+:ID:       4df64f71-c4ad-4cbc-9568-6c24adb05f59
+:CATEGORY+: hello
+:export_hugo_bundle: m-hello
+:export_file_name: index
+:END:
+Hello microblog. This will be some "small text blog"
+
+* Blog
+:PROPERTIES:
+:CATEGORY: /post
+:export_hugo_custom_front_matter+: :id (org-id-get)
+:export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
+:END:
+** DONE Complete post :tagthis:tagthat:
+CLOSED: [2022-01-17 Mo 12:47] SCHEDULED: <2021-06-21 Mo>
+:PROPERTIES:
+:ID:       2006fd28-0790-4f0f-b7f2-e477f4ed21c8
+:CATEGORY+: complete-post
+:export_hugo_bundle: p-complete-post
+:export_file_name: index
+:END:
+#+begin_description
+An awesome summary for an awesome topic. This should be around 200 words.
+#+end_description
+*** Several formattings in Org Mode
+
+This is
+one
+paragraph!
+
+This is
+
+two paragraphs! (One more line break in org)
+
+This is \\
+one paragraph with an \<br\>
+
+I like to *write bold*. And sometimes /italic/ or even _underlined_ and even +strike-through+.
+One note: =verbatim= and ~squiqqly code~ is both the same in markdown
+
+The best thing is lists by the way:
+- concise
+- expressive
+- tldr
++ Plus sign
+
+Second best is numerated stuff:
+1. My favorite number
+2. Second guess
+
+Oh, and checkboxes
+- [X] checked
+- [ ] unchecked
+
+*** Links and Images
+A generic link with linktext, just like in org mode
+[[https://google.com][Ox Hugo]]
+
+A generic link with linktext, just like in org mode in the form of \[\[URL][hyperlink]]
+
+For images use assets/bundle-name/some.image
+Will be populated to content automatically
+
+*** Code Blocks and other blocks
+
+#+begin_foo
+/Some/ *text* --- 3
+
+| m | n | o |
+| p | q | r |
+#+end_foo
+
+I love to explain via src blocks
+#+attr_html: :class my-section :id section-a
+#+begin_src javascript
+// class="highlight"
+const answer = 42;
+console.log("this is how we do")
+#+end_src
+
+Sometimes things express well with a wise (wo)mans quote:
+#+begin_quote
+It shall be light - and it was light mode and \<blockquote\>
+#+end_quote
+
+Very obscure, a *verse*
+#+begin_verse
+ene mene mu, wrapped in --- class="verse"
+    -- "The Tyger" /by/ William Blake
+#+end_verse
+
+But more practical: An example block to show
+#+begin_example
+Let me show to you.... class="highlight"
+#+end_example
+
+HTML Export
+even though the export block is just for org editing
+#+begin_export html
+<div class="html">sometimes inline code is the answer</div>
+#+end_export
+
+Let me center this out
+#+begin_center
+class="org-center"
+Cetura, centura, in the middle
+#+end_center
+
+And this is cool, a *nested dl* definition list
+- What is React :: react is something rather cool, you can think of some reactive reaction. See [[https://react.io][more]]
+
+*** scratchpad :noexport:
+| Asset                                          | Description       |
+|------------------------------------------------+-------------------|
+| http://localhost:8080/post/awesome-catchy-url/ | Dev location      |
+| file:assets/awesome-catchy-url/                | Bundle asset path |
+
+** DONE Another post :tagthis:tagthat:
+CLOSED: [2022-01-11 Di 23:26] SCHEDULED: <2022-01-12 Mi>
+:PROPERTIES:
+:ID:       5fb0dcea-dead-4f5f-ab66-1f60ea4951b2
+:CATEGORY+: another-post
+:export_hugo_bundle: p-another-post
+:export_file_name: index
+:END:
+#+begin_description
+An awesome summary for an awesome topic. This should be around 200 words.
+#+end_description
+*** Several formattings in Org Mode
+
+This is
+one
+paragraph!
+
+This is
+
+two paragraphs! (One more line break in org)
+
+This is \\
+one paragraph with an \<br\>
+
+I like to *write bold*. And sometimes /italic/ or even _underlined_ and even +strike-through+.
+One note: =verbatim= and ~squiqqly code~ is both the same in markdown
+
+The best thing is lists by the way:
+- concise
+- expressive
+- tldr
++ Plus sign
+
+Second best is numerated stuff:
+1. My favorite number
+2. Second guess
+
+Oh, and checkboxes
+- [X] checked
+- [ ] unchecked
+
+*** Links and Images
+A generic link with linktext, just like in org mode
+[[https://google.com][Ox Hugo]]
+
+A generic link with linktext, just like in org mode in the form of \[\[URL][hyperlink]]
+
+For images use assets/bundle-name/some.image
+Will be populated to content automatically
+
+*** Code Blocks and other blocks
+
+#+begin_foo
+/Some/ *text* --- 3
+
+| m | n | o |
+| p | q | r |
+#+end_foo
+
+I love to explain via src blocks
+#+attr_html: :class my-section :id section-a
+#+begin_src javascript
+// class="highlight"
+const answer = 42;
+console.log("this is how we do")
+#+end_src
+
+Sometimes things express well with a wise (wo)mans quote:
+#+begin_quote
+It shall be light - and it was light mode and \<blockquote\>
+#+end_quote
+
+Very obscure, a *verse*
+#+begin_verse
+ene mene mu, wrapped in --- class="verse"
+    -- "The Tyger" /by/ William Blake
+#+end_verse
+
+But more practical: An example block to show
+#+begin_example
+Let me show to you.... class="highlight"
+#+end_example
+
+HTML Export
+even though the export block is just for org editing
+#+begin_export html
+<div class="html">sometimes inline code is the answer</div>
+#+end_export
+
+Let me center this out
+#+begin_center
+class="org-center"
+Cetura, centura, in the middle
+#+end_center
+
+And this is cool, a *nested dl* definition list
+- What is React :: react is something rather cool, you can think of some reactive reaction. See [[https://react.io][more]]
+
+*** scratchpad :noexport:
+| Asset                                          | Description       |
+|------------------------------------------------+-------------------|
+| http://localhost:8080/post/awesome-catchy-url/ | Dev location      |
+| file:assets/awesome-catchy-url/                | Bundle asset path |
+
+

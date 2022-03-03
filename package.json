@@ -1,0 +1,24 @@
+{
+  "name": "ja.nz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "My blog",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ja0nz/ja.nz.git"
+  },
+  "keywords": [
+    "org",
+    "blog",
+    "publish"
+  ],
+  "author": "ja0nz <mail@ja.nz>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ja0nz/ja.nz/issues"
+  },
+  "homepage": "https://github.com/ja0nz/ja.nz#readme",
+  "devDependencies": {
+    "gh-cms": "^0.0.13"
+  }
+}
