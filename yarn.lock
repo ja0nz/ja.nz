@@ -328,10 +328,10 @@ extend-shallow@^2.0.1:
   dependencies:
     is-extendable "^0.1.0"
 
-gh-cms@^0.0.13:
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/gh-cms/-/gh-cms-0.0.13.tgz#059ca0d46da4ce7df6d4b06a3b80c862d23ef8ea"
-  integrity sha512-mBd2zjhaXDBV2NbRpycYnw8jT1wD6Uap+GqeEmpIYvn6pUN9lRyciFa9tG+mUCxNDOgXvy22paev+RZsfWrBCg==
+gh-cms@^0.0.20:
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/gh-cms/-/gh-cms-0.0.20.tgz#d13b4e3ddc0843b35fd2b5a65d96855fb70bae55"
+  integrity sha512-VHFKX3jsmwf+OZFgJlCUbUU+gbakkeauwAslCWWP/jKJFHszknjsPsEzYqTOeIBxRmtcDndI87szPk4dMd+Uvg==
   dependencies:
     "@octokit/graphql" "^4.8.0"
     "@octokit/rest" "^18.12.0"

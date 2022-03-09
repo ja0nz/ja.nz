@@ -2,6 +2,7 @@
 #+title: Ja0nz Blog
 #+author: Ja0nz
 #+email: mail@ja.nz
+#+language: en
 :END:
 :ORGCONFIG:
 #+startup: fold
