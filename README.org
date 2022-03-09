@@ -35,7 +35,10 @@ CLOSED: [2022-03-03 Do 15:15]
 :export_file_name: index
 :END:
 Hello microblog. This will be some "small text blog"
-![[file:assets/cat.jpg][Jus a cat]]
+A picture
+![[file:static/cat.jpg][Jus a cat]]
+A link
+[[file:static/cat.jpg][Linktext: Jus a cat]]
 
 * Blog
 :PROPERTIES:
