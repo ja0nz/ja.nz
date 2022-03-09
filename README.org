@@ -7,6 +7,8 @@
 #+startup: fold
 #+seq_todo: TODO DRAFT DONE
 #+tags: toto zulu | @catA @catB
+#+name: static
+https://raw.githubusercontent.com/ja0nz/ja.nz/main/static
 :END:
 :OXHUGOCONFIG:
 #+hugo_base_dir: .
@@ -19,10 +21,25 @@
 
 * Manual :noexport:
 jus a little manual
+** Utils
+:PROPERTIES:
+:ID:       e3328911-73b1-45dd-be05-c3b24009b67d
+:END:
+Replace local links with their remote counterparts
+#+NAME: expand-link
+#+BEGIN_SRC emacs-lisp :var url=static :results none
+  (org-toggle-link-display)
+  (replace-regexp "file:static" (s-trim url))
+  (pop-global-mark)
+#+END_SRC
+Call with C-c C-c
+#+CALL: expand-link()
+#+RESULTS:
 
 * Microblog
 :PROPERTIES:
-:CATEGORY: /mirco
+:CATEGORY: /micro
+:export_hugo_bundle: micro
 :export_hugo_custom_front_matter+: :id (org-id-get)
 :export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
 :END:
@@ -31,18 +48,18 @@ CLOSED: [2022-03-03 Do 15:15]
 :PROPERTIES:
 :ID:       4df64f71-c4ad-4cbc-9568-6c24adb05f59
 :CATEGORY+: hello
-:export_hugo_bundle: m-hello
-:export_file_name: index
+:export_file_name: 1hello
 :END:
 Hello microblog. This will be some "small text blog"
 A picture
-![[file:static/cat.jpg][Jus a cat]]
+![[https://raw.githubusercontent.com/ja0nz/ja.nz/main/static/cat.jpg][Jus a cat]]
 A link
-[[file:static/cat.jpg][Linktext: Jus a cat]]
+[[https://raw.githubusercontent.com/ja0nz/ja.nz/main/static/cat.jpg][Linktext: Jus a cat]]
 
 * Blog
 :PROPERTIES:
 :CATEGORY: /post
+:export_hugo_bundle: post
 :export_hugo_custom_front_matter+: :id (org-id-get)
 :export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
 :END:
@@ -51,8 +68,7 @@ CLOSED: [2022-01-17 Mo 12:47] SCHEDULED: <2021-06-21 Mo>
 :PROPERTIES:
 :ID:       2006fd28-0790-4f0f-b7f2-e477f4ed21c8
 :CATEGORY+: complete-post
-:export_hugo_bundle: p-complete-post
-:export_file_name: index
+:export_file_name: complete-post
 :END:
 #+begin_description
 An awesome summary for an awesome topic. This should be around 200 words.
@@ -155,8 +171,7 @@ CLOSED: [2022-01-11 Di 23:26] SCHEDULED: <2022-01-12 Mi>
 :PROPERTIES:
 :ID:       5fb0dcea-dead-4f5f-ab66-1f60ea4951b2
 :CATEGORY+: another-post
-:export_hugo_bundle: p-another-post
-:export_file_name: index
+:export_file_name: another-post
 :END:
 #+begin_description
 An awesome summary for an awesome topic. This should be around 200 words.
