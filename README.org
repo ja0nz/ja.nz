@@ -8,8 +8,10 @@
 #+startup: fold
 #+seq_todo: TODO DRAFT DONE
 #+tags: toto zulu | @catA @catB
-#+name: static
+#+name: staticfar
 https://raw.githubusercontent.com/ja0nz/ja.nz/main/static
+#+name: contentdir
+content
 :END:
 :OXHUGOCONFIG:
 #+hugo_base_dir: .
@@ -20,15 +22,29 @@ https://raw.githubusercontent.com/ja0nz/ja.nz/main/static
 #+startup: logdone
 :END:
 
-* Manual :noexport:
-jus a little manual
-** Utils
+* Intro :noexport:
+This file is written in [[https://orgmode.org/][Org Mode]] markup and may look funny in GitHub. But actually, this file alone is the blogging engine for https://ja.nz. It leverages:
+- callable source block for templating
+- clean up functions
+- markdown export with [[https://github.com/kaushalmodi/ox-hugo][Ox-Hugo]]
+
+Org mode is really powserful when combined with sourceblock. Have a look with emacs.
+Sidenote: I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too convoluted for my taste. So I wrote a barebone *markdown2blog* engine myself [[https://www.npmjs.com/package/gh-cms][GH-CMS]]
+
+** Markup Guide
+*** Picture
+![[file:static/cat.jpg][Alt: Jus a cat]]
+*** Link
+[[file:static/cat.jpg][Linktext: Jus a cat]]
+
+* Utilities :noexport:
 :PROPERTIES:
 :ID:       e3328911-73b1-45dd-be05-c3b24009b67d
 :END:
+** Local static files to github links replace :inplace:
 Replace local links with their remote counterparts
 #+NAME: expand-link
-#+BEGIN_SRC emacs-lisp :var url=static :results none
+#+BEGIN_SRC emacs-lisp :var url=staticfar :results none
   (org-toggle-link-display)
   (replace-regexp "file:static" (s-trim url))
   (pop-global-mark)
@@ -36,28 +52,57 @@ Replace local links with their remote counterparts
 Call with C-c C-c
 #+CALL: expand-link()
 #+RESULTS:
+** Clean content directory :inplace:
+#+NAME: clean
+#+BEGIN_SRC emacs-lisp :var cdir=contentdir :results none
+  (delete-directory (s-trim cdir) t)
+  (make-directory (s-trim cdir))
+#+END_SRC
+Call with C-c C-c
+#+CALL: clean()
+#+RESULTS:
+** New tweet
+#+NAME: tweet
+#+BEGIN_SRC emacs-lisp :var ts=(format-time-string "%Y%m%d%H%M")
+  (org-insert-heading)
+  (org-metaright)
+  (org-todo "DRAFT")
+  (org-id-get-create)
+  (org-set-property "CATEGORY+" ts)
+  (org-set-property "export_file_name" ts)
+#+END_SRC
+** New post
+#+NAME: post
+#+BEGIN_SRC emacs-lisp
+  (org-insert-heading)
+  (org-metaright)
+  (org-todo "TODO")
+  (org-insert-structure-template "description")
+  (org-id-get-create)
+  (org-set-property "CATEGORY+" "SET")
+  (org-set-property "export_file_name" "SET")
+  (org-edit-headline "Set props!")
+#+END_SRC
+
 
 * Microblog
+#+CALL: tweet()
 :PROPERTIES:
 :CATEGORY: /micro
 :export_hugo_bundle: micro
 :export_hugo_custom_front_matter+: :id (org-id-get)
 :export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
 :END:
-** DONE Hello
-CLOSED: [2022-03-03 Do 15:15]
+** DRAFT Hello tweet
 :PROPERTIES:
-:ID:       4df64f71-c4ad-4cbc-9568-6c24adb05f59
-:CATEGORY+: hello
-:export_file_name: 1hello
+:ID:       1f83b5de-4f23-4fed-9f30-a636765afd6a
+:CATEGORY+: 202203101437
+:export_file_name: 202203101437
 :END:
-Hello microblog. This will be some "small text blog"
-A picture
-![[https://raw.githubusercontent.com/ja0nz/ja.nz/main/static/cat.jpg][Jus a cat]]
-A link
-[[https://raw.githubusercontent.com/ja0nz/ja.nz/main/static/cat.jpg][Linktext: Jus a cat]]
+Lets go
 
 * Blog
+#+CALL: post()
 :PROPERTIES:
 :CATEGORY: /post
 :export_hugo_bundle: post
@@ -269,5 +314,3 @@ And this is cool, a *nested dl* definition list
 |------------------------------------------------+-------------------|
 | http://localhost:8080/post/awesome-catchy-url/ | Dev location      |
 | file:assets/awesome-catchy-url/                | Bundle asset path |
-
-
