@@ -42,26 +42,6 @@ Sidenote: I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too 
 :PROPERTIES:
 :ID:       e3328911-73b1-45dd-be05-c3b24009b67d
 :END:
-** Local static files to github links replace :inplace:
-Replace local links with their remote counterparts
-#+NAME: expand-link
-#+BEGIN_SRC emacs-lisp :var url=staticfar :results none
-  (org-toggle-link-display)
-  (replace-regexp "file:static" (s-trim url))
-  (pop-global-mark)
-#+END_SRC
-Call with C-c C-c
-#+CALL: expand-link()
-#+RESULTS:
-** Clean content directory :inplace:
-#+NAME: clean
-#+BEGIN_SRC emacs-lisp :var cdir=contentdir :results none
-  (delete-directory (s-trim cdir) t)
-  (make-directory (s-trim cdir))
-#+END_SRC
-Call with C-c C-c
-#+CALL: clean()
-#+RESULTS:
 ** New tweet
 #+NAME: tweet
 #+BEGIN_SRC emacs-lisp :var ts=(format-time-string "%Y%m%d%H%M")
@@ -72,6 +52,7 @@ Call with C-c C-c
   (org-set-property "CATEGORY+" ts)
   (org-set-property "export_file_name" ts)
 #+END_SRC
+
 ** New post
 #+NAME: post
 #+BEGIN_SRC emacs-lisp
@@ -84,6 +65,28 @@ Call with C-c C-c
   (org-set-property "export_file_name" "SET")
   (org-edit-headline "Set props!")
 #+END_SRC
+
+** Local static files to github links replace :inplace:
+Replace local links with their remote counterparts
+#+NAME: expand-link
+#+BEGIN_SRC emacs-lisp :var url=staticfar :results none
+  (org-toggle-link-display)
+  (replace-regexp "file:static" (s-trim url))
+  (pop-global-mark)
+#+END_SRC
+Call with C-c C-c
+#+CALL: expand-link()
+#+RESULTS:
+
+** Clean content directory :inplace:
+#+NAME: clean
+#+BEGIN_SRC emacs-lisp :var cdir=contentdir :results none
+  (delete-directory (s-trim cdir) t)
+  (make-directory (s-trim cdir))
+#+END_SRC
+Call with C-c C-c
+#+CALL: clean()
+#+RESULTS:
 
 
 * Microblog
