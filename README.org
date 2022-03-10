@@ -88,15 +88,14 @@ Call with C-c C-c
 #+CALL: clean()
 #+RESULTS:
 
-
 * Microblog
-#+CALL: tweet()
 :PROPERTIES:
 :CATEGORY: /micro
 :export_hugo_bundle: micro
 :export_hugo_custom_front_matter+: :id (org-id-get)
 :export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
 :END:
+#+CALL: tweet()
 ** DRAFT Hello tweet
 :PROPERTIES:
 :ID:       1f83b5de-4f23-4fed-9f30-a636765afd6a
@@ -106,13 +105,13 @@ Call with C-c C-c
 Lets go
 
 * Blog
-#+CALL: post()
 :PROPERTIES:
 :CATEGORY: /post
 :export_hugo_bundle: post
 :export_hugo_custom_front_matter+: :id (org-id-get)
 :export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
 :END:
+#+CALL: post()
 ** DONE Complete post :tagthis:tagthat:
 CLOSED: [2022-01-17 Mo 12:47] SCHEDULED: <2021-06-21 Mo>
 :PROPERTIES:
