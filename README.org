@@ -23,12 +23,13 @@ content
 :END:
 
 * Intro :noexport:
-This file is written in [[https://orgmode.org/][Org Mode]] markup and may look funny in GitHub. But actually, this file alone is the blogging engine for https://ja.nz. It leverages:
-- callable source block for templating
-- clean up functions
+This file is written in [[https://orgmode.org/][Org Mode]] markup and may look funny in GitHub. But actually, this file alone is the *blogging engine* for https://ja.nz. It features:
+- callable source blocks for templating
+- clean up and helper functions
 - markdown export with [[https://github.com/kaushalmodi/ox-hugo][Ox-Hugo]]
 
-Org mode is really powserful when combined with sourceblock. Have a look with emacs.
+Org mode is really powerful combined with [[https://orgmode.org/manual/Working-with-Source-Code.html][source block]] snippets. Open this README with emacs and have a look yourself. I may blog about this one day too.
+
 Sidenote: I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too convoluted for my taste. So I wrote a barebone *markdown2blog* engine myself [[https://www.npmjs.com/package/gh-cms][GH-CMS]]
 
 ** Markup Guide
