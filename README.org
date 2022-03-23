@@ -44,32 +44,31 @@ Sidenote: I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too 
 :PROPERTIES:
 :ID:       e3328911-73b1-45dd-be05-c3b24009b67d
 :END:
-** New tweet
-#+NAME: tweet
-#+BEGIN_SRC emacs-lisp :var ts=(format-time-string "%Y%m%d%H%M")
+** New micro
+#+NAME: micro
+#+BEGIN_SRC emacs-lisp :var route=(format-time-string "%Y%m%d%H%M") :var topic=(read-string "Topic: ")
   (org-insert-heading)
-  (insert (format "Tweet.%d" (length (org-map-entries t "LEVEL=2" nil))))
+  (insert (format "%s,%s,%d,m" topic route (length (org-map-entries t "LEVEL=2" nil))))
   (org-metaright)
   (org-todo "DRAFT")
   (org-id-get-create)
-  (org-set-property "CATEGORY+" ts)
-  (org-set-property "export_file_name" ts)
+  (org-set-property "CATEGORY" (format "/%s" route))
+  (org-set-property "export_file_name" route)
   (next-line)
   (insert "\n")
 #+END_SRC
 
 ** New post
 #+NAME: post
-#+BEGIN_SRC emacs-lisp :var url=baseurl
-  (setq no (length (org-map-entries t "LEVEL=2" nil)))
+#+BEGIN_SRC emacs-lisp :var url=baseurl :var topic=(read-string "Topic: ") :var route=(read-string "Route: ")
   (org-insert-heading)
-  (insert (format "Post.%d)" no))
+  (insert (format "%s,%s,%d,p" topic route (length (org-map-entries t "LEVEL=2" nil))))
   (org-metaright)
   (org-todo "TODO")
   (org-insert-structure-template "description")
   (org-id-get-create)
-  (org-set-property "CATEGORY+" (format "%d" no))
-  (org-set-property "export_file_name" (format "%d" no))
+  (org-set-property "CATEGORY" (format "/%s" route))
+  (org-set-property "export_file_name" route)
   (next-line)
   (insert "\n")
   ;; Begin meta table
@@ -83,7 +82,7 @@ Sidenote: I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too 
   (org-cycle)
   (insert "Description")
   (org-cycle)
-  (insert (format "%s/%s" (s-trim url) no))
+  (insert (format "%s/%s" (s-trim url) route))
   (org-cycle)
   (insert "Location")
   (org-cycle)
@@ -119,40 +118,41 @@ Call with C-c C-c
 
 * Microblog
 :PROPERTIES:
-:CATEGORY: /micro
 :export_hugo_bundle: micro
-:export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
+:export_hugo_custom_front_matter+: :id (org-id-get)
+:export_hugo_custom_front_matter+: :route (org-get-category)
 :END:
-#+CALL: tweet()
-** DRAFT Tweet.7
+#+CALL: micro()
+** DRAFT Zig,202203231149,7,m
 :PROPERTIES:
 :ID:       a9709a13-78ae-4506-a198-687dcc0ba4e1
-:CATEGORY+: 202203231149
+:CATEGORY: /202203231149
 :export_file_name: 202203231149
 :END:
 draft foo
 
-** DONE Tweet.9 :zig:
+** DONE Typescript,202203231152,9,m :zig:
 CLOSED: [2022-03-23 Mi 12:40]
 :PROPERTIES:
 :ID:       895b1841-4fe4-4f25-937b-f060c756437d
-:CATEGORY+: 202203231152
+:CATEGORY: /202203231152
 :export_file_name: 202203231152
 :END:
 bar
 
+
 * Blog
 :PROPERTIES:
-:CATEGORY: /post
 :export_hugo_bundle: post
-:export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
+:export_hugo_custom_front_matter+: :id (org-id-get)
+:export_hugo_custom_front_matter+: :route (org-get-category)
 :END:
 #+CALL: post()
-** DONE Complete post.8 :tagthis:tagthat:
+** DONE Formattings in Org,complete-post,8,p :tagthis:tagthat:
 CLOSED: [2022-01-18 Di 12:47] SCHEDULED: <2021-06-21 Mo>
 :PROPERTIES:
 :ID:       2006fd28-0790-4f0f-b7f2-e477f4ed21c8
-:CATEGORY+: complete-post
+:CATEGORY: /complete-post
 :export_file_name: complete-post
 :END:
 #+begin_description
@@ -246,16 +246,17 @@ And this is cool, a *nested dl* definition list
 - What is React :: react is something rather cool, you can think of some reactive reaction. See [[https://react.io][more]]
 
 *** meta :noexport:
-| Asset                                          | Description       |
-|------------------------------------------------+-------------------|
-| http://localhost:8080/post/awesome-catchy-url/ | Dev location      |
-| file:assets/awesome-catchy-url/                | Bundle asset path |
+| Asset                       | Description   |
+|-----------------------------+---------------|
+| https://ja.nz/complete-post | Location      |
+| file:static/                | Ref to assets |
+|                             |               |
 
-** DONE Another post.11 :tagthis:tagthat:
+** DONE Another Org example,another-post,11,p :tagthis:tagthat:
 CLOSED: [2022-01-12 Mi 23:26] SCHEDULED: <2022-01-12 Mi>
 :PROPERTIES:
 :ID:       5fb0dcea-dead-4f5f-ab66-1f60ea4951b2
-:CATEGORY+: another-post
+:CATEGORY: /another-post
 :export_file_name: another-post
 :END:
 #+begin_description
@@ -349,7 +350,8 @@ And this is cool, a *nested dl* definition list
 - What is React :: react is something rather cool, you can think of some reactive reaction. See [[https://react.io][more]]
 
 *** meta :noexport:
-| Asset                                          | Description       |
-|------------------------------------------------+-------------------|
-| http://localhost:8080/post/awesome-catchy-url/ | Dev location      |
-| file:assets/awesome-catchy-url/                | Bundle asset path |
+| Asset                      | Description   |
+|----------------------------+---------------|
+| https://ja.nz/another-post | Location      |
+| file:static/               | Ref to assets |
+|                            |               |
