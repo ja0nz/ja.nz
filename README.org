@@ -12,6 +12,8 @@
 https://raw.githubusercontent.com/ja0nz/ja.nz/main/static
 #+name: contentdir
 content
+#+name: baseurl
+https://ja.nz
 :END:
 :OXHUGOCONFIG:
 #+hugo_base_dir: .
@@ -46,24 +48,51 @@ Sidenote: I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too 
 #+NAME: tweet
 #+BEGIN_SRC emacs-lisp :var ts=(format-time-string "%Y%m%d%H%M")
   (org-insert-heading)
+  (insert (format "Tweet.%d" (length (org-map-entries t "LEVEL=2" nil))))
   (org-metaright)
   (org-todo "DRAFT")
   (org-id-get-create)
   (org-set-property "CATEGORY+" ts)
   (org-set-property "export_file_name" ts)
+  (next-line)
+  (insert "\n")
 #+END_SRC
 
 ** New post
 #+NAME: post
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :var url=baseurl
+  (setq no (length (org-map-entries t "LEVEL=2" nil)))
   (org-insert-heading)
+  (insert (format "Post.%d)" no))
   (org-metaright)
   (org-todo "TODO")
   (org-insert-structure-template "description")
   (org-id-get-create)
-  (org-set-property "CATEGORY+" "SET")
-  (org-set-property "export_file_name" "SET")
-  (org-edit-headline "Set props!")
+  (org-set-property "CATEGORY+" (format "%d" no))
+  (org-set-property "export_file_name" (format "%d" no))
+  (next-line)
+  (insert "\n")
+  ;; Begin meta table
+  (org-insert-heading)
+  (insert "meta :noexport:")
+  (org-metaright)
+  (insert "\n")
+  (org-table-create "2x2")
+  (org-cycle)
+  (insert "Asset")
+  (org-cycle)
+  (insert "Description")
+  (org-cycle)
+  (insert (format "%s/%s" (s-trim url) no))
+  (org-cycle)
+  (insert "Location")
+  (org-cycle)
+  (insert "file:static/")
+  (org-cycle)
+  (insert "Ref to assets")
+  (org-cycle)
+  (previous-line 6)
+  ;; End meta table
 #+END_SRC
 
 ** Local static files to github links replace :inplace:
@@ -92,28 +121,35 @@ Call with C-c C-c
 :PROPERTIES:
 :CATEGORY: /micro
 :export_hugo_bundle: micro
-:export_hugo_custom_front_matter+: :id (org-id-get)
 :export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
 :END:
 #+CALL: tweet()
-** DRAFT Hello tweet
+** DRAFT Tweet.7
 :PROPERTIES:
-:ID:       1f83b5de-4f23-4fed-9f30-a636765afd6a
-:CATEGORY+: 202203101437
-:export_file_name: 202203101437
+:ID:       a9709a13-78ae-4506-a198-687dcc0ba4e1
+:CATEGORY+: 202203231149
+:export_file_name: 202203231149
 :END:
-Lets go
+draft foo
+
+** DONE Tweet.9 :zig:
+CLOSED: [2022-03-23 Mi 12:40]
+:PROPERTIES:
+:ID:       895b1841-4fe4-4f25-937b-f060c756437d
+:CATEGORY+: 202203231152
+:export_file_name: 202203231152
+:END:
+bar
 
 * Blog
 :PROPERTIES:
 :CATEGORY: /post
 :export_hugo_bundle: post
-:export_hugo_custom_front_matter+: :id (org-id-get)
 :export_hugo_custom_front_matter+: :route (s-replace " " "/" (org-get-category))
 :END:
 #+CALL: post()
-** DONE Complete post :tagthis:tagthat:
-CLOSED: [2022-01-17 Mo 12:47] SCHEDULED: <2021-06-21 Mo>
+** DONE Complete post.8 :tagthis:tagthat:
+CLOSED: [2022-01-18 Di 12:47] SCHEDULED: <2021-06-21 Mo>
 :PROPERTIES:
 :ID:       2006fd28-0790-4f0f-b7f2-e477f4ed21c8
 :CATEGORY+: complete-post
@@ -209,14 +245,14 @@ Cetura, centura, in the middle
 And this is cool, a *nested dl* definition list
 - What is React :: react is something rather cool, you can think of some reactive reaction. See [[https://react.io][more]]
 
-*** scratchpad :noexport:
+*** meta :noexport:
 | Asset                                          | Description       |
 |------------------------------------------------+-------------------|
 | http://localhost:8080/post/awesome-catchy-url/ | Dev location      |
 | file:assets/awesome-catchy-url/                | Bundle asset path |
 
-** DONE Another post :tagthis:tagthat:
-CLOSED: [2022-01-11 Di 23:26] SCHEDULED: <2022-01-12 Mi>
+** DONE Another post.11 :tagthis:tagthat:
+CLOSED: [2022-01-12 Mi 23:26] SCHEDULED: <2022-01-12 Mi>
 :PROPERTIES:
 :ID:       5fb0dcea-dead-4f5f-ab66-1f60ea4951b2
 :CATEGORY+: another-post
@@ -312,7 +348,7 @@ Cetura, centura, in the middle
 And this is cool, a *nested dl* definition list
 - What is React :: react is something rather cool, you can think of some reactive reaction. See [[https://react.io][more]]
 
-*** scratchpad :noexport:
+*** meta :noexport:
 | Asset                                          | Description       |
 |------------------------------------------------+-------------------|
 | http://localhost:8080/post/awesome-catchy-url/ | Dev location      |
