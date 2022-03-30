@@ -46,29 +46,27 @@ Sidenote: I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too 
 :END:
 ** New micro
 #+NAME: micro
-#+BEGIN_SRC emacs-lisp :var route=(format-time-string "%Y%m%d%H%M") :var topic=(read-string "Topic: ")
+#+BEGIN_SRC emacs-lisp :var id=(read-string "id: ")
+  (setq id (format "%s-%d-m" (downcase id) (length (org-map-entries t "LEVEL=2" nil))))
   (org-insert-heading)
-  (insert (format "%s,%s,%d,m" topic route (length (org-map-entries t "LEVEL=2" nil))))
+  (insert id)
   (org-metaright)
   (org-todo "DRAFT")
-  (org-id-get-create)
-  (org-set-property "CATEGORY" (format "/%s" route))
-  (org-set-property "export_file_name" route)
+  (org-set-property "export_file_name" id)
   (next-line)
   (insert "\n")
 #+END_SRC
 
 ** New post
 #+NAME: post
-#+BEGIN_SRC emacs-lisp :var url=baseurl :var topic=(read-string "Topic: ") :var route=(read-string "Route: ")
+#+BEGIN_SRC emacs-lisp :var url=baseurl :var id=(read-string "id: ")
+  (setq id (format "%s-%d-p" (downcase id) (length (org-map-entries t "LEVEL=2" nil))))
   (org-insert-heading)
-  (insert (format "%s,%s,%d,p" topic route (length (org-map-entries t "LEVEL=2" nil))))
+  (insert id)
   (org-metaright)
   (org-todo "TODO")
   (org-insert-structure-template "description")
-  (org-id-get-create)
-  (org-set-property "CATEGORY" (format "/%s" route))
-  (org-set-property "export_file_name" route)
+  (org-set-property "export_file_name" id)
   (next-line)
   (insert "\n")
   ;; Begin meta table
@@ -82,7 +80,7 @@ Sidenote: I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too 
   (org-cycle)
   (insert "Description")
   (org-cycle)
-  (insert (format "%s/%s" (s-trim url) route))
+  (insert (format "%s/%s" (s-trim url) id))
   (org-cycle)
   (insert "Location")
   (org-cycle)
@@ -119,45 +117,49 @@ Call with C-c C-c
 * Microblog
 :PROPERTIES:
 :export_hugo_bundle: micro
-:export_hugo_custom_front_matter+: :id (org-id-get)
-:export_hugo_custom_front_matter+: :route (org-get-category)
+:export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :END:
 #+CALL: micro()
-** DRAFT Zig,202203231149,7,m
+** DRAFT zig-7-m
 :PROPERTIES:
-:ID:       a9709a13-78ae-4506-a198-687dcc0ba4e1
-:CATEGORY: /202203231149
-:export_file_name: 202203231149
+:export_file_name: zig-7-m
 :END:
 draft foo
 
-** DONE Typescript,202203231152,9,m :zig:
-CLOSED: [2022-03-23 Mi 12:40]
+** DONE typescript-8-m :zig:
+CLOSED: [1988-03-23 Mi 12:40]
 :PROPERTIES:
-:ID:       895b1841-4fe4-4f25-937b-f060c756437d
-:CATEGORY: /202203231152
-:export_file_name: 202203231152
+:export_file_name: typescript-8-m
 :END:
 bar
 
+** DRAFT ziglings-9-m
+:PROPERTIES:
+:export_file_name: ziglings-9-m
+:END:
+Hello fo
+
+** DRAFT zigzag-10-m
+:PROPERTIES:
+:export_file_name: zigzag-10-m
+:END:
+Hey zigZag
 
 * Blog
 :PROPERTIES:
 :export_hugo_bundle: post
-:export_hugo_custom_front_matter+: :id (org-id-get)
-:export_hugo_custom_front_matter+: :route (org-get-category)
+:export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :END:
 #+CALL: post()
-** DONE Formattings in Org,complete-post,8,p :tagthis:tagthat:
+** DONE format-org-5-p :tagthis:tagthat:
 CLOSED: [2022-01-18 Di 12:47] SCHEDULED: <2021-06-21 Mo>
 :PROPERTIES:
-:ID:       2006fd28-0790-4f0f-b7f2-e477f4ed21c8
-:CATEGORY: /complete-post
-:export_file_name: complete-post
+:export_file_name: format-org-5-p
 :END:
 #+begin_description
 An awesome summary for an awesome topic. This should be around 200 words.
 #+end_description
+
 *** Several formattings in Org Mode
 
 This is
@@ -246,22 +248,21 @@ And this is cool, a *nested dl* definition list
 - What is React :: react is something rather cool, you can think of some reactive reaction. See [[https://react.io][more]]
 
 *** meta :noexport:
-| Asset                       | Description   |
-|-----------------------------+---------------|
-| https://ja.nz/complete-post | Location      |
-| file:static/                | Ref to assets |
-|                             |               |
+| Asset                        | Description   |
+|------------------------------+---------------|
+| https://ja.nz/format-org-5-p | Location      |
+| file:static/                 | Ref to assets |
+|                              |               |
 
-** DONE Another Org example,another-post,11,p :tagthis:tagthat:
+** DONE another-org-6-p :tagthis:tagthat:
 CLOSED: [2022-01-12 Mi 23:26] SCHEDULED: <2022-01-12 Mi>
 :PROPERTIES:
-:ID:       5fb0dcea-dead-4f5f-ab66-1f60ea4951b2
-:CATEGORY: /another-post
-:export_file_name: another-post
+:export_file_name: another-org-6-p
 :END:
 #+begin_description
 An awesome summary for an awesome topic. This should be around 200 words.
 #+end_description
+
 *** Several formattings in Org Mode
 
 This is
@@ -350,8 +351,9 @@ And this is cool, a *nested dl* definition list
 - What is React :: react is something rather cool, you can think of some reactive reaction. See [[https://react.io][more]]
 
 *** meta :noexport:
-| Asset                      | Description   |
-|----------------------------+---------------|
-| https://ja.nz/another-post | Location      |
-| file:static/               | Ref to assets |
-|                            |               |
+| Asset                         | Description   |
+|-------------------------------+---------------|
+| https://ja.nz/another-org-6-p | Location      |
+| file:static/                  | Ref to assets |
+|                               |               |
+
