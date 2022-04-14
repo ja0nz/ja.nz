@@ -7,7 +7,7 @@
 :ORGCONFIG:
 #+startup: fold
 #+seq_todo: TODO DRAFT DONE
-#+tags: toto zulu | @catA @catB
+#+tags: typescript purescript
 #+name: staticfar
 https://raw.githubusercontent.com/ja0nz/ja.nz/main/static
 #+name: contentdir
@@ -144,6 +144,21 @@ Hello fo
 :export_file_name: zigzag-10-m
 :END:
 Hey zigZag
+
+** DRAFT proxy-11-m :typescript:
+:PROPERTIES:
+:export_file_name: proxy-11-m
+:END:
+A nonempty string Record. Guarantees to return a string or empty/neutral string
+#+begin_src typescript
+const safeRecord = new Proxy(
+  {}, {
+    get: (handler: Record<PropertyKey, string>, name: PropertyKey) : string => {
+      handler[name] ??= ""; return handler[name];
+    }
+  }
+);
+#+end_src
 
 * Blog
 :PROPERTIES:
@@ -357,3 +372,19 @@ And this is cool, a *nested dl* definition list
 | file:static/                  | Ref to assets |
 |                               |               |
 
+** TODO proxy-js-12-p
+:PROPERTIES:
+:export_file_name: proxy-js-12-p
+:END:
+#+begin_description
+This is about the various usages of Proxy in JavaScript/TypeScript
+#+end_description
+Todo stub
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+
+*** meta :noexport:
+| Asset                       | Description   |
+|-----------------------------+---------------|
+| https://ja.nz/proxy-js-12-p | Location      |
+| file:static/                | Ref to assets |
+|                             |               |
