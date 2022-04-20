@@ -118,7 +118,7 @@ Call with C-c C-c
 :PROPERTIES:
 :export_hugo_bundle: micro
 :export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
-:export_hugo_custom_front_matter+: :draft (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
+:export_hugo_custom_front_matter+: :state (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
 :END:
 #+CALL: micro()
 ** DRAFT zig-7-m
@@ -165,7 +165,7 @@ const safeRecord = new Proxy(
 :PROPERTIES:
 :export_hugo_bundle: post
 :export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
-:export_hugo_custom_front_matter+: :draft (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
+:export_hugo_custom_front_matter+: :state (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
 :END:
 #+CALL: post()
 ** DONE format-org-5-p :tagthis:tagthat:
