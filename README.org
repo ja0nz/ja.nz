@@ -1,5 +1,5 @@
 :META:
-#+title: Ja0nz Blog
+#+title: Ja0nz Blog📖
 #+author: Ja0nz
 #+email: mail@ja.nz
 #+language: en
@@ -32,13 +32,89 @@ This file is written in [[https://orgmode.org/][Org Mode]] markup and may look f
 
 Org mode is really powerful combined with [[https://orgmode.org/manual/Working-with-Source-Code.html][source block]] snippets. Open this README with emacs and have a look yourself. I may blog about this one day too.
 
-Sidenote: I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too convoluted for my taste. So I wrote a barebone *markdown2blog* engine myself [[https://www.npmjs.com/package/gh-cms][GH-CMS]]
+/Sidenote:/ I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too convoluted for my taste. So I wrote a GH Issues blogging engine myself 👉[[https://www.npmjs.com/package/gh-cms][GH-CMS]]🥳
 
 ** Markup Guide
 *** Picture
 ![[file:static/cat.jpg][Alt: Jus a cat]]
 *** Link
 [[file:static/cat.jpg][Linktext: Jus a cat]]
+
+*** Text formattings
+---
+This is
+one
+paragraph!
+---
+This is
+
+two paragraphs! (One more line break in org)
+---
+This is \\
+one paragraph with an \<br\>
+---
+I like to *write bold*. And sometimes /italic/ or even _underlined_ and even +strike-through+.
+One note: =verbatim= and ~squiqqly code~ is both the same in markdown
+
+*** Lists
+- Minus sign
++ Plus sign
+
+*** Enumerated lists
+1. My favorite number
+2. Second guess
+
+*** Definition list
+- What is React :: react is bla bla... See [[https://react.io][more]]
+
+*** Checkboxes
+- [X] checked
+- [ ] unchecked
+*** Table
+| thead | n | o |
+| tbody | q | r |
+
+or
+
+| thead | n | o |
+|-------+---+---|
+| tbody | q | r |
+
+*** Blocks
+**** generic div
+#+begin_foo
+div class foo
+#+end_foo
+
+**** src (accept attr_html)
+#+attr_html: :class my-section :id section-a
+#+begin_src javascript
+// class="highlight"
+const answer = 42;
+console.log("this is how we do")
+#+end_src
+
+**** quote
+#+begin_quote
+It shall be light - and it was light mode
+#+end_quote
+
+**** example (accept attr_html)
+#+begin_example
+For example: Let me show to you...
+#+end_example
+
+**** HTML Export
+#+begin_export html
+<div class="html">sometimes inline code is the answer</div>
+#+end_export
+
+**** center
+#+begin_center
+class="org-center"
+<style>.org-center { margin-left: auto; margin-right: auto; text-align: center; }</style>
+#+end_center
+
 
 * Utilities :noexport:
 :PROPERTIES:
@@ -177,93 +253,6 @@ CLOSED: [2022-01-18 Di 12:47] SCHEDULED: <2021-06-21 Mo>
 An awesome summary for an awesome topic. This should be around 200 words.
 #+end_description
 
-*** Several formattings in Org Mode
-
-This is
-one
-paragraph!
-
-This is
-
-two paragraphs! (One more line break in org)
-
-This is \\
-one paragraph with an \<br\>
-
-I like to *write bold*. And sometimes /italic/ or even _underlined_ and even +strike-through+.
-One note: =verbatim= and ~squiqqly code~ is both the same in markdown
-
-The best thing is lists by the way:
-- concise
-- expressive
-- tldr
-+ Plus sign
-
-Second best is numerated stuff:
-1. My favorite number
-2. Second guess
-
-Oh, and checkboxes
-- [X] checked
-- [ ] unchecked
-
-*** Links and Images
-A generic link with linktext, just like in org mode
-[[https://google.com][Ox Hugo]]
-
-A generic link with linktext, just like in org mode in the form of \[\[URL][hyperlink]]
-
-For images use assets/bundle-name/some.image
-Will be populated to content automatically
-
-*** Code Blocks and other blocks
-
-#+begin_foo
-/Some/ *text* --- 3
-
-| m | n | o |
-| p | q | r |
-#+end_foo
-
-I love to explain via src blocks
-#+attr_html: :class my-section :id section-a
-#+begin_src javascript
-// class="highlight"
-const answer = 42;
-console.log("this is how we do")
-#+end_src
-
-Sometimes things express well with a wise (wo)mans quote:
-#+begin_quote
-It shall be light - and it was light mode and \<blockquote\>
-#+end_quote
-
-Very obscure, a *verse*
-#+begin_verse
-ene mene mu, wrapped in --- class="verse"
-    -- "The Tyger" /by/ William Blake
-#+end_verse
-
-But more practical: An example block to show
-#+begin_example
-Let me show to you.... class="highlight"
-#+end_example
-
-HTML Export
-even though the export block is just for org editing
-#+begin_export html
-<div class="html">sometimes inline code is the answer</div>
-#+end_export
-
-Let me center this out
-#+begin_center
-class="org-center"
-Cetura, centura, in the middle
-#+end_center
-
-And this is cool, a *nested dl* definition list
-- What is React :: react is something rather cool, you can think of some reactive reaction. See [[https://react.io][more]]
-
 *** meta :noexport:
 | Asset                        | Description   |
 |------------------------------+---------------|
@@ -280,53 +269,9 @@ CLOSED: [2022-01-12 Mi 23:26] SCHEDULED: <2022-01-12 Mi>
 An awesome summary for an awesome topic. This should be around 200 words.
 #+end_description
 
-*** Several formattings in Org Mode
-
-This is
-one
-paragraph!
-
-This is
-
-two paragraphs! (One more line break in org)
-
-This is \\
-one paragraph with an \<br\>
-
-I like to *write bold*. And sometimes /italic/ or even _underlined_ and even +strike-through+.
-One note: =verbatim= and ~squiqqly code~ is both the same in markdown
-
-The best thing is lists by the way:
-- concise
-- expressive
-- tldr
-+ Plus sign
-
-Second best is numerated stuff:
-1. My favorite number
-2. Second guess
-
-Oh, and checkboxes
-- [X] checked
-- [ ] unchecked
-
-*** Links and Images
-A generic link with linktext, just like in org mode
-[[https://google.com][Ox Hugo]]
-
-A generic link with linktext, just like in org mode in the form of \[\[URL][hyperlink]]
-
-For images use assets/bundle-name/some.image
-Will be populated to content automatically
-
-*** Code Blocks and other blocks
-
-#+begin_foo
-/Some/ *text* --- 3
-
-| m | n | o |
-| p | q | r |
-#+end_foo
+| m    | n | o |
+|------+---+---|
+| pooo | q | r |
 
 I love to explain via src blocks
 #+attr_html: :class my-section :id section-a
@@ -341,13 +286,9 @@ Sometimes things express well with a wise (wo)mans quote:
 It shall be light - and it was light mode and \<blockquote\>
 #+end_quote
 
-Very obscure, a *verse*
-#+begin_verse
-ene mene mu, wrapped in --- class="verse"
-    -- "The Tyger" /by/ William Blake
-#+end_verse
 
 But more practical: An example block to show
+#+attr_html: :class my-section :id section-a
 #+begin_example
 Let me show to you.... class="highlight"
 #+end_example
