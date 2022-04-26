@@ -1,5 +1,5 @@
 :META:
-#+title: Ja0nz Blog📖
+#+title: Ja0nz Blog 📖 https://ja.nz
 #+author: Ja0nz
 #+email: mail@ja.nz
 #+language: en
@@ -8,12 +8,6 @@
 #+startup: fold
 #+seq_todo: TODO DRAFT DONE
 #+tags: typescript purescript
-#+name: staticfar
-https://raw.githubusercontent.com/ja0nz/ja.nz/main/static
-#+name: contentdir
-content
-#+name: baseurl
-https://ja.nz
 :END:
 :OXHUGOCONFIG:
 #+hugo_base_dir: .
@@ -135,7 +129,7 @@ class="org-center"
 
 ** New post
 #+NAME: post
-#+BEGIN_SRC emacs-lisp :var url=baseurl :var id=(read-string "id: ")
+#+BEGIN_SRC emacs-lisp :var url=(getenv "BLOG_BASE") :var id=(read-string "id: ")
   (setq id (format "%s-%d-p" (downcase id) (length (org-map-entries t "LEVEL=2" nil))))
   (org-insert-heading)
   (insert id)
@@ -156,7 +150,7 @@ class="org-center"
   (org-cycle)
   (insert "Description")
   (org-cycle)
-  (insert (format "%s/%s" (s-trim url) id))
+  (insert (format "%s/%s" url id))
   (org-cycle)
   (insert "Location")
   (org-cycle)
@@ -164,6 +158,7 @@ class="org-center"
   (org-cycle)
   (insert "Ref to assets")
   (org-cycle)
+  (kill-whole-line)
   (previous-line 6)
   ;; End meta table
 #+END_SRC
@@ -171,9 +166,10 @@ class="org-center"
 ** Local static files to github links replace :inplace:
 Replace local links with their remote counterparts
 #+NAME: expand-link
-#+BEGIN_SRC emacs-lisp :var url=staticfar :results none
+#+BEGIN_SRC emacs-lisp :var url=(getenv "ASSET_BASE") :results none
   (org-toggle-link-display)
-  (replace-regexp "file:static" (s-trim url))
+  (replace-regexp "\\[\\[file:static" (concat "[[" url))
+  (org-toggle-link-display)
   (pop-global-mark)
 #+END_SRC
 Call with C-c C-c
@@ -182,9 +178,9 @@ Call with C-c C-c
 
 ** Clean content directory :inplace:
 #+NAME: clean
-#+BEGIN_SRC emacs-lisp :var cdir=contentdir :results none
-  (delete-directory (s-trim cdir) t)
-  (make-directory (s-trim cdir))
+#+begin_src emacs-lisp :var cdir=(getenv "CONTENT_PATH") :results none
+  (delete-directory cdir t)
+  (make-directory cdir)
 #+END_SRC
 Call with C-c C-c
 #+CALL: clean()
@@ -253,3 +249,4 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 |-------------------------------------+---------------|
 | https://ja.nz/fantasyland-proxy-6-p | Location      |
 | file:static/                        | Ref to assets |
+
