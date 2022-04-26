@@ -110,10 +110,11 @@ class="org-center"
 #+end_center
 
 
-* Utilities :noexport:
+* Call Utilities :noexport:
 :PROPERTIES:
 :ID:       e3328911-73b1-45dd-be05-c3b24009b67d
 :END:
+Just a bunch of *#+CALL* functions. Call with =C-c C-c=
 ** New micro
 #+NAME: micro
 #+BEGIN_SRC emacs-lisp :var id=(read-string "id: ")
@@ -164,7 +165,7 @@ class="org-center"
 #+END_SRC
 
 ** Local static files to github links replace :inplace:
-Replace local links with their remote counterparts
+#+CALL: expand-link()
 #+NAME: expand-link
 #+BEGIN_SRC emacs-lisp :var url=(getenv "ASSET_BASE") :results none
   (org-toggle-link-display)
@@ -172,20 +173,14 @@ Replace local links with their remote counterparts
   (org-toggle-link-display)
   (pop-global-mark)
 #+END_SRC
-Call with C-c C-c
-#+CALL: expand-link()
-#+RESULTS:
 
 ** Clean content directory :inplace:
+#+CALL: clean()
 #+NAME: clean
 #+begin_src emacs-lisp :var cdir=(getenv "CONTENT_PATH") :results none
   (delete-directory cdir t)
   (make-directory cdir)
 #+END_SRC
-Call with C-c C-c
-#+CALL: clean()
-#+RESULTS:
-
 
 * Microblog
 :PROPERTIES:
