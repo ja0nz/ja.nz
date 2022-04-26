@@ -190,6 +190,7 @@ Call with C-c C-c
 #+CALL: clean()
 #+RESULTS:
 
+
 * Microblog
 :PROPERTIES:
 :export_hugo_bundle: micro
@@ -197,34 +198,10 @@ Call with C-c C-c
 :export_hugo_custom_front_matter+: :state (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
 :END:
 #+CALL: micro()
-** DRAFT zig-7-m
+** DONE proxy-5-m :typescript:
+CLOSED: [2022-04-26 Di 12:33]
 :PROPERTIES:
-:export_file_name: zig-7-m
-:END:
-draft foo
-
-** DONE typescript-8-m :zig:
-CLOSED: [1988-03-23 Mi 12:40]
-:PROPERTIES:
-:export_file_name: typescript-8-m
-:END:
-bar
-
-** DRAFT ziglings-9-m
-:PROPERTIES:
-:export_file_name: ziglings-9-m
-:END:
-Hello fo
-
-** DRAFT zigzag-10-m
-:PROPERTIES:
-:export_file_name: zigzag-10-m
-:END:
-Hey zigZag
-
-** DRAFT proxy-11-m :typescript:
-:PROPERTIES:
-:export_file_name: proxy-11-m
+:export_file_name: proxy-5-m
 :END:
 A nonempty string Record. Guarantees to return a string or empty/neutral string
 #+begin_src typescript
@@ -237,6 +214,23 @@ const safeRecord = new Proxy(
 );
 #+end_src
 
+** DONE match-array-7-m :typescript:
+CLOSED: [2022-04-26 Di 12:33]
+:PROPERTIES:
+:export_file_name: match-array-7-m
+:END:
+Conditional type switch on Array vs Object vs subtyped object
+#+begin_src typescript
+type DetectArray<T> = number extends keyof T ? true : false;
+DetectArray<string[]> // true
+DetectArray<{ [k: number]: unknown } // true
+
+type DetectStringObj<T> = string extends keyof T ? true : false;
+DetectArray<{ [k: string]: unknown } // true
+DetectArray<{ x: string } // false
+#+end_src
+
+
 * Blog
 :PROPERTIES:
 :export_hugo_bundle: post
@@ -244,80 +238,9 @@ const safeRecord = new Proxy(
 :export_hugo_custom_front_matter+: :state (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
 :END:
 #+CALL: post()
-** DONE format-org-5-p :tagthis:tagthat:
-CLOSED: [2022-01-18 Di 12:47] SCHEDULED: <2021-06-21 Mo>
+** TODO fantasyland-proxy-6-p :typescript:
 :PROPERTIES:
-:export_file_name: format-org-5-p
-:END:
-#+begin_description
-An awesome summary for an awesome topic. This should be around 200 words.
-#+end_description
-
-*** meta :noexport:
-| Asset                        | Description   |
-|------------------------------+---------------|
-| https://ja.nz/format-org-5-p | Location      |
-| file:static/                 | Ref to assets |
-|                              |               |
-
-** DONE another-org-6-p :tagthis:tagthat:
-CLOSED: [2022-01-12 Mi 23:26] SCHEDULED: <2022-01-12 Mi>
-:PROPERTIES:
-:export_file_name: another-org-6-p
-:END:
-#+begin_description
-An awesome summary for an awesome topic. This should be around 200 words.
-#+end_description
-
-| m    | n | o |
-|------+---+---|
-| pooo | q | r |
-
-I love to explain via src blocks
-#+attr_html: :class my-section :id section-a
-#+begin_src javascript
-// class="highlight"
-const answer = 42;
-console.log("this is how we do")
-#+end_src
-
-Sometimes things express well with a wise (wo)mans quote:
-#+begin_quote
-It shall be light - and it was light mode and \<blockquote\>
-#+end_quote
-
-
-But more practical: An example block to show
-#+attr_html: :class my-section :id section-a
-#+begin_example
-Let me show to you.... class="highlight"
-#+end_example
-
-HTML Export
-even though the export block is just for org editing
-#+begin_export html
-<div class="html">sometimes inline code is the answer</div>
-#+end_export
-
-Let me center this out
-#+begin_center
-class="org-center"
-Cetura, centura, in the middle
-#+end_center
-
-And this is cool, a *nested dl* definition list
-- What is React :: react is something rather cool, you can think of some reactive reaction. See [[https://react.io][more]]
-
-*** meta :noexport:
-| Asset                         | Description   |
-|-------------------------------+---------------|
-| https://ja.nz/another-org-6-p | Location      |
-| file:static/                  | Ref to assets |
-|                               |               |
-
-** TODO proxy-js-12-p
-:PROPERTIES:
-:export_file_name: proxy-js-12-p
+:export_file_name: fantasyland-proxy-js-6-p
 :END:
 #+begin_description
 This is about the various usages of Proxy in JavaScript/TypeScript
@@ -326,8 +249,7 @@ Todo stub
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 
 *** meta :noexport:
-| Asset                       | Description   |
-|-----------------------------+---------------|
-| https://ja.nz/proxy-js-12-p | Location      |
-| file:static/                | Ref to assets |
-|                             |               |
+| Asset                               | Description   |
+|-------------------------------------+---------------|
+| https://ja.nz/fantasyland-proxy-6-p | Location      |
+| file:static/                        | Ref to assets |

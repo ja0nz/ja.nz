@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/ja0nz/ja.nz#readme",
   "devDependencies": {
-    "gh-cms": "^0.1.5"
+    "gh-cms": "^0.1.0"
   }
 }
