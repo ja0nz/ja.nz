@@ -353,10 +353,10 @@ gh-cms-ql@^0.1.0:
     dotenv "^16.0.0"
     gh-cms-ql "^0.0.2"
 
-gh-cms@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/gh-cms/-/gh-cms-0.1.4.tgz#5b85c17cf2d3901edcbb695449c656b8573bc7d8"
-  integrity sha512-zunHfxNF/5G6r6VCSsIhNvt9LUu1562lSiHzH6bHlMqsetHumVkmOeIHxwbUKaxgbDN8fWk/c8Kurep9f/cgCQ==
+gh-cms@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/gh-cms/-/gh-cms-0.1.9.tgz#07833b57aec5ae242bc08271da6793485e4a3621"
+  integrity sha512-pi78tLhVeuGx1QqBKLggByodSjtyzAezwmLpv/n9uTKjLKi9puRjCYFlyh4I3ZkoXCUC704PZ5wK5l+cGftNuA==
   dependencies:
     "@octokit/graphql" "^4.8.0"
     "@octokit/rest" "^18.12.0"

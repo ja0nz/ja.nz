@@ -117,27 +117,28 @@ class="org-center"
 Just a bunch of *#+CALL* functions. Call with =C-c C-c=
 ** New micro
 #+NAME: micro
-#+BEGIN_SRC emacs-lisp :var id=(read-string "id: ")
-  (setq id (format "%s-%d-m" (downcase id) (length (org-map-entries t "LEVEL=2" nil))))
+#+BEGIN_SRC emacs-lisp :var title=(read-string "title: ")
+  (setq id (format "%d;%s" (length (org-map-entries t "LEVEL=2" nil)) title))
   (org-insert-heading)
-  (insert id)
+  (insert (concat "#" id))
   (org-metaright)
   (org-todo "DRAFT")
-  (org-set-property "export_file_name" id)
+  (org-set-property "export_file_name" (replace-regexp-in-string " " "-" (downcase id)))
   (next-line)
   (insert "\n")
 #+END_SRC
 
 ** New post
 #+NAME: post
-#+BEGIN_SRC emacs-lisp :var url=(getenv "BLOG_BASE") :var id=(read-string "id: ")
-  (setq id (format "%s-%d-p" (downcase id) (length (org-map-entries t "LEVEL=2" nil))))
+#+BEGIN_SRC emacs-lisp :var url=(getenv "BLOG_BASE") :var title=(read-string "title: ")
+  (setq id (format "%d;%s" (length (org-map-entries t "LEVEL=2" nil)) title))
+  (setq nId (replace-regexp-in-string " " "-" (downcase id)))
   (org-insert-heading)
-  (insert id)
+  (insert (concat "#" id))
   (org-metaright)
   (org-todo "TODO")
   (org-insert-structure-template "description")
-  (org-set-property "export_file_name" id)
+  (org-set-property "export_file_name" nId)
   (next-line)
   (insert "\n")
   ;; Begin meta table
@@ -151,7 +152,7 @@ Just a bunch of *#+CALL* functions. Call with =C-c C-c=
   (org-cycle)
   (insert "Description")
   (org-cycle)
-  (insert (format "%s/%s" url id))
+  (insert (format "%s/%s" url nId))
   (org-cycle)
   (insert "Location")
   (org-cycle)
@@ -182,17 +183,19 @@ Just a bunch of *#+CALL* functions. Call with =C-c C-c=
   (make-directory cdir)
 #+END_SRC
 
-* Microblog
+
+* Micro
 :PROPERTIES:
 :export_hugo_bundle: micro
-:export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
+:export_hugo_custom_front_matter+: :milestone "micro"
+:export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format t))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :export_hugo_custom_front_matter+: :state (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
 :END:
 #+CALL: micro()
-** DONE proxy-5-m :typescript:
+** DONE #5;proxy :typescript:
 CLOSED: [2022-04-26 Di 12:33]
 :PROPERTIES:
-:export_file_name: proxy-5-m
+:export_file_name: 5;proxy
 :END:
 A nonempty string Record. Guarantees to return a string or empty/neutral string
 #+begin_src typescript
@@ -205,10 +208,10 @@ const safeRecord = new Proxy(
 );
 #+end_src
 
-** DONE match-array-7-m :typescript:
+** DONE #7;match-array :typescript:
 CLOSED: [2022-04-26 Di 12:33]
 :PROPERTIES:
-:export_file_name: match-array-7-m
+:export_file_name: 7;match-array
 :END:
 Conditional type switch on Array vs Object vs subtyped object
 #+begin_src typescript
@@ -224,14 +227,15 @@ DetectArray<{ x: string } // false
 
 * Blog
 :PROPERTIES:
-:export_hugo_bundle: post
-:export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
+:export_hugo_bundle: blog
+:export_hugo_custom_front_matter+: :milestone "blog"
+:export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format t))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :export_hugo_custom_front_matter+: :state (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
 :END:
 #+CALL: post()
-** TODO fantasyland-proxy-6-p :typescript:
+** TODO #6;Proxis in fantasyland :typescript:
 :PROPERTIES:
-:export_file_name: fantasyland-proxy-js-6-p
+:export_file_name: 6;proxies-in-fantasyland
 :END:
 #+begin_description
 This is about the various usages of Proxy in JavaScript/TypeScript
@@ -240,8 +244,7 @@ Todo stub
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 
 *** meta :noexport:
-| Asset                               | Description   |
-|-------------------------------------+---------------|
-| https://ja.nz/fantasyland-proxy-6-p | Location      |
-| file:static/                        | Ref to assets |
-
+| Asset                                  | Description   |
+|----------------------------------------+---------------|
+| https://ja.nz/6;proxies-in-fantasyland | Location      |
+| file:static/                           | Ref to assets |
