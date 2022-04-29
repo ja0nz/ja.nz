@@ -118,12 +118,12 @@ Just a bunch of *#+CALL* functions. Call with =C-c C-c=
 ** New micro
 #+NAME: micro
 #+BEGIN_SRC emacs-lisp :var title=(read-string "title: ")
-  (setq id (format "%d;%s" (length (org-map-entries t "LEVEL=2" nil)) title))
+  (setq id (number-to-string (length (org-map-entries t "LEVEL=2" nil))))
   (org-insert-heading)
-  (insert (concat "#" id))
+  (insert (format "#%s/%s" id title))
   (org-metaright)
   (org-todo "DRAFT")
-  (org-set-property "export_file_name" (replace-regexp-in-string " " "-" (downcase id)))
+  (org-set-property "export_file_name" id)
   (next-line)
   (insert "\n")
 #+END_SRC
@@ -131,14 +131,13 @@ Just a bunch of *#+CALL* functions. Call with =C-c C-c=
 ** New post
 #+NAME: post
 #+BEGIN_SRC emacs-lisp :var url=(getenv "BLOG_BASE") :var title=(read-string "title: ")
-  (setq id (format "%d;%s" (length (org-map-entries t "LEVEL=2" nil)) title))
-  (setq nId (replace-regexp-in-string " " "-" (downcase id)))
+  (setq id (number-to-string (length (org-map-entries t "LEVEL=2" nil))))
   (org-insert-heading)
-  (insert (concat "#" id))
+  (insert (format "#%s/%s" id title))
   (org-metaright)
   (org-todo "TODO")
   (org-insert-structure-template "description")
-  (org-set-property "export_file_name" nId)
+  (org-set-property "export_file_name" id)
   (next-line)
   (insert "\n")
   ;; Begin meta table
@@ -152,7 +151,7 @@ Just a bunch of *#+CALL* functions. Call with =C-c C-c=
   (org-cycle)
   (insert "Description")
   (org-cycle)
-  (insert (format "%s/%s" url nId))
+  (insert (format "%s/%s" url id))
   (org-cycle)
   (insert "Location")
   (org-cycle)
@@ -187,15 +186,16 @@ Just a bunch of *#+CALL* functions. Call with =C-c C-c=
 * Micro
 :PROPERTIES:
 :export_hugo_bundle: micro
-:export_hugo_custom_front_matter+: :milestone "micro"
+:export_hugo_custom_front_matter+: :milestone (org-entry-get (point) "export_hugo_bundle" t)
 :export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format t))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :export_hugo_custom_front_matter+: :state (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
 :END:
 #+CALL: micro()
-** DONE #5;proxy :typescript:
+
+** DONE #5/Proxy :typescript:
 CLOSED: [2022-04-26 Di 12:33]
 :PROPERTIES:
-:export_file_name: 5;proxy
+:export_file_name: 5
 :END:
 A nonempty string Record. Guarantees to return a string or empty/neutral string
 #+begin_src typescript
@@ -208,10 +208,10 @@ const safeRecord = new Proxy(
 );
 #+end_src
 
-** DONE #7;match-array :typescript:
+** DONE #7/Match type array and numbered :typescript:
 CLOSED: [2022-04-26 Di 12:33]
 :PROPERTIES:
-:export_file_name: 7;match-array
+:export_file_name: 7
 :END:
 Conditional type switch on Array vs Object vs subtyped object
 #+begin_src typescript
@@ -228,14 +228,15 @@ DetectArray<{ x: string } // false
 * Blog
 :PROPERTIES:
 :export_hugo_bundle: blog
-:export_hugo_custom_front_matter+: :milestone "blog"
+:export_hugo_custom_front_matter+: :milestone (org-entry-get (point) "export_hugo_bundle" t)
 :export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format t))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :export_hugo_custom_front_matter+: :state (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
 :END:
 #+CALL: post()
-** TODO #6;Proxis in fantasyland :typescript:
+
+** TODO #6/Proxies in fantasyland :typescript:
 :PROPERTIES:
-:export_file_name: 6;proxies-in-fantasyland
+:export_file_name: 6
 :END:
 #+begin_description
 This is about the various usages of Proxy in JavaScript/TypeScript
@@ -244,7 +245,8 @@ Todo stub
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 
 *** meta :noexport:
-| Asset                                  | Description   |
-|----------------------------------------+---------------|
-| https://ja.nz/6;proxies-in-fantasyland | Location      |
-| file:static/                           | Ref to assets |
+| Asset           | Description   |
+|-----------------+---------------|
+| https://ja.nz/6 | Location      |
+| file:static/    | Ref to assets |
+
