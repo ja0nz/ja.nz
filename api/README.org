@@ -3,12 +3,12 @@
 * v1 Routes
 ** /issues
 All issues from this repo written by the owner
-- issues: id, number, title, body
-- cache retention: 300 s ~ 5 min
+- id, number, title, body
+- _cache retention:_ 300 s ~ 5 min
 ** /issue /:id
 Issue by number previously fetched
-- issues: id, title, body
-- cache retention: 30 s ~ 0.5 min
+- comments, reactions
+- _cache retention:_ 30 s ~ 0.5 min
 
 * For further tooling reference
 https://github.com/gmencz/cloudflare-workers-typescript-esbuild-esm
