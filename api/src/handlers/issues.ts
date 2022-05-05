@@ -1,4 +1,13 @@
-const Issues = function (req: Request, env: Env): Response {
+import { fetchExhaust, queryIPager } from "../graphql"
+
+const Issues = async function (req: Request, env: Env): Promise<Response> {
+  let x: Array<any> = [];
+  try {
+    x = await fetchExhaust(env, queryIPager());
+  } catch (e) {
+    console.error(`ERROR: ${JSON.stringify(e)}`)
+  }
+  console.log(JSON.stringify(x));
   const body = JSON.stringify({ answer: 42 })
   const headers = {
     'Content-Type': 'application/json',

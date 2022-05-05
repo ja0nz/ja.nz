@@ -1,11 +1,13 @@
 export {}
 
 declare global {
-  const MY_ENV_VAR: string
-  const MY_SECRET: string
-  const myKVNamespace: KVNamespace
+  const R_OWNER: string
+  const R_NAME: string
+  const GH_TOKEN: string
   const caches: CacheStorage
   type Env = {
     GH_TOKEN: string
+    owner: string
+    repo: string
   }
 }
