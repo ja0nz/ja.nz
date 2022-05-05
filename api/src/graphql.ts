@@ -9,6 +9,7 @@ import {
   queryI,
   queryR,
   querySingI,
+  R2,
 } from 'gh-cms-ql'
 
 export const qlClient = ({ GH_TOKEN, owner, repo }: Env) =>
@@ -25,34 +26,35 @@ export const qlClient = ({ GH_TOKEN, owner, repo }: Env) =>
 
 type GHCursor = string
 export function queryISing(...q: string[]): Fn<string, string> {
-  return (id: string) => comp(queryR, querySingI(id))(...q)
+  return (id: GHCursor) => comp(queryR, querySingI(id))(...q)
 }
 export function queryIPager(...q: string[]): Fn<GHCursor, string> {
-  return (s: GHCursor) => comp(queryR, queryI(s))(...q)
+  return (c: GHCursor) => comp(queryR, queryI(c))(...q)
 }
-export async function fetchExhaust(
+export async function fetchQl(
   env: Env,
   query: Fn<GHCursor, string>,
-): Promise<Issue[]> {
-  const nodes: Issue[] = []
-  let cursor: GHCursor = ''
+  cursor: GHCursor = '',
+): Promise<Issue[] | Issue> {
+  let nodes: Issue[] | Issue = []
   while (true) {
     const ql = await qlClient(env)(query(cursor))
-    const qPayLoad = comp(getI, getR)(ql)
-    nodes.push(...qPayLoad.nodes)
-    if (qPayLoad.pageInfo.hasNextPage) {
-      cursor = qPayLoad.pageInfo.endCursor
-      continue
+    const qPayLoad: R2<{ issues: Issue }> | Issue = comp(
+      (x: any) => getI(x) ?? getSingI(x),
+      getR,
+    )(ql)
+    if (Array.isArray(qPayLoad.nodes)) {
+      nodes.push(...qPayLoad.nodes)
+      if (qPayLoad.pageInfo?.hasNextPage) {
+        cursor = qPayLoad.pageInfo?.endCursor
+        if (cursor) continue
+      }
+    } else {
+      nodes = <any>qPayLoad
     }
 
     break
   }
 
   return nodes
-}
-
-export async function fetch(env: Env, query: string): Promise<Issue> {
-  const ql = await qlClient(env)(query)
-  const qPayLoad = comp(getSingI, getR as any)(ql)
-  return qPayLoad
 }

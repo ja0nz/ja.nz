@@ -1,12 +1,13 @@
 import { Issue, queryCommentsI, queryReactionsI } from 'gh-cms-ql'
-import { fetch, queryISing } from '../graphql'
+import { fetchQl, queryISing } from '../graphql'
 
 const Issues = async function ({ params }: Query, env: Env): Promise<Response> {
-  let body: Issue = { id: '' }
+  let body: Array<Issue> | Issue = []
   try {
-    body = await fetch(
+    body = await fetchQl(
       env,
-      queryISing(queryCommentsI, queryReactionsI)(params.id),
+      queryISing(queryCommentsI, queryReactionsI),
+      params.id,
     )
   } catch (e) {
     console.error(`ERROR: GitHub ${JSON.stringify(e)}`)

@@ -1,10 +1,10 @@
 import { Issue, queryBodyI, queryNumberI, queryTitleI } from 'gh-cms-ql'
-import { fetchExhaust, queryIPager } from '../graphql'
+import { fetchQl, queryIPager } from '../graphql'
 
 const Issues = async function (_: Query, env: Env): Promise<Response> {
-  let body: Array<Issue> = []
+  let body: Array<Issue> | Issue = []
   try {
-    body = await fetchExhaust(
+    body = await fetchQl(
       env,
       queryIPager(queryTitleI, queryNumberI, queryBodyI),
     )
