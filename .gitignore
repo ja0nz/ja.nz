@@ -13,10 +13,10 @@ node_modules/
 .gitsecret/keys/random_seed
 !*.secret
 api/wrangler.toml
+front/wrangler.toml
 
 .log
 .svelte-kit/
 build/
-front/wrangler.toml
 
 front_old/
