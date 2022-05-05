@@ -8,11 +8,11 @@
   "main": "./build/worker.mjs",
   "scripts": {
     "build": "tsc && node esbuild.config.js",
-    "debug": "yarn wrangler tail",
+    "w:debug": "yarn wrangler tail",
+    "w:debug:pretty": "yarn wrangler tail --format=pretty",
+    "w:pub": "yarn wrangler publish",
     "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
-    "pub": "yarn wrangler publish",
-    "secret": "yarn wrangler secret",
     "test": "TODO"
   },
   "eslintConfig": {
