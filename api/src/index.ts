@@ -7,7 +7,7 @@ const router = Router()
 
 router
   .get('/v1/issues', Issues)
-  .get('/v1/issues/:id', IssuesMeta)
+  .get('/v1/issue/:id', IssuesMeta)
   .get('*', () => new Response('Not found', { status: 404 }))
 
 export default {

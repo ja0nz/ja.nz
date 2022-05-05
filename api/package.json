@@ -40,7 +40,7 @@
     "@octokit/graphql": "^4.8.0",
     "@thi.ng/compose": "^2.1.5",
     "@thi.ng/paths": "^5.1.5",
-    "gh-cms-ql": "^0.1.3",
+    "gh-cms-ql": "^0.1.4",
     "itty-router": "^2.6.1"
   }
 }
