@@ -1,3 +1,5 @@
+import { IObjectOf } from '@thi.ng/api'
+
 export {}
 
 declare global {
@@ -9,5 +11,9 @@ declare global {
     GH_TOKEN: string
     owner: string
     repo: string
+  }
+  type Query = {
+    params: IObjectOf<string>
+    query: IObjectOf<string>
   }
 }

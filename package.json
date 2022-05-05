@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/ja0nz/ja.nz#readme",
   "devDependencies": {
-    "gh-cms": "^0.1.9"
+    "gh-cms": "^0.2.0"
   },
   "packageManager": "yarn@3.2.0"
 }

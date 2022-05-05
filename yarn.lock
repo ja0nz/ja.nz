@@ -5,7 +5,7 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@cloudflare/workers-types@npm:^3.8.0":
+"@cloudflare/workers-types@npm:^3.9.0":
   version: 3.9.0
   resolution: "@cloudflare/workers-types@npm:3.9.0"
   checksum: 61f808325c8d22029a646e1e2a2375c3af803a9070ca974fbc899b9e445d6487b135d2a52d5b70fec204d69ada9a1dd4d09a09fb96dbc5fe60df639fe2845921
@@ -1330,9 +1330,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gh-cms-ql@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "gh-cms-ql@npm:0.1.0"
+"gh-cms-ql@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "gh-cms-ql@npm:0.1.1"
   dependencies:
     "@octokit/graphql": ^4.8.0
     "@octokit/request": ^5.6.3
@@ -1341,13 +1341,28 @@ __metadata:
     "@thi.ng/paths": ^5.1.5
     dotenv: ^16.0.0
     gh-cms-ql: ^0.0.2
-  checksum: 24924786030d3504b87d23794fe9ac83c3ed23e629254f31fdca5f76955d164e96491763bb0600e281e808970392004c2510194aecc85f83687e4828fa79bcad
+  checksum: b9e2eab4478ca077d9aec641b2f9a8acd0a295db23dd0e99099561df47e97031667a86f55229178e58671fb5bbd4c1aacc22f80f6428b3858ffe2c8490b9d9f9
   languageName: node
   linkType: hard
 
-"gh-cms@npm:^0.1.9":
-  version: 0.1.9
-  resolution: "gh-cms@npm:0.1.9"
+"gh-cms-ql@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "gh-cms-ql@npm:0.1.3"
+  dependencies:
+    "@octokit/graphql": ^4.8.0
+    "@octokit/request": ^5.6.3
+    "@thi.ng/api": ^8.3.5
+    "@thi.ng/compose": ^2.1.5
+    "@thi.ng/paths": ^5.1.5
+    dotenv: ^16.0.0
+    gh-cms-ql: ^0.0.2
+  checksum: c917996c387dc0595db17e6a3ae9f488f7c463b5fea99750daf6472547e6f190450a1e88cb17fbfbbd0149335c7d2530f63bc33f79ff784b5078ba5ee869e4d2
+  languageName: node
+  linkType: hard
+
+"gh-cms@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "gh-cms@npm:0.2.0"
   dependencies:
     "@octokit/graphql": ^4.8.0
     "@octokit/rest": ^18.12.0
@@ -1362,11 +1377,11 @@ __metadata:
     "@thi.ng/text-format": ^1.1.5
     "@thi.ng/transducers": ^8.3.1
     dotenv: ^16.0.0
-    gh-cms-ql: ^0.1.0
+    gh-cms-ql: ^0.1.1
     gray-matter: ^4.0.3
   bin:
     gh-cms: ./dist/index.cjs
-  checksum: f85e022e7eb6aaf969909ff76c0a0c440ca3028ff45b44a6be019adfeb15d6f629d71ef7e5d44b09fb84c2dd70149c8920b464e82563d34fac06030ce2d58cfe
+  checksum: 9c1137ad5160b8730d551f421336f30e2bffe63cfebbff830d72376ff1b3da11ef3fc4168aeb18bd292491942f549146dcbf2e3a3dac3b2686be99f3862d1eec
   languageName: node
   linkType: hard
 
@@ -1540,7 +1555,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ja.nz-blog-api@workspace:api"
   dependencies:
-    "@cloudflare/workers-types": ^3.8.0
+    "@cloudflare/workers-types": ^3.9.0
     "@cloudflare/wrangler": ^1.19.12
     "@octokit/graphql": ^4.8.0
     "@thi.ng/api": ^8.3.5
@@ -1553,7 +1568,7 @@ __metadata:
     eslint: ^8.14.0
     eslint-config-prettier: ^8.5.0
     eslint-config-typescript: ^3.0.0
-    gh-cms-ql: ^0.1.0
+    gh-cms-ql: ^0.1.3
     itty-router: ^2.6.1
     prettier: ^2.6.2
     typescript: ^4.6.4
@@ -1564,7 +1579,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ja.nz@workspace:."
   dependencies:
-    gh-cms: ^0.1.9
+    gh-cms: ^0.2.0
   languageName: unknown
   linkType: soft
 

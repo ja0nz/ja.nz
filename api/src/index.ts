@@ -1,13 +1,13 @@
 import { Router } from 'itty-router'
 
 import Issues from './handlers/issues'
-//import Reactions from './handlers/reactions'
+import IssuesMeta from './handlers/issues-meta'
 
 const router = Router()
 
 router
-  .get('*', Issues)
-  //  .get('/v1/reactions', Reactions)
+  .get('/v1/issues', Issues)
+  .get('/v1/issues/:id', IssuesMeta)
   .get('*', () => new Response('Not found', { status: 404 }))
 
 export default {

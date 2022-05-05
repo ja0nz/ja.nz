@@ -1,19 +1,19 @@
-import { fetchExhaust, queryIPager } from "../graphql"
+import { Issue, queryBodyI, queryTitleI } from 'gh-cms-ql'
+import { fetchExhaust, queryIPager } from '../graphql'
 
-const Issues = async function (req: Request, env: Env): Promise<Response> {
-  let x: Array<any> = [];
+const Issues = async function (_: Query, env: Env): Promise<Response> {
+  let body: Array<Issue> = []
   try {
-    x = await fetchExhaust(env, queryIPager());
+    body = await fetchExhaust(env, queryIPager(queryTitleI, queryBodyI))
   } catch (e) {
-    console.error(`ERROR: ${JSON.stringify(e)}`)
+    console.error(`ERROR: GitHub ${JSON.stringify(e)}`)
+    return new Response('Could not fetch GitHub', { status: 500 })
   }
-  console.log(JSON.stringify(x));
-  const body = JSON.stringify({ answer: 42 })
   const headers = {
     'Content-Type': 'application/json',
-    'Cache-Control': `max-age=0, s-maxage=${60}`, // 1 minute.. for now
+    'Cache-Control': `max-age=0, s-maxage=${300}`, // 5 minutes
   }
-  const res = new Response(body, { headers })
+  const res = new Response(JSON.stringify(body), { headers })
   return res
 }
 
