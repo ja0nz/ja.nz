@@ -1,8 +1,8 @@
 @import "compositions/cluster.css";
 @import "compositions/sidebar.css";
 @import "compositions/switcher.css";
-@import "blocks/box.css";
 @import "utilities/flow.css";
 @import "utilities/region.css";
 @import "utilities/visually-hidden.css";
 @import "utilities/wrapper.css";
+@import "blocks/box.css";

@@ -12,7 +12,7 @@ const { theme } = resolveConfig(tw);
  * dev -> development
  * build -> production
  */
-const [node, cwd, mode] = process.argv;
+const mode = process.argv[2];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 chdir("./src/css/");
