@@ -1,25 +1,26 @@
 {
   "name": "ja.nz",
   "private": true,
-  "workspaces": [
-    "api"
-  ],
   "description": "My blog",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ja0nz/ja.nz.git"
-  },
   "keywords": [
     "org",
     "blog",
     "publish"
   ],
-  "author": "ja0nz <mail@ja.nz>",
-  "license": "Apache-2.0",
+  "homepage": "https://github.com/ja0nz/ja.nz#readme",
   "bugs": {
     "url": "https://github.com/ja0nz/ja.nz/issues"
   },
-  "homepage": "https://github.com/ja0nz/ja.nz#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ja0nz/ja.nz.git"
+  },
+  "license": "Apache-2.0",
+  "author": "ja0nz <mail@ja.nz>",
+  "workspaces": [
+    "api",
+    "front"
+  ],
   "devDependencies": {
     "gh-cms": "^0.2.0"
   },

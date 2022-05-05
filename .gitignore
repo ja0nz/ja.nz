@@ -15,4 +15,8 @@ node_modules/
 api/wrangler.toml
 
 .log
-dist/
+.svelte-kit/
+build/
+front/wrangler.toml
+
+front_old/
