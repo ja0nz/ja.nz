@@ -17,6 +17,9 @@ cd ./src && fd . | as-tree
 ├── app.d.ts
 ├── app.html
 ├── css
+│   ├── _blocks.css
+│   ├── _compositions.css
+│   ├── _utilities.css
 │   ├── blocks
 │   │   └── box.css
 │   ├── compositions
@@ -27,7 +30,6 @@ cd ./src && fd . | as-tree
 │   ├── custom-props.css
 │   ├── global.css
 │   ├── reset.css
-│   ├── tw.css
 │   └── utilities
 │       ├── flow.css
 │       ├── region.css
@@ -40,19 +42,30 @@ cd ./src && fd . | as-tree
 │   └── header
 │       ├── Header.svelte
 │       └── svelte-logo.svg
-└── routes
-    ├── __layout.svelte
-    ├── about.svelte
-    ├── index.svelte
-    └── todos
-        ├── _api.ts
-        ├── index.svelte
-        └── index.ts
+├── routes
+│   ├── __layout.svelte
+│   ├── about.svelte
+│   ├── index.svelte
+│   └── todos
+│       ├── _api.ts
+│       ├── index.svelte
+│       └── index.ts
+└── service-worker.ts
 :end:
 
 ** api
 *** client.ts
 *** server.ts
+** /routes
+*** /index.svelte
+- Counter.ts
+
+** /hooks.ts - Run on every request
+https://kit.svelte.dev/docs/hooks
+** /lib/Counter.svelte
+interesting [[https://svelte-motion.gradientdescent.de/][Svelte Motion]] example
+-> $ displayed_count
+-> $ offset (for negative numbers)
 
 * Modules
 ** $app/env

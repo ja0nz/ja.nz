@@ -9,6 +9,13 @@ const config = {
 
   kit: {
     adapter: adapter(),
+    vite: {
+      resolve: {
+        alias: {
+          path: "path-browserify",
+        },
+      },
+    },
 
     // Override http methods in the Todo forms
     methodOverride: {
