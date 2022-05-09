@@ -29,11 +29,10 @@ Org mode is really powerful combined with [[https://orgmode.org/manual/Working-w
 /Sidenote:/ I am not using [[https://gohugo.io/][Hugo]] for blogging anymore. Too convoluted for my taste. So I wrote a GH Issues blogging engine myself 👉[[https://www.npmjs.com/package/gh-cms][GH-CMS]]🥳
 
 ** Markup Guide
-*** Picture
-![[file:static/cat.jpg][Alt: Jus a cat]]
 *** Link
 [[file:static/cat.jpg][Linktext: Jus a cat]]
-
+*** Pic/Img
+![[file:static/cat.jpg][Alttext: Jus a cat]]
 *** Text formattings
 ---
 This is
@@ -109,6 +108,15 @@ class="org-center"
 <style>.org-center { margin-left: auto; margin-right: auto; text-align: center; }</style>
 #+end_center
 
+*** Ciatation
+#+begin_quote
+To teach how to live without certainty, and yet without being
+paralyzed by hesitation, is perhaps the chief thing that philosophy,
+in our age, can still do for those who study it.
+#+begin_cite
+— Bertrand Russell, A History of Western Philosophy
+#+end_cite
+#+end_quote
 
 * Call Utilities :noexport:
 :PROPERTIES:
@@ -202,6 +210,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 | https://ja.nz/6 | Location      |
 | file:static/    | Ref to assets |
 
+** DRAFT #9,rec
+:PROPERTIES:
+:export_file_name: 9
+:END:
 
 * Micro
 :PROPERTIES:
@@ -242,6 +254,16 @@ DetectArray<{ [k: string]: unknown } // true
 DetectArray<{ x: string } // false
 #+end_src
 
+** DRAFT #8,Recursion
+:PROPERTIES:
+:export_file_name: 8
+:END:
+ #+begin_quote
+ The idea of recursion can be used to express what, in the case of a deeply nested combination, would otherwise be viewed as a rather complicated process.
+ #+begin_cite
+ — SICP JS; https://sourceacademy.org/sicpjs/1.1.3
+ #+end_cite
+ #+end_quote
 
 * Blog
 :PROPERTIES:
