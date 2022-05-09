@@ -1,8 +1,11 @@
-@import "compositions/sidebar.css";
-@import "compositions/cluster.css";
-@import "compositions/switcher.css";
-@import "blocks/box.css";
-@import "utilities/flow.css";
-@import "utilities/region.css";
-@import "utilities/visually-hidden.css";
-@import "utilities/wrapper.css";
+/* Compositions */
+@import "_compositions.css";
+
+/* Blocks */
+@import "_blocks.css";
+
+/* Utilities */
+@import "_utilities.css";
+
+/* Tailwind utilities */
+@tailwind utilities;

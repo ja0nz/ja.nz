@@ -2,6 +2,7 @@ import { writeFile, readFile, rm } from "node:fs/promises";
 import { format } from "prettier";
 import { watch } from "chokidar";
 import { chdir } from "node:process";
+import { dirname } from "node:path";
 import resolveConfig from "tailwindcss/resolveConfig.js";
 import tw from "./tailwind.config.cjs";
 
@@ -65,20 +66,21 @@ await writeFile(`custom-props.css`, result);
  * CUBE section
  * https://cube.fyi/
  */
-const CUBE = "cube.css";
-await rm(CUBE, { force: true });
-
 const genCSS = watch(["compositions", "blocks", "utilities"]).on(
   "all",
   async (event, path) => {
+    const dest = `_${dirname(path)}.css`;
+    if (event === "addDir") {
+      await rm(`_${path}.css`, { force: true });
+    }
     if (event === "add") {
-      await writeFile(CUBE, `@import "${path}";\n`, { flag: "a+" });
+      await writeFile(dest, `@import "${path}";\n`, { flag: "a+" });
     }
     if (event === "unlink") {
-      const file = await readFile(CUBE);
+      const file = await readFile(dest);
       const buffer = Buffer.from(file).toString("utf-8");
       await writeFile(
-        CUBE,
+        dest,
         buffer.replace(new RegExp(`^.*?${path}.*?$`, "m"), "")
       );
     }
