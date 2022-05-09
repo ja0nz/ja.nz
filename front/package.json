@@ -20,30 +20,30 @@
     "preview": "svelte-kit preview"
   },
   "dependencies": {
-    "@fontsource/fira-mono": "^4.5.0",
+    "@fontsource/fira-mono": "^4.5.8",
     "@lukeed/uuid": "^2.0.0",
-    "cookie": "^0.4.1"
+    "cookie": "^0.5.0"
   },
   "devDependencies": {
     "@cloudflare/wrangler": "^1.19.12",
-    "@sveltejs/adapter-auto": "next",
-    "@sveltejs/adapter-cloudflare-workers": "next",
-    "@sveltejs/kit": "next",
-    "@types/cookie": "^0.4.1",
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "@typescript-eslint/parser": "^5.10.1",
+    "@sveltejs/adapter-auto": "^1.0.0-next.40",
+    "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.39",
+    "@sveltejs/kit": "^1.0.0-next.326",
+    "@types/cookie": "^0.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
     "chokidar": "^3.5.3",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-svelte3": "^3.2.1",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-svelte3": "^4.0.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.5.1",
-    "prettier-plugin-svelte": "^2.5.0",
-    "svelte": "^3.46.0",
-    "svelte-check": "^2.2.6",
-    "svelte-preprocess": "^4.10.1",
+    "prettier": "^2.6.2",
+    "prettier-plugin-svelte": "^2.7.0",
+    "svelte": "^3.48.0",
+    "svelte-check": "^2.7.0",
+    "svelte-preprocess": "^4.10.6",
     "tailwindcss": "^3.0.24",
-    "tslib": "^2.3.1",
-    "typescript": "~4.6.2"
+    "tslib": "^2.4.0",
+    "typescript": "~4.6.4"
   }
 }
