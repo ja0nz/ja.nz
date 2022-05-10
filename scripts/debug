@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if test -f "wrangler.toml"; then
+if test -f "wrangler.toml.secret"; then
     npx wrangler tail
 else
     echo "no tail function yet"

@@ -1,4 +1,5 @@
-import adapter from "@sveltejs/adapter-cloudflare";
+//import adapter from "@sveltejs/adapter-cloudflare";
+import adapter from "@sveltejs/adapter-cloudflare-workers";
 //import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
 import preprocess from "svelte-preprocess";
 
