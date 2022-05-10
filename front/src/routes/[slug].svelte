@@ -10,7 +10,6 @@
   /** @type {import('./[slug]').Load} */
   export async function load({ params, fetch, session, stuff }) {
     const slug = params.slug;
-    console.log("Slug", slug);
     if (!Number(slug)) return { status: 404 };
     const response = await fetch(urlAll());
     const allJson = response.ok ? await response.json() : [];

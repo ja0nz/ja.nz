@@ -16,6 +16,7 @@ api/wrangler.toml
 
 .log
 .svelte-kit/
+.mf/
 build/
 
 dev/
