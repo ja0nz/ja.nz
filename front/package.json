@@ -24,12 +24,17 @@
     "@lukeed/uuid": "^2.0.0",
     "@thi.ng/transducers": "^8.3.2",
     "cookie": "^0.5.0",
-    "gray-matter": "^4.0.3",
-    "mdsvex": "^0.10.5"
+    "mdsvex": "^0.10.5",
+    "rehype-stringify": "^9.0.3",
+    "remark-frontmatter": "^4.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.2",
+    "vfile-matter": "^3.0.1"
   },
   "devDependencies": {
     "@cloudflare/wrangler": "^1.19.12",
-    "@sveltejs/adapter-auto": "^1.0.0-next.40",
     "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.39",
     "@sveltejs/kit": "^1.0.0-next.326",
     "@types/cookie": "^0.5.1",
@@ -40,7 +45,6 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "npm-run-all": "^4.1.5",
-    "path-browserify": "^1.0.1",
     "prettier": "^2.6.2",
     "prettier-plugin-svelte": "^2.7.0",
     "svelte": "^3.48.0",
