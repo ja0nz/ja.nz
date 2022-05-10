@@ -15,6 +15,7 @@ const Issues = async function (_: Query, env: Env): Promise<Response> {
   const headers = {
     'Content-Type': 'application/json',
     'Cache-Control': `max-age=0, s-maxage=${300}`, // 5 minutes
+    'Access-Control-Allow-Origin': '*' // Temporary
   }
   const res = new Response(JSON.stringify(body), { headers })
   return res
