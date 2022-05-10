@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+yarn build
+if test -f "wrangler.toml"; then
+    npx wrangler publish
+else
+    npx wrangler pages publish --commit-dirty=true .svelte-kit/cloudflare
+fi

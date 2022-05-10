@@ -1,4 +1,4 @@
-import adapter from "@sveltejs/adapter-cloudflare-workers";
+import adapter from "@sveltejs/adapter-cloudflare";
 //import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
 import preprocess from "svelte-preprocess";
 
@@ -10,23 +10,23 @@ const config = {
 
   kit: {
     adapter: adapter(),
-    vite: {
-      // resolve: {
-      //   alias: {
-      //     TODO: package.json
-      //     path: "path-browserify",
-      //   },
-      // },
-      // optimizeDeps: {
-      //   esbuildOptions: {
-      //     plugins: [
-      //       NodeGlobalsPolyfillPlugin({
-      //         buffer: true,
-      //       }),
-      //     ],
-      //   },
-      // },
-    },
+    //vite: {
+    // resolve: {
+    //   alias: {
+    //     TODO: package.json
+    //     path: "path-browserify",
+    //   },
+    // },
+    // optimizeDeps: {
+    //   esbuildOptions: {
+    //     plugins: [
+    //       NodeGlobalsPolyfillPlugin({
+    //         buffer: true,
+    //       }),
+    //     ],
+    //   },
+    // },
+    //},
 
     // Override http methods in the Todo forms
     methodOverride: {

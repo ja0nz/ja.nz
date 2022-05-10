@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if test -f "wrangler.toml"; then
+    npx wrangler dev
+else
+    npx wrangler pages dev .svelte-kit/cloudflare
+fi

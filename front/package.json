@@ -34,8 +34,8 @@
     "vfile-matter": "^3.0.1"
   },
   "devDependencies": {
-    "@cloudflare/wrangler": "^1.19.12",
-    "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.39",
+    "@cloudflare/workers-types": "^3.9.0",
+    "@sveltejs/adapter-cloudflare": "^1.0.0-next.19",
     "@sveltejs/kit": "^1.0.0-next.326",
     "@types/cookie": "^0.5.1",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
@@ -52,6 +52,7 @@
     "svelte-preprocess": "^4.10.6",
     "tailwindcss": "^3.0.24",
     "tslib": "^2.4.0",
-    "typescript": "~4.6.4"
+    "typescript": "~4.6.4",
+    "wrangler": "^2.0.2"
   }
 }
