@@ -1,21 +1,14 @@
-import { comp, filter, map, noop } from '@thi.ng/transducers'
+import { comp, filter, map, noop as nope } from '@thi.ng/transducers'
 import grayMatter from 'front-matter'
 import MarkdownIt from 'markdown-it'
 const md = new MarkdownIt({
   html: true,
 })
 
-export const noOp = (slug: string | undefined) => noop()
-
-export const simpleFilter = (slug: string | undefined) =>
-  filter((x: any) => (slug && x.title ? x.title.startsWith(`#${slug}`) : true))
-
-export const getMDContent = (slug: string | undefined) =>
+export const parseContent = () =>
   comp(
-    // filter post
-    simpleFilter(slug),
     // map frontmatter
-    map((x) => ({ ...x, body: grayMatter(x.body) })),
+    map((x: any) => ({ ...x, body: grayMatter(x.body) })),
     // map to html
     map((x) => ({
       ...x,
@@ -23,3 +16,11 @@ export const getMDContent = (slug: string | undefined) =>
       body: md.render(x.body.body ?? ''),
     })),
   )
+
+export const noop = () => nope()
+
+export const filterTitle = (slug: string | undefined) =>
+  filter((x: any) => (slug && x.title ? x.title.startsWith(`#${slug}`) : true))
+
+export const contentTitle = (slug: string | undefined) =>
+  comp(filterTitle(slug), parseContent())
