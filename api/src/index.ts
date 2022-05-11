@@ -1,13 +1,13 @@
 import { Router } from 'itty-router'
 
-import Issues from './handlers/issues'
-import IssuesMeta from './handlers/issues-meta'
+import { byTitle, byIssue } from './handlers/ghJson'
 
 const router = Router()
 
 router
-  .get('/v1/issues', Issues)
-  .get('/v1/issue/:id', IssuesMeta)
+  .get('/v1', byTitle)
+  .get('/v1/title/:id', byTitle)
+  .get('/v1/issue/:id', byIssue)
   .get('*', () => new Response('Not found', { status: 404 }))
 
 export default {

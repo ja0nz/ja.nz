@@ -1,13 +1,17 @@
 #+title: Readme
 
-* v1 Routes
-** /issues
+* Routes
+** /v1
 All issues from this repo written by the owner
-- id, number, title, body
+- id, number, title, body, comments, reactions
 - _cache retention:_ 300 s ~ 5 min
-** /issue /:id
-Issue by number previously fetched
-- comments, reactions
+** /v1 /title /:id
+Single issue where *title* starts/is with *:id*
+- id, number, title, body, comments, reactions
+- _cache retention:_ 300 s ~ 5 min
+** /v1 /issue /:id
+Single issue where *number* is *:id*
+- id, number, title, body, comments, reactions
 - _cache retention:_ 30 s ~ 0.5 min
 
 * For further tooling reference

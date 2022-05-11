@@ -2612,7 +2612,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gh-cms-ql@npm:^0.1.1, gh-cms-ql@npm:^0.1.4":
+"gh-cms-ql@npm:^0.1.1":
   version: 0.1.4
   resolution: "gh-cms-ql@npm:0.1.4"
   dependencies:
@@ -2624,6 +2624,21 @@ __metadata:
     dotenv: ^16.0.0
     gh-cms-ql: ^0.0.2
   checksum: b20ef7e9ffc335f3fe6eb978789b401b5bacaed1f69c197cfea79a3bd8579fd91b1feb8e325295e750e2826bb0c8bb88170436e4bae01362e3f13e2becf343e9
+  languageName: node
+  linkType: hard
+
+"gh-cms-ql@npm:^0.1.5":
+  version: 0.1.5
+  resolution: "gh-cms-ql@npm:0.1.5"
+  dependencies:
+    "@octokit/graphql": ^4.8.0
+    "@octokit/request": ^5.6.3
+    "@thi.ng/api": ^8.3.5
+    "@thi.ng/compose": ^2.1.5
+    "@thi.ng/paths": ^5.1.5
+    dotenv: ^16.0.0
+    gh-cms-ql: ^0.0.2
+  checksum: 1ae24056a9c2dab37f980918120c982812e7c9624e52c666ef9eaa26858d670fbf4a0fb456a4ce32ce6623bc8fa7c2d8d548f68933df75dc4ed2e42fbae4eb2e
   languageName: node
   linkType: hard
 
@@ -3194,7 +3209,7 @@ __metadata:
     eslint: ^8.15.0
     eslint-config-prettier: ^8.5.0
     eslint-config-typescript: ^3.0.0
-    gh-cms-ql: ^0.1.4
+    gh-cms-ql: ^0.1.5
     itty-router: ^2.6.1
     prettier: ^2.6.2
     typescript: ^4.6.4

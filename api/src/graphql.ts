@@ -6,9 +6,14 @@ import {
   getR,
   getSingI,
   Issue,
+  queryBodyI,
+  queryCommentsI,
   queryI,
+  queryNumberI,
   queryR,
+  queryReactionsI,
   querySingI,
+  queryTitleI,
   R2,
 } from 'gh-cms-ql'
 
@@ -58,3 +63,6 @@ export async function fetchQl(
 
   return nodes
 }
+
+export const fetchAll = (f: typeof queryIPager | typeof querySingI) =>
+  f(queryTitleI, queryNumberI, queryBodyI, queryCommentsI, queryReactionsI)

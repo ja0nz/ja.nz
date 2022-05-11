@@ -21,8 +21,7 @@
   "dependencies": {
     "@octokit/graphql": "^4.8.0",
     "@thi.ng/compose": "^2.1.6",
-    "@thi.ng/paths": "^5.1.6",
-    "gh-cms-ql": "^0.1.4",
+    "gh-cms-ql": "^0.1.5",
     "itty-router": "^2.6.1"
   },
   "devDependencies": {

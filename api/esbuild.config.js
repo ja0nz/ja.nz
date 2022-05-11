@@ -8,6 +8,5 @@ buildSync({
   minify: false,
   sourcemap: false,
   charset: 'utf8',
-  target: 'node16',
   platform: 'neutral',
 })
