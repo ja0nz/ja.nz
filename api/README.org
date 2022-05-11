@@ -1,18 +1,18 @@
 #+title: Readme
 
 * Routes
-** /v1
-All issues from this repo written by the owner
-- id, number, title, body, comments, reactions
-- _cache retention:_ 300 s ~ 5 min
-** /v1 /title /:id
-Single issue where *title* starts/is with *:id*
-- id, number, title, body, comments, reactions
-- _cache retention:_ 300 s ~ 5 min
-** /v1 /issue /:id
-Single issue where *number* is *:id*
-- id, number, title, body, comments, reactions
-- _cache retention:_ 30 s ~ 0.5 min
+#+begin_src typescript
+router
+  .get('/v1/raw', handlerPager(simpleFilter, sec300))
+  .get('/v1/raw/title/:id', handlerPager(simpleFilter, sec300))
+  .get('/v1/raw/issue/:id', handlerSing(noOp, sec30))
+  .get('/v1/parsed', handlerPager(getMDContent, sec300))
+  .get('/v1/parsed/title/:id', handlerPager(getMDContent, sec300))
+  .get('*', () => new Response('Not found', { status: 404 }))
+#+end_src
+
+- raw :: { id: string, title: string, number: number, body: string, comments: { nodes }, reactions: { nodes }  }
+- parsed :: { ...raw, data: { fm }}
 
 * For further tooling reference
 https://github.com/gmencz/cloudflare-workers-typescript-esbuild-esm

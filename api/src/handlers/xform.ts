@@ -15,10 +15,11 @@ export const getMDContent = (slug: string | undefined) =>
     // filter post
     simpleFilter(slug),
     // map frontmatter
-    map((x) => grayMatter(x.body)),
+    map((x) => ({ ...x, body: grayMatter(x.body) })),
     // map to html
     map((x) => ({
-      data: x.attributes,
-      body: md.render(x.body ?? ''),
+      ...x,
+      data: x.body.attributes,
+      body: md.render(x.body.body ?? ''),
     })),
   )
