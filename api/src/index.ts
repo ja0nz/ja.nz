@@ -1,13 +1,18 @@
 import { Router } from 'itty-router'
 
-import { byTitle, byIssue } from './handlers/ghJson'
+import { handlerPager, handlerSing } from './handlers/handlers'
+import { sec30, sec300 } from './handlers/headers'
+import { getMDContent, noOp } from './handlers/xform'
+import { simpleFilter } from './handlers/xform'
 
 const router = Router()
 
 router
-  .get('/v1', byTitle)
-  .get('/v1/title/:id', byTitle)
-  .get('/v1/issue/:id', byIssue)
+  .get('/v1/raw', handlerPager(simpleFilter, sec300))
+  .get('/v1/raw/title/:id', handlerPager(simpleFilter, sec300))
+  .get('/v1/raw/issue/:id', handlerSing(noOp, sec30))
+  .get('/v1/parsed', handlerPager(getMDContent, sec300))
+  .get('/v1/parsed/title/:id', handlerPager(getMDContent, sec300))
   .get('*', () => new Response('Not found', { status: 404 }))
 
 export default {

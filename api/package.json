@@ -21,12 +21,16 @@
   "dependencies": {
     "@octokit/graphql": "^4.8.0",
     "@thi.ng/compose": "^2.1.6",
+    "@thi.ng/transducers": "^8.3.2",
+    "front-matter": "^4.0.2",
     "gh-cms-ql": "^0.1.5",
-    "itty-router": "^2.6.1"
+    "itty-router": "^2.6.1",
+    "markdown-it": "^13.0.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.10.0",
     "@thi.ng/api": "^8.3.6",
+    "@types/markdown-it": "^12.2.3",
     "@types/node": "^17.0.32",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
