@@ -680,7 +680,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@thi.ng/paths@npm:^5.1.4, @thi.ng/paths@npm:^5.1.5, @thi.ng/paths@npm:^5.1.6":
+"@thi.ng/paths@npm:^5.1.4, @thi.ng/paths@npm:^5.1.5":
   version: 5.1.6
   resolution: "@thi.ng/paths@npm:5.1.6"
   dependencies:
@@ -3201,7 +3201,6 @@ __metadata:
     "@octokit/graphql": ^4.8.0
     "@thi.ng/api": ^8.3.6
     "@thi.ng/compose": ^2.1.6
-    "@thi.ng/paths": ^5.1.6
     "@types/node": ^17.0.32
     "@typescript-eslint/eslint-plugin": ^5.23.0
     "@typescript-eslint/parser": ^5.23.0

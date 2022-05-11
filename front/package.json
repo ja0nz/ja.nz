@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "SvelteKit frontend for my blog",
   "type": "module",
+  "main": "./build/worker/worker.mjs",
   "scripts": {
     "sk": "svelte-kit",
     "start": "run-p 'cssgen dev' 'sk dev'",
