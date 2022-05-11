@@ -1,3 +1,17 @@
 #!/usr/bin/env bash
 
-npx wrangler "$@"
+while [[ $PWD != $ROOT ]]; do
+    if test -f "wrangler.toml"; then
+        break
+    fi
+    cd ..;
+done
+
+CONF=$(
+    if test -f "wrangler2.toml";
+    then echo "wrangler2.toml";
+    else echo "wrangler.toml";
+    fi
+)
+
+npx wrangler -c $CONF $@

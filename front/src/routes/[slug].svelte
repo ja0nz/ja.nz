@@ -15,7 +15,7 @@
       status: response.status,
       props: {
         json,
-        slug
+        slug,
       },
     };
   }
@@ -28,9 +28,7 @@
   export let json, slug;
 
   const content = transduce(getMDContent(slug), last(), json);
-  export {
-    content
-  }
+  export { content };
 </script>
 
 <svelte:head>

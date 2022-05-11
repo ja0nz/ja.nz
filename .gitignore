@@ -14,6 +14,7 @@ node_modules/
 !*.secret
 api/wrangler.toml
 front/wrangler.toml
+front/wrangler2.toml
 
 .log
 .svelte-kit/

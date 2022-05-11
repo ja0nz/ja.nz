@@ -22,7 +22,8 @@
     "front"
   ],
   "devDependencies": {
-    "gh-cms": "^0.2.0"
+    "gh-cms": "^0.2.0",
+    "wrangler": "^2.0.2"
   },
   "packageManager": "yarn@3.2.0"
 }
