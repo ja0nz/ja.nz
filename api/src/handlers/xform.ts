@@ -1,5 +1,6 @@
 import { comp, filter, map, noop as nope } from '@thi.ng/transducers'
 import grayMatter from 'front-matter'
+import { Issue } from 'gh-cms-ql'
 import MarkdownIt from 'markdown-it'
 const md = new MarkdownIt({
   html: true,
@@ -8,7 +9,7 @@ const md = new MarkdownIt({
 export const parseContent = () =>
   comp(
     // map frontmatter
-    map((x: any) => ({ ...x, body: grayMatter(x.body) })),
+    map<Issue, any>((x) => ({ ...x, body: grayMatter(x.body ?? '') })),
     // map to html
     map((x) => ({
       ...x,
@@ -20,7 +21,9 @@ export const parseContent = () =>
 export const noop = () => nope()
 
 export const filterTitle = (slug: string | undefined) =>
-  filter((x: any) => (slug && x.title ? x.title.startsWith(`#${slug}`) : true))
+  filter<Issue>((x) =>
+    slug && x.title ? x.title.startsWith(`#${slug}`) : true,
+  )
 
 export const contentTitle = (slug: string | undefined) =>
   comp(filterTitle(slug), parseContent())

@@ -6,6 +6,7 @@ import { contentTitle, noop, parseContent } from './handlers/xform'
 import { filterTitle } from './handlers/xform'
 
 const router = Router()
+const cache = caches.default
 
 router
   .get('/v1/raw', handlerPager(noop, sec300))
@@ -18,11 +19,10 @@ router
 
 export default {
   async fetch(req: Request, env: Env, ctx: ExecutionContext) {
-    const cache = caches.default
-    const cached: Response | undefined = await cache.match(req)
-    if (cached) return cached
+    const inCache: Response | undefined = await cache.match(req)
+    if (inCache) return inCache
     // Construct response
-    const res: Promise<Response> = router.handle(req, env)
+    const res: Promise<Response> = router.handle(req, env, ctx)
     ctx.waitUntil(cache.put(req, (await res).clone()))
     return res
   },

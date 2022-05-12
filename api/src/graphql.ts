@@ -1,5 +1,5 @@
 import { graphql } from '@octokit/graphql'
-import { Fn } from '@thi.ng/api'
+import type { Fn } from '@thi.ng/api'
 import { comp } from '@thi.ng/compose'
 import {
   getI,
