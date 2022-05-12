@@ -34,7 +34,7 @@
     "@cloudflare/workers-types": "^3.10.0",
     "@sveltejs/adapter-cloudflare": "^1.0.0-next.19",
     "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.39",
-    "@sveltejs/kit": "^1.0.0-next.326",
+    "@sveltejs/kit": "^1.0.0-next.328",
     "@types/cookie": "^0.5.1",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
