@@ -20,15 +20,7 @@
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.8",
     "@lukeed/uuid": "^2.0.0",
-    "@thi.ng/transducers": "^8.3.2",
-    "cookie": "^0.5.0",
-    "rehype-stringify": "^9.0.3",
-    "remark-frontmatter": "^4.0.1",
-    "remark-gfm": "^3.0.1",
-    "remark-parse": "^10.0.1",
-    "remark-rehype": "^10.1.0",
-    "unified": "^10.1.2",
-    "vfile-matter": "^3.0.1"
+    "cookie": "^0.5.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.10.0",
