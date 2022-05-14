@@ -23,7 +23,7 @@ export default {
     if (inCache) return inCache
     // Construct response
     const res: Promise<Response> = router.handle(req, env, ctx)
-    ctx.waitUntil(cache.put(req, (await res).clone()))
+    ctx.waitUntil(res.then((r) => cache.put(req, r.clone())))
     return res
   },
 }
