@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
 
+C="wrangler.toml"
+
 while [[ $PWD != $ROOT ]]; do
-    if test -f "wrangler.toml"; then
+    if test -f $C; then
         break
     fi
     cd ..;
 done
 
-CONF=$(
-    if test -f "wrangler2.toml";
-    then echo "wrangler2.toml";
-    else echo "wrangler.toml";
-    fi
-)
-
-npx wrangler -c $CONF $@
+npx wrangler -c $C $@

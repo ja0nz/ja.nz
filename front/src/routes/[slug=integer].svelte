@@ -5,7 +5,7 @@
     params,
     fetch,
   }: LoadInput): Promise<SlugOutput> {
-    const url = `https://api.ja.nz/v1/parsed/title/${params.slug}`;
+    const url = `https://api-ja-nz.janz.workers.dev/v1/parsed/title/${params.slug}`;
     const response = await fetch(url);
     if (!response.ok) return { status: 500 };
     const [content]: [ParsedIssue] = await response.json();

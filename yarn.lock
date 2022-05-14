@@ -461,13 +461,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/adapter-cloudflare-workers@npm:^1.0.0-next.39":
-  version: 1.0.0-next.39
-  resolution: "@sveltejs/adapter-cloudflare-workers@npm:1.0.0-next.39"
+"@sveltejs/adapter-cloudflare-workers@npm:^1.0.0-next.40":
+  version: 1.0.0-next.40
+  resolution: "@sveltejs/adapter-cloudflare-workers@npm:1.0.0-next.40"
   dependencies:
     "@iarna/toml": ^2.2.5
     esbuild: ^0.14.21
-  checksum: 1b7097cba5d2c49a92cd2cb1fb297b1b22168800e35493eda8e876df42fbf1517b18d6f09633a7ef005896de190fc478fdb599e618a827b65aef8179a1281902
+  checksum: edb82864dd7cbf8d3102f4d5010d619c34e6ef326d5cc6dd701dcb41bdec15b0092634c6fcb86d61749bfb50aac2ba086c9bfed7f13c3222a1f246e8f77200df
   languageName: node
   linkType: hard
 
@@ -481,9 +481,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:^1.0.0-next.328":
-  version: 1.0.0-next.328
-  resolution: "@sveltejs/kit@npm:1.0.0-next.328"
+"@sveltejs/kit@npm:^1.0.0-next.330":
+  version: 1.0.0-next.330
+  resolution: "@sveltejs/kit@npm:1.0.0-next.330"
   dependencies:
     "@sveltejs/vite-plugin-svelte": ^1.0.0-next.32
     chokidar: ^3.5.3
@@ -493,7 +493,7 @@ __metadata:
     svelte: ^3.44.0
   bin:
     svelte-kit: svelte-kit.js
-  checksum: b80670d09c773994cbf8fe9bb8ea79474b8116322fd5751a15f7ac953a8c24181625761e5c79d729b085475be3bdce58a924167a22fbd47723461e8a3ee7357b
+  checksum: 15f4bb4975c6b5e12f98c61eabc6988bd66fd04c9a5295a4f5d2b388951aa14f6b0b4724f0cd7563d775ba3deeee2eb6b315beb6a3fdec7d89c935a8086324d1
   languageName: node
   linkType: hard
 
@@ -3272,8 +3272,8 @@ __metadata:
     "@fontsource/fira-mono": ^4.5.8
     "@lukeed/uuid": ^2.0.0
     "@sveltejs/adapter-cloudflare": ^1.0.0-next.19
-    "@sveltejs/adapter-cloudflare-workers": ^1.0.0-next.39
-    "@sveltejs/kit": ^1.0.0-next.328
+    "@sveltejs/adapter-cloudflare-workers": ^1.0.0-next.40
+    "@sveltejs/kit": ^1.0.0-next.330
     "@types/cookie": ^0.5.1
     "@typescript-eslint/eslint-plugin": ^5.23.0
     "@typescript-eslint/parser": ^5.23.0
@@ -3299,7 +3299,7 @@ __metadata:
   resolution: "ja.nz@workspace:."
   dependencies:
     gh-cms: ^0.2.0
-    wrangler: ^2.0.3
+    wrangler: ^2.0.5
   languageName: unknown
   linkType: soft
 
@@ -5144,9 +5144,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wrangler@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "wrangler@npm:2.0.3"
+"wrangler@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "wrangler@npm:2.0.5"
   dependencies:
     "@esbuild-plugins/node-globals-polyfill": ^0.1.1
     "@esbuild-plugins/node-modules-polyfill": ^0.1.4
@@ -5165,7 +5165,7 @@ __metadata:
   bin:
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: 024da23ee9a0336c71163d08ac646da040969385cd19623e71ac7487fb3b31ae56ce750bba6dce553dd0ea8f7add3226891ec267ce97c81a51d338e57e266eed
+  checksum: a8be37334b2d2f6351fbdcf334d62bf16b89cb35314cac8d326d08d9b8e1467e05fb5428865ec440a82389c5406b0082603d7a09e360617f95cfd7de0573bd70
   languageName: node
   linkType: hard
 

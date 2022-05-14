@@ -3,7 +3,7 @@ buildSync({
   entryPoints: ['./src/index.ts'],
   format: 'esm',
   mainFields: ['browser', 'module', 'main'],
-  outfile: './build/worker.mjs',
+  outfile: './build/worker.js',
   bundle: true,
   minify: false,
   sourcemap: false,
