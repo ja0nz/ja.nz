@@ -9,7 +9,7 @@
     const response = await fetch(url);
     if (!response.ok) return { status: 500 };
     const [content]: [ParsedIssue] = await response.json();
-    if (!content) return { status: 404 }
+    if (!content) return { status: 404 };
 
     return {
       status: response.status,

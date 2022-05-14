@@ -1,6 +1,6 @@
 @import "@fontsource/fira-mono";
-@import "reset.css";
 @import "custom-props.css";
+@import "reset.css";
 
 /* Global styles */
 :root {
