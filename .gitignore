@@ -14,7 +14,6 @@ node_modules/
 !*.secret
 api/wrangler.toml
 front/wrangler.toml
-front/wrangler2.toml
 
 .log
 .svelte-kit/
@@ -22,5 +21,4 @@ front/wrangler2.toml
 build/
 
 dev/
-front_old/
 custom-props.css
