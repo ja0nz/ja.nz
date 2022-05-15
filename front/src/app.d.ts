@@ -38,6 +38,5 @@ type ParsedIssue = {
 };
 
 type SlugOutput = LoadOutput<{ content: ParsedIssue }>;
-type Theme = "system" | "light" | "dark";
 
-export { ParsedIssue, SlugOutput, Theme };
+export { ParsedIssue, SlugOutput };

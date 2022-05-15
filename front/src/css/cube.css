@@ -4,41 +4,27 @@
 @import "reset.css" layer(reset);
 @import "custom-props.css" layer(vars);
 
-/* Compositions */
 @import "_compositions.css" layer(compositions);
-
-/* Blocks */
 @import "_blocks.css" layer(blocks);
-
-/* Utilities */
 @import "_utilities.css" layer(utilities);
 
-/* Tailwind utilities */
 @tailwind utilities;
 
-@layer default {
+@layer themes {
   @media (prefers-color-scheme: light) {
-    :root {
-      --color-lightest: hsl(0deg, 0%, 100%);
-      --color-lighter: hsl(0deg, 0%, 80%);
-      --color-light: hsl(0deg, 0%, 60%);
-      --color-strong: hsl(0deg, 0%, 40%);
-      --color-stronger: hsl(0deg, 0%, 20%);
-      --color-strongest: hsl(0deg, 0%, 0%);
+    h1 {
+      color: blue;
     }
   }
 
   @media (prefers-color-scheme: dark) {
-    :root {
-      --color-lightest: hsl(0deg, 0%, 0%);
-      --color-lighter: hsl(0deg, 0%, 20%);
-      --color-light: hsl(0deg, 0%, 40%);
-      --color-strong: hsl(0deg, 0%, 60%);
-      --color-stronger: hsl(0deg, 0%, 80%);
-      --color-strongest: hsl(0deg, 0%, 100%);
+    h1 {
+      color: red;
     }
   }
+}
 
+@layer default {
   /* Global styles */
   :root {
     font-family: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,

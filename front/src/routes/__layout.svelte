@@ -1,19 +1,12 @@
 <script>
   import "../css/cube.css";
-  import { browser, dev } from "$app/env";
-  import { theme } from "$lib/stores";
-
-  if (browser) {
-    const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    theme.set(darkMode ? "dark light" : "light dark")
-  }
+  import ThemeSwitch from "$lib/components/ThemeSwitch.svelte";
 </script>
 
-<svelte:head>
-  <meta name="color-scheme" content={$theme} />
-</svelte:head>
+<svelte:head />
 
 <main class="wrapper">
+  <ThemeSwitch />
   <slot />
   <footer>
     <p>
