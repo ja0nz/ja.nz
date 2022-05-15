@@ -1,14 +1,13 @@
 <script>
-  import "../css/global.css";
   import "../css/cube.css";
 </script>
 
-<main>
+<main class="wrapper">
   <slot />
+  <footer>
+    <p>
+      visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit
+    </p>
+  </footer>
 </main>
 
-<footer>
-  <p>
-    visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit
-  </p>
-</footer>
