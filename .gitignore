@@ -21,4 +21,5 @@ front/wrangler.toml
 build/
 
 dev/
+my-svelte-app/
 custom-props.css

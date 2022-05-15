@@ -13,6 +13,10 @@
     "sourceMap": true,
     "strict": true,
     "target": "es2020",
-    "types": ["@sveltejs/kit"]
+    "types": ["@sveltejs/kit"],
+    "paths": {
+      "$lib": ["src/lib"],
+      "$lib/*": ["src/lib/*"]
+    }
   }
 }
