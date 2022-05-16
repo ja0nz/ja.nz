@@ -1,11 +1,9 @@
-import { graphql } from '@octokit/graphql'
-import type { Fn } from '@thi.ng/api'
-import { comp } from '@thi.ng/compose'
 import {
+  Issue,
+  R2,
   getI,
   getR,
   getSingI,
-  Issue,
   queryBodyI,
   queryCommentsI,
   queryI,
@@ -14,8 +12,11 @@ import {
   queryReactionsI,
   querySingI,
   queryTitleI,
-  R2,
 } from 'gh-cms-ql'
+
+import type { Fn } from '@thi.ng/api'
+import { comp } from '@thi.ng/compose'
+import { graphql } from '@octokit/graphql'
 
 export const qlClient = ({ GH_TOKEN, owner, repo }: Env) =>
   graphql.defaults({
@@ -55,7 +56,7 @@ export async function fetchQl(
         if (cursor) continue
       }
     } else {
-      nodes = <any>qPayLoad
+      nodes = qPayLoad as any
     }
 
     break

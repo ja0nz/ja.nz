@@ -13,7 +13,7 @@ declare global {
     repo: string
   }
   type Query = {
-    params: IObjectOf<string>
-    query: IObjectOf<string>
+    params?: IObjectOf<string>
+    query?: IObjectOf<string>
   }
 }

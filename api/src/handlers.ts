@@ -1,13 +1,17 @@
 import type { Fn, IObjectOf } from '@thi.ng/api'
-import { push, transduce, Transducer } from '@thi.ng/transducers'
+import { Transducer, push, transduce } from '@thi.ng/transducers'
+import { fetchAll, fetchQl, queryIPager, queryISing } from './graphql'
+import { header, nearestHalfHourUTC } from './headers'
+
 import { Issue } from 'gh-cms-ql'
-import { fetchAll, fetchQl, queryIPager, queryISing } from '../graphql'
-const cKey = 'http://in.ter.nal.dum.my'
+import { noop } from './xform'
+
+const cKey = 'http://api.ja.nz/__dummy'
 const cache = caches.default
 
 export const handlerPager = (
-  xform: Fn<string | undefined, Transducer<Issue, any>>,
   headers: IObjectOf<string>,
+  xform: Fn<string | undefined, Transducer<Issue, any>>,
 ) =>
   async function (
     { params }: Query,
@@ -40,8 +44,8 @@ export const handlerPager = (
   }
 
 export const handlerSing = (
-  xform: Fn<string | undefined, Transducer<Issue, any>>,
   headers: IObjectOf<string>,
+  xform: Fn<string | undefined, Transducer<Issue, any>>,
 ) =>
   async function ({ params }: Query, env: Env): Promise<Response> {
     const id = params?.id
@@ -58,5 +62,20 @@ export const handlerSing = (
       Array.isArray(body) ? body : [body],
     )
     const res = new Response(JSON.stringify(out), { headers })
+    return res
+  }
+
+export const handlerRefresh = () =>
+  async function (
+    _: Query,
+    env: Env,
+    ctx: ExecutionContext,
+  ): Promise<Response> {
+    await cache.delete(cKey)
+    const refresh = handlerPager(header(nearestHalfHourUTC(new Date())), noop)
+    ctx.waitUntil(refresh({ params: undefined }, env, ctx))
+    const res = new Response(JSON.stringify({ status: 'success' }), {
+      headers: { 'Cache-Control': 'max-age=0' },
+    })
     return res
   }

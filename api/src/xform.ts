@@ -1,7 +1,9 @@
 import { comp, filter, map, noop as nope } from '@thi.ng/transducers'
-import grayMatter from 'front-matter'
+
 import { Issue } from 'gh-cms-ql'
 import MarkdownIt from 'markdown-it'
+import grayMatter from 'front-matter'
+
 const md = new MarkdownIt({
   html: true,
 })

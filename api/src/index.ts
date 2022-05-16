@@ -1,20 +1,20 @@
-import { Router } from 'itty-router'
+import { contentTitle, filterTitle, noop, parseContent } from './xform'
+import { handlerPager, handlerRefresh, handlerSing } from './handlers'
 
-import { handlerPager, handlerSing } from './handlers/handlers'
-import { sec30, sec300 } from './handlers/headers'
-import { contentTitle, noop, parseContent } from './handlers/xform'
-import { filterTitle } from './handlers/xform'
+import { Router } from 'itty-router'
+import { header } from './headers'
 
 const router = Router()
 const cache = caches.default
 
 router
-  .get('/v1/raw', handlerPager(noop, sec300))
-  .get('/v1/raw/issue/:id', handlerSing(noop, sec30))
-  .get('/v1/raw/title/:id', handlerPager(filterTitle, sec300))
-  .get('/v1/parsed', handlerPager(parseContent, sec300))
-  .get('/v1/parsed/issue/:id', handlerSing(parseContent, sec30))
-  .get('/v1/parsed/title/:id', handlerPager(contentTitle, sec300))
+  .get('/v1/raw', handlerPager(header(300), noop))
+  .get('/v1/raw/issue/:id', handlerSing(header(30), noop))
+  .get('/v1/raw/title/:id', handlerPager(header(300), filterTitle))
+  .get('/v1/parsed', handlerPager(header(300), parseContent))
+  .get('/v1/parsed/issue/:id', handlerSing(header(30), parseContent))
+  .get('/v1/parsed/title/:id', handlerPager(header(300), contentTitle))
+  .get('/v1/refresh', handlerRefresh())
   .get('*', () => new Response('Not found', { status: 404 }))
 
 export default {
@@ -25,5 +25,15 @@ export default {
     const res: Promise<Response> = router.handle(req, env, ctx)
     ctx.waitUntil(res.then((r) => cache.put(req, r.clone())))
     return res
+  },
+  /*
+   * Cache refresh every ~ 30 min
+   */
+  async scheduled(
+    _: ScheduledController | null,
+    env: Env,
+    ctx: ExecutionContext,
+  ) {
+    await handlerRefresh()({ params: undefined }, env, ctx)
   },
 }
