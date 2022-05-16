@@ -8,12 +8,12 @@ const router = Router()
 const cache = caches.default
 
 router
-  .get('/v1/raw', handlerPager(header(300), noop))
+  .get('/v1/raw', handlerPager(header(0), noop))
   .get('/v1/raw/issue/:id', handlerSing(header(30), noop))
-  .get('/v1/raw/title/:id', handlerPager(header(300), filterTitle))
-  .get('/v1/parsed', handlerPager(header(300), parseContent))
+  .get('/v1/raw/title/:id', handlerPager(header(0), filterTitle))
+  .get('/v1/parsed', handlerPager(header(0), parseContent))
   .get('/v1/parsed/issue/:id', handlerSing(header(30), parseContent))
-  .get('/v1/parsed/title/:id', handlerPager(header(300), contentTitle))
+  .get('/v1/parsed/title/:id', handlerPager(header(0), contentTitle))
   .get('/v1/refresh', handlerRefresh())
   .get('*', () => new Response('Not found', { status: 404 }))
 
