@@ -3,10 +3,16 @@ import { comp, filter, map, noop as nope } from '@thi.ng/transducers'
 import { Issue } from 'gh-cms-ql'
 import MarkdownIt from 'markdown-it'
 import grayMatter from 'front-matter'
+import markdownItArchor from 'markdown-it-anchor'
+import markdownItAttrs from 'markdown-it-attrs'
+import markdownITDeflist from 'markdown-it-deflist'
 
 const md = new MarkdownIt({
   html: true,
 })
+  .use(markdownItAttrs)
+  .use(markdownItArchor)
+  .use(markdownITDeflist)
 
 export const parseContent = () =>
   comp(

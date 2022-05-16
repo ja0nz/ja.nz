@@ -1127,7 +1127,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/markdown-it@npm:^12.2.3":
+"@types/markdown-it-attrs@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@types/markdown-it-attrs@npm:4.1.0"
+  dependencies:
+    "@types/markdown-it": "*"
+  checksum: a8bc1f8176ddeea8ac3f66958683a02bd84ba46ccb47fc941d10b83ac52e83595a03ff39efdf594c6614ae3f71f63b88fc62f706681c48630ec5ac9fc411b387
+  languageName: node
+  linkType: hard
+
+"@types/markdown-it@npm:*, @types/markdown-it@npm:^12.2.3":
   version: 12.2.3
   resolution: "@types/markdown-it@npm:12.2.3"
   dependencies:
@@ -4511,6 +4520,7 @@ __metadata:
     "@thi.ng/compose": ^2.1.6
     "@thi.ng/transducers": ^8.3.2
     "@types/markdown-it": ^12.2.3
+    "@types/markdown-it-attrs": ^4.1.0
     "@types/node": ^17.0.33
     "@typescript-eslint/eslint-plugin": ^5.23.0
     "@typescript-eslint/parser": ^5.23.0
@@ -4522,6 +4532,9 @@ __metadata:
     gh-cms-ql: ^0.1.5
     itty-router: ^2.6.1
     markdown-it: ^13.0.1
+    markdown-it-anchor: ^8.6.4
+    markdown-it-attrs: ^4.1.4
+    markdown-it-deflist: ^2.1.0
     prettier: ^2.6.2
     typescript: ^4.6.4
   languageName: unknown
@@ -4839,6 +4852,32 @@ __metadata:
   dependencies:
     object-visit: ^1.0.0
   checksum: c27045a5021c344fc19b9132eb30313e441863b2951029f8f8b66f79d3d8c1e7e5091578075a996f74e417479506fe9ede28c44ca7bc351a61c9d8073daec36a
+  languageName: node
+  linkType: hard
+
+"markdown-it-anchor@npm:^8.6.4":
+  version: 8.6.4
+  resolution: "markdown-it-anchor@npm:8.6.4"
+  peerDependencies:
+    "@types/markdown-it": "*"
+    markdown-it: "*"
+  checksum: bde310d0202450a228662921df9d9c2e95b3c5762512e8eed1d472fcc812fb20e6b4e98480cda88c8b56b0baf34ac70d6bf8404309c5a2321ebe62da43cd6fe6
+  languageName: node
+  linkType: hard
+
+"markdown-it-attrs@npm:^4.1.4":
+  version: 4.1.4
+  resolution: "markdown-it-attrs@npm:4.1.4"
+  peerDependencies:
+    markdown-it: ">= 9.0.0"
+  checksum: c4980619ab190d5c05a99c85bf501207d8105b46556bb7d260d44f3322c9fa4a5cfba9c7b79d92281ab6acc6d25abfd8837b4330a6c3886750aee17262a65e47
+  languageName: node
+  linkType: hard
+
+"markdown-it-deflist@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "markdown-it-deflist@npm:2.1.0"
+  checksum: 6d5b0cc8c0e729cb8d0add4cbfa98cc39bf3cbc8aa33a8bd7dab50da10273aac834b5fc85a36985235ff945048a246ec3688ecaf5469e64668e94b4449f79531
   languageName: node
   linkType: hard
 
