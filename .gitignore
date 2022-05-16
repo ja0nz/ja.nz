@@ -17,9 +17,6 @@ front/wrangler.toml
 
 .log
 .svelte-kit/
-.mf/
 build/
 
 dev/
-my-svelte-app/
-custom-props.css

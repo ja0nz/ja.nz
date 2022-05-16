@@ -31,7 +31,7 @@ const groups = [
 
 // Add a note that this is auto generated
 result += `
-      /* VARIABLES GENERATED WITH TAILWIND CONFIG ON ${new Date().toLocaleDateString()}.
+      /* VARIABLES GENERATED WITH TAILWIND.
       Tokens location: ./tailwind.config.js */
 
       :root {

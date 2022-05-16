@@ -15,7 +15,6 @@
   }
 </script>
 
-<div class="text-gray-800">Hello</div>
 <button on:click={toggleDark}>
   {#if isDark}
     <svg
