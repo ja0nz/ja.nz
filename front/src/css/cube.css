@@ -1,4 +1,4 @@
-@layer reset, vars, default, themes, compositions, blocks, utilities;
+@layer reset, vars, default, dark, compositions, blocks, utilities;
 
 @import "@fontsource/fira-mono";
 @import "reset.css" layer(reset);
@@ -10,16 +10,10 @@
 
 @tailwind utilities;
 
-@layer themes {
-  @media (prefers-color-scheme: light) {
+@layer dark {
+  .dark {
     h1 {
       color: blue;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    h1 {
-      color: red;
     }
   }
 }

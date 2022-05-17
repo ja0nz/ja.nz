@@ -108,7 +108,7 @@ class="org-center"
 <style>.org-center { margin-left: auto; margin-right: auto; text-align: center; }</style>
 #+end_center
 
-*** Ciatation
+*** Citation
 #+begin_quote
 To teach how to live without certainty, and yet without being
 paralyzed by hesitation, is perhaps the chief thing that philosophy,
@@ -272,3 +272,106 @@ DetectArray<{ x: string } // false
 :export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format t))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :export_hugo_custom_front_matter+: :state (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
 :END:
+** DONE #10,All the formattings :typescript:
+CLOSED: [2022-05-16 Mo 16:35]
+:PROPERTIES:
+:export_file_name: 10
+:END:
+#+begin_description
+This post will contain a lot of formattings
+#+end_description
+
+*** Link
+[[https://raw.githubusercontent.com/ja0nz/ja.nz/main/static/cat.jpg][Linktext: Jus a cat]]
+*** Pic/Img
+![[https://raw.githubusercontent.com/ja0nz/ja.nz/main/static/cat.jpg][Alttext: Jus a cat]]
+*** Text formattings
+---
+This is
+one
+paragraph!
+---
+This is
+
+two paragraphs! (One more line break in org)
+---
+This is \\
+one paragraph with an \<br\>
+---
+I like to *write bold*. And sometimes /italic/ or even _underlined_ and even +strike-through+.
+One note: =verbatim= and ~squiqqly code~ is both the same in markdown
+
+*** Lists
+- Minus sign
++ Plus sign
+
+*** Enumerated lists
+1. My favorite number
+2. Second guess
+
+*** Definition list
+- What is React :: react is bla bla... See [[https://react.io][more]]
+
+*** Checkboxes
+- [X] checked
+- [ ] unchecked
+*** Table
+| thead | n | o |
+| tbody | q | r |
+
+or
+
+| thead | n | o |
+|-------+---+---|
+| tbody | q | r |
+
+*** Blocks
+**** generic div
+#+begin_foo
+div class foo
+#+end_foo
+
+**** src (accept attr_html)
+#+attr_html: :class my-section :id section-a
+#+begin_src javascript
+// class="highlight"
+const answer = 42;
+console.log("this is how we do")
+#+end_src
+
+**** quote
+#+begin_quote
+It shall be light - and it was light mode
+#+end_quote
+
+**** example (accept attr_html)
+#+begin_example
+For example: Let me show to you...
+#+end_example
+
+**** HTML Export
+#+begin_export html
+<div class="html">sometimes inline code is the answer</div>
+#+end_export
+
+**** center
+#+begin_center
+class="org-center"
+<style>.org-center { margin-left: auto; margin-right: auto; text-align: center; }</style>
+#+end_center
+
+*** Citation
+#+begin_quote
+To teach how to live without certainty, and yet without being
+paralyzed by hesitation, is perhaps the chief thing that philosophy,
+in our age, can still do for those who study it.
+#+begin_cite
+— Bertrand Russell, A History of Western Philosophy
+#+end_cite
+#+end_quote
+
+*** meta :noexport:
+| Asset            | Description   |
+|------------------+---------------|
+| https://ja.nz/10 | Location      |
+| file:static/     | Ref to assets |
