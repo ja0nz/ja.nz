@@ -71,9 +71,10 @@ export const handlerRefresh = () =>
     env: Env,
     ctx: ExecutionContext,
   ): Promise<Response> {
-    await cache.delete(cKey)
     const refresh = handlerPager(header(nearestHalfHourUTC(new Date())), noop)
-    ctx.waitUntil(refresh({ params: undefined }, env, ctx))
+    ctx.waitUntil(
+      cache.delete(cKey).then(() => refresh({ params: undefined }, env, ctx)),
+    )
     const res = new Response(JSON.stringify({ status: 'success' }), {
       headers: { 'Cache-Control': 'max-age=0' },
     })
