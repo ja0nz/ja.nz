@@ -1,0 +1,23 @@
+/*
+SPLITTER
+Two elements pushed away from each other at larger viewports
+*/
+.splitter {
+  > :last-child {
+    margin-top: var(--space-size-1);
+  }
+
+  @media (min-width: 48em) {
+    display: flex;
+
+    > * {
+      flex-grow: 1;
+    }
+
+    > :last-child {
+      margin-top: 0;
+      margin-left: var(--space-size-1);
+      min-width: 22rem;
+    }
+  }
+}

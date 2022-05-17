@@ -1,4 +1,6 @@
 @import "utilities/flow.css";
 @import "utilities/region.css";
+@import "utilities/splitter.css";
+@import "utilities/sticky-header.css";
 @import "utilities/visually-hidden.css";
 @import "utilities/wrapper.css";
