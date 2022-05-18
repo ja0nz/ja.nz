@@ -26,7 +26,7 @@
     --font-mono: "Fira Mono", monospace;
     /* sidebar.css */
     --gutter: var(--space-base);
-    --sidebar-content-min-width: 70%;
+    --sidebar-content-min-width: 65%;
     /* scrollbar */
     --scrollbar-primary-color: green;
     --text-color: yellow;
