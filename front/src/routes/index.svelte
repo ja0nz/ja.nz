@@ -24,11 +24,7 @@
         <div>ThemeSwitch</div>
       </aside>
     </div>
-    <div style="min-height: 1000px;" class="box">
-      Content Area
-    </div>
-    <div class="box">
-      Send me a message
-    </div>
+    <div style="min-height: 1000px;" class="box">Content Area</div>
+    <div class="box">Send me a message</div>
   </div>
 </article>
