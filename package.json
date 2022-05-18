@@ -1,5 +1,5 @@
 {
-  "name": "ja.nz",
+  "name": "ja.nz-monorepo",
   "private": true,
   "description": "My blog",
   "keywords": [
@@ -20,6 +20,7 @@
   "workspaces": [
     "api",
     "dev",
+    "play",
     "front"
   ],
   "devDependencies": {
