@@ -1,4 +1,4 @@
-@layer reset, vars, default, dark, compositions, blocks, utilities;
+@layer reset, vars, default, dark, compositions, utilities, blocks;
 
 @import "@fontsource/fira-mono";
 @import "reset.css" layer(reset);
