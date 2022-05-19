@@ -33,7 +33,6 @@
   }
 
   body {
-    padding: var(--space-size-2) var(--space-size-1);
     @apply bg-light text-dark text-size-1 font-sans;
   }
 
