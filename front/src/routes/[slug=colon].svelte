@@ -57,7 +57,7 @@
   <div class="menu | sticky-header">
     <div class="box">Profileimage & last seen</div>
     <input
-      aria-label="Search articles"
+      aria-label="Search tags"
       type="text"
       bind:value={search}
       bind:this={inputEl}
@@ -77,7 +77,11 @@
         <div>ThemeSwitch</div>
       </aside>
     </div>
-    <div style="min-height: 1000px;" id="main-content" class="box">
+    <div
+      style="min-height: 1000px; scroll-margin-top: 120px;"
+      id="main-content"
+      class="box"
+    >
       Content Area
     </div>
     <div class="box">Send me a message</div>
