@@ -1,12 +1,16 @@
 <script context="module" lang="ts">
   import type { LoadInput } from "@sveltejs/kit";
-  import type { ParsedIssue, SlugOutput } from "src/app";
+  import type { ParsedIssue, LoadSingle } from "src/app";
+  import { dev } from "$app/env";
+  import { integer } from "$lib/dev/endpointData";
   export async function load({
     params,
     fetch,
-  }: LoadInput): Promise<SlugOutput> {
-    const url = `https://api-ja-nz.janz.workers.dev/v1/parsed/title/${params.slug}`;
-    const response = await fetch(url);
+    url,
+  }: LoadInput): Promise<LoadSingle> {
+    console.log([...url.searchParams.entries()]);
+    const api = `https://api-ja-nz.janz.workers.dev/v1/parsed/title/${params.slug}`;
+    const response = dev ? integer.clone() : await fetch(api);
     if (!response.ok) return { status: 500 };
     const [content]: [ParsedIssue] = await response.json();
     if (!content) return { status: 404 };

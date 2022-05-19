@@ -37,6 +37,7 @@ type ParsedIssue = {
   };
 };
 
-type SlugOutput = LoadOutput<{ content: ParsedIssue }>;
+type LoadSingle = LoadOutput<{ content: ParsedIssue }>;
+type LoadAll = LoadOutput<{ content: ParsedIssue[] }>;
 
-export { ParsedIssue, SlugOutput };
+export { ParsedIssue, LoadSingle, LoadAll };
