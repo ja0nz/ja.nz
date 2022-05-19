@@ -2,7 +2,7 @@
   import type { LoadInput } from "@sveltejs/kit";
   import type { ParsedIssue, LoadSingle } from "src/app";
   import { dev } from "$app/env";
-  import { integer } from "$lib/dev/endpointData";
+  import { integer } from "$lib/dev/browser";
   export async function load({
     params,
     fetch,

@@ -2,7 +2,10 @@
   import type { LoadInput } from "@sveltejs/kit";
   import type { ParsedIssue, LoadAll } from "src/app";
   import { dev } from "$app/env";
-  import { parsed } from "$lib/dev/endpointData";
+  import { parsed } from "$lib/dev/browser";
+  import { latestTags } from "$lib/xform";
+  import { filterFuzzy } from "@thi.ng/transducers";
+
   export async function load({
     params,
     fetch,
@@ -29,16 +32,41 @@
 
 <script lang="ts">
   export let content: ParsedIssue[];
+
+  const tagsAll: [string, number][] = latestTags(content);
+
+  // Filter
+  let inputEl: HTMLInputElement;
+  const focusSearch = (e: KeyboardEvent) => {
+    if (e.key === "/" && inputEl) inputEl.select();
+  };
+  let lT: IterableIterator<[string, number]>;
+  let search = "";
+  const highlight = (tag: string) =>
+    tag.replace(
+      new RegExp(search, "g"),
+      `<span class="underline">${search}</span>`
+    );
+  $: lT = filterFuzzy(search, { key: (x: [string, number]) => x[0] }, tagsAll);
+  // -- Filter finished
 </script>
 
-<article class="sidebar | wrapper | mobile-sidebar">
+<svelte:window on:keyup={focusSearch} />
+
+<article class="sidebar | mobile-sidebar">
   <div class="menu | sticky-header">
     <div class="box">Profileimage & last seen</div>
-    <div>Fuzzy tag search</div>
+    <input
+      aria-label="Search articles"
+      type="text"
+      bind:value={search}
+      bind:this={inputEl}
+      placeholder="Hit / to search"
+    />
     <div class="overflow-y-auto">
-      <!-- {#each tags as tag}
-           <div class="box">{tag}</div>
-           {/each} -->
+      {#each [...lT] as [tag, ts]}
+        <div class="box">{@html highlight(tag)}</div>
+      {/each}
     </div>
   </div>
   <div id="not-sidebar" class="no-contentX">
@@ -49,7 +77,9 @@
         <div>ThemeSwitch</div>
       </aside>
     </div>
-    <div style="min-height: 1000px;" class="box">Content Area</div>
+    <div style="min-height: 1000px;" id="main-content" class="box">
+      Content Area
+    </div>
     <div class="box">Send me a message</div>
   </div>
 </article>
