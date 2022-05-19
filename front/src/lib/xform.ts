@@ -7,9 +7,10 @@ import {
   maxCompare,
   transduce,
 } from "@thi.ng/transducers";
-import { timestampP, tagsP } from "$lib/paths";
-import type { ParsedIssue } from "src/app";
+import { tagsP, timestampP } from "$lib/paths";
+
 import type { IObjectOf } from "@thi.ng/api";
+import type { ParsedIssue } from "src/app";
 
 /*
  * Return latest [tag, timestamp] pairs

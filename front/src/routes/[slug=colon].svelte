@@ -1,39 +1,25 @@
 <script context="module" lang="ts">
-  import type { LoadInput } from "@sveltejs/kit";
-  import type { ParsedIssue, LoadAll } from "src/app";
-  import { dev } from "$app/env";
-  import { parsed } from "$lib/dev/browser";
-  import { latestTags } from "$lib/xform";
-  import { filterFuzzy } from "@thi.ng/transducers";
-
-  export async function load({
-    params,
-    fetch,
-    url,
-  }: LoadInput): Promise<LoadAll> {
+  // Pass the `stuff` from __layout into the props of this page
+  export async function load({ params, url, stuff }: LoadInput) {
+    const content = stuff?.content;
+    console.log(content);
     const tag = params.slug;
+    console.log(tag);
     // TODO
     const anchor = url.searchParams;
-    const api = `https://api-ja-nz.janz.workers.dev/v1/parsed`;
-    const response = dev ? parsed.clone() : await fetch(api);
-    if (!response.ok) return { status: 500 };
-    const content: ParsedIssue[] = await response.json();
-    if (!content) return { status: 404 };
-
-    return {
-      status: response.status,
-      cache: { maxage: 60 },
-      props: {
-        content,
-      },
-    };
+    return { props: stuff };
   }
 </script>
 
 <script lang="ts">
-  export let content: ParsedIssue[];
+  import type { ParsedIssue } from "src/app";
+  import { latestTags } from "$lib/xform";
+  import type { LoadInput } from "@sveltejs/kit";
+  import { filterFuzzy } from "@thi.ng/transducers";
+  import type { Writable } from "svelte/store";
+  export let content: Writable<ParsedIssue[]>;
 
-  const tagsAll: [string, number][] = latestTags(content);
+  const tagsAll: [string, number][] = latestTags($content);
 
   // Filter
   let inputEl: HTMLInputElement;
@@ -43,10 +29,16 @@
   let lT: IterableIterator<[string, number]>;
   let search = "";
   const highlight = (tag: string) =>
-    tag.replace(
-      new RegExp(search, "g"),
-      `<span class="underline">${search}</span>`
-    );
+    search
+      .split("")
+      .reduce(
+        (acc, x) =>
+          acc.replace(
+            new RegExp(x, "g"),
+            `<span class="underline">${x}</span>`
+          ),
+        tag
+      );
   $: lT = filterFuzzy(search, { key: (x: [string, number]) => x[0] }, tagsAll);
   // -- Filter finished
 </script>

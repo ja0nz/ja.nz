@@ -31,6 +31,7 @@
     "@fullhuman/postcss-purgecss": "^4.1.3",
     "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.40",
     "@sveltejs/kit": "^1.0.0-next.335",
+    "@thi.ng/api": "^8.3.6",
     "@types/cookie": "^0.5.1",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",

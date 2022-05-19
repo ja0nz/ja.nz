@@ -1,4 +1,5 @@
 import type { LoadOutput } from "@sveltejs/kit";
+import type { Writable } from "svelte/store";
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
@@ -11,7 +12,9 @@ declare namespace App {
 
   // interface Session {}
 
-  //interface Stuff {}
+  interface Stuff {
+    content: Writable<ParsedIssue[]>;
+  }
 }
 
 type ParsedIssue = {

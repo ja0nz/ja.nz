@@ -1,3 +1,20 @@
+<script context="module" lang="ts">
+  import { fetchApi } from "$lib/fetch";
+  import type { LoadInput } from "@sveltejs/kit";
+  export async function load({ fetch }: LoadInput) {
+    try {
+      return {
+        stuff: {
+          // content
+          content: await fetchApi(fetch),
+        },
+      };
+    } catch (error: any) {
+      return { status: 500 };
+    }
+  }
+</script>
+
 <script>
   import "../css/cube.css";
 </script>

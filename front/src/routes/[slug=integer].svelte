@@ -1,31 +1,34 @@
 <script context="module" lang="ts">
   import type { LoadInput } from "@sveltejs/kit";
-  import type { ParsedIssue, LoadSingle } from "src/app";
+  import type { ParsedIssue } from "src/app";
   import { dev } from "$app/env";
   import { integer } from "$lib/dev/browser";
-  export async function load({
-    params,
-    fetch,
-    url,
-  }: LoadInput): Promise<LoadSingle> {
-    console.log([...url.searchParams.entries()]);
-    const api = `https://api-ja-nz.janz.workers.dev/v1/parsed/title/${params.slug}`;
+  import { get } from "svelte/store";
+  import { numberP, titleP } from "$lib/paths";
+  export async function load({ params, url, fetch, stuff }: LoadInput) {
+    const num = get<ParsedIssue[]>(stuff.content)
+      .filter((x) => titleP(x).startsWith(`#${params.slug}`))
+      .map(numberP);
+
+    const api = `https://api-ja-nz.janz.workers.dev/v1/parsed/issue/${
+      num.length ? num[0] : 0
+    }`;
     const response = dev ? integer.clone() : await fetch(api);
     if (!response.ok) return { status: 500 };
-    const [content]: [ParsedIssue] = await response.json();
-    if (!content) return { status: 404 };
+    const fetchedContent: ParsedIssue[] = await response.json();
+    if (!fetchedContent.length) return { status: 404 };
 
     return {
       status: response.status,
       props: {
-        content,
+        issue: fetchedContent[0],
       },
     };
   }
 </script>
 
 <script lang="ts">
-  export let content: ParsedIssue;
+  export let issue: ParsedIssue;
 </script>
 
 <svelte:head>
@@ -34,5 +37,5 @@
 </svelte:head>
 
 <article>
-  {@html content.body}
+  {@html issue.body}
 </article>

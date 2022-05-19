@@ -1,5 +1,6 @@
 /// <reference lib="webworker" />
 declare let self: ServiceWorkerGlobalScope;
+
 import { build, files, version } from "$service-worker";
 
 // https://github.com/microsoft/TypeScript/issues/11781 - this is needed for TS and ESLint

@@ -1,5 +1,5 @@
-import { tick } from "svelte";
 import { browser } from "$app/env";
+import { tick } from "svelte";
 
 export async function scrollEnd() {
   // bit hacky but best effort
