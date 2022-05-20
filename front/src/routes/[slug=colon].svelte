@@ -1,8 +1,7 @@
 <script context="module" lang="ts">
   // Pass the `stuff` from __layout into the props of this page
   export async function load({ params, url, stuff }: LoadInput) {
-    const content = stuff?.content;
-    console.log(content);
+    const content = stuff.ALL;
     const tag = params.slug;
     console.log(tag);
     // TODO
@@ -13,13 +12,13 @@
 
 <script lang="ts">
   import type { ParsedIssue } from "src/app";
-  import { latestTags } from "$lib/xform";
+  import { highlightTags, latestTags } from "$lib/xform";
   import type { LoadInput } from "@sveltejs/kit";
   import { filterFuzzy } from "@thi.ng/transducers";
   import type { Writable } from "svelte/store";
-  export let content: Writable<ParsedIssue[]>;
+  export let ALL: Writable<ParsedIssue[]>;
 
-  const tagsAll: [string, number][] = latestTags($content);
+  const tagsAll: [string, number][] = latestTags($ALL);
 
   // Filter
   let inputEl: HTMLInputElement;
@@ -28,17 +27,6 @@
   };
   let lT: IterableIterator<[string, number]>;
   let search = "";
-  const highlight = (tag: string) =>
-    search
-      .split("")
-      .reduce(
-        (acc, x) =>
-          acc.replace(
-            new RegExp(x, "g"),
-            `<span class="underline">${x}</span>`
-          ),
-        tag
-      );
   $: lT = filterFuzzy(search, { key: (x: [string, number]) => x[0] }, tagsAll);
   // -- Filter finished
 </script>
@@ -57,7 +45,7 @@
     />
     <div class="overflow-y-auto">
       {#each [...lT] as [tag, ts]}
-        <div class="box">{@html highlight(tag)}</div>
+        <div class="box">{@html highlightTags(tag, search)}</div>
       {/each}
     </div>
   </div>

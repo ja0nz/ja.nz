@@ -6,7 +6,7 @@
       return {
         stuff: {
           // content
-          content: await fetchApi(fetch),
+          ALL: await fetchApi(fetch),
         },
       };
     } catch (error: any) {
@@ -22,6 +22,6 @@
 <svelte:head />
 
 <a class="[ skip-link ] [ button ]" href="#main-content">Goto main</a>
-<main tabindex="-1" class="wrapper">
+<main tabindex="-1" style="padding: 0;" class="wrapper">
   <slot />
 </main>

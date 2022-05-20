@@ -13,7 +13,7 @@ declare namespace App {
   // interface Session {}
 
   interface Stuff {
-    content: Writable<ParsedIssue[]>;
+    ALL: Writable<ParsedIssue[]>;
   }
 }
 

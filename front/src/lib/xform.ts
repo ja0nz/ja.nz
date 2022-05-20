@@ -5,6 +5,7 @@ import {
   map,
   mapcat,
   maxCompare,
+  str,
   transduce,
 } from "@thi.ng/transducers";
 import { tagsP, timestampP } from "$lib/paths";
@@ -35,3 +36,15 @@ export function latestTags(all: ParsedIssue[]) {
   // latest first
   return Object.values(frequent).sort((acc, x) => x[1] - acc[1]);
 }
+
+/*
+ * Highlight tag search
+ */
+export const highlightTags = (tag: string, search: string) =>
+  transduce(
+    map((x) =>
+      search.includes(x) ? `<span class="underline">${x}</span>` : x
+    ),
+    str(),
+    tag
+  );

@@ -6,7 +6,7 @@
   import { get } from "svelte/store";
   import { numberP, titleP } from "$lib/paths";
   export async function load({ params, url, fetch, stuff }: LoadInput) {
-    const num = get<ParsedIssue[]>(stuff.content)
+    const num = get<ParsedIssue[]>(stuff.ALL)
       .filter((x) => titleP(x).startsWith(`#${params.slug}`))
       .map(numberP);
 
