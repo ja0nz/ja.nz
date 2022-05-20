@@ -11,7 +11,7 @@ import {
 } from "@thi.ng/transducers";
 import { tagsP, timestampP } from "$lib/paths";
 
-import type { IObjectOf } from "@thi.ng/api";
+import type { Fn, IObjectOf } from "@thi.ng/api";
 import type { ParsedIssue } from "src/app";
 
 /* Utils */
@@ -67,4 +67,39 @@ export function byTagsLatest(tag: string, all: ParsedIssue[]) {
     pushSort((a, b) => timestampP(b) - timestampP(a)),
     all
   );
+}
+
+/*
+ * Analogue to filterFuzzy
+ */
+export function filterContent<A>(
+  query: string,
+  opts: { key: Fn<A, string> },
+  src: Iterable<A>
+): IterableIterator<A> {
+  const { key } = opts;
+  return filter((x: A) => key(x).includes(query), src);
+}
+
+/*
+ * Highlight tag search
+ */
+export function highLightContentDOM(html: string, search: string) {
+  if (!search) return html; // protects agains SSR
+  let n: Node | null;
+  const nodes: HTMLElement[] = [];
+  const element = document.createRange().createContextualFragment(html);
+  const walk = document.createTreeWalker(element, NodeFilter.SHOW_ELEMENT);
+  while ((n = walk.nextNode())) n && nodes.push(n as HTMLElement);
+  for (const n of nodes) {
+    if (n.childNodes[0].nodeValue === n.textContent) {
+      n.innerHTML = n.innerHTML.replace(
+        new RegExp(search, "g"),
+        `<span class="underline">${search}</span>`
+      );
+    }
+  }
+  const container = document.createElement("div");
+  container.appendChild(element);
+  return container.innerHTML;
 }

@@ -1,9 +1,8 @@
 <script context="module" lang="ts">
   import { get } from "svelte/store";
-  import { byTagsLatest } from "$lib/xform";
+  import { byTagsLatest, filterContent } from "$lib/xform";
   // Pass the `stuff` from __layout into the props of this page
   export async function load({ params, url, stuff }: LoadInput) {
-    const content = get(stuff.ALL);
     const tag = params.slug;
     console.log(tag);
     // TODO
@@ -11,7 +10,8 @@
     return {
       props: {
         ...stuff,
-        tagSorted: byTagsLatest(tag, content),
+        contentByTag: byTagsLatest(tag, get(stuff.ALL)),
+        tagsByLatest: latestTags(get(stuff.ALL)),
       },
     };
   }
@@ -19,30 +19,37 @@
 
 <script lang="ts">
   export let ALL: Writable<ParsedIssue[]>;
-  export let tagSorted: ParsedIssue[];
+  export let contentByTag: ParsedIssue[];
+  export let tagsByLatest: [string, number][];
 
   import type { ParsedIssue } from "src/app";
-  import { highlightTags, latestTags } from "$lib/xform";
+  import { highLightContentDOM, highlightTags, latestTags } from "$lib/xform";
   import type { LoadInput } from "@sveltejs/kit";
   import { filterFuzzy } from "@thi.ng/transducers";
   import type { Writable } from "svelte/store";
 
-  const tagsAll: [string, number][] = latestTags($ALL);
-
   // Filter label
-  let inputEl: HTMLInputElement;
+  let inputTags: HTMLInputElement;
   const focusSearch = (e: KeyboardEvent) => {
-    console.log(e)
-    if (e.key === "/" && inputEl && document.activeElement !== inputEl)
-      inputEl.select();
-    }
-  let lT: IterableIterator<[string, number]>;
-  let search = "";
-  $: lT = filterFuzzy(search, { key: (x: [string, number]) => x[0] }, tagsAll);
+    if (e.key === "/" && inputTags && document.activeElement !== inputTags)
+      inputTags.select();
+  };
+  let tags: IterableIterator<[string, number]>;
+  let fuzzyTags = "";
+  $: tags = filterFuzzy(
+    fuzzyTags,
+    { key: (x: [string, number]) => x[0] },
+    tagsByLatest
+  );
   // -- Filter label finished
   // Filter content
-
-  // -- Filter content finished
+  let cont: IterableIterator<ParsedIssue>;
+  let fuzzyContent = "";
+  $: cont = filterContent(
+    fuzzyContent,
+    { key: (x: ParsedIssue) => x.body },
+    contentByTag
+  );
 </script>
 
 <svelte:window on:keyup={focusSearch} />
@@ -53,14 +60,14 @@
     <input
       aria-label="Search tags"
       type="text"
-      bind:value={search}
-      bind:this={inputEl}
+      bind:value={fuzzyTags}
+      bind:this={inputTags}
       placeholder="Hit / to search"
     />
     <div class="overflow-y-auto">
-      {#each [...lT] as [tag, ts]}
+      {#each [...tags] as [tag, ts]}
         <div class="box">
-          <a href={`/:${tag}`}>{@html highlightTags(tag, search)}</a>
+          <a href={`/:${tag}`}>{@html highlightTags(tag, fuzzyTags)}</a>
         </div>
       {/each}
     </div>
@@ -69,17 +76,18 @@
     <div class="key-header | splitter sticky-header">
       <div class="box">⬅ Topic Card Photo blah</div>
       <aside>
-        <a href="/:box">Box</a>
+        <input
+          aria-label="Search tags"
+          type="text"
+          bind:value={fuzzyContent}
+          placeholder="Search feed"
+        />
         <div>ThemeSwitch</div>
       </aside>
     </div>
-    <div
-      style="min-height: 1000px; scroll-margin-top: 120px;"
-      id="main-content"
-      class="box"
-    >
-      {#each tagSorted as content}
-        <div class="box">{@html content.body}</div>
+    <div style="scroll-margin-top: 120px;" id="main-content" class="box">
+      {#each [...cont] as { body }}
+        <div class="box">{@html highLightContentDOM(body, fuzzyContent)}</div>
       {/each}
     </div>
     <div class="box">Send me a message</div>
