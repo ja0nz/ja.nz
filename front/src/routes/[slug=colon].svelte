@@ -1,34 +1,48 @@
 <script context="module" lang="ts">
+  import { get } from "svelte/store";
+  import { byTagsLatest } from "$lib/xform";
   // Pass the `stuff` from __layout into the props of this page
   export async function load({ params, url, stuff }: LoadInput) {
-    const content = stuff.ALL;
+    const content = get(stuff.ALL);
     const tag = params.slug;
     console.log(tag);
     // TODO
     const anchor = url.searchParams;
-    return { props: stuff };
+    return {
+      props: {
+        ...stuff,
+        tagSorted: byTagsLatest(tag, content),
+      },
+    };
   }
 </script>
 
 <script lang="ts">
+  export let ALL: Writable<ParsedIssue[]>;
+  export let tagSorted: ParsedIssue[];
+
   import type { ParsedIssue } from "src/app";
   import { highlightTags, latestTags } from "$lib/xform";
   import type { LoadInput } from "@sveltejs/kit";
   import { filterFuzzy } from "@thi.ng/transducers";
   import type { Writable } from "svelte/store";
-  export let ALL: Writable<ParsedIssue[]>;
 
   const tagsAll: [string, number][] = latestTags($ALL);
 
-  // Filter
+  // Filter label
   let inputEl: HTMLInputElement;
   const focusSearch = (e: KeyboardEvent) => {
-    if (e.key === "/" && inputEl) inputEl.select();
-  };
+    console.log(e)
+    if (e.key === "/" && inputEl && document.activeElement !== inputEl)
+      inputEl.select();
+    }
   let lT: IterableIterator<[string, number]>;
   let search = "";
   $: lT = filterFuzzy(search, { key: (x: [string, number]) => x[0] }, tagsAll);
-  // -- Filter finished
+  // -- Filter label finished
+  // Filter content
+
+  // -- Filter content finished
 </script>
 
 <svelte:window on:keyup={focusSearch} />
@@ -45,7 +59,9 @@
     />
     <div class="overflow-y-auto">
       {#each [...lT] as [tag, ts]}
-        <div class="box">{@html highlightTags(tag, search)}</div>
+        <div class="box">
+          <a href={`/:${tag}`}>{@html highlightTags(tag, search)}</a>
+        </div>
       {/each}
     </div>
   </div>
@@ -62,7 +78,9 @@
       id="main-content"
       class="box"
     >
-      Content Area
+      {#each tagSorted as content}
+        <div class="box">{@html content.body}</div>
+      {/each}
     </div>
     <div class="box">Send me a message</div>
   </div>

@@ -6,6 +6,7 @@ import {
   mapcat,
   maxCompare,
   str,
+  pushSort,
   transduce,
 } from "@thi.ng/transducers";
 import { tagsP, timestampP } from "$lib/paths";
@@ -13,16 +14,19 @@ import { tagsP, timestampP } from "$lib/paths";
 import type { IObjectOf } from "@thi.ng/api";
 import type { ParsedIssue } from "src/app";
 
+/* Utils */
+const noUndefTags = filter<ParsedIssue>((x) => tagsP(x) !== undefined);
+
 /*
  * Return latest [tag, timestamp] pairs
  */
 export function latestTags(all: ParsedIssue[]) {
-  type In = [string[] | undefined, number];
   const frequent: IObjectOf<[string, number]> = transduce(
     comp(
-      map<ParsedIssue, In>((x) => [tagsP(x), timestampP(x)]),
-      filter((x) => x[0] !== undefined),
-      mapcat<In, [string, number]>((x) => x[0]?.map((y) => [y, x[1]]))
+      noUndefTags,
+      mapcat<ParsedIssue, [string, number]>((x) =>
+        tagsP(x)?.map((y) => [y, timestampP(x)])
+      )
     ),
     groupByObj({
       key: (x: [string, number]) => x[0],
@@ -34,7 +38,7 @@ export function latestTags(all: ParsedIssue[]) {
     all
   );
   // latest first
-  return Object.values(frequent).sort((acc, x) => x[1] - acc[1]);
+  return pushSort((a, b) => b[1] - a[1], Object.values(frequent));
 }
 
 /*
@@ -42,9 +46,25 @@ export function latestTags(all: ParsedIssue[]) {
  */
 export const highlightTags = (tag: string, search: string) =>
   transduce(
-    map((x) =>
-      search.includes(x) ? `<span class="underline">${x}</span>` : x
+    map(
+      (x) =>
+        `<span ${search.includes(x) ? 'class="underline"' : ""}>${x}</span>`
     ),
     str(),
     tag
   );
+
+/*
+ * Content by tags
+ */
+export function byTagsLatest(tag: string, all: ParsedIssue[]) {
+  const t = tag.substring(1);
+  return transduce(
+    comp(
+      noUndefTags,
+      filter((x) => (t ? (tagsP(x) as string[]).includes(t) : true))
+    ),
+    pushSort((a, b) => timestampP(b) - timestampP(a)),
+    all
+  );
+}
