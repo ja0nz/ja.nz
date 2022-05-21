@@ -78,7 +78,11 @@ export function filterContent<A>(
   src: Iterable<A>
 ): IterableIterator<A> {
   const { key } = opts;
-  return filter((x: A) => key(x).includes(query), src);
+  return filter((x: A) => {
+    if (!query) return true; // protects agains SSR
+    const fragment = document.createRange().createContextualFragment(key(x));
+    return new RegExp(query, "i").test(fragment.textContent ?? "");
+  }, src);
 }
 
 type Split = string | [string];
