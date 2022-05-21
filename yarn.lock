@@ -234,10 +234,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workers-types@npm:^3.10.0":
-  version: 3.10.0
-  resolution: "@cloudflare/workers-types@npm:3.10.0"
-  checksum: 0d59f0cfc8058c48083dec883e10c06972541abab7248a2da780ff04c3f472b101f7aafe05528fffe75a0223c31ab905927705afc95635efc9b851ba41ef085d
+"@cloudflare/workers-types@npm:^3.11.0":
+  version: 3.11.0
+  resolution: "@cloudflare/workers-types@npm:3.11.0"
+  checksum: 702cc2b03d39422bb26b3fdd9548939b375d21c00481e7435649da6635533d3917815625a81fa8cc3adc6058fbd7245729437902af7463b64d3e79c3d25f653c
   languageName: node
   linkType: hard
 
@@ -262,20 +262,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/eslintrc@npm:^1.2.3":
-  version: 1.2.3
-  resolution: "@eslint/eslintrc@npm:1.2.3"
+"@eslint/eslintrc@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@eslint/eslintrc@npm:1.3.0"
   dependencies:
     ajv: ^6.12.4
     debug: ^4.3.2
     espree: ^9.3.2
-    globals: ^13.9.0
+    globals: ^13.15.0
     ignore: ^5.2.0
     import-fresh: ^3.2.1
     js-yaml: ^4.1.0
     minimatch: ^3.1.2
     strip-json-comments: ^3.1.1
-  checksum: 48e7b7ac05cd514eee2ebb1d487600f0dd637ac21f63605e353cff6a08c7223275fe4f571d15ee9deae4e78c53edc73369ffcbed15fba4dfc1806179dbf4dc85
+  checksum: a1e734ad31a8b5328dce9f479f185fd4fc83dd7f06c538e1fa457fd8226b89602a55cc6458cd52b29573b01cdfaf42331be8cfc1fec732570086b591f4ed6515
   languageName: node
   linkType: hard
 
@@ -770,14 +770,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/adapter-auto@npm:^1.0.0-next.43":
-  version: 1.0.0-next.43
-  resolution: "@sveltejs/adapter-auto@npm:1.0.0-next.43"
+"@sveltejs/adapter-auto@npm:^1.0.0-next.44":
+  version: 1.0.0-next.44
+  resolution: "@sveltejs/adapter-auto@npm:1.0.0-next.44"
   dependencies:
     "@sveltejs/adapter-cloudflare": 1.0.0-next.19
     "@sveltejs/adapter-netlify": 1.0.0-next.58
-    "@sveltejs/adapter-vercel": 1.0.0-next.52
-  checksum: 5f00dc33a7d15b627f86d7fcf298266662775277c4e73cd3e03c1f65c7e56d19f31ae9a45d5be1f746cd610cb9d8988fabcc7cd0dbf797fed54e49a50f54e225
+    "@sveltejs/adapter-vercel": 1.0.0-next.53
+  checksum: 2e3f457ea932bac0b8ad7ed82eed6766f32e08171063bb8786961a47e758550a414651a32317e8875670c760a2bc11925f9d246cfac6bb512edcfa48e4e7254d
   languageName: node
   linkType: hard
 
@@ -812,32 +812,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/adapter-vercel@npm:1.0.0-next.52":
-  version: 1.0.0-next.52
-  resolution: "@sveltejs/adapter-vercel@npm:1.0.0-next.52"
+"@sveltejs/adapter-vercel@npm:1.0.0-next.53":
+  version: 1.0.0-next.53
+  resolution: "@sveltejs/adapter-vercel@npm:1.0.0-next.53"
   dependencies:
-    esbuild: ^0.14.21
-  checksum: f7f3d8d5f40ec31f416cf3ab982dbb4521579c19437fb1acd305eadcddaf663da878114503f49ddd2768d93d946f3e8f21ed93ac0e2d2e92fe9a89d28a13b403
+    esbuild: ^0.14.29
+  checksum: 98479d88b976c9675269a980bd9fa1cfbdd7895823d514e2913dd3534e20d09c86ccf6347dcbca00fd33fe71b15722e80e46dae66edb7b67300bae3ee69f4cf8
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:^1.0.0-next.335":
-  version: 1.0.0-next.335
-  resolution: "@sveltejs/kit@npm:1.0.0-next.335"
+"@sveltejs/kit@npm:^1.0.0-next.338":
+  version: 1.0.0-next.338
+  resolution: "@sveltejs/kit@npm:1.0.0-next.338"
   dependencies:
-    "@sveltejs/vite-plugin-svelte": ^1.0.0-next.32
+    "@sveltejs/vite-plugin-svelte": ^1.0.0-next.44
     chokidar: ^3.5.3
     sade: ^1.7.4
-    vite: ^2.9.0
+    vite: ^2.9.9
   peerDependencies:
     svelte: ^3.44.0
   bin:
     svelte-kit: svelte-kit.js
-  checksum: 8913f85e3aab8363f74f4fd7268738fd98726ecc4baf3853c54c274bb5b39e4f166216646013fa69a1b3b9ac2fcd97b86d98479e2bdc8c49d39d63c0702f1817
+  checksum: 207d0aa687a098c9648cd876150264d0467141ef99a3777dd0d90d29e77f8ba86e603b2b01b232308c43e76a6f1652f643152a9002832dc01a96457759d1af02
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^1.0.0-next.32":
+"@sveltejs/vite-plugin-svelte@npm:^1.0.0-next.44":
   version: 1.0.0-next.44
   resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.0-next.44"
   dependencies:
@@ -1164,10 +1164,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^17.0.34":
+"@types/node@npm:*":
   version: 17.0.34
   resolution: "@types/node@npm:17.0.34"
   checksum: eb9a640ab85b62e8f7b9db1f19b674cc4ff49b94d55085ab6c28c997dbe90356631c4df484fe686082c938bfc6fb02c9e85eb805d1415dfe6de7e31f47a09a70
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^17.0.35":
+  version: 17.0.35
+  resolution: "@types/node@npm:17.0.35"
+  checksum: 7a24946ae7fd20267ed92466384f594e448bfb151081158d565cc635d406ecb29ea8fb85fcd2a1f71efccf26fb5bd3c6f509bde56077eb8b832b847a6664bc62
   languageName: node
   linkType: hard
 
@@ -1481,18 +1488,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "api.ja.nz@workspace:api"
   dependencies:
-    "@cloudflare/workers-types": ^3.10.0
+    "@cloudflare/workers-types": ^3.11.0
     "@octokit/graphql": ^4.8.0
     "@thi.ng/api": ^8.3.6
     "@thi.ng/compose": ^2.1.6
     "@thi.ng/transducers": ^8.3.2
     "@types/markdown-it": ^12.2.3
     "@types/markdown-it-attrs": ^4.1.0
-    "@types/node": ^17.0.34
+    "@types/node": ^17.0.35
     "@typescript-eslint/eslint-plugin": ^5.25.0
     "@typescript-eslint/parser": ^5.25.0
     esbuild: ^0.14.39
-    eslint: ^8.15.0
+    eslint: ^8.16.0
     eslint-config-prettier: ^8.5.0
     eslint-config-typescript: ^3.0.0
     front-matter: ^4.0.2
@@ -2836,7 +2843,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.14.0, esbuild@npm:^0.14.21, esbuild@npm:^0.14.27, esbuild@npm:^0.14.39":
+"esbuild@npm:^0.14.0, esbuild@npm:^0.14.21, esbuild@npm:^0.14.27, esbuild@npm:^0.14.29, esbuild@npm:^0.14.39":
   version: 0.14.39
   resolution: "esbuild@npm:0.14.39"
   dependencies:
@@ -3078,11 +3085,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.15.0":
-  version: 8.15.0
-  resolution: "eslint@npm:8.15.0"
+"eslint@npm:^8.16.0":
+  version: 8.16.0
+  resolution: "eslint@npm:8.16.0"
   dependencies:
-    "@eslint/eslintrc": ^1.2.3
+    "@eslint/eslintrc": ^1.3.0
     "@humanwhocodes/config-array": ^0.9.2
     ajv: ^6.10.0
     chalk: ^4.0.0
@@ -3100,7 +3107,7 @@ __metadata:
     file-entry-cache: ^6.0.1
     functional-red-black-tree: ^1.0.1
     glob-parent: ^6.0.1
-    globals: ^13.6.0
+    globals: ^13.15.0
     ignore: ^5.2.0
     import-fresh: ^3.0.0
     imurmurhash: ^0.1.4
@@ -3119,7 +3126,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: d8896393832e154e1381a21041cfe4d12a73a76fac26ea27cabbc0e5fdac87918ad651f07f804ef6faacd3868572de3c1ec5d96edf5502bc999eff0c423638f7
+  checksum: 654a0200b49dc07280673fee13cdfb04326466790e031dfa9660b69fba3b1cf766a51504328f9de56bd18e6b5eb7578985cf29dc7f016c5ec851220ff9db95eb
   languageName: node
   linkType: hard
 
@@ -3744,7 +3751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:^13.6.0, globals@npm:^13.9.0":
+"globals@npm:^13.15.0":
   version: 13.15.0
   resolution: "globals@npm:13.15.0"
   dependencies:
@@ -4557,7 +4564,7 @@ __metadata:
   dependencies:
     gh-cms: ^0.2.0
     import-sort-cli: ^6.0.0
-    wrangler: ^2.0.5
+    wrangler: ^2.0.6
   languageName: unknown
   linkType: soft
 
@@ -4565,12 +4572,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ja.nz@workspace:front"
   dependencies:
-    "@cloudflare/workers-types": ^3.10.0
+    "@cloudflare/workers-types": ^3.11.0
     "@fontsource/fira-mono": ^4.5.8
     "@fullhuman/postcss-purgecss": ^4.1.3
     "@lukeed/uuid": ^2.0.0
     "@sveltejs/adapter-cloudflare-workers": ^1.0.0-next.40
-    "@sveltejs/kit": ^1.0.0-next.335
+    "@sveltejs/kit": ^1.0.0-next.338
     "@thi.ng/api": ^8.3.6
     "@thi.ng/compose": ^2.1.6
     "@thi.ng/paths": ^5.1.6
@@ -4581,11 +4588,11 @@ __metadata:
     autoprefixer: ^10.4.7
     chokidar: ^3.5.3
     cookie: ^0.5.0
-    eslint: ^8.15.0
+    eslint: ^8.16.0
     eslint-config-prettier: ^8.5.0
     eslint-plugin-svelte3: ^4.0.0
     npm-run-all: ^4.1.5
-    postcss: ^8.4.13
+    postcss: ^8.4.14
     prettier: ^2.6.2
     prettier-plugin-svelte: ^2.7.0
     svelte: ^3.48.0
@@ -5216,8 +5223,8 @@ __metadata:
   dependencies:
     "@fontsource/fira-mono": ^4.5.8
     "@lukeed/uuid": ^2.0.0
-    "@sveltejs/adapter-auto": ^1.0.0-next.43
-    "@sveltejs/kit": ^1.0.0-next.335
+    "@sveltejs/adapter-auto": ^1.0.0-next.44
+    "@sveltejs/kit": ^1.0.0-next.338
     "@types/cookie": ^0.5.1
     cookie: ^0.5.0
     svelte: ^3.48.0
@@ -5228,7 +5235,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"nanoid@npm:^3.3.3":
+"nanoid@npm:^3.3.3, nanoid@npm:^3.3.4":
   version: 3.3.4
   resolution: "nanoid@npm:3.3.4"
   bin:
@@ -5732,10 +5739,10 @@ __metadata:
   resolution: "play.ja.nz@workspace:play"
   dependencies:
     "@sveltejs/adapter-cloudflare-workers": ^1.0.0-next.40
-    "@sveltejs/kit": ^1.0.0-next.335
+    "@sveltejs/kit": ^1.0.0-next.338
     "@typescript-eslint/eslint-plugin": ^5.25.0
     "@typescript-eslint/parser": ^5.25.0
-    eslint: ^8.15.0
+    eslint: ^8.16.0
     eslint-config-prettier: ^8.5.0
     eslint-plugin-svelte3: ^4.0.0
     prettier: ^2.6.2
@@ -5821,6 +5828,17 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 514fb3552805a5d039a2d6b4df3e73f657001716ca93c0d57e6067b0473abdea70276d80afc96005c9aaff82ed5d98062bd97724d3f47ca400fba0b5e9e436ed
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.14":
+  version: 8.4.14
+  resolution: "postcss@npm:8.4.14"
+  dependencies:
+    nanoid: ^3.3.4
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: fe58766ff32e4becf65a7d57678995cfd239df6deed2fe0557f038b47c94e4132e7e5f68b5aa820c13adfec32e523b693efaeb65798efb995ce49ccd83953816
   languageName: node
   linkType: hard
 
@@ -7271,7 +7289,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^2.9.0":
+"vite@npm:^2.9.9":
   version: 2.9.9
   resolution: "vite@npm:2.9.9"
   dependencies:
@@ -7385,9 +7403,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wrangler@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "wrangler@npm:2.0.5"
+"wrangler@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "wrangler@npm:2.0.6"
   dependencies:
     "@esbuild-plugins/node-globals-polyfill": ^0.1.1
     "@esbuild-plugins/node-modules-polyfill": ^0.1.4
@@ -7406,7 +7424,7 @@ __metadata:
   bin:
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: a8be37334b2d2f6351fbdcf334d62bf16b89cb35314cac8d326d08d9b8e1467e05fb5428865ec440a82389c5406b0082603d7a09e360617f95cfd7de0573bd70
+  checksum: 548908bdfb6cef6218993e38708815965538b891250e0896aa80b70c287ee4a94fe58e32c21e6f619d5e92fe641d87c963dd1fe91bb2d34c332a92db4e78fa24
   languageName: node
   linkType: hard
 
