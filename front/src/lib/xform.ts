@@ -81,11 +81,12 @@ export function filterContent<A>(
   return filter((x: A) => key(x).includes(query), src);
 }
 
-/*
- * Highlight tag search
- */
 type Split = string | [string];
-function _splitC(
+/*
+ * Split each token match and interpose a non destructible highlight token in between
+ * "stringFOUNDother" -> ["string", [token], "other"]
+ */
+function _splitToken(
   content: string,
   token: string,
   highlight: Fn<string, string>
@@ -100,6 +101,15 @@ function _splitC(
       []
     );
 }
+
+/*
+ * Create a DocumentFragment from given HTML string
+ * walk text nodes
+ * * generate unique split tokens per text node
+ * * * split text per token split interposing highlight token
+ * flatMap over splitted text nodes escaping text for HTML parsing leaving highlight tokens untouched
+ * join flattened array back to HTML markup string
+ */
 export function highLightDOMContent(
   html: string,
   search: string,
@@ -122,7 +132,7 @@ export function highLightDOMContent(
       iterate = iterate.reduce(
         (acc: Split[], content) =>
           typeof content === "string"
-            ? acc.concat(_splitC(content, s, highlight))
+            ? acc.concat(_splitToken(content, s, highlight))
             : acc.concat([content]),
         []
       );
