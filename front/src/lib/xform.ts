@@ -84,22 +84,64 @@ export function filterContent<A>(
 /*
  * Highlight tag search
  */
-export function highLightContentDOM(html: string, search: string) {
+type Split = string | [string];
+function _splitC(
+  content: string,
+  token: string,
+  highlight: Fn<string, string>
+): Split[] {
+  return content
+    .split(token)
+    .reduce(
+      (acc: Split[], y: Split) =>
+        typeof acc.at(-1) === "string"
+          ? acc.concat([[highlight(token)], y])
+          : acc.concat([y]),
+      []
+    );
+}
+export function highLightDOMContent(
+  html: string,
+  search: string,
+  highlight: Fn<string, string>,
+  insentitive = true
+) {
   if (!search) return html; // protects agains SSR
   let n: Node | null;
-  const nodes: HTMLElement[] = [];
+  const nodes: Text[] = [];
   const element = document.createRange().createContextualFragment(html);
-  const walk = document.createTreeWalker(element, NodeFilter.SHOW_ELEMENT);
-  while ((n = walk.nextNode())) n && nodes.push(n as HTMLElement);
+  const walk = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+  while ((n = walk.nextNode())) n && nodes.push(n as Text);
   for (const n of nodes) {
-    if (n.childNodes[0].nodeValue === n.textContent) {
-      n.innerHTML = n.innerHTML.replace(
-        new RegExp(search, "g"),
-        `<span class="underline">${search}</span>`
+    if (!n.data) continue;
+    const match = n.data.matchAll(new RegExp(search, insentitive ? "gi" : "g"));
+    const uniq = [...new Set([...match].map((x) => x[0]))];
+
+    let iterate: Split[] = [n.data];
+    for (const s of uniq) {
+      iterate = iterate.reduce(
+        (acc: Split[], content) =>
+          typeof content === "string"
+            ? acc.concat(_splitC(content, s, highlight))
+            : acc.concat([content]),
+        []
       );
     }
+
+    const newText = iterate
+      .flatMap((sfrag: Split) =>
+        typeof sfrag === "string"
+          ? sfrag
+              .replaceAll("&", "&amp;")
+              .replaceAll("<", "&lt;")
+              .replaceAll(">", "&gt;")
+          : sfrag
+      )
+      .join("");
+    const fragment = document.createRange().createContextualFragment(newText);
+    n.replaceWith(fragment);
   }
-  const container = document.createElement("div");
-  container.appendChild(element);
-  return container.innerHTML;
+  return [].map
+    .call(element.childNodes, (x: HTMLElement) => x.outerHTML)
+    .join("");
 }

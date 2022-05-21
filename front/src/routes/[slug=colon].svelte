@@ -23,7 +23,7 @@
   export let tagsByLatest: [string, number][];
 
   import type { ParsedIssue } from "src/app";
-  import { highLightContentDOM, highlightTags, latestTags } from "$lib/xform";
+  import { highLightDOMContent, highlightTags, latestTags } from "$lib/xform";
   import type { LoadInput } from "@sveltejs/kit";
   import { filterFuzzy } from "@thi.ng/transducers";
   import type { Writable } from "svelte/store";
@@ -87,7 +87,13 @@
     </div>
     <div style="scroll-margin-top: 120px;" id="main-content" class="box">
       {#each [...cont] as { body }}
-        <div class="box">{@html highLightContentDOM(body, fuzzyContent)}</div>
+        <div class="box">
+          {@html highLightDOMContent(
+            body,
+            fuzzyContent,
+            (token) => `<span class="underline">${token}</span>`
+          )}
+        </div>
       {/each}
     </div>
     <div class="box">Send me a message</div>
