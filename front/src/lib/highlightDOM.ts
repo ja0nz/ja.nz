@@ -27,15 +27,12 @@ function _splitToken(
   token: string,
   highlight: (a: string) => string
 ): Split[] {
-  return content
-    .split(token)
-    .reduce(
-      (acc: Split[], y: Split) =>
-        typeof acc.at(-1) === "string"
-          ? acc.concat([[highlight(token)], y])
-          : acc.concat([y]),
-      []
-    );
+  const acc: Split[] = [];
+  for (const str of content.split(token)) {
+    if (acc.length % 2) acc.push([highlight(token)]);
+    acc.push(str);
+  }
+  return acc;
 }
 
 /*
