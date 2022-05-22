@@ -37,8 +37,9 @@ function _splitToken(
 
 /*
  * Convert HTML markup to DocumentFragment interposing highlighter tags
- * - generating DocumentFragment && treewalking TEXT_NODEs
- * - generate unique split TOKEN per TEXT_NODE
+ * - generating DocumentFragment
+ * - generate unique split TOKEN
+ * - treewalking TEXT_NODEs
  * - split text per TOKEN && interposing highlight TOKEN
  * - flatMap over splitted text nodes escaping text for HTML parsing while leaving highlight TOKEN unescaped
  */
@@ -50,6 +51,11 @@ export function highlightDOMFragment(
 ) {
   const element = document.createRange().createContextualFragment(html);
   if (!search) return element;
+  const match = element.textContent?.matchAll(
+    new RegExp(search, insentitive ? "gi" : "g")
+  );
+  if (!match) return element;
+  const uniq = [...new Set([...match].map((x) => x[0]))];
 
   let n: Node | null;
   const nodes: Text[] = [];
@@ -57,8 +63,6 @@ export function highlightDOMFragment(
   while ((n = walk.nextNode())) n && nodes.push(n as Text);
   for (const n of nodes) {
     if (!n.data) continue;
-    const match = n.data.matchAll(new RegExp(search, insentitive ? "gi" : "g"));
-    const uniq = [...new Set([...match].map((x) => x[0]))];
 
     let iterate: Split[] = [n.data];
     for (const s of uniq) {
