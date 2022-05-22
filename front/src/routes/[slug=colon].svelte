@@ -18,15 +18,16 @@
 </script>
 
 <script lang="ts">
-  export let ALL: Writable<ParsedIssue[]>;
+  // import type { Writable } from "svelte/store";
+  // export let ALL: Writable<ParsedIssue[]>;
   export let contentByTag: ParsedIssue[];
   export let tagsByLatest: [string, number][];
 
   import type { ParsedIssue } from "src/app";
-  import { highLightDOMContent, highlightTags, latestTags } from "$lib/xform";
+  import { highlightTags, latestTags } from "$lib/xform";
+  import { highlightDOMString } from "$lib/highlightDOM";
   import type { LoadInput } from "@sveltejs/kit";
   import { filterFuzzy } from "@thi.ng/transducers";
-  import type { Writable } from "svelte/store";
 
   // Filter label
   let inputTags: HTMLInputElement;
@@ -88,7 +89,7 @@
     <div style="scroll-margin-top: 120px;" id="main-content" class="box">
       {#each [...cont] as { body }}
         <div class="box">
-          {@html highLightDOMContent(
+          {@html highlightDOMString(
             body,
             fuzzyContent,
             (token) => `<span class="underline">${token}</span>`
