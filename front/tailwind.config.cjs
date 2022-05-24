@@ -16,24 +16,29 @@ module.exports = {
       light: "#f3f3f3",
       dark: "#252525",
     },
-    // Theme
+    // 21-24
+    // https://utopia.fyi/type/calculator?c=320,21,1.2,1140,24,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
     spacing: {
-      "size-0": "clamp(0.83rem, 0.90rem + -0.32vw, 0.67rem)",
-      base: "clamp(1.00rem, 1.00rem + 0.00vw, 1.00rem)",
-      "size-1": "clamp(1.20rem, 1.08rem + 0.59vw, 1.50rem)",
-      "size-2": "clamp(1.44rem, 1.12rem + 1.58vw, 2.25rem)",
-      "size-3": "clamp(1.73rem, 1.09rem + 3.21vw, 3.38rem)",
-      "size-4": "clamp(2.07rem, 0.91rem + 5.83vw, 5.06rem)",
-      "size-5": "clamp(2.49rem, 0.50rem + 9.96vw, 7.59rem)",
+      "step--2": "clamp(0.91rem, calc(0.89rem + 0.10vw), 0.96rem)",
+      "step--1": "clamp(1.09rem, calc(1.05rem + 0.21vw), 1.20rem)",
+      base: "clamp(1.31rem, calc(1.24rem + 0.37vw), 1.50rem)",
+      "size-1": "clamp(1.58rem, calc(1.46rem + 0.59vw), 1.88rem)",
+      "size-2": "clamp(1.89rem, calc(1.71rem + 0.89vw), 2.34rem)",
+      "size-3": "clamp(2.27rem, calc(2.01rem + 1.29vw), 2.93rem)",
+      "size-4": "clamp(2.72rem, calc(2.36rem + 1.83vw), 3.66rem)",
+      "size-5": "clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem)",
     },
+    // 21-24
+    // https://utopia.fyi/type/calculator?c=320,21,1.2,1140,24,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
     fontSize: {
-      "size-0": "clamp(0.83rem, 0.90rem + -0.32vw, 0.67rem)",
-      base: "clamp(1.00rem, 1.00rem + 0.00vw, 1.00rem)",
-      "size-1": "clamp(1.20rem, 1.08rem + 0.59vw, 1.50rem)",
-      "size-2": "clamp(1.44rem, 1.12rem + 1.58vw, 2.25rem)",
-      "size-3": "clamp(1.73rem, 1.09rem + 3.21vw, 3.38rem)",
-      "size-4": "clamp(2.07rem, 0.91rem + 5.83vw, 5.06rem)",
-      "size-5": "clamp(2.49rem, 0.50rem + 9.96vw, 7.59rem)",
+      "step--2": "clamp(0.91rem, calc(0.89rem + 0.10vw), 0.96rem)",
+      "step--1": "clamp(1.09rem, calc(1.05rem + 0.21vw), 1.20rem)",
+      base: "clamp(1.31rem, calc(1.24rem + 0.37vw), 1.50rem)",
+      "size-1": "clamp(1.58rem, calc(1.46rem + 0.59vw), 1.88rem)",
+      "size-2": "clamp(1.89rem, calc(1.71rem + 0.89vw), 2.34rem)",
+      "size-3": "clamp(2.27rem, calc(2.01rem + 1.29vw), 2.93rem)",
+      "size-4": "clamp(2.72rem, calc(2.36rem + 1.83vw), 3.66rem)",
+      "size-5": "clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem)",
     },
     // Own
     // spacing: {

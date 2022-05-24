@@ -2,7 +2,7 @@
 
 pkgs.mkShell {
   buildInputs = with pkgs; [
-   nodejs-17_x
+   nodejs-18_x
    nodePackages.yarn
    nodePackages.typescript-language-server
    nodePackages.vscode-html-languageserver-bin

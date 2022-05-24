@@ -770,14 +770,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/adapter-auto@npm:^1.0.0-next.44":
-  version: 1.0.0-next.44
-  resolution: "@sveltejs/adapter-auto@npm:1.0.0-next.44"
+"@squoosh/lib@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@squoosh/lib@npm:0.4.0"
+  dependencies:
+    wasm-feature-detect: ^1.2.11
+    web-streams-polyfill: ^3.0.3
+  checksum: 4d987d0acc8a179dd062e23efe8449d63bc344b3025978b925f324f1548a50ab4f48cadda07b605578199b45115c9c14c46c807ab955b1a233042bb632fddfef
+  languageName: node
+  linkType: hard
+
+"@sveltejs/adapter-auto@npm:^1.0.0-next.46":
+  version: 1.0.0-next.46
+  resolution: "@sveltejs/adapter-auto@npm:1.0.0-next.46"
   dependencies:
     "@sveltejs/adapter-cloudflare": 1.0.0-next.19
-    "@sveltejs/adapter-netlify": 1.0.0-next.58
-    "@sveltejs/adapter-vercel": 1.0.0-next.53
-  checksum: 2e3f457ea932bac0b8ad7ed82eed6766f32e08171063bb8786961a47e758550a414651a32317e8875670c760a2bc11925f9d246cfac6bb512edcfa48e4e7254d
+    "@sveltejs/adapter-netlify": 1.0.0-next.60
+    "@sveltejs/adapter-vercel": 1.0.0-next.54
+  checksum: 9d7b9d7fed710c7a2ca73ec005ee2f55ea3a22e8fd95df6d75fc7ada8b5fd28da602923014bbbfb2c2789762e90430816d18e9abe1958959fc6f675927ae6186
   languageName: node
   linkType: hard
 
@@ -801,23 +811,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/adapter-netlify@npm:1.0.0-next.58":
-  version: 1.0.0-next.58
-  resolution: "@sveltejs/adapter-netlify@npm:1.0.0-next.58"
+"@sveltejs/adapter-netlify@npm:1.0.0-next.60":
+  version: 1.0.0-next.60
+  resolution: "@sveltejs/adapter-netlify@npm:1.0.0-next.60"
   dependencies:
     "@iarna/toml": ^2.2.5
-    esbuild: ^0.14.21
+    esbuild: ^0.14.29
+    set-cookie-parser: ^2.4.8
     tiny-glob: ^0.2.9
-  checksum: 5625d700eed37236d9fe118d3d39f7c4c1d1d6bacbc1ddd6d98ce9d153da848103a53659ffa3cee5399f7ae270bb7584ba30833015669ea311c33e1f47e84eb5
+  checksum: 502ee0c833cb7f06c9056fb6a323fb1cecc23c1d6effc288640aac79b2038ad53924cba66432b2a02b5d106b8af1d3dafec4810f4df42d0b70d6d8a04bf57fb5
   languageName: node
   linkType: hard
 
-"@sveltejs/adapter-vercel@npm:1.0.0-next.53":
-  version: 1.0.0-next.53
-  resolution: "@sveltejs/adapter-vercel@npm:1.0.0-next.53"
+"@sveltejs/adapter-vercel@npm:1.0.0-next.54":
+  version: 1.0.0-next.54
+  resolution: "@sveltejs/adapter-vercel@npm:1.0.0-next.54"
   dependencies:
     esbuild: ^0.14.29
-  checksum: 98479d88b976c9675269a980bd9fa1cfbdd7895823d514e2913dd3534e20d09c86ccf6347dcbca00fd33fe71b15722e80e46dae66edb7b67300bae3ee69f4cf8
+  checksum: beef25b80036f4d0b6be02739056d6a765d640bbb3f8bb97e203f0e81ca0de636f43604a59bba8936a5b7ad38375f42824879ad35cb2f2cd03c236e707c388cc
   languageName: node
   linkType: hard
 
@@ -834,6 +845,22 @@ __metadata:
   bin:
     svelte-kit: svelte-kit.js
   checksum: 207d0aa687a098c9648cd876150264d0467141ef99a3777dd0d90d29e77f8ba86e603b2b01b232308c43e76a6f1652f643152a9002832dc01a96457759d1af02
+  languageName: node
+  linkType: hard
+
+"@sveltejs/kit@npm:^1.0.0-next.342":
+  version: 1.0.0-next.342
+  resolution: "@sveltejs/kit@npm:1.0.0-next.342"
+  dependencies:
+    "@sveltejs/vite-plugin-svelte": ^1.0.0-next.44
+    chokidar: ^3.5.3
+    sade: ^1.7.4
+    vite: ^2.9.9
+  peerDependencies:
+    svelte: ^3.44.0
+  bin:
+    svelte-kit: svelte-kit.js
+  checksum: c3a345d94ae77e296c10c74290c8d59d726ff0dfe7bbdb554212ddb2878848e5db29407b0db853aadb4795df6e030c949cf8df36fbeea2db355d0d652aec6225
   languageName: node
   linkType: hard
 
@@ -4576,6 +4603,7 @@ __metadata:
     "@fontsource/fira-mono": ^4.5.8
     "@fullhuman/postcss-purgecss": ^4.1.3
     "@lukeed/uuid": ^2.0.0
+    "@squoosh/lib": ^0.4.0
     "@sveltejs/adapter-cloudflare-workers": ^1.0.0-next.40
     "@sveltejs/kit": ^1.0.0-next.338
     "@thi.ng/api": ^8.3.6
@@ -5223,8 +5251,8 @@ __metadata:
   dependencies:
     "@fontsource/fira-mono": ^4.5.8
     "@lukeed/uuid": ^2.0.0
-    "@sveltejs/adapter-auto": ^1.0.0-next.44
-    "@sveltejs/kit": ^1.0.0-next.338
+    "@sveltejs/adapter-auto": ^1.0.0-next.46
+    "@sveltejs/kit": ^1.0.0-next.342
     "@types/cookie": ^0.5.1
     cookie: ^0.5.0
     svelte: ^3.48.0
@@ -7315,6 +7343,20 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 9292b8ba510a393d0c61c407ebfb4eaa818b2d8d106b3476cdc94cb57a0c59348a535936d698db04b35910a1cfdb16aeaf872f0f995b54cf6d7ed31bc7886deb
+  languageName: node
+  linkType: hard
+
+"wasm-feature-detect@npm:^1.2.11":
+  version: 1.2.11
+  resolution: "wasm-feature-detect@npm:1.2.11"
+  checksum: e7f28f5e6ca0722ba059e200c47a944ebd7570027a3ac5600b7178ee9bf950fe5280a68b5e3b5f29930407cc1214695ca10ea36a3d995d3445f4e34db58a8505
+  languageName: node
+  linkType: hard
+
+"web-streams-polyfill@npm:^3.0.3":
+  version: 3.2.1
+  resolution: "web-streams-polyfill@npm:3.2.1"
+  checksum: b119c78574b6d65935e35098c2afdcd752b84268e18746606af149e3c424e15621b6f1ff0b42b2676dc012fc4f0d313f964b41a4b5031e525faa03997457da02
   languageName: node
   linkType: hard
 

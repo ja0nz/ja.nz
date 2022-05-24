@@ -28,6 +28,7 @@
   import { highlightDOMString } from "$lib/highlightDOM";
   import type { LoadInput } from "@sveltejs/kit";
   import { filterFuzzy } from "@thi.ng/transducers";
+  import ContentHeader from "$lib/blocks/ContentHeader.svelte";
 
   // Filter label
   let inputTags: HTMLInputElement;
@@ -55,9 +56,24 @@
 
 <svelte:window on:keyup={focusSearch} />
 
-<article class="sidebar | mobile-sidebar">
+<article class="sidebar">
   <div class="menu | sticky-header">
-    <div class="box">Profileimage & last seen</div>
+    <ContentHeader>
+      <!-- Slot picture -->
+      <picture slot="picture">
+        <source srcset="profile.webp" />
+        <img
+          src="profile.jpg"
+          class="rounded-full"
+          alt="Profile picture of ja0nz"
+        />
+      </picture>
+      <!-- Slot text -->
+      <div slot="text">
+        <p>ja0nz's blog</p>
+        <p class="subcontent">last seen at 11.11.2022</p>
+      </div>
+    </ContentHeader>
     <input
       aria-label="Search tags"
       type="text"
@@ -67,15 +83,45 @@
     />
     <div class="overflow-y-auto">
       {#each [...tags] as [tag, ts]}
-        <div class="box">
-          <a href={`/:${tag}`}>{@html highlightTags(tag, fuzzyTags)}</a>
-        </div>
+        <a href={`/:${tag}`}>
+          <ContentHeader>
+            <!-- Slot picture -->
+            <picture slot="picture">
+              <source srcset="profile.webp" />
+              <img
+                src="profile.jpg"
+                class="rounded-full"
+                alt="Profile picture of ja0nz"
+              />
+            </picture>
+            <!-- Slot text -->
+            <div slot="text">
+              <p>{@html highlightTags(tag, fuzzyTags)}</p>
+              <p>Last seen</p>
+            </div>
+          </ContentHeader>
+        </a>
       {/each}
     </div>
   </div>
-  <div id="not-sidebar" class="no-contentX">
+  <div id="not-sidebar" class="no-content">
     <div class="key-header | splitter sticky-header">
-      <div class="box">⬅ Topic Card Photo blah</div>
+      <p>⬅</p>
+      <ContentHeader>
+        <!-- Slot picture -->
+        <picture slot="picture">
+          <source srcset="profile.webp" />
+          <img
+            src="profile.jpg"
+            class="rounded-full"
+            alt="Profile picture of ja0nz"
+          />
+        </picture>
+        <!-- Slot text -->
+        <div slot="text">
+          <p>Topic Card Photo blah</p>
+        </div>
+      </ContentHeader>
       <aside>
         <input
           aria-label="Search tags"
