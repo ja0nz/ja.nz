@@ -5,12 +5,15 @@
 
 <style>
   .this {
-    display: inline-grid;
+    display: grid;
     align-items: center;
     grid-template-columns: 64px max-content;
     grid-gap: 0.8rem;
     padding: var(--space-step--2);
     /* cursor: pointer; */
+  }
+  .this:hover {
+    background-color: yellow;
   }
   .this :global([slot="picture"] > img) {
     border-radius: 50%;

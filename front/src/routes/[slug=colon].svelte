@@ -23,12 +23,18 @@
   export let contentByTag: ParsedIssue[];
   export let tagsByLatest: [string, number][];
 
+  import Menu from "../css/blocks/menu.svelte";
+  import ContentHeader from "../css/blocks/content-header.svelte";
+  import TagCard from "../css/blocks/tag-card.svelte";
+
+  import ThemeSwitch from "$lib/blocks/ThemeSwitch.svelte";
+  import ContentSwitch from "$lib/blocks/ContentSwitch.svelte";
+
   import type { ParsedIssue } from "src/app";
   import { highlightTags, latestTags } from "$lib/xform";
   import { highlightDOMString } from "$lib/highlightDOM";
   import type { LoadInput } from "@sveltejs/kit";
   import { filterFuzzy } from "@thi.ng/transducers";
-  import ContentHeader from "$lib/blocks/ContentHeader.svelte";
 
   // Filter label
   let inputTags: HTMLInputElement;
@@ -43,8 +49,8 @@
     { key: (x: [string, number]) => x[0] },
     tagsByLatest
   );
-  // -- Filter label finished
-  // Filter content
+  //-- Filter label finished
+  //Filter content
   let cont: IterableIterator<ParsedIssue>;
   let fuzzyContent = "";
   $: cont = filterContent(
@@ -57,23 +63,20 @@
 <svelte:window on:keyup={focusSearch} />
 
 <article class="sidebar">
-  <div class="menu | sticky-header">
-    <ContentHeader>
+  <Menu>
+    <!-- Hello me -->
+    <TagCard>
       <!-- Slot picture -->
       <picture slot="picture">
         <source srcset="profile.webp" />
-        <img
-          src="profile.jpg"
-          class="rounded-full"
-          alt="Profile picture of ja0nz"
-        />
+        <img src="profile.jpg" class="rounded-full" alt="Profile of ja0nz" />
       </picture>
       <!-- Slot text -->
       <div slot="text">
         <p>ja0nz's blog</p>
         <p class="subcontent">last seen at 11.11.2022</p>
       </div>
-    </ContentHeader>
+    </TagCard>
     <input
       aria-label="Search tags"
       type="text"
@@ -81,47 +84,46 @@
       bind:this={inputTags}
       placeholder="Hit / to search"
     />
+    <!-- Scrollable, selectable menu col -->
     <div class="overflow-y-auto">
       {#each [...tags] as [tag, ts]}
         <a href={`/:${tag}`}>
-          <ContentHeader>
+          <TagCard>
             <!-- Slot picture -->
-            <picture slot="picture">
-              <source srcset="profile.webp" />
-              <img
-                src="profile.jpg"
-                class="rounded-full"
-                alt="Profile picture of ja0nz"
-              />
-            </picture>
+            <svg
+              slot="picture"
+              viewBox="0 0 100 100"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="50" cy="50" r="50" />
+            </svg>
             <!-- Slot text -->
             <div slot="text">
               <p>{@html highlightTags(tag, fuzzyTags)}</p>
               <p>Last seen</p>
             </div>
-          </ContentHeader>
+          </TagCard>
         </a>
       {/each}
     </div>
-  </div>
-  <div id="not-sidebar" class="no-content">
-    <div class="key-header | splitter sticky-header">
-      <p>⬅</p>
-      <ContentHeader>
+  </Menu>
+  <div id="not-sidebar">
+    <ContentHeader>
+      <ContentSwitch />
+      <TagCard>
         <!-- Slot picture -->
-        <picture slot="picture">
-          <source srcset="profile.webp" />
-          <img
-            src="profile.jpg"
-            class="rounded-full"
-            alt="Profile picture of ja0nz"
-          />
-        </picture>
+        <svg
+          slot="picture"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="50" cy="50" r="50" />
+        </svg>
         <!-- Slot text -->
         <div slot="text">
           <p>Topic Card Photo blah</p>
         </div>
-      </ContentHeader>
+      </TagCard>
       <aside>
         <input
           aria-label="Search tags"
@@ -129,9 +131,9 @@
           bind:value={fuzzyContent}
           placeholder="Search feed"
         />
-        <div>ThemeSwitch</div>
+        <ThemeSwitch />
       </aside>
-    </div>
+    </ContentHeader>
     <div style="scroll-margin-top: 120px;" id="main-content" class="box">
       {#each [...cont] as { body }}
         <div class="box">

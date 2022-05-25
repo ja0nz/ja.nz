@@ -16,12 +16,13 @@
 </script>
 
 <script>
+  import SkipLink from "../css/blocks/skip-link.svelte";
   import "../css/cube.css";
 </script>
 
 <svelte:head />
 
-<a class="skip-link | button" href="#main-content">Goto main</a>
+<SkipLink />
 <main tabindex="-1" style="padding: 0;" class="wrapper">
   <slot />
 </main>

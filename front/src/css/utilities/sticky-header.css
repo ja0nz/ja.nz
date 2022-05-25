@@ -5,11 +5,12 @@
 
   &::before {
     z-index: -1;
+    top: -100px;
     width: 100%;
-    height: 200px;
+    height: 195px;
     position: absolute;
     content: "";
     /* TODO */
-    /* background-color: white; */
+    background-color: white;
   }
 }

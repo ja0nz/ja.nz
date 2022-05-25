@@ -770,16 +770,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@squoosh/lib@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "@squoosh/lib@npm:0.4.0"
-  dependencies:
-    wasm-feature-detect: ^1.2.11
-    web-streams-polyfill: ^3.0.3
-  checksum: 4d987d0acc8a179dd062e23efe8449d63bc344b3025978b925f324f1548a50ab4f48cadda07b605578199b45115c9c14c46c807ab955b1a233042bb632fddfef
-  languageName: node
-  linkType: hard
-
 "@sveltejs/adapter-auto@npm:^1.0.0-next.46":
   version: 1.0.0-next.46
   resolution: "@sveltejs/adapter-auto@npm:1.0.0-next.46"
@@ -4603,7 +4593,6 @@ __metadata:
     "@fontsource/fira-mono": ^4.5.8
     "@fullhuman/postcss-purgecss": ^4.1.3
     "@lukeed/uuid": ^2.0.0
-    "@squoosh/lib": ^0.4.0
     "@sveltejs/adapter-cloudflare-workers": ^1.0.0-next.40
     "@sveltejs/kit": ^1.0.0-next.338
     "@thi.ng/api": ^8.3.6
@@ -7343,20 +7332,6 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 9292b8ba510a393d0c61c407ebfb4eaa818b2d8d106b3476cdc94cb57a0c59348a535936d698db04b35910a1cfdb16aeaf872f0f995b54cf6d7ed31bc7886deb
-  languageName: node
-  linkType: hard
-
-"wasm-feature-detect@npm:^1.2.11":
-  version: 1.2.11
-  resolution: "wasm-feature-detect@npm:1.2.11"
-  checksum: e7f28f5e6ca0722ba059e200c47a944ebd7570027a3ac5600b7178ee9bf950fe5280a68b5e3b5f29930407cc1214695ca10ea36a3d995d3445f4e34db58a8505
-  languageName: node
-  linkType: hard
-
-"web-streams-polyfill@npm:^3.0.3":
-  version: 3.2.1
-  resolution: "web-streams-polyfill@npm:3.2.1"
-  checksum: b119c78574b6d65935e35098c2afdcd752b84268e18746606af149e3c424e15621b6f1ff0b42b2676dc012fc4f0d313f964b41a4b5031e525faa03997457da02
   languageName: node
   linkType: hard
 

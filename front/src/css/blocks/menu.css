@@ -1,5 +1,0 @@
-.menu {
-  max-height: calc(100vh - 2 * var(--space-size-2));
-  display: flex;
-  flex-direction: column;
-}

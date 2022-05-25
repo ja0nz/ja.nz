@@ -2,7 +2,7 @@ import { writeFile, readFile, rm } from "node:fs/promises";
 import { format } from "prettier";
 import { watch } from "chokidar";
 import { chdir } from "node:process";
-import { dirname } from "node:path";
+import { dirname, extname } from "node:path";
 import resolveConfig from "tailwindcss/resolveConfig.js";
 import tw from "./tailwind.config.cjs";
 
@@ -73,7 +73,7 @@ const genCSS = watch(["compositions", "blocks", "utilities"]).on(
     if (event === "addDir") {
       await rm(`_${path}.css`, { force: true });
     }
-    if (event === "add") {
+    if (event === "add" && extname(path) === ".css") {
       await writeFile(dest, `@import "${path}";\n`, { flag: "a+" });
     }
     if (event === "unlink") {
