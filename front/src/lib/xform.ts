@@ -9,6 +9,7 @@ import {
   pushSort,
   transduce,
 } from "@thi.ng/transducers";
+import { goto } from "$app/navigation";
 import { tagsP, timestampP } from "$lib/paths";
 
 import type { Fn, IObjectOf } from "@thi.ng/api";
@@ -84,3 +85,16 @@ export function filterContent<A>(
     return new RegExp(query, "i").test(fragment.textContent ?? "");
   }, src);
 }
+
+const C_TOGGLE = "no-content";
+export const changeRouteWClass = (route: string) => () => {
+  if (window.innerWidth <= 1100) {
+    const content = document.querySelector("#not-sidebar");
+    if (content?.classList.contains(C_TOGGLE)) {
+      content?.classList.remove(C_TOGGLE);
+    } else {
+      content?.classList.add(C_TOGGLE);
+    }
+  }
+  goto(route);
+};

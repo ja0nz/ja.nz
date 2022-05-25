@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import { get } from "svelte/store";
-  import { byTagsLatest, filterContent } from "$lib/xform";
+  import { byTagsLatest, changeRouteWClass, filterContent } from "$lib/xform";
   // Pass the `stuff` from __layout into the props of this page
   export async function load({ params, url, stuff }: LoadInput) {
     const tag = params.slug;
@@ -28,7 +28,6 @@
   import TagCard from "../css/blocks/tag-card.svelte";
 
   import ThemeSwitch from "$lib/blocks/ThemeSwitch.svelte";
-  import ContentSwitch from "$lib/blocks/ContentSwitch.svelte";
 
   import type { ParsedIssue } from "src/app";
   import { highlightTags, latestTags } from "$lib/xform";
@@ -87,29 +86,27 @@
     <!-- Scrollable, selectable menu col -->
     <div class="overflow-y-auto">
       {#each [...tags] as [tag, ts]}
-        <a href={`/:${tag}`}>
-          <TagCard>
-            <!-- Slot picture -->
-            <svg
-              slot="picture"
-              viewBox="0 0 100 100"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="50" cy="50" r="50" />
-            </svg>
-            <!-- Slot text -->
-            <div slot="text">
-              <p>{@html highlightTags(tag, fuzzyTags)}</p>
-              <p>Last seen</p>
-            </div>
-          </TagCard>
-        </a>
+        <TagCard route={`/:${tag}`}>
+          <!-- Slot picture -->
+          <svg
+            slot="picture"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="50" cy="50" r="50" />
+          </svg>
+          <!-- Slot text -->
+          <div slot="text">
+            <p>{@html highlightTags(tag, fuzzyTags)}</p>
+            <p>Last seen</p>
+          </div>
+        </TagCard>
       {/each}
     </div>
   </Menu>
   <div id="not-sidebar">
     <ContentHeader>
-      <ContentSwitch />
+      <button on:click={changeRouteWClass("/")}>⬅</button>
       <TagCard>
         <!-- Slot picture -->
         <svg
