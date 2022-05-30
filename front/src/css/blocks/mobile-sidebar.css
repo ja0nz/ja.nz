@@ -2,7 +2,7 @@
  * apply 'no-content' class to #not-sidebar to toggle content
  */
 @media (max-width: 1100px) {
-  .sidebar {
+  .sidebarr {
     display: grid;
     > * {
       background-color: yellow;

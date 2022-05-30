@@ -35,12 +35,12 @@
     done. Let’s render the type scale for fun though.
   </p>
   <div class="box flow">
-    <div class="text-base">Fringilla Vestibulum Risus Nullam Tristique</div>
-    <div class="text-size-1">Fringilla Vestibulum Risus Nullam Tristique</div>
-    <div class="text-size-2">Fringilla Vestibulum Risus Nullam Tristique</div>
-    <div class="text-size-3">Fringilla Vestibulum Risus Nullam Tristique</div>
-    <div class="text-size-4">Fringilla Vestibulum Risus Nullam Tristique</div>
-    <div class="text-size-5">Fringilla Vestibulum Risus Nullam Tristique</div>
+    <div class="text-0">Fringilla Vestibulum Risus Nullam Tristique</div>
+    <div class="text-1">Fringilla Vestibulum Risus Nullam Tristique</div>
+    <div class="text-2">Fringilla Vestibulum Risus Nullam Tristique</div>
+    <div class="text-3">Fringilla Vestibulum Risus Nullam Tristique</div>
+    <div class="text-4">Fringilla Vestibulum Risus Nullam Tristique</div>
+    <div class="text-5">Fringilla Vestibulum Risus Nullam Tristique</div>
   </div>
   <h2>Every Layout Compositions</h2>
   <p>

@@ -12,9 +12,11 @@
   .this {
     display: grid;
     align-items: center;
+    /* first col defines size of avatar */
     grid-template-columns: 64px max-content;
-    grid-gap: 0.8rem;
-    padding: var(--space-step--2);
+    grid-gap: var(--space-xs);
+    /* Padding around card */
+    padding: var(--space-2xs);
     /* cursor: pointer; */
   }
   .this:hover {
@@ -24,9 +26,9 @@
     border-radius: 50%;
   }
   .this :global([slot="text"] > :last-child) {
-    font-size: var(--space-step--2);
+    font-size: var(--step--1);
   }
   .this :global([slot="text"] > :first-child) {
-    font-size: var(--space-step--1);
+    font-size: var(--step-0);
   }
 </style>

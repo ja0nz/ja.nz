@@ -25,15 +25,16 @@
       Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     --font-mono: "Fira Mono", monospace;
     /* sidebar.css */
-    --gutter: var(--space-step--2);
-    --sidebar-target-width: 22rem;
+    --gutter: var(--space-2xs);
+    --sidebar-target-width: var(--space-sidebar);
+    --sidebar-content-min-width: 65%;
     /* scrollbar */
     --scrollbar-primary-color: green;
     --text-color: yellow;
   }
 
   body {
-    @apply bg-light text-dark text-base font-sans;
+    @apply bg-light text-dark text-0 font-sans overflow-x-hidden;
   }
 
   ::-webkit-scrollbar {
@@ -55,15 +56,15 @@
   }
 
   h1 {
-    @apply text-size-4;
+    @apply text-4;
   }
 
   h2 {
-    @apply text-size-3;
+    @apply text-3;
   }
 
   h3 {
-    @apply text-size-2;
+    @apply text-2;
   }
 
   p,

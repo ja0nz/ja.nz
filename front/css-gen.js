@@ -26,7 +26,7 @@ let result = "";
 const groups = [
   { key: "colors", prefix: "color" },
   { key: "spacing", prefix: "space" },
-  { key: "fontSize", prefix: "size" },
+  { key: "fontSize", prefix: "step" },
 ];
 
 // Add a note that this is auto generated

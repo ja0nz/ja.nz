@@ -43,11 +43,12 @@
   };
   let tags: IterableIterator<[string, number]>;
   let fuzzyTags = "";
-  $: tags = filterFuzzy(
-    fuzzyTags,
-    { key: (x: [string, number]) => x[0] },
-    tagsByLatest
-  );
+  tags = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+  // $: tags = filterFuzzy(
+  //   fuzzyTags,
+  //   { key: (x: [string, number]) => x[0] },
+  //   tagsByLatest
+  // );
   //-- Filter label finished
   //Filter content
   let cont: IterableIterator<ParsedIssue>;
@@ -62,6 +63,7 @@
 <svelte:window on:keyup={focusSearch} />
 
 <article class="sidebar">
+  <!-- css/blocks/menu.svelte -->
   <Menu>
     <!-- Hello me -->
     <TagCard>
@@ -104,7 +106,7 @@
       {/each}
     </div>
   </Menu>
-  <div id="not-sidebar">
+  <div id="not-sidebar" class="no-content">
     <ContentHeader>
       <button on:click={changeRouteWClass("/")}>⬅</button>
       <TagCard>
