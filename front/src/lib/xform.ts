@@ -86,15 +86,15 @@ export function filterContent<A>(
   }, src);
 }
 
-const C_TOGGLE = "no-content";
-export const changeRouteWClass = (route: string) => () => {
-  if (window.innerWidth <= 1100) {
-    const content = document.querySelector("#not-sidebar");
-    if (content?.classList.contains(C_TOGGLE)) {
-      content?.classList.remove(C_TOGGLE);
-    } else {
-      content?.classList.add(C_TOGGLE);
-    }
-  }
-  goto(route);
-};
+// const C_TOGGLE = "no-content";
+// export const changeRouteWClass = (route: string) => () => {
+//   if (window.innerWidth <= 1100) {
+//     const content = document.querySelector("#not-sidebar");
+//     if (content?.classList.contains(C_TOGGLE)) {
+//       content?.classList.remove(C_TOGGLE);
+//     } else {
+//       content?.classList.add(C_TOGGLE);
+//     }
+//   }
+//   goto(route);
+// };

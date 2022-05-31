@@ -18,8 +18,7 @@
     .this {
       max-height: none;
     }
-   }
-
+  }
 
   .this {
     display: flex;

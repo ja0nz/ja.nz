@@ -8,6 +8,7 @@
 
 pkgs.mkShell {
   buildInputs = with pkgs; [
+    nodejs-18_x
     yarn
     nixfmt
     nodePackages.typescript-language-server

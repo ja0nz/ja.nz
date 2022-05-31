@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { changeRouteWClass } from "$lib/xform";
   export let route: string;
 </script>
 
-<div on:click={changeRouteWClass(route)} class="this">
+<a href={route} class="this">
   <slot name="picture" />
   <slot name="text" />
-</div>
+</a>
 
 <style>
   .this {

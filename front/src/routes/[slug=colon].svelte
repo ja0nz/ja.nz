@@ -1,8 +1,9 @@
 <script context="module" lang="ts">
   import { get } from "svelte/store";
-  import { byTagsLatest, changeRouteWClass, filterContent } from "$lib/xform";
+  import type { LoadEvent } from "@sveltejs/kit";
+  import { byTagsLatest } from "$lib/xform";
   // Pass the `stuff` from __layout into the props of this page
-  export async function load({ params, url, stuff }: LoadInput) {
+  export async function load({ params, url, stuff }: LoadEvent) {
     const tag = params.slug;
     console.log(tag);
     // TODO
@@ -31,9 +32,8 @@
 
   import type { ParsedIssue } from "src/app";
   import { highlightTags, latestTags } from "$lib/xform";
-  import { highlightDOMString } from "$lib/highlightDOM";
-  import type { LoadInput } from "@sveltejs/kit";
   import { filterFuzzy } from "@thi.ng/transducers";
+  import ContentFeed, { toggleSearch } from "$lib/blocks/ContentFeed.svelte";
 
   // Filter label
   let inputTags: HTMLInputElement;
@@ -43,20 +43,11 @@
   };
   let tags: IterableIterator<[string, number]>;
   let fuzzyTags = "";
-  tags = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-  // $: tags = filterFuzzy(
-  //   fuzzyTags,
-  //   { key: (x: [string, number]) => x[0] },
-  //   tagsByLatest
-  // );
-  //-- Filter label finished
-  //Filter content
-  let cont: IterableIterator<ParsedIssue>;
-  let fuzzyContent = "";
-  $: cont = filterContent(
-    fuzzyContent,
-    { key: (x: ParsedIssue) => x.body },
-    contentByTag
+  // tags = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+  $: tags = filterFuzzy(
+    fuzzyTags,
+    { key: (x: [string, number]) => x[0] },
+    tagsByLatest
   );
 </script>
 
@@ -88,7 +79,7 @@
     <!-- Scrollable, selectable menu col -->
     <div class="overflow-y-auto">
       {#each [...tags] as [tag, ts]}
-        <TagCard route={`/:${tag}`}>
+        <TagCard route={`/:${tag}#main-content`}>
           <!-- Slot picture -->
           <svg
             slot="picture"
@@ -108,7 +99,6 @@
   </Menu>
   <div id="not-sidebar" class="no-content">
     <ContentHeader>
-      <button on:click={changeRouteWClass("/")}>⬅</button>
       <TagCard>
         <!-- Slot picture -->
         <svg
@@ -124,26 +114,11 @@
         </div>
       </TagCard>
       <aside>
-        <input
-          aria-label="Search tags"
-          type="text"
-          bind:value={fuzzyContent}
-          placeholder="Search feed"
-        />
+        <button on:click={toggleSearch}>Looking glass</button>
         <ThemeSwitch />
       </aside>
     </ContentHeader>
-    <div style="scroll-margin-top: 120px;" id="main-content" class="box">
-      {#each [...cont] as { body }}
-        <div class="box">
-          {@html highlightDOMString(
-            body,
-            fuzzyContent,
-            (token) => `<span class="underline">${token}</span>`
-          )}
-        </div>
-      {/each}
-    </div>
+    <ContentFeed {contentByTag} />
     <div class="box">Send me a message</div>
   </div>
 </article>
