@@ -12,15 +12,19 @@
     if (toHide.classList.contains(H)) {
       toHide.classList.remove(H);
       toHide.classList.add(C);
+      toHide.inert = false;
     } else {
       toHide.classList.remove(C);
       toHide.classList.add(H);
+      toHide.inert = true;
     }
   }
 </script>
 
 {#if !about}
-  <div>oh my</div>
+  <div>Picture</div>
+  <div>About me</div>
+  <div>Links</div>
 {:else}
   <TagCard>
     <!-- Slot picture -->
