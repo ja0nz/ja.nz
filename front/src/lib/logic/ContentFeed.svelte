@@ -50,7 +50,7 @@
 </div>
 
 <style>
- input {
-     width: 100%;
- }
+  input {
+    width: 100%;
+  }
 </style>

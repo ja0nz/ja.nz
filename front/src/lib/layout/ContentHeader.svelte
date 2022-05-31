@@ -1,4 +1,4 @@
-<div class="this | sticky-header">
+<div class="this | sticky top-0">
   <slot />
 </div>
 

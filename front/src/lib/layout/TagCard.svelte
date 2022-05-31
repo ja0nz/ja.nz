@@ -1,11 +1,7 @@
-<script lang="ts">
-  export let route: string;
-</script>
-
-<a href={route} class="this">
+<div class="this">
   <slot name="picture" />
   <slot name="text" />
-</a>
+</div>
 
 <style>
   .this {

@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import { get } from "svelte/store";
   import type { LoadEvent } from "@sveltejs/kit";
-  import { byTagsLatest } from "$lib/xform";
+  import { byTagsLatest, latestTags } from "$lib/xform";
   // Pass the `stuff` from __layout into the props of this page
   export async function load({ params, url, stuff }: LoadEvent) {
     const tag = params.slug;
@@ -24,78 +24,30 @@
   export let contentByTag: ParsedIssue[];
   export let tagsByLatest: [string, number][];
 
-  import Menu from "../css/blocks/menu.svelte";
-  import ContentHeader from "../css/blocks/content-header.svelte";
-  import TagCard from "../css/blocks/tag-card.svelte";
-
-  import ThemeSwitch from "$lib/blocks/ThemeSwitch.svelte";
-
   import type { ParsedIssue } from "src/app";
-  import { highlightTags, latestTags } from "$lib/xform";
-  import { filterFuzzy } from "@thi.ng/transducers";
-  import ContentFeed, { toggleSearch } from "$lib/blocks/ContentFeed.svelte";
 
-  // Filter label
-  let inputTags: HTMLInputElement;
-  const focusSearch = (e: KeyboardEvent) => {
-    if (e.key === "/" && inputTags && document.activeElement !== inputTags)
-      inputTags.select();
-  };
-  let tags: IterableIterator<[string, number]>;
-  let fuzzyTags = "";
-  // tags = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-  $: tags = filterFuzzy(
-    fuzzyTags,
-    { key: (x: [string, number]) => x[0] },
-    tagsByLatest
-  );
+  import Menu from "$lib/layout/Menu.svelte";
+  import ContentHeader from "$lib/layout/ContentHeader.svelte";
+  import TagCard from "$lib/layout/TagCard.svelte";
+
+  import ContentFeed, { toggleSearch } from "$lib/logic/ContentFeed.svelte";
+  import ThemeSwitch from "$lib/logic/ThemeSwitch.svelte";
+  import TagFeed from "$lib/logic/TagFeed.svelte";
+  import About from "$lib/logic/About.svelte";
+
+  // About logic
+  let aboutToHide: HTMLElement;
+  // end about logic
 </script>
-
-<svelte:window on:keyup={focusSearch} />
 
 <article class="sidebar">
   <!-- css/blocks/menu.svelte -->
   <Menu>
-    <!-- Hello me -->
-    <TagCard>
-      <!-- Slot picture -->
-      <picture slot="picture">
-        <source srcset="profile.webp" />
-        <img src="profile.jpg" class="rounded-full" alt="Profile of ja0nz" />
-      </picture>
-      <!-- Slot text -->
-      <div slot="text">
-        <p>ja0nz's blog</p>
-        <p class="subcontent">last seen at 11.11.2022</p>
-      </div>
-    </TagCard>
-    <input
-      aria-label="Search tags"
-      type="text"
-      bind:value={fuzzyTags}
-      bind:this={inputTags}
-      placeholder="Hit / to search"
-    />
-    <!-- Scrollable, selectable menu col -->
-    <div class="overflow-y-auto">
-      {#each [...tags] as [tag, ts]}
-        <TagCard route={`/:${tag}#main-content`}>
-          <!-- Slot picture -->
-          <svg
-            slot="picture"
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="50" cy="50" r="50" />
-          </svg>
-          <!-- Slot text -->
-          <div slot="text">
-            <p>{@html highlightTags(tag, fuzzyTags)}</p>
-            <p>Last seen</p>
-          </div>
-        </TagCard>
-      {/each}
+    <About toHide={aboutToHide} />
+    <div class="visually-hidden 1contents" bind:this={aboutToHide}>
+      <TagFeed {tagsByLatest} />
     </div>
+    <!-- Scrollable, selectable menu col -->
   </Menu>
   <div id="not-sidebar" class="no-content">
     <ContentHeader>

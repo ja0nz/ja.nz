@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import { fetchApi } from "$lib/fetch";
-  import type { LoadInput } from "@sveltejs/kit";
-  export async function load({ fetch }: LoadInput) {
+  import type { LoadEvent } from "@sveltejs/kit";
+  export async function load({ fetch }: LoadEvent) {
     try {
       return {
         stuff: {

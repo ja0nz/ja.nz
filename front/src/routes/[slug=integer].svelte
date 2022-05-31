@@ -1,11 +1,11 @@
 <script context="module" lang="ts">
-  import type { LoadInput } from "@sveltejs/kit";
+  import type { LoadEvent } from "@sveltejs/kit";
   import type { ParsedIssue } from "src/app";
   import { dev } from "$app/env";
   import { integer } from "$lib/dev/browser";
   import { get } from "svelte/store";
   import { numberP, titleP } from "$lib/paths";
-  export async function load({ params, url, fetch, stuff }: LoadInput) {
+  export async function load({ params, url, fetch, stuff }: LoadEvent) {
     const num = get<ParsedIssue[]>(stuff.ALL)
       .filter((x) => titleP(x).startsWith(`#${params.slug}`))
       .map(numberP);
