@@ -26,3 +26,9 @@
 <main tabindex="-1" style="padding: 0;" class="wrapper">
   <slot />
 </main>
+
+<style>
+  main {
+    margin-block-start: var(--space-m);
+  }
+</style>

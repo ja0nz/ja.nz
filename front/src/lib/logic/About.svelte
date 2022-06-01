@@ -5,7 +5,9 @@
   const H = "visually-hidden";
   const C = "contents";
 
-  let about = false;
+  let about = true;
+  // TODO Dev only
+  //let about = false;
   export function toggleAbout() {
     about = !about;
     // Hide other contents
@@ -22,6 +24,7 @@
 </script>
 
 {#if !about}
+  <div>⬅️Profile</div>
   <div>Picture</div>
   <div>About me</div>
   <div>Links</div>

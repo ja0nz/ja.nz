@@ -3,14 +3,15 @@
      - contains the greeter, tag search and tag selection
 -->
 
-<div class="this | sticky top-0">
+<div class="this | stack">
   <slot />
 </div>
 
 <style>
   .this {
-    display: flex;
-    flex-direction: column;
+    /* Sticky header with spacing */
+    position: sticky;
+    top: var(--space-m);
 
     /* Max height to ensure vertical screen fit */
     max-height: calc(100vh - 1px);
