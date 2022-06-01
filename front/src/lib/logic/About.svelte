@@ -1,30 +1,26 @@
 <script lang="ts">
-  export let toHide: HTMLElement;
-
   import TagCard from "$lib/layout/TagCard.svelte";
   const H = "visually-hidden";
-  const C = "contents";
 
-  let about = true;
-  // TODO Dev only
-  //let about = false;
+  let about = false;
+  let self: HTMLElement;
   export function toggleAbout() {
     about = !about;
-    // Hide other contents
-    if (toHide.classList.contains(H)) {
-      toHide.classList.remove(H);
-      toHide.classList.add(C);
-      toHide.inert = false;
-    } else {
-      toHide.classList.remove(C);
-      toHide.classList.add(H);
-      toHide.inert = true;
+    const children = self.parentElement?.children;
+    for (let toHide of [...children ?? []]) {
+      if (toHide.classList.contains(H)) {
+        toHide.classList.remove(H);
+        toHide.inert = false;
+      } else {
+        toHide.classList.add(H);
+        toHide.inert = true;
+      }
     }
   }
 </script>
 
-{#if !about}
-  <div>⬅️Profile</div>
+{#if about}
+  <div on:click={toggleAbout}>⬅️Profile</div>
   <div>Picture</div>
   <div>About me</div>
   <div>Links</div>
@@ -49,6 +45,7 @@
     </div>
   </TagCard>
 {/if}
+<div class="contents" bind:this={self}></div>
 
 <style>
   img:hover {

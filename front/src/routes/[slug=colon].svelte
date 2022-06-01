@@ -34,20 +34,14 @@
   import ThemeSwitch from "$lib/logic/ThemeSwitch.svelte";
   import TagFeed from "$lib/logic/TagFeed.svelte";
   import About from "$lib/logic/About.svelte";
-
-  // About logic
-  let aboutToHide: HTMLElement;
-  // end about logic
 </script>
 
 <article class="sidebar">
   <!-- css/blocks/menu.svelte -->
   <Menu>
-    <About toHide={aboutToHide} />
-    <div class="visually-hidden 1contents" bind:this={aboutToHide}>
-      <TagFeed {tagsByLatest} />
-    </div>
+    <About />
     <!-- Scrollable, selectable menu col -->
+    <TagFeed {tagsByLatest} />
   </Menu>
   <div id="not-sidebar" class="no-content">
     <ContentHeader>
