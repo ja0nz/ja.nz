@@ -13,7 +13,7 @@
   .background {
     grid-area: 1 / 1;
     align-self: start;
-    height: 100vh;
+    height: calc(100vh - var(--content-margin-top, 100px));
     position: sticky;
     z-index: -1;
     top: var(--content-margin-top, 100px);

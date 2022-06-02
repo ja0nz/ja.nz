@@ -12,6 +12,7 @@
     /* Sticky header with spacing */
     position: sticky;
     top: var(--space-m);
+    align-self: start;
 
     /* Max height to ensure vertical screen fit */
     max-height: calc(100vh - 1px);
