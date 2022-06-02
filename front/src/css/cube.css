@@ -28,6 +28,8 @@
     --gutter: var(--space-2xs);
     --sidebar-target-width: var(--space-sidebar);
     --sidebar-content-min-width: 65%;
+    /* content area */
+    --content-margin-top: 100px;
     /* scrollbar */
     --scrollbar-primary-color: green;
     --text-color: yellow;

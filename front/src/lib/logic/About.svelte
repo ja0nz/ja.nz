@@ -7,7 +7,7 @@
   export function toggleAbout() {
     about = !about;
     const children = self.parentElement?.children;
-    for (let toHide of [...children ?? []]) {
+    for (let toHide of [...(children ?? [])]) {
       if (toHide.classList.contains(H)) {
         toHide.classList.remove(H);
         toHide.inert = false;
@@ -45,7 +45,7 @@
     </div>
   </TagCard>
 {/if}
-<div class="contents" bind:this={self}></div>
+<div class="contents" bind:this={self} />
 
 <style>
   img:hover {

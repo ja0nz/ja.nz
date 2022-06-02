@@ -5,8 +5,7 @@
   // Pass the `stuff` from __layout into the props of this page
   export async function load({ params, url, stuff }: LoadEvent) {
     const tag = params.slug;
-    console.log(tag);
-    // TODO
+    // TODO Anchor params
     const anchor = url.searchParams;
     return {
       props: {
@@ -43,7 +42,7 @@
     <!-- Scrollable, selectable menu col -->
     <TagFeed {tagsByLatest} />
   </Menu>
-  <div id="not-sidebar" class="no-content">
+  <div id="not-sidebar">
     <ContentHeader>
       <TagCard>
         <!-- Slot picture -->
@@ -65,6 +64,5 @@
       </aside>
     </ContentHeader>
     <ContentFeed {contentByTag} />
-    <div class="box">Send me a message</div>
   </div>
 </article>

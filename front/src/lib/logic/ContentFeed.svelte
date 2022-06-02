@@ -18,6 +18,7 @@
   import type { ParsedIssue } from "src/app";
   import { highlightDOMString } from "$lib/highlightDOM";
   import { filterContent } from "$lib/xform";
+  import StickyBackground from "$lib/layout/StickyBackground.svelte";
 
   let content: IterableIterator<ParsedIssue>;
   let fuzzyContent = "";
@@ -28,26 +29,28 @@
   );
 </script>
 
-<input
-  aria-label="Search message feed"
-  class="visually-hidden"
-  type="text"
-  bind:this={inputEl}
-  bind:value={fuzzyContent}
-  placeholder="Search feed"
-  inert
-/>
-<div style="scroll-margin-top: 64px;" id="main-content" class="box">
-  {#each [...content] as { body }}
-    <div class="box">
-      {@html highlightDOMString(
-        body,
-        fuzzyContent,
-        (token) => `<span class="underline">${token}</span>`
-      )}
-    </div>
-  {/each}
-</div>
+<StickyBackground bg="bg-tile-dark.png">
+  <input
+    aria-label="Search message feed"
+    class="visually-hidden"
+    type="text"
+    bind:this={inputEl}
+    bind:value={fuzzyContent}
+    placeholder="Search feed"
+    inert
+  />
+  <div id="main-content" class="box">
+    {#each [...content] as { body }}
+      <div class="box">
+        {@html highlightDOMString(
+          body,
+          fuzzyContent,
+          (token) => `<span class="underline">${token}</span>`
+        )}
+      </div>
+    {/each}
+  </div>
+</StickyBackground>
 
 <style>
   input {
