@@ -12,7 +12,8 @@
 <style>
   .this {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    /* CSS grid blowout fix*/
+    grid-template-columns: minmax(0, 100%);
   }
   .background {
     grid-area: 1 / 1;
@@ -24,5 +25,7 @@
   }
   :global(#main-content) {
     scroll-margin-top: var(--content-margin-top, 100px);
+    /* Zoom issues in mobile view */
+    overflow-x: hidden;
   }
 </style>
