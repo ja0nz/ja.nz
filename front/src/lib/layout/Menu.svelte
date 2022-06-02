@@ -11,17 +11,19 @@
   .this {
     /* Sticky header with spacing */
     position: sticky;
+    /* Max height to ensure vertical screen fit - stay in sync with 'top' */
     top: var(--space-m);
-    align-self: start;
+    max-height: calc(100vh - var(--space-m));
 
-    /* Max height to ensure vertical screen fit */
-    max-height: calc(100vh - 1px);
+    align-self: start;
     overflow-y: hidden;
   }
 
   @media (max-width: 1111px) {
     .this {
       max-height: none;
+      /* Ensure spacing to bottom - needed because of the ::before content clip */
+      margin-block-end: var(--sticker-width, 60px);
     }
   }
 </style>
