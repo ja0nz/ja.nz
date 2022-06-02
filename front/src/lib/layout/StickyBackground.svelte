@@ -2,7 +2,7 @@
   export let bg: string;
 </script>
 
-<div class="grid">
+<div class="this">
   <div style="grid-area: 1 / 1;">
     <slot />
   </div>
@@ -10,6 +10,10 @@
 </div>
 
 <style>
+  .this {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
   .background {
     grid-area: 1 / 1;
     align-self: start;
