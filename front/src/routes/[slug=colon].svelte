@@ -49,7 +49,7 @@
   <div id="not-sidebar">
     <ContentHeader
       --top-placement="var(--space-m)"
-      --sticker-width="var(--sticker-width, 60px)"
+      --content-clip="var(--sticker-width, 60px)"
     >
       <TagCard>
         <!-- Slot picture -->

@@ -14,6 +14,7 @@
     padding: var(--space-2xs);
     /* cursor: pointer; */
   }
+  /* TODO this can probably be deleted */
   .this:hover {
     background-color: yellow;
   }

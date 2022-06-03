@@ -36,6 +36,7 @@
   <input
     aria-label="Search message feed"
     class="visually-hidden"
+    style="width: 100%;"
     type="text"
     bind:this={inputEl}
     bind:value={fuzzyContent}
@@ -58,9 +59,3 @@
     {/each}
   </div>
 </StickyBackground>
-
-<style>
-  input {
-    width: 100%;
-  }
-</style>

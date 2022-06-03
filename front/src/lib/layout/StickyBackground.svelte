@@ -21,9 +21,9 @@
     display: grid;
     /* CSS grid blowout fix*/
     grid-template-columns: minmax(0, 100%);
-  }
-  .this > * {
-    grid-area: 1 / 1;
+    > * {
+      grid-area: 1 / 1;
+    }
   }
   .background {
     align-self: start;
