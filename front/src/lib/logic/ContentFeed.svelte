@@ -29,7 +29,10 @@
   );
 </script>
 
-<StickyBackground bg="bg-tile-dark.png">
+<StickyBackground
+  bg="bg-tile-dark.png"
+  --top-placement="var(--avatar-plus-margin-top)"
+>
   <input
     aria-label="Search message feed"
     class="visually-hidden"
@@ -39,7 +42,11 @@
     placeholder="Search feed"
     inert
   />
-  <div id="main-content" class="box">
+  <div
+    style="scroll-margin-top: var(--avatar-plus-margin-top)"
+    id="main-content"
+    class="box"
+  >
     {#each [...content] as { body }}
       <div class="box">
         {@html highlightDOMString(

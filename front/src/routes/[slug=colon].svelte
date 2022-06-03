@@ -37,13 +37,20 @@
 
 <article class="sidebar">
   <!-- css/blocks/menu.svelte -->
-  <Menu>
+  <Menu
+    --stack-spacing="1rem"
+    --top-placement="var(--space-m)"
+    --bottom-margin-mobile="var(--sticker-width, 60px)"
+  >
     <About />
     <!-- Scrollable, selectable menu col -->
     <TagFeed {tagsByLatest} />
   </Menu>
   <div id="not-sidebar">
-    <ContentHeader>
+    <ContentHeader
+      --top-placement="var(--space-m)"
+      --sticker-width="var(--sticker-width, 60px)"
+    >
       <TagCard>
         <!-- Slot picture -->
         <svg

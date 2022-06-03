@@ -29,6 +29,6 @@
 
 <style>
   main {
-    margin-block-start: var(--space-m);
+    margin-block-start: var(--margin-top);
   }
 </style>

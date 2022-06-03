@@ -1,3 +1,13 @@
+<!-- Right side menubar
+     Variables:
+       --top-placement -> this
+       --stack-spacing (optional) -> stack.css
+       --bottom-margin-mobile (optional) -> the hacky part:)
+     Usage:
+     - sticks element to 'top'
+     - clip content with ::before
+-->
+
 <div class="this">
   <slot />
 </div>
@@ -6,13 +16,29 @@
   .this {
     /* Sticky header with spacing */
     position: sticky;
-    top: var(--space-m);
+    top: var(--top-placement);
 
-    align-items: center;
-    display: flex;
+    /* In case its in flex/grid*/
+    align-self: start;
+  }
+  /* This is the content clip on the top */
+  .this::before {
+    content: "";
+    background-repeat: no-repeat;
+    background-color: var(--color-light);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='25'%3E%3Cdefs%3E%3Cpattern id='bg1' patternUnits='userSpaceOnUse' width='40' height='50'%3E%3Ctext y='.9em' font-size='20'%3E🚀%3C/text%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23bg1)' /%3E%3C/svg%3E");
+    position: absolute;
+    width: 100%;
+    height: var(--sticker-width);
+    top: calc(var(--sticker-width) * -1);
   }
 
-  .this :global(> aside) {
+  /* TODO Should be new component */
+  .this {
+    display: flex;
+    align-items: center;
+  }
+  .this > :global(aside) {
     margin-left: auto;
     display: flex;
   }
@@ -23,39 +49,4 @@
   .this > :global(:first-child) {
     padding: var(--space-step--1);
   }
-  /* This is the content clip on the top */
-  .this::before {
-    content: "";
-    background-repeat: no-repeat;
-    background-color: var(--color-light);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='25'%3E%3Cdefs%3E%3Cpattern id='bg1' patternUnits='userSpaceOnUse' width='40' height='50'%3E%3Ctext y='.9em' font-size='20'%3E🚀%3C/text%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23bg1)' /%3E%3C/svg%3E");
-    position: absolute;
-    width: 100%;
-    height: var(--sticker-width, 60px);
-    top: calc(var(--sticker-width, 60px) * -1);
-  }
-  /* .this > :global(:first-child::after) {
-    content: "";
-    background-repeat: no-repeat;
-    background-color: var(--color-light);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='25'%3E%3Cdefs%3E%3Cpattern id='bg1' patternUnits='userSpaceOnUse' width='40' height='50'%3E%3Ctext y='.9em' font-size='20'%3E🚀%3C/text%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23bg1)' /%3E%3C/svg%3E");
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    top: 100%;
-    }
-  */
-  /*
-    /* > * { */
-  /*   flex-shrink: 0; */
-  /*   margin: 0.2rem 0 0 0.2rem; */
-  /* }
- }
-
-  @media (min-width: 48em) {
-    .this > :last-child {
-    justify-content: flex-end;
-    }
- }
- */
 </style>

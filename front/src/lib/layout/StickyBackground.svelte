@@ -1,9 +1,16 @@
+<!-- A background that sticks behind the content
+     Variables:
+       --top-placement -> this
+     Usage:
+     - sticks background
+     - if there is a #main-content
+-->
 <script lang="ts">
   export let bg: string;
 </script>
 
 <div class="this">
-  <div style="grid-area: 1 / 1;">
+  <div class="overflow-x-hidden">
     <slot />
   </div>
   <div style="background: url('{bg}')" class="background" />
@@ -15,17 +22,14 @@
     /* CSS grid blowout fix*/
     grid-template-columns: minmax(0, 100%);
   }
-  .background {
+  .this > * {
     grid-area: 1 / 1;
+  }
+  .background {
     align-self: start;
-    height: calc(100vh - var(--content-margin-top, 100px));
+    height: calc(100vh - var(--top-placement) - 1px);
     position: sticky;
     z-index: -1;
-    top: var(--content-margin-top, 100px);
-  }
-  :global(#main-content) {
-    scroll-margin-top: var(--content-margin-top, 100px);
-    /* Zoom issues in mobile view */
-    overflow-x: hidden;
+    top: var(--top-placement);
   }
 </style>
