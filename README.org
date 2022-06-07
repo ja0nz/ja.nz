@@ -272,8 +272,8 @@ DetectArray<{ x: string } // false
 :export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format t))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :export_hugo_custom_front_matter+: :state (if (org-entry-get (point) "CLOSED") "CLOSED" "OPEN")
 :END:
-** DONE #10,All the formattings :typescript:
-CLOSED: [2022-05-16 Mo 16:35]
+** DONE #10,All the formattings :started:
+CLOSED: [2022-05-16 Mo 16:40]
 :PROPERTIES:
 :export_file_name: 10
 :END:
