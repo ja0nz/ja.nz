@@ -24,6 +24,11 @@
     align-self: start;
   }
 
+  /* Ensure children have the same horizontal span */
+  .this > :global(*) {
+    min-width: 300px;
+  }
+
   @media (max-width: 1111px) {
     .this {
       max-height: initial;

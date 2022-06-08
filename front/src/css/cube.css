@@ -1,12 +1,17 @@
 @layer reset, vars, default, dark, compositions, utilities, blocks;
 
-@import "@fontsource/fira-mono";
+@import "@fontsource/azeret-mono/variable.css";
+@import "@fontsource/inter/variable.css";
 @import "reset.css" layer(reset);
 @import "custom-props.css" layer(vars);
 
 @import "_compositions.css" layer(compositions);
 @import "_blocks.css" layer(blocks);
 @import "_utilities.css" layer(utilities);
+@font-face {
+  font-family: "Anicons";
+  src: url("/AniconsGX.ttf") format("truetype");
+}
 
 @tailwind utilities;
 
@@ -21,9 +26,6 @@
 @layer default {
   /* Global styles */
   :root {
-    font-family: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    --font-mono: "Fira Mono", monospace;
     /* Content from top */
     --margin-top: var(--space-m);
     --avatar-size: var(--space-xl);

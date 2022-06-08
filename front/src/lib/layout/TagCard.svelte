@@ -9,9 +9,10 @@
     align-items: center;
     /* first col defines size of avatar */
     grid-template-columns: var(--avatar-size) max-content;
+    grid-template-rows: var(--avatar-size);
     grid-gap: var(--space-xs);
     /* Padding around card */
-    padding: var(--space-2xs);
+    padding: var(--space-3xs);
     /* cursor: pointer; */
   }
   /* TODO this can probably be deleted */

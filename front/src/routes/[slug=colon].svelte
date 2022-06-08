@@ -38,7 +38,7 @@
 <article class="sidebar">
   <!-- css/blocks/menu.svelte -->
   <Menu
-    --stack-spacing="1rem"
+    --stack-spacing="var(--space-xs)"
     --top-placement="var(--space-m)"
     --bottom-margin-mobile="var(--sticker-width, 60px)"
   >

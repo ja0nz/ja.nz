@@ -41,11 +41,4 @@
     margin-left: auto;
     display: flex;
   }
-
-  .this > :global(:last-child) {
-    padding: var(--space-step--1);
-  }
-  .this > :global(:first-child) {
-    padding: var(--space-step--1);
-  }
 </style>

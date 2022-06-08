@@ -55,14 +55,8 @@ module.exports = {
       5: "clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem)",
     },
     fontFamily: {
-      sans: [
-        '"Inter"',
-        '"Segoe UI"',
-        "Roboto",
-        '"Helvetica Neue"',
-        "Arial",
-        "sans-serif",
-      ],
+      mono: ["Azeret MonoVariable", "ui-monospace"],
+      sans: ["InterVariable", "ui-sans-serif"],
     },
     gap: ({ theme }) => theme("spacing"),
     margin: ({ theme }) => ({

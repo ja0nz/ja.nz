@@ -1,4 +1,5 @@
 <script lang="ts">
+  import AboutCard from "$lib/layout/AboutCard.svelte";
   import TagCard from "$lib/layout/TagCard.svelte";
   const H = "visually-hidden";
 
@@ -20,10 +21,35 @@
 </script>
 
 {#if about}
-  <div on:click={toggleAbout}>⬅️Profile</div>
-  <div>Picture</div>
-  <div>About me</div>
-  <div>Links</div>
+  <AboutCard>
+    <!-- Slot return -->
+    <div slot="return">
+      <TagCard>
+        <button slot="picture" on:click={toggleAbout}>⬅️</button>
+        <div slot="text">
+          <div>
+            <span>R</span>
+            <span>E</span>
+            <span>T</span>
+            <span>U</span>
+            <span>R</span>
+            <span>N</span>
+            <div />
+          </div>
+        </div></TagCard
+      >
+    </div>
+    <!-- Slot picture -->
+    <picture slot="picture">
+      <source srcset="profile.webp" />
+      <img src="profile.jpg" class="rounded-full" alt="Profile of ja0nz" />
+    </picture>
+    <!-- Slot text -->
+    <div slot="text">
+      <div>About me</div>
+      <div>Links</div>
+    </div>
+  </AboutCard>
 {:else}
   <TagCard>
     <!-- Slot picture -->
@@ -32,6 +58,7 @@
       <img
         on:click={toggleAbout}
         src="profile.jpg"
+        style="cursor: pointer;"
         class="rounded-full"
         alt="Profile of ja0nz"
       />
@@ -46,9 +73,3 @@
   </TagCard>
 {/if}
 <div class="contents" bind:this={self} />
-
-<style>
-  img:hover {
-    cursor: pointer;
-  }
-</style>
