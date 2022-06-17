@@ -33,6 +33,7 @@
   import ThemeSwitch from "$lib/logic/ThemeSwitch.svelte";
   import TagFeed from "$lib/logic/TagFeed.svelte";
   import About from "$lib/logic/About.svelte";
+  import SearchContentIcon from "$lib/layout/SearchContentIcon.svelte";
 </script>
 
 <article class="sidebar">
@@ -66,7 +67,7 @@
         </div>
       </TagCard>
       <aside>
-        <button on:click={toggleSearch}>Looking glass</button>
+        <SearchContentIcon action={toggleSearch} />
         <ThemeSwitch />
       </aside>
     </ContentHeader>

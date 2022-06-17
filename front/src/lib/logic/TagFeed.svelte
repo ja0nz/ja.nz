@@ -31,7 +31,7 @@
 />
 <div class="overflow-y-auto">
   {#each [...tags] as [tag, ts]}
-    <a href={`/:${tag}#main-content`}>
+    <a class="no-underline" href={`/:${tag}#main-content`}>
       <TagCard>
         <!-- Slot picture -->
         <svg
@@ -44,7 +44,7 @@
         <!-- Slot text -->
         <div slot="text">
           <p>{@html highlightTags(tag, fuzzyTags)}</p>
-          <p>Last seen</p>
+          <p>Last seen {new Date(ts).toLocaleDateString()}</p>
         </div>
       </TagCard>
     </a>

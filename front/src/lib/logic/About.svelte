@@ -92,7 +92,7 @@
       <a href="/">
         <p>ja0nz's blog</p>
       </a>
-      <p class="subcontent">last seen at 11.11.2022</p>
+      <p class="subcontent">join my feed✌️</p>
     </div>
   </TagCard>
 {/if}

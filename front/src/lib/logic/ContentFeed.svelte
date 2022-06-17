@@ -36,7 +36,7 @@
   <input
     aria-label="Search message feed"
     class="visually-hidden"
-    style="width: 100%;"
+    style="width: 100%; margin-block-start: var(--space-xs);"
     type="text"
     bind:this={inputEl}
     bind:value={fuzzyContent}
