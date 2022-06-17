@@ -29,7 +29,10 @@
     /* Content from top */
     --margin-top: var(--space-m);
     --avatar-size: var(--space-xl);
-    --avatar-plus-margin-top: calc(var(--margin-top) + var(--avatar-size));
+    /* Putting all together: top + avatar + 2 times padding */
+    --avatar-plus-margin-top: calc(
+      var(--margin-top) + var(--avatar-size) + 2 * var(--space-3xs)
+    );
     /* sidebar.css */
     --gutter: var(--space-2xs);
     --sidebar-target-width: var(--space-sidebar);
