@@ -8,9 +8,6 @@
   .this {
     max-width: 300px;
   }
-  .this :global([slot="picture"] > img) {
-    border-radius: 50%;
-  }
   /* TODO Set studio font*/
   .this :global([slot="return"] span) {
     font-variation-settings: "wght" var(--display-heading-weight, 900);

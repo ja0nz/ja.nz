@@ -25,7 +25,9 @@
     <!-- Slot return -->
     <div slot="return">
       <TagCard>
-        <button slot="picture" on:click={toggleAbout}>⬅️</button>
+        <div slot="picture">
+          <div class="iconAbout" on:click={toggleAbout}>C</div>
+        </div>
         <div slot="text">
           <div>
             <span>R</span>
@@ -46,23 +48,45 @@
     </picture>
     <!-- Slot text -->
     <div slot="text">
-      <div>About me</div>
-      <div>Links</div>
-    </div>
-  </AboutCard>
+      <div>Hey there, I'm Jan👋</div>
+      <div>
+        And this is a raw scratchpad/blog/journal about things that make me feel
+        curious. Enjoy.
+        <ul>
+          <li>
+            <a href="https://read.cv/ja0nz"><span>read.cv/ja0nz</span></a>
+          </li>
+          <li>
+            <a href="https://github.com/ja0nz"><span>github.com/ja0nz</span></a>
+          </li>
+          <li>
+            <a href="https://codepen.io/ja0nz"><span>codepen.io/ja0nz</span></a>
+          </li>
+          <li>
+            <a href="https://twitter.com/ja0nz"
+              ><span>twitter.com/ja0nz</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div></AboutCard
+  >
 {:else}
   <TagCard>
     <!-- Slot picture -->
-    <picture slot="picture">
-      <source srcset="profile.webp" />
-      <img
-        on:click={toggleAbout}
-        src="profile.jpg"
-        style="cursor: pointer;"
-        class="rounded-full"
-        alt="Profile of ja0nz"
-      />
-    </picture>
+    <div slot="picture">
+      <picture>
+        <source srcset="profile.webp" />
+        <img
+          on:click={toggleAbout}
+          src="profile.jpg"
+          style="cursor: pointer;"
+          class="rounded-full"
+          alt="Profile of ja0nz"
+        />
+      </picture>
+      <div class="icon" on:click={toggleAbout}>R</div>
+    </div>
     <!-- Slot text -->
     <div slot="text">
       <a href="/">
@@ -73,3 +97,42 @@
   </TagCard>
 {/if}
 <div class="contents" bind:this={self} />
+
+<style>
+  div[slot="picture"] {
+    display: grid;
+    > * {
+      grid-area: 1 / 1;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+  }
+
+  .iconAbout {
+    cursor: pointer;
+    font-family: "Anicons";
+    font-size: var(--step-4);
+    font-variation-settings: "TIME" 1;
+    transition: font-variation-settings 0.4s ease;
+    &:hover {
+      font-variation-settings: "TIME" 100;
+    }
+  }
+  .icon {
+    cursor: pointer;
+    color: red;
+    opacity: 50%;
+    font-family: "Anicons";
+    font-size: var(--step-3);
+    font-variation-settings: "TIME" 100;
+    transition: font-variation-settings 0.4s ease;
+    &:hover {
+      font-variation-settings: "TIME" 1;
+    }
+  }
+  li::marker {
+    content: "👉";
+  }
+</style>
