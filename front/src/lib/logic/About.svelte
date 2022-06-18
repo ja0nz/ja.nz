@@ -26,7 +26,7 @@
     <div slot="return">
       <TagCard>
         <div slot="picture">
-          <div class="iconAbout" on:click={toggleAbout}>C</div>
+          <div class="iconT" on:click={toggleAbout}>C</div>
         </div>
         <div slot="text">
           <div>
@@ -36,10 +36,9 @@
             <span>U</span>
             <span>R</span>
             <span>N</span>
-            <div />
           </div>
-        </div></TagCard
-      >
+        </div>
+      </TagCard>
     </div>
     <!-- Slot picture -->
     <picture slot="picture">
@@ -69,8 +68,8 @@
           </li>
         </ul>
       </div>
-    </div></AboutCard
-  >
+    </div>
+  </AboutCard>
 {:else}
   <TagCard>
     <!-- Slot picture -->
@@ -81,7 +80,6 @@
           on:click={toggleAbout}
           src="profile.jpg"
           style="cursor: pointer;"
-          class="rounded-full"
           alt="Profile of ja0nz"
         />
       </picture>
@@ -97,42 +95,3 @@
   </TagCard>
 {/if}
 <div class="contents" bind:this={self} />
-
-<style>
-  div[slot="picture"] {
-    display: grid;
-    > * {
-      grid-area: 1 / 1;
-    }
-  }
-
-  img {
-    border-radius: 50%;
-  }
-
-  .iconAbout {
-    cursor: pointer;
-    font-family: "Anicons";
-    font-size: var(--step-4);
-    font-variation-settings: "TIME" 1;
-    transition: font-variation-settings 0.4s ease;
-    &:hover {
-      font-variation-settings: "TIME" 100;
-    }
-  }
-  .icon {
-    cursor: pointer;
-    color: red;
-    opacity: 50%;
-    font-family: "Anicons";
-    font-size: var(--step-3);
-    font-variation-settings: "TIME" 100;
-    transition: font-variation-settings 0.4s ease;
-    &:hover {
-      font-variation-settings: "TIME" 1;
-    }
-  }
-  li::marker {
-    content: "👉";
-  }
-</style>

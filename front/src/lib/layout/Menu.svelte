@@ -24,9 +24,9 @@
     align-self: start;
   }
 
-  /* Ensure children have the same horizontal span */
+  /* Ensure width uniformity */
   .this > :global(*) {
-    min-width: 300px;
+    max-width: calc(var(--sidebar-target-width) - 1px);
   }
 
   @media (max-width: 1111px) {

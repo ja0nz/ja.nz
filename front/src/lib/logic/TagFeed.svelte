@@ -23,7 +23,6 @@
 <svelte:window on:keyup={focusSearch} />
 <input
   aria-label="Search tags"
-  style="width: 100%;"
   type="text"
   bind:value={fuzzyTags}
   bind:this={inputTags}

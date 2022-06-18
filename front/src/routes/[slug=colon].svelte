@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
   import { get } from "svelte/store";
+  import { page } from "$app/stores";
   import type { LoadEvent } from "@sveltejs/kit";
   import { byTagsLatest, latestTags } from "$lib/xform";
   // Pass the `stuff` from __layout into the props of this page
@@ -63,7 +64,11 @@
         </svg>
         <!-- Slot text -->
         <div slot="text">
-          <p>Topic Card Photo blah</p>
+          {#if $page.params.slug.length == 1}
+            <p>ALL posts</p>
+          {:else}
+            <p>{$page.params.slug.substring(1)}</p>
+          {/if}
         </div>
       </TagCard>
       <aside>
