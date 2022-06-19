@@ -16,10 +16,14 @@
 @tailwind utilities;
 
 @layer dark {
-  .dark {
-    h1 {
-      color: blue;
-    }
+  body {
+    @apply dark:bg-dark dark:text-light
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      var(--scrollbar-primary-color),
+      var(--text-color)
+    );
   }
 }
 
@@ -49,14 +53,14 @@
   }
 
   ::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 1rem;
   }
   ::-webkit-scrollbar-thumb {
+    border-radius: 7px;
     background: linear-gradient(
       var(--scrollbar-primary-color),
       var(--text-color)
     );
-    border-radius: 4px;
   }
 
   h1,
