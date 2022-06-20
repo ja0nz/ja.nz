@@ -40,5 +40,6 @@
   .this > :global(aside) {
     margin-left: auto;
     display: flex;
+    align-items: center;
   }
 </style>

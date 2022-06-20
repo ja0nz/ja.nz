@@ -21,7 +21,6 @@
   }
   .icon {
     cursor: pointer;
-    opacity: 50%;
     font-family: "Anicons";
     font-size: var(--step-2);
     font-variation-settings: "TIME" 1;
