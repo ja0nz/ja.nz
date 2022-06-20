@@ -17,6 +17,8 @@
   }
   .this :global([slot="picture"] img) {
     border-radius: 50%;
+    height: var(--avatar-size);
+    width: var(--avatar-size);
   }
   /* Icon overlay */
   .this :global([slot="picture"]) {

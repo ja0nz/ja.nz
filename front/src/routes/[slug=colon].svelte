@@ -35,7 +35,18 @@
   import TagFeed from "$lib/logic/TagFeed.svelte";
   import About from "$lib/logic/About.svelte";
   import SearchContentIcon from "$lib/layout/SearchContentIcon.svelte";
+
 </script>
+
+<svelte:head>
+  {#if $page.params.slug.length == 1}
+    <title>ja0nz'z blog</title>
+    <meta name="description" content="This page contains all articles" />
+  {:else}
+    <title>ja0nz - {$page.params.slug.substring(1)} category</title>
+    <meta name="description" content="This page contains articles tagged with {$page.params.slug.substring(1)}" />
+  {/if}
+</svelte:head>
 
 <article class="sidebar">
   <!-- css/blocks/menu.svelte -->
@@ -71,7 +82,7 @@
           {/if}
         </div>
       </TagCard>
-      <aside>
+      <aside class="flex items-center ml-auto">
         <SearchContentIcon action={toggleSearch} />
         <ThemeSwitch />
       </aside>

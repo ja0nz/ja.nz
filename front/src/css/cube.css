@@ -11,6 +11,7 @@
 @font-face {
   font-family: "Anicons";
   src: url("/AniconsGX.ttf") format("truetype");
+  font-display: swap;
 }
 
 @tailwind utilities;

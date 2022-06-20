@@ -13,6 +13,9 @@
 
 <style>
   .this {
+    display: flex;
+    align-items: center;
+
     /* Sticky header with spacing */
     position: sticky;
     top: var(--top-placement);
@@ -30,16 +33,5 @@
       height: var(--content-clip);
       top: calc(var(--content-clip) * -1);
     }
-  }
-
-  /* TODO Should be new component */
-  .this {
-    display: flex;
-    align-items: center;
-  }
-  .this > :global(aside) {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
   }
 </style>

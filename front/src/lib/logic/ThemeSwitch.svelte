@@ -42,7 +42,7 @@
 
 <style>
   svg {
-    min-width: var(--step-2);
-    min-height: var(--step-2);
+    width: var(--step-2);
+    height: var(--step-2);
   }
 </style>
