@@ -19,6 +19,7 @@
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
   fill="none"
+  aria-label="Toggle Dark Mode"
   on:click={toggleDark}
   stroke="currentColor"
 >
@@ -40,8 +41,8 @@
 </svg>
 
 <style>
- svg {
-   min-width: var(--step-2);
-   min-height: var(--step-2);
- }
+  svg {
+    min-width: var(--step-2);
+    min-height: var(--step-2);
+  }
 </style>

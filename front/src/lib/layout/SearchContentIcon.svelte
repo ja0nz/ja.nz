@@ -13,7 +13,7 @@
   }
 </script>
 
-<div class="icon" bind:this={el} on:click={actionAndIcon}>9</div>
+<div aria-label="Search content" class="icon" bind:this={el} on:click={actionAndIcon}>9</div>
 
 <style>
   :global(.anicons100) {
