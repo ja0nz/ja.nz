@@ -13,7 +13,7 @@
   <div class="overflow-x-hidden">
     <slot />
   </div>
-  <div style="background: url('{bg}')" class="background" />
+  <div id="bg-img" style="background: url('{bg}')" class="background" />
 </div>
 
 <style>

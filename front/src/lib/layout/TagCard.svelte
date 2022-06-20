@@ -15,10 +15,6 @@
     padding: var(--space-3xs);
     /* cursor: pointer; */
   }
-  /* TODO this can probably be deleted */
-  .this:hover {
-    background-color: yellow;
-  }
   .this :global([slot="picture"] img) {
     border-radius: 50%;
   }

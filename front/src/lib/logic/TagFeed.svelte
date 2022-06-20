@@ -31,21 +31,23 @@
 <div class="overflow-y-auto">
   {#each [...tags] as [tag, ts]}
     <a class="no-underline" href={`/:${tag}#main-content`}>
-      <TagCard>
-        <!-- Slot picture -->
-        <svg
-          slot="picture"
-          viewBox="0 0 100 100"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="50" cy="50" r="50" />
-        </svg>
-        <!-- Slot text -->
-        <div slot="text">
-          <p>{@html highlightTags(tag, fuzzyTags)}</p>
-          <p>Last seen {new Date(ts).toLocaleDateString()}</p>
-        </div>
-      </TagCard>
+      <div class="hover:bg-secondary dark:hover:bg-primary">
+        <TagCard>
+          <!-- Slot picture -->
+          <svg
+            slot="picture"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="50" cy="50" r="50" />
+          </svg>
+          <!-- Slot text -->
+          <div slot="text">
+            <p>{@html highlightTags(tag, fuzzyTags)}</p>
+            <p>Last seen {new Date(ts).toLocaleDateString()}</p>
+          </div>
+        </TagCard>
+      </div>
     </a>
   {/each}
 </div>
