@@ -3,17 +3,30 @@
   export let href: string;
 </script>
 
-<div class="this">
-  <h1>{title}</h1>
-  <a {href}>{title}</a>
-  <!-- <slot /> -->
+<div class="this | stack">
+  <h2>{title}</h2>
+  <div class="content">
+    <slot />
+  </div>
+  <div class="btm">
+    <a {href}>read more</a>
+  </div>
 </div>
 
 <style>
+  .this:nth-child(even) {
+    background: red;
+    align-self: flex-end;
+  }
+  .this:nth-child(odd) {
+    background: lightgreen;
+  }
   .this {
-    :global(*) {
-      @apply text-1-;
-    }
+    max-width: 70%;
+    padding: var(--space-2xs);
+    border-radius: 10px;
+    @apply text-1-;
+
     :global(h1) {
       @apply text-2;
     }
@@ -23,5 +36,11 @@
     :global(h3) {
       @apply text-0;
     }
+  }
+  .content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 </style>

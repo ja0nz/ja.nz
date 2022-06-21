@@ -31,9 +31,11 @@
   );
 </script>
 
+<!-- stack-spacing targeting ContentBubbles -->
 <StickyBackground
   bg="bg-tile-dark.png"
   --top-placement="var(--avatar-plus-margin-top)"
+  --stack-spacing="var(--space-3xs)"
 >
   <input
     aria-label="Search message feed"
@@ -48,6 +50,7 @@
   <div
     style="scroll-margin-top: var(--avatar-plus-margin-top)"
     id="main-content"
+    class="stack"
   >
     {#each [...content] as issue}
       <ContentBubbles title={titleP(issue)} href={`/${titleNumberP(issue)}`}>
