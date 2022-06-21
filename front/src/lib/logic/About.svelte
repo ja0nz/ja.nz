@@ -26,7 +26,13 @@
     <div slot="return">
       <TagCard>
         <div slot="picture">
-          <div aria-label="Return to Tag Feed" class="iconT" on:click={toggleAbout}>C</div>
+          <div
+            aria-label="Return to Tag Feed"
+            class="iconT"
+            on:click={toggleAbout}
+          >
+            C
+          </div>
         </div>
         <div slot="text">
           <div>
@@ -83,7 +89,13 @@
           alt="Profile of ja0nz"
         />
       </picture>
-      <div aria-label="More about the creator" class="icon" on:click={toggleAbout}>R</div>
+      <div
+        aria-label="More about the creator"
+        class="icon"
+        on:click={toggleAbout}
+      >
+        R
+      </div>
     </div>
     <!-- Slot text -->
     <div slot="text">

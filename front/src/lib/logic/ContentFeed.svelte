@@ -19,6 +19,8 @@
   import { highlightDOMString } from "$lib/highlightDOM";
   import { filterContent } from "$lib/xform";
   import StickyBackground from "$lib/layout/StickyBackground.svelte";
+  import ContentBubbles from "$lib/layout/ContentBubbles.svelte";
+  import { titleNumberP, titleP } from "$lib/paths";
 
   let content: IterableIterator<ParsedIssue>;
   let fuzzyContent = "";
@@ -46,16 +48,15 @@
   <div
     style="scroll-margin-top: var(--avatar-plus-margin-top)"
     id="main-content"
-    class="box"
   >
-    {#each [...content] as { body }}
-      <div class="box">
+    {#each [...content] as issue}
+      <ContentBubbles title={titleP(issue)} href={`/${titleNumberP(issue)}`}>
         {@html highlightDOMString(
-          body,
+          issue.body,
           fuzzyContent,
           (token) => `<span class="underline">${token}</span>`
         )}
-      </div>
+      </ContentBubbles>
     {/each}
   </div>
 </StickyBackground>

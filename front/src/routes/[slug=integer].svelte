@@ -13,7 +13,9 @@
     const api = `https://api-ja-nz.janz.workers.dev/v1/parsed/issue/${
       num.length ? num[0] : 0
     }`;
-    const response = dev ? integer.clone() : await fetch(api);
+    const response = dev
+      ? integer(num.length ? num[0] : 0).clone()
+      : await fetch(api);
     if (!response.ok) return { status: 500 };
     const fetchedContent: ParsedIssue[] = await response.json();
     if (!fetchedContent.length) return { status: 404 };

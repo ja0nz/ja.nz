@@ -12,6 +12,7 @@ export const titleP = comp(
   defGetter<ParsedIssue["data"], "title">(["title"]),
   dataP
 );
+export const titleNumberP = comp((x) => x.split(",")[0].substring(1), titleP);
 
 export const timestampP = comp(
   defGetter<ParsedIssue["data"], "timestamp">(["timestamp"]),

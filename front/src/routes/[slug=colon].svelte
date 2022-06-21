@@ -5,7 +5,7 @@
   import { byTagsLatest, latestTags } from "$lib/xform";
   // Pass the `stuff` from __layout into the props of this page
   export async function load({ params, url, stuff }: LoadEvent) {
-    const tag = params.slug;
+    const tag = params.slug.substring(1);
     // TODO Anchor params
     const anchor = url.searchParams;
     return {
@@ -35,7 +35,6 @@
   import TagFeed from "$lib/logic/TagFeed.svelte";
   import About from "$lib/logic/About.svelte";
   import SearchContentIcon from "$lib/layout/SearchContentIcon.svelte";
-
 </script>
 
 <svelte:head>
@@ -44,7 +43,12 @@
     <meta name="description" content="This page contains all articles" />
   {:else}
     <title>ja0nz - {$page.params.slug.substring(1)} category</title>
-    <meta name="description" content="This page contains articles tagged with {$page.params.slug.substring(1)}" />
+    <meta
+      name="description"
+      content="This page contains articles tagged with {$page.params.slug.substring(
+        1
+      )}"
+    />
   {/if}
 </svelte:head>
 

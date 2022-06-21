@@ -45,8 +45,8 @@ module.exports = {
     // 21-24
     // https://utopia.fyi/type/calculator?c=320,21,1.2,1140,24,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
     fontSize: {
-      "-2": "clamp(0.91rem, calc(0.89rem + 0.10vw), 0.96rem)",
-      "-1": "clamp(1.09rem, calc(1.05rem + 0.21vw), 1.20rem)",
+      "2-": "clamp(0.91rem, calc(0.89rem + 0.10vw), 0.96rem)",
+      "1-": "clamp(1.09rem, calc(1.05rem + 0.21vw), 1.20rem)",
       0: "clamp(1.31rem, calc(1.24rem + 0.37vw), 1.50rem)",
       1: "clamp(1.58rem, calc(1.46rem + 0.59vw), 1.88rem)",
       2: "clamp(1.89rem, calc(1.71rem + 0.89vw), 2.34rem)",

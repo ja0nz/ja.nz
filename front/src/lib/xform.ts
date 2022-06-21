@@ -59,11 +59,10 @@ export const highlightTags = (tag: string, search: string) =>
  * Content by tags
  */
 export function byTagsLatest(tag: string, all: ParsedIssue[]) {
-  const t = tag.substring(1);
   return transduce(
     comp(
       noUndefTags,
-      filter((x) => (t ? (tagsP(x) as string[]).includes(t) : true))
+      filter((x) => (tag ? (tagsP(x) as string[]).includes(tag) : true))
     ),
     pushSort((a, b) => timestampP(b) - timestampP(a)),
     all
