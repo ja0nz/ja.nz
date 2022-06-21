@@ -5,15 +5,11 @@
      - sticks background
      - if there is a #main-content
 -->
-<script lang="ts">
-  export let bg: string;
-</script>
-
 <div class="this">
   <div class="overflow-x-hidden">
     <slot />
   </div>
-  <div id="bg-img" style="background: url('{bg}')" class="background" />
+  <div class="background | bg-light dark:bg-dark" />
 </div>
 
 <style>
@@ -26,6 +22,7 @@
     }
   }
   .background {
+    background-image: var(--bg-img);
     align-self: start;
     height: calc(100vh - var(--top-placement) - 1px);
     position: sticky;

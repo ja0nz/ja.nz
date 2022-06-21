@@ -63,7 +63,7 @@
     <!-- Scrollable, selectable menu col -->
     <TagFeed {tagsByLatest} />
   </Menu>
-  <div id="not-sidebar">
+  <div id="main-content">
     <ContentHeader
       --top-placement="var(--space-m)"
       --content-clip="var(--sticker-width, 60px)"

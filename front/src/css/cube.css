@@ -20,8 +20,8 @@
   body {
     @apply dark:bg-dark dark:text-light;
   }
-  .dark #bg-img {
-    filter: brightness(0.2);
+  .dark {
+    --bg-img: url("/bg-tile-light.png");
   }
 }
 
@@ -44,10 +44,17 @@
     /* scrollbar */
     --sb-r: #860111;
     --sb-o: #ff4605;
+    /* BG */
+    --bg-img: url("/bg-tile-dark.png");
   }
 
   body {
     @apply bg-light text-dark text-0 font-sans overflow-x-hidden;
+  }
+
+  /* Ensure some breathing before anchor tag */
+  :target {
+    scroll-margin-top: var(--margin-top, 2ex);
   }
 
   ::-webkit-scrollbar {

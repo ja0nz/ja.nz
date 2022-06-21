@@ -33,7 +33,6 @@
 
 <!-- stack-spacing targeting ContentBubbles -->
 <StickyBackground
-  bg="bg-tile-dark.png"
   --top-placement="var(--avatar-plus-margin-top)"
   --stack-spacing="var(--space-3xs)"
 >
@@ -47,11 +46,7 @@
     placeholder="Search feed"
     inert
   />
-  <div
-    style="scroll-margin-top: var(--avatar-plus-margin-top)"
-    id="main-content"
-    class="stack"
-  >
+  <div class="stack">
     {#each [...content] as issue}
       <ContentBubbles title={titleP(issue)} href={`/${titleNumberP(issue)}`}>
         {@html highlightDOMString(
