@@ -1,10 +1,11 @@
 <script lang="ts">
   export let title: string;
+  export let background: string;
   export let summary: string;
   export let href: string;
 </script>
 
-<div class="this | stack">
+<div style="background: {background}" class="this | stack">
   <h2>{title}</h2>
   <div class="content">
     {#if summary.length > 0}
@@ -20,11 +21,10 @@
 
 <style>
   .this:nth-child(even) {
-    background: red;
     align-self: flex-end;
   }
   .this:nth-child(odd) {
-    background: lightgreen;
+    background-color: lightgreen !important;
   }
   .this {
     max-width: 70%;

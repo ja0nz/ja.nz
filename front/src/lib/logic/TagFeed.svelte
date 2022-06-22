@@ -1,7 +1,7 @@
 <script lang="ts">
   export let tagsByLatest: [string, number][];
 
-  import { highlightTags } from "$lib/xform";
+  import { highlightTags, str2Hsl } from "$lib/xform";
   import { filterFuzzy } from "@thi.ng/transducers";
   import TagCard from "$lib/layout/TagCard.svelte";
   // Filter label
@@ -37,6 +37,7 @@
           <svg
             slot="picture"
             viewBox="0 0 100 100"
+            fill={str2Hsl(tag)}
             xmlns="http://www.w3.org/2000/svg"
           >
             <circle cx="50" cy="50" r="50" />

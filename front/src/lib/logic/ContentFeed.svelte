@@ -17,10 +17,10 @@
 
   import type { ParsedIssue } from "src/app";
   import { highlightDOMString } from "$lib/highlightDOM";
-  import { filterContent } from "$lib/xform";
+  import { filterContent, cornerLinearGradient } from "$lib/xform";
   import StickyBackground from "$lib/layout/StickyBackground.svelte";
   import ContentBubbles from "$lib/layout/ContentBubbles.svelte";
-  import { summaryP, titleNumberP, titleP, titleTitleP } from "$lib/paths";
+  import { summaryP, tagsP, titleNumberP, titleTitleP } from "$lib/paths";
 
   let content: IterableIterator<ParsedIssue>;
   let fuzzyContent = "";
@@ -51,6 +51,7 @@
       <ContentBubbles
         title={titleTitleP(issue)}
         summary={summaryP(issue) ?? ""}
+        background={cornerLinearGradient(tagsP(issue))}
         href={`/${titleNumberP(issue)}`}
       >
         {@html highlightDOMString(

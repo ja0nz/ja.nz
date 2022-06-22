@@ -2,7 +2,7 @@
   import { get } from "svelte/store";
   import { page } from "$app/stores";
   import type { LoadEvent } from "@sveltejs/kit";
-  import { byTagsLatest, latestTags } from "$lib/xform";
+  import { byTagsLatest, latestTags, str2Hsl } from "$lib/xform";
   // Pass the `stuff` from __layout into the props of this page
   export async function load({ params, url, stuff }: LoadEvent) {
     const tag = params.slug.substring(1);
@@ -73,6 +73,7 @@
         <svg
           slot="picture"
           viewBox="0 0 100 100"
+          fill={str2Hsl($page.params.slug.substring(1))}
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle cx="50" cy="50" r="50" />

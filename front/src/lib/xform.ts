@@ -85,15 +85,23 @@ export function filterContent<A>(
   }, src);
 }
 
-// const C_TOGGLE = "no-content";
-// export const changeRouteWClass = (route: string) => () => {
-//   if (window.innerWidth <= 1100) {
-//     const content = document.querySelector("#not-sidebar");
-//     if (content?.classList.contains(C_TOGGLE)) {
-//       content?.classList.remove(C_TOGGLE);
-//     } else {
-//       content?.classList.add(C_TOGGLE);
-//     }
-//   }
-//   goto(route);
-// };
+export function str2Hsl(stringInput: string) {
+  const stringUniqueHash = [...stringInput].reduce((acc, char) => {
+    return char.charCodeAt(0) + ((acc << 5) - acc);
+  }, 0);
+  return `hsl(${stringUniqueHash % 360}, 95%, 65%)`;
+}
+
+export function cornerLinearGradient(tags: string[] | undefined) {
+  if (!tags || tags.length === 0) return "";
+  const cover = 90;
+  const steps = (100 - cover) / tags.length;
+  const seed: [string, number][] = [["transparent", cover]];
+  const str = tags.reduce((acc, x) => {
+    const lastNo = acc[acc.length - 1][1];
+    return [...acc, [str2Hsl(x), lastNo], [str2Hsl(x), lastNo + steps]];
+  }, seed) as [string, number][];
+  return `linear-gradient(45deg, ${str
+    .map(([x, y]) => `${x} ${y + "%"}`)
+    .join(",")})`;
+}
