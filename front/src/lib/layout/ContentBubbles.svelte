@@ -1,12 +1,17 @@
 <script lang="ts">
   export let title: string;
+  export let summary: string;
   export let href: string;
 </script>
 
 <div class="this | stack">
   <h2>{title}</h2>
   <div class="content">
-    <slot />
+    {#if summary.length > 0}
+      <p>{summary}</p>
+    {:else}
+      <slot />
+    {/if}
   </div>
   <div class="btm">
     <a {href}>read more</a>

@@ -36,8 +36,14 @@ export const titleP = comp(
   dataP
 );
 export const titleNumberP = comp((x) => x.split(",")[0].substring(1), titleP);
+export const titleTitleP = comp((x) => x.split(",")[1], titleP);
 
 export const timestampP = comp(
   defGetter<ParsedIssue["data"], "timestamp">(["timestamp"]),
+  dataP
+);
+
+export const summaryP = comp(
+  defGetter<ParsedIssue["data"], "summary">(["summary"]),
   dataP
 );

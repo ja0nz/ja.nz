@@ -34,6 +34,7 @@ type ParsedIssue = {
     draft: boolean;
     timestamp: number;
     state: "CLOSED" | "OPEN";
+    summary?: string;
     milestone?: string;
     date?: Date;
     tags?: string[];
