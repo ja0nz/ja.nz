@@ -1,9 +1,27 @@
 #+TITLE: Readme
 
-WIP;
 
-* Inspiration
-https://muan.co/
+* PROJ Tasks
+** TODO 'goto button' styling
+like here for example
+https://piccalil.li/tutorials/
+** TODO component: bubble bar
+[[file:src/lib/layout/ContentBubbles.svelte]]
+- differ between 'micro' & 'blog'
+- incorporate social
+** TODO error handling
+test if 404 working fine
+- does on /33
+- not on /:33
+** TODO blog post styling
+[[file:src/routes/\[slug=integer\].svelte]]
+- overflow issues (on mobile)
+- maybe incorporate back button
+- on scroll: scribbles
+- social section
+** TODO RSS feed
+** TODO Search content bar styling
+- extra button to kill bar
 
 * Architecture
 #+begin_src bash :results drawer
@@ -65,40 +83,3 @@ cd ./src && fd . | as-tree
 │   └── index.ts
 └── service-worker.ts
 :end:
-
-** api
-*** client.ts
-*** server.ts
-** /routes
-*** /index.svelte
-- Counter.ts
-
-** /hooks.ts - Run on every request
-https://kit.svelte.dev/docs/hooks
-** /lib/Counter.svelte
-interesting [[https://svelte-motion.gradientdescent.de/][Svelte Motion]] example
--> $ displayed_count
--> $ offset (for negative numbers)
-
-* Modules
-** $app/env
-import { amp, browser, dev, mode, prerendering } from '$app/env';
-https://kit.svelte.dev/docs/modules#$app-env
-
-* Receipts
-** Client code
-#+begin_src javascript
-if (typeof window !== 'undefined') {
-  // enter client side
-}
-#+end_src
-
-* Open Todos
-** Site-head (Nav) -> __layout
-[[file:src/components/SiteHead.svelte][file:~/data/git/svelte/ja.nz/src/components/SiteHead.svelte]]
-
-** routes
-*** __error
-[[file:src/routes/__error.svelte::// TODO Check offline capabilities][Offline capabilities]]
-[[file:src/routes/__error.svelte::// TODO more status?][Error Codes]]
-[[file:src/routes/__error.svelte::>TODO: Try searching for it here!</a][Search in content to escape 404]]
