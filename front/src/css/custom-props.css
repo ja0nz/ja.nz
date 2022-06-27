@@ -2,8 +2,10 @@
       Tokens location: ./tailwind.config.js */
 
 :root {
-  --color-primary: #efaf87;
+  --color-primary: #ff5400;
   --color-secondary: #86c7f0;
+  --color-yolk: #f3cf50;
+  --color-navy: #161135;
   --color-light: #f3f3f3;
   --color-dark: #252525;
   --space-3xs: clamp(0.31rem, calc(0.29rem + 0.12vw), 0.38rem);

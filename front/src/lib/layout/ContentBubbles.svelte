@@ -7,12 +7,9 @@
 
 <div style="background: {background}" class="this | stack">
   <h2>{title}</h2>
+  <h3>{summary}</h3>
   <div class="content">
-    {#if summary.length > 0}
-      <p>{summary}</p>
-    {:else}
-      <slot />
-    {/if}
+    <slot />
   </div>
   <div class="btm">
     <a {href}>read more</a>
