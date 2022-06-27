@@ -22,9 +22,10 @@
 <style>
   .this:nth-child(even) {
     align-self: flex-end;
+    background-color: var(--bg-bubble-even) !important;
   }
   .this:nth-child(odd) {
-    background-color: lightgreen !important;
+    background-color: var(--bg-bubble-odd) !important;
   }
   .this {
     max-width: 70%;

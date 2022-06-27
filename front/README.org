@@ -13,7 +13,6 @@ cd ./src && fd . | as-tree
 #+RESULTS:
 :results:
 .
-├── app.css
 ├── app.d.ts
 ├── app.html
 ├── css
@@ -21,35 +20,51 @@ cd ./src && fd . | as-tree
 │   ├── _compositions.css
 │   ├── _utilities.css
 │   ├── blocks
-│   │   └── box.css
+│   │   ├── box.css
+│   │   └── skip-link.svelte
 │   ├── compositions
 │   │   ├── cluster.css
 │   │   ├── sidebar.css
+│   │   ├── stack.css
 │   │   └── switcher.css
 │   ├── cube.css
 │   ├── custom-props.css
-│   ├── global.css
 │   ├── reset.css
 │   └── utilities
 │       ├── flow.css
 │       ├── region.css
+│       ├── splitter.css
 │       ├── visually-hidden.css
 │       └── wrapper.css
-├── hooks.ts
 ├── lib
-│   ├── Counter.svelte
-│   ├── form.ts
-│   └── header
-│       ├── Header.svelte
-│       └── svelte-logo.svg
+│   ├── fetch.ts
+│   ├── highlightDOM.ts
+│   ├── layout
+│   │   ├── AboutCard.svelte
+│   │   ├── ContentBubbles.svelte
+│   │   ├── ContentHeader.svelte
+│   │   ├── Menu.svelte
+│   │   ├── SearchContentIcon.svelte
+│   │   ├── StickyBackground.svelte
+│   │   └── TagCard.svelte
+│   ├── logic
+│   │   ├── About.svelte
+│   │   ├── ContentFeed.svelte
+│   │   ├── TagFeed.svelte
+│   │   └── ThemeSwitch.svelte
+│   ├── paths.ts
+│   ├── store.ts
+│   └── xform.ts
+├── params
+│   ├── colon.ts
+│   └── integer.ts
 ├── routes
+│   ├── [slug=colon].svelte
+│   ├── [slug=integer].svelte
 │   ├── __layout.svelte
 │   ├── about.svelte
-│   ├── index.svelte
-│   └── todos
-│       ├── _api.ts
-│       ├── index.svelte
-│       └── index.ts
+│   ├── index.ts
+│   └── showcase.svelte
 └── service-worker.ts
 :end:
 

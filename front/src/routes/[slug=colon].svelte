@@ -81,7 +81,7 @@
         <!-- Slot text -->
         <div slot="text">
           {#if $page.params.slug.length == 1}
-            <p>ALL posts</p>
+            <p>@ll</p>
           {:else}
             <p>{$page.params.slug.substring(1)}</p>
           {/if}

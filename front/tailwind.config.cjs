@@ -13,6 +13,8 @@ module.exports = {
     colors: {
       primary: "#ff5400",
       secondary: "#86c7f0",
+      yolk: "#f3cf50",
+      navy: "#161135",
       light: "#f3f3f3",
       dark: "#252525",
     },

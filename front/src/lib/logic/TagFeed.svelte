@@ -31,7 +31,7 @@
 <div class="overflow-y-auto">
   {#each [...tags] as [tag, ts]}
     <a class="no-underline" href={`/:${tag}#main-content`}>
-      <div class="hover:bg-secondary dark:hover:bg-primary">
+      <div class="hover:bg-yolk dark:hover:bg-navy">
         <TagCard>
           <!-- Slot picture -->
           <svg

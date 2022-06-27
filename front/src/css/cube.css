@@ -22,6 +22,8 @@
   }
   .dark {
     --bg-img: url("/bg-tile-light.png");
+    --bg-bubble-even: #161135;
+    --bg-bubble-odd: #852a85;
   }
 }
 
@@ -46,6 +48,8 @@
     --sb-o: #ff4605;
     /* BG */
     --bg-img: url("/bg-tile-dark.png");
+    --bg-bubble-even: #e6d9d0;
+    --bg-bubble-odd: #e5a97e;
   }
 
   body {
