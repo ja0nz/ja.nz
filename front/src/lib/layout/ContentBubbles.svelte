@@ -1,13 +1,15 @@
 <script lang="ts">
   export let title: string;
   export let background: string;
-  export let summary: string;
+  export let summary: string | undefined;
   export let href: string;
 </script>
 
 <div style="background: {background}" class="this | stack">
   <h2>{title}</h2>
-  <h3>{summary}</h3>
+  {#if summary}
+    <h3>{summary}</h3>
+  {/if}
   <div class="content">
     <slot />
   </div>

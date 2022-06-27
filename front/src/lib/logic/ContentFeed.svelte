@@ -50,7 +50,7 @@
     {#each [...content] as issue}
       <ContentBubbles
         title={titleTitleP(issue)}
-        summary={summaryP(issue) ?? ""}
+        summary={summaryP(issue)}
         background={cornerLinearGradient(tagsP(issue))}
         href={`/${titleNumberP(issue)}`}
       >
