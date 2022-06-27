@@ -62,9 +62,7 @@ cd ./src && fd . | as-tree
 │   ├── [slug=colon].svelte
 │   ├── [slug=integer].svelte
 │   ├── __layout.svelte
-│   ├── about.svelte
-│   ├── index.ts
-│   └── showcase.svelte
+│   └── index.ts
 └── service-worker.ts
 :end:
 
