@@ -6,9 +6,9 @@
 </script>
 
 <div style="background: {background}" class="this | stack">
-  <h2>{title}</h2>
+  <h1>{title}</h1>
   {#if summary}
-    <h3>{summary}</h3>
+    <h2>{summary}</h2>
   {/if}
   <div class="content">
     <slot />
@@ -33,13 +33,13 @@
     @apply text-1-;
 
     :global(h1) {
-      @apply text-2;
-    }
-    :global(h2) {
       @apply text-1;
     }
-    :global(h3) {
+    :global(h2) {
       @apply text-0;
+    }
+    :global(h3) {
+      @apply text-1-;
     }
   }
   .content {
