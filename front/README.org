@@ -2,7 +2,7 @@
 
 
 * PROJ Tasks
-** TODO 'goto button' styling
+** DONE 'goto button' styling
 like here for example
 https://piccalil.li/tutorials/
 ** TODO component: bubble bar
@@ -22,6 +22,7 @@ test if 404 working fine
 ** TODO RSS feed
 ** TODO Search content bar styling
 - extra button to kill bar
+** TODO Svelte motion transitions
 
 * Architecture
 #+begin_src bash :results drawer

@@ -1,7 +1,12 @@
-<a class="this | button" href="#main-content">Goto main</a>
+<a class="this | button" href="#main-content">👉 main 👈</a>
 
 <!-- Visually hidden -->
 <style>
+  .this {
+    position: absolute;
+    top: var(--space-xs);
+    left: var(--space-xs);
+  }
   .this:not(:focus) {
     border: 0;
     clip: rect(0 0 0 0);
