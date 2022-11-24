@@ -7,8 +7,7 @@ import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://ja0nz.github.io",
-  base: "/ja.nz",
+  site: "https://ja.nz",
   integrations: [Unocss(presetIcons()), alpinejs()],
   markdown: {
     remarkPlugins: [remarkHeadingId],
