@@ -1,4 +1,4 @@
-// Endpoint: .well-known/webfinger.json
+// Endpoint: .well-known/webfinger
 export async function get() {
   return {
     body: JSON.stringify({
