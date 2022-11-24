@@ -1,5 +1,6 @@
 ---
-const redir = `0;url=${Astro.url.replace(/\/$/, "") + ".json"}`;
+const url = Astro.url.toString();
+const redir = `0;url=${url.replace(/\/$/, "") + ".json"}`;
 ---
 
 <head>
