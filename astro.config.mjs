@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 import Unocss from "unocss/astro";
 import remarkHeadingId from "remark-heading-id";
@@ -10,5 +10,5 @@ export default defineConfig({
   integrations: [Unocss(presetIcons()), alpinejs()],
   markdown: {
     remarkPlugins: [remarkHeadingId],
-  }
+  },
 });

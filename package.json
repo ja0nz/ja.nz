@@ -1,5 +1,5 @@
 {
-  "name": "@example/basics",
+  "name": "new.ja.nz",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -19,7 +19,15 @@
   "packageManager": "yarn@3.3.0",
   "devDependencies": {
     "@iconify-json/lucide": "^1.1.55",
+    "@types/eslint": "^8",
+    "@types/prettier": "^2",
+    "@typescript-eslint/parser": "^5.44.0",
     "@unocss/preset-icons": "^0.46.5",
+    "eslint": "^8.28.0",
+    "eslint-plugin-astro": "^0.21.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "prettier": "^2.8.0",
+    "prettier-plugin-astro": "^0.7.0",
     "remark-heading-id": "^1.0.0",
     "unocss": "^0.46.5"
   }
