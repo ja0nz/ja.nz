@@ -20,3 +20,7 @@ build:
 # dev build
 dev:
     yarn astro dev
+
+# preview build
+preview:
+    yarn astro preview

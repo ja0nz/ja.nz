@@ -3,26 +3,19 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
   "dependencies": {
-    "@astrojs/alpinejs": "^0.1.2",
-    "@types/alpinejs": "^3.0.0",
-    "alpinejs": "^3.0.0",
-    "astro": "^1.6.5"
+    "alpinejs": "^3.0.0"
   },
   "packageManager": "yarn@3.3.0",
   "devDependencies": {
+    "@astrojs/alpinejs": "^0.1.2",
     "@iconify-json/lucide": "^1.1.55",
+    "@types/alpinejs": "^3.0.0",
     "@types/eslint": "^8",
     "@types/prettier": "^2",
     "@typescript-eslint/parser": "^5.44.0",
     "@unocss/preset-icons": "^0.46.5",
+    "astro": "^1.6.5",
     "eslint": "^8.28.0",
     "eslint-plugin-astro": "^0.21.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
