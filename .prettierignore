@@ -1,5 +1,6 @@
-dist
-content
-.vscode
-.yarn
+dist/
+content/
+read/
+.vscode/
+.yarn/
 yarn.lock
