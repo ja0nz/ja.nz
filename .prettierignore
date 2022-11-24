@@ -1,4 +1,5 @@
 dist
+content
 .vscode
 .yarn
 yarn.lock
