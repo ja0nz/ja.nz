@@ -7,24 +7,24 @@
     "build": "astro check && astro build"
   },
   "dependencies": {
-    "alpinejs": "^3.0.0"
+    "alpinejs": "^3.10.5"
   },
   "packageManager": "yarn@3.3.0",
   "devDependencies": {
     "@astrojs/alpinejs": "^0.1.2",
     "@iconify-json/lucide": "^1.1.55",
-    "@types/alpinejs": "^3.0.0",
-    "@types/eslint": "^8",
-    "@types/prettier": "^2",
-    "@typescript-eslint/parser": "^5.44.0",
-    "@unocss/preset-icons": "^0.46.5",
-    "astro": "^1.6.5",
-    "eslint": "^8.28.0",
-    "eslint-plugin-astro": "^0.21.0",
+    "@types/alpinejs": "^3.7.1",
+    "@types/eslint": "^8.4.10",
+    "@types/prettier": "^2.7.2",
+    "@typescript-eslint/parser": "^5.47.0",
+    "@unocss/preset-icons": "^0.48.0",
+    "astro": "^1.7.2",
+    "eslint": "^8.30.0",
+    "eslint-plugin-astro": "^0.21.1",
     "eslint-plugin-jsx-a11y": "^6.6.1",
-    "prettier": "^2.8.0",
+    "prettier": "^2.8.1",
     "prettier-plugin-astro": "^0.7.0",
     "remark-heading-id": "^1.0.0",
-    "unocss": "^0.46.5"
+    "unocss": "^0.48.0"
   }
 }
