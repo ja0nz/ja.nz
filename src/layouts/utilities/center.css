@@ -1,0 +1,20 @@
+/*
+CENTER UTILITY
+https://every-layout.dev/layouts/center/
+
+Whenever you wish something to be horizontally centered,
+ the Center is your friend.
+
+Args
+ * max-inline-size: --center--measure, 60ch
+ - In a context narrower than --center--measure,
+   the contents will currently be flush with either side of the
+   parent element or viewport.
+ - In general, if you want an 80-character column width and you’re going to use ch to size it,
+   aim for about 60ch
+*/
+.center {
+  box-sizing: content-box;
+  margin-inline: auto;
+  max-inline-size: var(--center--measure, 60ch);
+}

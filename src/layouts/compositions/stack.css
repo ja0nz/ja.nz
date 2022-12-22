@@ -1,0 +1,21 @@
+/*
+SIDEBAR
+More info: https://every-layout.dev/layouts/stack/
+
+Args
+* margin-block-start: --stack--spacing, 1.5rem
+- The spacing between elements
+*/
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-block: 0;
+}
+
+.stack > * + * {
+  margin-block-start: var(--stack--spacing, 1.5rem);
+}

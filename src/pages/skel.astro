@@ -1,0 +1,38 @@
+---
+import Layout from "@layouts/Layout.astro";
+import MainMenu from "@components/MainMenu.astro";
+import ContentHeader from "@components/ContentHeader.astro";
+// CSS
+// sidebar | content
+import "@layouts/compositions/sidebar.css";
+//  provides a consistent max width,
+//  padded container that sits in the middle of the viewport
+import "@layouts/utilities/center.css";
+---
+
+<style>
+  .this {
+    /* utilities/center.css */
+    --center--measure: clamp(16rem, 95vw, 91rem);
+    /* compositions/sidebar.css */
+    --sidebar--gap: var(--step--2);
+    --sidebar--bar-width: clamp(18.38rem, calc(16.77rem + 8.05vw), 22.5rem);
+
+    /* MainMenu + ContentHeader*/
+    --rocket-overlap: 24px;
+    --top-placement: 36px;
+  }
+</style>
+
+<Layout title="Skeleton">
+  <main class="this | center | with-sidebar">
+    <MainMenu>
+      <div class="|| bg-blue">MainMenu</div>
+    </MainMenu>
+    <div id="main-content" class="|| bg-orange">
+      <ContentHeader>
+        <div>Content</div>
+      </ContentHeader>
+    </div>
+  </main>
+</Layout>
