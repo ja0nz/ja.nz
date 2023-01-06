@@ -1,14 +1,8 @@
-{ pkgs ? import <nixpkgs> {
-  overlays = [
-    (self: super: {
-      yarn = super.yarn.override { nodejs = pkgs.nodejs-19_x; };
-    })
-  ];
-} }:
+{ pkgs, ... }:
 
-pkgs.mkShell {
-  buildInputs = with pkgs; [
-    nodejs-19_x
+{
+  # https://devenv.sh/packages/
+  packages = with pkgs; [
     yarn
     nixfmt
     just
@@ -18,4 +12,7 @@ pkgs.mkShell {
     nodePackages.vscode-css-languageserver-bin
     nodePackages.vscode-json-languageserver
   ];
+
+  # https://devenv.sh/languages/
+  languages.typescript.enable = true;
 }

@@ -4,3 +4,5 @@ read/
 .vscode/
 .yarn/
 yarn.lock
+.devenv/
+devenv.lock
