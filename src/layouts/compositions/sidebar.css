@@ -15,7 +15,7 @@ Args
   * flex-basis: --sidebar--bar-width
   -  How large the sidebar should be
 
-  * min-linline-size: --sidebar--content-min-width, 50%
+  * min-inline-size: --sidebar--content-min-width, 50%
   -  The minimum size of the main content area
 */
 .with-sidebar {

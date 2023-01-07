@@ -2,12 +2,14 @@
 import Layout from "@layouts/Layout.astro";
 import MainMenu from "@components/MainMenu.astro";
 import ContentHeader from "@components/ContentHeader.astro";
+import Content from "@components/Content.astro";
 // CSS
 // sidebar | content
 import "@layouts/compositions/sidebar.css";
 //  provides a consistent max width,
 //  padded container that sits in the middle of the viewport
 import "@layouts/utilities/center.css";
+import ThemeSwitch from "@components/ThemeSwitch.astro";
 ---
 
 <style>
@@ -17,6 +19,7 @@ import "@layouts/utilities/center.css";
     /* compositions/sidebar.css */
     --sidebar--gap: var(--step--2);
     --sidebar--bar-width: clamp(18.38rem, calc(16.77rem + 8.05vw), 22.5rem);
+    --sidebar--content-min-width: 65%;
 
     /* MainMenu + ContentHeader*/
     --rocket-overlap: 24px;
@@ -27,12 +30,26 @@ import "@layouts/utilities/center.css";
 <Layout title="Skeleton">
   <main class="this | center | with-sidebar">
     <MainMenu>
-      <div class="|| bg-blue">MainMenu</div>
+      <div slot="header" class="|| bg-blue">MainMenu</div>
+      {
+        ["a", "b", "y", "i", "j", "k", "x", "y", "i", "j", "k"].map((i) => (
+          <div slot="items" class="|| border border-black h-30">
+            {i} MenuCard
+          </div>
+        ))
+      }
     </MainMenu>
     <div id="main-content" class="|| bg-orange">
       <ContentHeader>
         <div>Content</div>
       </ContentHeader>
+      <Content>
+        {
+          ["a", "b", "i", "j", "k", "x", "y", "i", "j", "k"].map((i) => (
+            <div class="|| border border-black h-30">{i} ContentCard</div>
+          ))
+        }
+      </Content>
     </div>
   </main>
 </Layout>
