@@ -9,6 +9,13 @@ import alpinejs from "@astrojs/alpinejs";
 // https://astro.build/config
 export default defineConfig({
   site: "https://ja.nz",
+  vite: {
+    server: {
+      watch: {
+        ignored: ["**/.devenv**"],
+      },
+    },
+  },
   integrations: [
     alpinejs(),
     Unocss({

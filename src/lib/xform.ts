@@ -6,6 +6,8 @@ import {
   mapcat,
   maxCompare,
   pushSort,
+  scan,
+  takeLast,
   transduce,
 } from "@thi.ng/transducers";
 import { defGetter } from "@thi.ng/paths";
@@ -39,17 +41,18 @@ const groupTagLatest = groupByObj({
 export function tagTimestampByLatest(
   posts: MarkdownInstance<FrontMatter>[]
 ): TagTs[] {
-  const latestTag = transduce(
+  return transduce(
     comp(
       map(fM),
       filter((x) => !draft(x)), // remove drafts
       filter((x) => !!tags(x)), // remove unset tags
-      map<FrontMatter, FmT>((x) => <FmT>x), // just a type cast
-      mapcat<FmT, TagTs>((x) => x.tags.map((y) => [y, ts(x)])) // splice to
+      map((x) => <FmT>x), // just a noop type cast
+      mapcat<FmT, TagTs>((x) => x.tags.map((y) => [y, ts(x)])), // splice to
+      scan(groupTagLatest), // inbetween group/reduce
+      takeLast(1), // continue with last reduction
+      mapcat(Object.values) // pull' n flat
     ),
-    groupTagLatest,
+    pushSort(([_, acc], [_1, x]) => x - acc),
     posts
   );
-  // sort by x > acc
-  return pushSort(([_, acc], [_1, x]) => x - acc, Object.values(latestTag));
 }
