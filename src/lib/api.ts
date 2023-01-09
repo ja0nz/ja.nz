@@ -1,7 +1,7 @@
 export type FrontMatter = {
   title: string;
   author: string[];
-  summary?: string;
+  summary: string;
   date?: Date;
   tags?: string[];
   draft: boolean;
@@ -9,6 +9,17 @@ export type FrontMatter = {
   category: string;
   timestamp: number;
 };
+export type TTS = { tag: string; timestamp: number };
+export type Overview = {
+  title: string;
+  id: number;
+  summary: string;
+  timestamp: number;
+  tags?: string[];
+  category: string;
+}
+
+/* Utility Types */
 
 export type Concrete<Type> = {
   [Property in keyof Type]-?: Type[Property];

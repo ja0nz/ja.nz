@@ -1,0 +1,60 @@
+---
+import type { Overview } from "@lib/api";
+
+interface Props {
+  render: Overview[];
+  style: string[];
+}
+const { render, style } = Astro.props;
+
+/* Just a random AlpineJS id */
+const alpineID = [...Array(10)]
+  .map((_) => String.fromCharCode(97 + Math.floor(Math.random() * 26)))
+  .join("");
+---
+
+<script define:vars={{ alpineID, render, style }}>
+  function filter(search, target, fn) {
+    return target.filter((x) => fn(x).includes(search.toLowerCase()));
+  }
+  function highlightSearch(search, el, css) {
+    if (search === "") return el;
+    return el.replaceAll(
+      new RegExp(`(${search.toLowerCase()})`, "ig"),
+      `<strong class="${css.join(" ")}">$1</strong>`
+    );
+  }
+
+  // Alpine Init
+  const init = (posts, css) => () => {
+    const fFn = (x) => Object.values(x).join(" ").toLowerCase();
+    const prePosts = posts.map((p) => ({
+      ...p,
+      timestamp: new Date(p.timestamp).toLocaleDateString(),
+    }));
+
+    return {
+      search: "",
+      f: (search) => filter(search, prePosts, fFn),
+      hl: (search, el) => highlightSearch(search, el, css),
+    };
+  };
+
+  window[alpineID] = init(render, style);
+</script>
+
+<div x-data={alpineID}>
+  <input type="text" placeholder="Search tags" x-model="search" />
+  <ul>
+    <template x-for="post in f(search)">
+      <li>
+        <span x-html="hl(search, post.title)"></span>
+        <span x-html="hl(search, post.summary)"></span>
+        <span x-html="hl(search, post.timestamp)"></span>
+        <span x-html="hl(search, post.category)"></span>
+        <span x-text="post.tags"></span>
+        <span x-text="post.id"></span>
+      </li>
+    </template>
+  </ul>
+</div>

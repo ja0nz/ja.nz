@@ -18,15 +18,15 @@
     "@types/alpinejs": "^3.7.1",
     "@types/eslint": "^8.4.10",
     "@types/prettier": "^2.7.2",
-    "@typescript-eslint/parser": "^5.48.0",
-    "@unocss/preset-icons": "^0.48.2",
+    "@typescript-eslint/parser": "^5.48.1",
+    "@unocss/preset-icons": "^0.48.3",
     "astro": "^1.9.1",
     "eslint": "^8.31.0",
     "eslint-plugin-astro": "^0.21.1",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "prettier": "^2.8.1",
+    "eslint-plugin-jsx-a11y": "^6.7.0",
+    "prettier": "^2.8.2",
     "prettier-plugin-astro": "^0.7.2",
     "remark-heading-id": "^1.0.0",
-    "unocss": "^0.48.2"
+    "unocss": "^0.48.3"
   }
 }
