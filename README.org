@@ -46,7 +46,9 @@ CLOSED: [2022-04-26 Di 12:35]
 :PROPERTIES:
 :export_file_name: 4
 :END:
-A nonempty string Record. Guarantees to return a string or empty/neutral string
+#+begin_description
+A nonempty string Record. Guarantees to return a string or empty/neutral string.
+#+end_description
 #+begin_src typescript
 const safeRecord = new Proxy(
   {}, {
@@ -62,7 +64,9 @@ CLOSED: [2022-04-26 Di 12:33]
 :PROPERTIES:
 :export_file_name: 5
 :END:
+#+begin_description
 Conditional type switch on Array vs Object vs subtyped object
+#+end_description
 #+begin_src typescript
 type DetectArray<T> = number extends keyof T ? true : false;
 DetectArray<string[]> // true
@@ -77,7 +81,10 @@ DetectArray<{ x: string } // false
 :PROPERTIES:
 :export_file_name: 6
 :END:
- #+begin_quote
+#+begin_description
+Recursion for all. A quote to remember
+#+end_description
+#+begin_quote
  The idea of recursion can be used to express what, in the case of a deeply nested combination, would otherwise be viewed as a rather complicated process.
  #+begin_cite
  — SICP JS; https://sourceacademy.org/sicpjs/1.1.3
@@ -97,7 +104,7 @@ CLOSED: [2022-05-16 Mo 16:40]
 :export_file_name: 7
 :END:
 #+begin_description
-This post will contain a lot of formattings
+This post will contain a lot of formattings. Just demo around.
 #+end_description
 
 *** Link
@@ -215,6 +222,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 | https://ja.nz/8 | Location      |
 | file:static/    | Ref to assets |
 
+
 * Misc :noexport:
 :PROPERTIES:
 :ID:       e3328911-73b1-45dd-be05-c3b24009b67d
@@ -318,9 +326,10 @@ in our age, can still do for those who study it.
   (insert (format "%s,%s" id title))
   (org-metaright)
   (org-todo "DRAFT")
+  (org-insert-structure-template "description")
   (org-set-property "export_file_name" id)
-  (next-line)
   (insert "\n")
+  (previous-line)
 #+END_SRC
 
 ** New post :util:
@@ -333,6 +342,7 @@ in our age, can still do for those who study it.
   (org-todo "TODO")
   (org-insert-structure-template "description")
   (org-set-property "export_file_name" id)
+  (insert "\n")
   (next-line)
   (insert "\n")
   ;; Begin meta table
@@ -350,7 +360,7 @@ in our age, can still do for those who study it.
   (org-cycle)
   (insert "Location")
   (org-cycle)
-  (insert "file:static/")
+  (insert "file:static/blog")
   (org-cycle)
   (insert "Ref to assets")
   (org-cycle)
@@ -366,3 +376,5 @@ in our age, can still do for those who study it.
   (delete-directory "content" t)
   (make-directory "content")
 #+END_SRC
+
+#+RESULTS: clean
