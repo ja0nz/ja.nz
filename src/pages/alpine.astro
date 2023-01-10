@@ -4,7 +4,7 @@ import HPosts from "@components/HPosts.astro";
 import type { FrontMatter } from "@lib/api";
 import { tagTimestampByLatest, renderOverview } from "@lib/xform";
 
-const posts = await Astro.glob<FrontMatter>("../pages/read/**/*.md"); // returns an array of posts that live at ./src/pages/post/*.md
+const posts = await Astro.glob<FrontMatter>("../pages/read/**/*.md");
 const renderT = tagTimestampByLatest(posts);
 const renderP = renderOverview(posts);
 

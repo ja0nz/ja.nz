@@ -1,8 +1,8 @@
 ---
-import type { TTS } from "@lib/api";
+import type { TDate } from "@lib/api";
 
 interface Props {
-  render: TTS[];
+  render: TDate[];
   style: string[];
 }
 const { render, style } = Astro.props;
@@ -44,7 +44,7 @@ const alpineID = [...Array(10)]
     <template x-for="tts in f(search)">
       <li>
         <span x-html="hl(search, tts.tag)"></span>
-        <span x-text="tts.timestamp"></span>
+        <span x-text="tts.date"></span>
       </li>
     </template>
   </ul>

@@ -1,8 +1,8 @@
 ---
-import type { Overview } from "@lib/api";
+import type { FrontMatter, Flip } from "@lib/api";
 
 interface Props {
-  render: Overview[];
+  render: Flip<FrontMatter, "date">[];
   style: string[];
 }
 const { render, style } = Astro.props;
@@ -30,7 +30,7 @@ const alpineID = [...Array(10)]
     const fFn = (x) => Object.values(x).join(" ").toLowerCase();
     const prePosts = posts.map((p) => ({
       ...p,
-      timestamp: new Date(p.timestamp).toLocaleDateString(),
+      date: new Date(p.date).toLocaleDateString(),
     }));
 
     return {
@@ -50,7 +50,7 @@ const alpineID = [...Array(10)]
       <li>
         <span x-html="hl(search, post.title)"></span>
         <span x-html="hl(search, post.summary)"></span>
-        <span x-html="hl(search, post.timestamp)"></span>
+        <span x-html="hl(search, post.date)"></span>
         <span x-html="hl(search, post.category)"></span>
         <span x-text="post.tags"></span>
         <span x-text="post.id"></span>

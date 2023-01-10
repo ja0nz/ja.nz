@@ -8,32 +8,38 @@ import {
   maxCompare,
   pushSort,
   scan,
-  selectKeys,
   takeLast,
   transduce,
 } from "@thi.ng/transducers";
 import { defGetter } from "@thi.ng/paths";
 import type { MarkdownInstance } from "astro";
-import type { FrontMatter, Flip, TTS, Overview } from "./api";
+import type { FrontMatter, Flip, TDate } from "./api";
 
 /* Types */
 type Post = MarkdownInstance<FrontMatter>;
-type FmT = Flip<FrontMatter, "tags">;
+type FMSafe = Flip<FrontMatter, "tags" | "date">;
 
 /* Getters/Setters */
 const fM = defGetter<Post, "frontmatter">(["frontmatter"]);
 const draft = defGetter<FrontMatter, "draft">(["draft"]);
 const tags = defGetter<FrontMatter, "tags">(["tags"]);
-const ts = defGetter<FrontMatter, "timestamp">(["timestamp"]);
 
 /* Reducer */
 const groupTagLatest = groupByObj({
-  key: ({ tag }: TTS) => tag, // group by "tag"
+  key: ({ tag }: TDate) => tag, // group by "tag"
   group: maxCompare(
-    (): TTS => ({ tag: "", timestamp: 0 }), // init/neutral
-    ({ timestamp: acc }, { timestamp: t }) => acc - t // reduce by acc > t
+    (): TDate => ({ tag: "", date: 0 }), // init/neutral
+    ({ date: acc }, { date: t }) => acc - t // reduce by acc > t
   ),
 });
+
+/* Utils */
+const preflight = comp(
+  map(fM),
+  filter((x) => !draft(x)), // remove drafts (plus ensuring date is set)
+  mapKeys({ date: (x) => +new Date(x) }), // format date to number
+  mapKeys({ title: (x) => x.split(",").slice(1).join("") }) // prepare title
+);
 
 /*
  * Return [tag, timestamp] pairs; by latest first
@@ -41,21 +47,20 @@ const groupTagLatest = groupByObj({
  */
 export function tagTimestampByLatest(
   posts: MarkdownInstance<FrontMatter>[]
-): TTS[] {
+): TDate[] {
   return transduce(
     comp(
-      map(fM),
-      filter((x) => !draft(x)), // remove drafts
+      preflight,
       filter((x) => !!tags(x)), // remove unset tags
-      map((x) => <FmT>x), // just a noop type cast
-      mapcat<FmT, TTS>((x) =>
-        x.tags.map((y) => ({ tag: y, timestamp: ts(x) }))
-      ), // splice to
+      map((x) => <FMSafe>x), // just a noop type cast
+      mapcat<FMSafe, TDate>((x) =>
+        x.tags.map((y) => ({ tag: y, date: x.date }))
+      ), // make TTS
       scan(groupTagLatest), // inbetween group/reduce by tags
       takeLast(1), // continue with last reduction
       mapcat(Object.values) // pull' n flat
     ),
-    pushSort(({ timestamp: acc }, { timestamp: x }) => x - acc), // latest first
+    pushSort(({ date: acc }, { date: x }) => x - acc), // latest first
     posts
   );
 }
@@ -64,15 +69,12 @@ export function tagTimestampByLatest(
  * Return selected FrontMatter; by latest first
  * Consumed by
  */
-export function renderOverview(posts: MarkdownInstance<FrontMatter>[]): Overview[] {
+export function renderOverview(
+  posts: MarkdownInstance<FrontMatter>[]
+): Flip<FrontMatter, "date"> {
   return transduce(
-    comp(
-      map(fM),
-      filter((x) => !draft(x)), // remove drafts
-      mapKeys({ title: (x) => x.split(",").slice(1).join("") }), // prepare title
-      selectKeys(["id", "title", "summary", "timestamp", "tags", "category"]) // select needed
-    ),
-    pushSort(({ timestamp: acc }, { timestamp: x }) => x - acc), // latest first
+    preflight,
+    pushSort(({ date: acc }, { date: x }) => x - acc), // latest first
     posts
   );
 }

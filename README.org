@@ -12,7 +12,7 @@
 #+hugo_base_dir: .
 #+hugo_section: .
 #+hugo_front_matter_format: yaml
-#+hugo_front_matter_key_replace: description>summary
+#+hugo_front_matter_key_replace: description>summary author>nil
 #+property: header-args :eval never-export
 :END:
 
@@ -39,7 +39,6 @@ Org mode is really powerful combined with [[https://orgmode.org/manual/Working-w
 :export_hugo_bundle: micro
 :export_hugo_custom_front_matter+: :id (org-entry-get (point) "export_file_name" t)
 :export_hugo_custom_front_matter+: :category (org-entry-get (point) "export_hugo_bundle" t)
-:export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format t))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :END:
 ** DONE 4,Proxy :typescript:
 CLOSED: [2022-04-26 Di 12:35]
@@ -96,12 +95,12 @@ Recursion for all. A quote to remember
 :export_hugo_bundle: blog
 :export_hugo_custom_front_matter+: :id (org-entry-get (point) "export_file_name" t)
 :export_hugo_custom_front_matter+: :category (org-entry-get (point) "export_hugo_bundle" t)
-:export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format t))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :END:
 ** DONE 7,All the formattings :started:
 CLOSED: [2022-05-16 Mo 16:40]
 :PROPERTIES:
 :export_file_name: 7
+:export_hugo_custom_front_matter+: :image '((src . /blog/cat.jpg) (alt . "A cat"))
 :END:
 #+begin_description
 This post will contain a lot of formattings. Just demo around.
@@ -226,6 +225,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 * Misc :noexport:
 :PROPERTIES:
 :ID:       e3328911-73b1-45dd-be05-c3b24009b67d
+:export_hugo_custom_front_matter+: :timestamp ((lambda (ts) (let* ((d (date-to-time (if ts ts (format-time-string (org-time-stamp-format t))))) (f (pop d)) (s (pop d))) (* (+ (* f (math-pow 2 16)) s) 1000))) (org-entry-get (point) "CLOSED"))
 :END:
 Just a bunch of *#+CALL* functions. Call with =C-c C-c=
 ** Markup Guide :lookup:
