@@ -17,6 +17,6 @@ export const highlightSearch =
     if (search === "") return el;
     return el.replaceAll(
       new RegExp(`(${search})`, "ig"),
-      `<strong class="${css.join(" ")}">$1</strong>`
+      `<span class="${css.join(" ")}">$1</span>`
     );
   };

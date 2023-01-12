@@ -20,7 +20,9 @@ import "@layouts/compositions/stack.css";
 
 <div class="this | stack">
   <slot name="header" />
-  <ul class="items">
-    <slot name="items" />
-  </ul>
+  <nav class="items">
+    <ul>
+      <slot name="items" />
+    </ul>
+  </nav>
 </div>
