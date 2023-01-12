@@ -11,10 +11,13 @@
     "@thi.ng/transducers": "^8.3.29",
     "alpinejs": "^3.10.5"
   },
-  "packageManager": "yarn@3.3.0",
+  "packageManager": "yarn@3.3.1",
   "devDependencies": {
     "@astrojs/alpinejs": "^0.1.2",
+    "@dicebear/collection": "^5.0.2",
+    "@dicebear/core": "^5.0.2",
     "@iconify-json/lucide": "^1.1.55",
+    "@thi.ng/api": "^8.6.3",
     "@types/alpinejs": "^3.7.1",
     "@types/eslint": "^8.4.10",
     "@types/prettier": "^2.7.2",

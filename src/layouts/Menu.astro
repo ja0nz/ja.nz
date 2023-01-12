@@ -1,0 +1,20 @@
+---
+import "@layouts/compositions/stack.css";
+---
+
+<style>
+  .items {
+    /* Related to max-height; Menu scroll bar  */
+    overflow-y: auto;
+  }
+  .items::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<div class="stack">
+  <slot name="header" />
+  <div class="items">
+    <slot name="items" />
+  </div>
+</div>

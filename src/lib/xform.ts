@@ -13,14 +13,10 @@ import {
 } from "@thi.ng/transducers";
 import { defGetter } from "@thi.ng/paths";
 import type { MarkdownInstance } from "astro";
-import type { FrontMatter, Flip, TDate } from "./api";
-
-/* Types */
-type Post = MarkdownInstance<FrontMatter>;
-type FMSafe = Flip<FrontMatter, "tags" | "date">;
+import type { FrontMatter, TDate, FM_D, FM_DT, Glob } from "./api";
 
 /* Getters/Setters */
-const fM = defGetter<Post, "frontmatter">(["frontmatter"]);
+const fM = defGetter<Glob, "frontmatter">(["frontmatter"]);
 const draft = defGetter<FrontMatter, "draft">(["draft"]);
 const tags = defGetter<FrontMatter, "tags">(["tags"]);
 
@@ -52,8 +48,8 @@ export function tagTimestampByLatest(
     comp(
       preflight,
       filter((x) => !!tags(x)), // remove unset tags
-      map((x) => <FMSafe>x), // just a noop type cast
-      mapcat<FMSafe, TDate>((x) =>
+      map((x) => <FM_DT>x), // just a noop type cast
+      mapcat<FM_DT, TDate>((x) =>
         x.tags.map((y) => ({ tag: y, date: x.date }))
       ), // make TTS
       scan(groupTagLatest), // inbetween group/reduce by tags
@@ -69,9 +65,7 @@ export function tagTimestampByLatest(
  * Return selected FrontMatter; by latest first
  * Consumed by
  */
-export function renderOverview(
-  posts: MarkdownInstance<FrontMatter>[]
-): Flip<FrontMatter, "date"> {
+export function renderOverview(posts: MarkdownInstance<FrontMatter>[]): FM_D[] {
   return transduce(
     preflight,
     pushSort(({ date: acc }, { date: x }) => x - acc), // latest first

@@ -27,7 +27,7 @@ const alpineID = [...Array(10)]
 
   // Alpine Init
   const init = (posts, css) => () => {
-    const fFn = (x) => Object.values(x).join(" ").toLowerCase();
+    const fFn = (x) => Object.values(x).join(" ");
     const prePosts = posts.map((p) => ({
       ...p,
       date: new Date(p.date).toLocaleDateString(),

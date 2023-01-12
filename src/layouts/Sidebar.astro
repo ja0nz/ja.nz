@@ -1,5 +1,4 @@
 ---
-import "@layouts/compositions/stack.css";
 ---
 
 <style>
@@ -15,14 +14,6 @@ import "@layouts/compositions/stack.css";
     max-height: calc(100vh - var(--top-placement) - 1px);
   }
 
-  .items {
-    /* Related to max-height; Menu scroll bar  */
-    overflow-y: auto;
-  }
-  .items::-webkit-scrollbar {
-    display: none;
-  }
-
   /* Mobile view */
   @media (max-width: 1114px) {
     .this {
@@ -33,9 +24,6 @@ import "@layouts/compositions/stack.css";
   }
 </style>
 
-<div class="this | stack">
-  <slot name="header" />
-  <div class="items">
-    <slot name="items" />
-  </div>
+<div class="this">
+  <slot />
 </div>

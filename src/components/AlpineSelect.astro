@@ -1,0 +1,41 @@
+---
+interface Props<T> {
+  inp: T[];
+  key: Fn<T, string>;
+  style: string[];
+}
+import type { Fn } from "@thi.ng/api";
+const { inp, key, style } = Astro.props;
+
+const xData = JSON.stringify({
+  search: "",
+  inp,
+  style,
+});
+---
+
+<script>
+  import { createFilter, highlightSearch } from "@lib/client";
+
+  // Alpine Init
+  const methods = () => ({
+    f: createFilter,
+    hl: highlightSearch,
+  });
+
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("AlpineSelect", methods);
+  });
+</script>
+
+<div x-data="AlpineSelect">
+  <div x-data={xData}>
+    <div
+      x-data={`{
+                f: $data.f($data.inp, ${key.toString()}),
+                hl: $data.hl($data.style)}`}
+    >
+      <slot />
+    </div>
+  </div>
+</div>

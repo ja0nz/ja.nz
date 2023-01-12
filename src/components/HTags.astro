@@ -13,6 +13,18 @@ const alpineID = [...Array(10)]
   .join("");
 ---
 
+<div x-data={alpineID}>
+  <input type="text" placeholder="Search tags" x-model="search" />
+  <ul>
+    <template x-for="tts in f(search)">
+      <li>
+        <span x-html="hl(search, tts.tag)"></span>
+        <span x-text="tts.date"></span>
+      </li>
+    </template>
+  </ul>
+</div>
+
 <script define:vars={{ alpineID, render, style }}>
   function filter(search, target, fn) {
     return target.filter((x) => fn(x).includes(search.toLowerCase()));
@@ -37,15 +49,3 @@ const alpineID = [...Array(10)]
 
   window[alpineID] = init(render, style);
 </script>
-
-<div x-data={alpineID}>
-  <input type="text" placeholder="Search tags" x-model="search" />
-  <ul>
-    <template x-for="tts in f(search)">
-      <li>
-        <span x-html="hl(search, tts.tag)"></span>
-        <span x-text="tts.date"></span>
-      </li>
-    </template>
-  </ul>
-</div>

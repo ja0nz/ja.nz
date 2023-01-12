@@ -1,34 +1,67 @@
 ---
-import HTags from "@components/HTags.astro";
-import HPosts from "@components/HPosts.astro";
-import type { FrontMatter } from "@lib/api";
-import { tagTimestampByLatest, renderOverview } from "@lib/xform";
+import AlpineSelect from "@components/AlpineSelect.astro";
+import Avatar from "@components/Avatar.astro";
+import { renderOverview, tagTimestampByLatest } from "@lib/xform";
 
+import type { FrontMatter, TDate, FM_D } from "@lib/api";
 const posts = await Astro.glob<FrontMatter>("../pages/read/**/*.md");
-const renderT = tagTimestampByLatest(posts);
-const renderP = renderOverview(posts);
+
+/* Tag Search */
+const dataTag: TDate[] = tagTimestampByLatest(posts);
+const filterTag = ({ tag }: TDate) => tag;
+
+/* Content Search */
+const dataContent: FM_D[] = renderOverview(posts);
+const filterContent = ({ title: a, summary: b, category: c }: FM_D) =>
+  [a, b, c].join(" ");
 
 /* Style highlight */
 const style = ["font-semibold", "bg-blue-200"];
 ---
 
-<script define:vars={{ renderP }}>
-  window.rr = renderP;
+<script define:vars={{ posts }}>
+  window.rr = posts;
 </script>
 
-<HTags render={renderT} style={style} />
+<AlpineSelect inp={dataTag} key={filterTag} style={style}>
+  <input type="text" placeholder="Search tags" x-model="search" />
+  <ul>
+    <template x-for="x in f(search)">
+      <li>
+        <span x-html="hl(search, x.tag)"></span>
+        <span x-text="x.date"></span>
+      </li>
+    </template>
+  </ul>
+</AlpineSelect>
+
 <br />
 <h1>Posts</h1>
 
-<div>
-  {
-    renderP.map((fm) => (
-      <article>
-        <h1>{fm.title}</h1>
-        <p>{fm.summary}</p>
-      </article>
-    ))
-  }
+<br />
+<AlpineSelect inp={dataContent} key={filterContent} style={style}>
+  <input type="text" placeholder="Search tags" x-model="search" />
+  <ul>
+    <template x-for="x in f(search)">
+      <li>
+        <span x-html="hl(search, x.title)"></span>
+        <span x-html="hl(search, x.summary)"></span>
+        <span x-html="hl(search, x.category)"></span>
+        <span x-text="x.date"></span>
+        <span x-text="x.tags"></span>
+        <span x-text="x.id"></span>
+      </li>
+    </template>
+  </ul>
+</AlpineSelect>
+
+<br />
+<h1>Modal opening</h1>
+<div x-data="{ open: false }">
+  <button x-on:click="open = ! open">Toggle Dropdown</button>
+
+  <div x-show="open" x-transition>Dropdown Contents...</div>
 </div>
 <br />
-<HPosts render={renderP} style={style} />
+<h1>Avatar</h1>
+<Avatar seed="rand" />
