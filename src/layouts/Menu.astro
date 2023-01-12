@@ -3,6 +3,12 @@ import "@layouts/compositions/stack.css";
 ---
 
 <style>
+  .this {
+    /* Spacing between elements in main menu */
+    --stack--spacing: 1.5rem;
+    /* Fit to Sidebar Parent hight setting */
+    height: 100%;
+  }
   .items {
     /* Related to max-height; Menu scroll bar  */
     overflow-y: auto;
@@ -12,9 +18,9 @@ import "@layouts/compositions/stack.css";
   }
 </style>
 
-<div class="stack">
+<div class="this | stack">
   <slot name="header" />
-  <div class="items">
+  <ul class="items">
     <slot name="items" />
-  </div>
+  </ul>
 </div>

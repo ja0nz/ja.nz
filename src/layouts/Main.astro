@@ -1,0 +1,25 @@
+---
+---
+
+<style>
+  .this {
+    background-attachment: fixed;
+  }
+  .this:focus {
+    outline: 4px dashed green;
+  }
+
+  /* Ensure some breathing before tabbing in #main */
+  /* TODO final polish */
+  :target {
+    scroll-margin-top: calc((var(--top-placement) + var(--rocket-overlap)));
+  }
+</style>
+
+<main
+  id="main"
+  tabindex="0"
+  class="this | tile-light dark:tile-dark || bg-orange"
+>
+  <slot />
+</main>

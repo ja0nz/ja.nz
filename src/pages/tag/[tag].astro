@@ -1,0 +1,15 @@
+---
+import type { FrontMatter, TDate } from "@lib/api";
+import { tagTimestampByLatest } from "@lib/xform";
+import Index from "@components/Index.astro";
+
+/* Static (SSG) Mode */
+export async function getStaticPaths() {
+  const posts = await Astro.glob<FrontMatter>("../read/**/*.md");
+  const dataTag: TDate[] = tagTimestampByLatest(posts);
+  return dataTag.map(({ tag }: TDate) => ({ params: { tag } }));
+}
+const { tag } = Astro.params;
+---
+
+<Index tag={tag} />
