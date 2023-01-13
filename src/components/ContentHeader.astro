@@ -1,5 +1,4 @@
 ---
-import "@layouts/compositions/sidebar.css";
 import "@layouts/compositions/stack.css";
 
 import ThemeSwitch from "@components/ThemeSwitch.astro";
@@ -14,22 +13,12 @@ const xData = JSON.stringify({ [key]: false });
     /* compositions/stack.css */
     --stack--spacing: auto;
   }
-  .with-sidebar {
-    /* compositions/sidebar.css */
-    --sidebar--bar-width: auto;
-    --sidebar--gap: 0;
-    --sidebar--content-min-width: 0;
-
+  header {
+    display: inline-flex;
     align-items: center;
   }
-  .nav {
-    display: inline-flex;
-  }
-  .left {
+  .tool {
     margin-left: auto;
-
-    /* TODO might not be needed */
-    display: flex;
   }
   .show {
     /* Show wrapper */
@@ -38,21 +27,19 @@ const xData = JSON.stringify({ [key]: false });
 </style>
 
 <div x-data={xData} class="stack || bg-blue">
-  <div class="with-sidebar">
+  <header>
     <slot name="head" />
-    <div class="nav">
-      <div class="left">
-        <SearchToggle
-          key={key}
-          classes={{ t: "i-lucide-arrow-up-circle", f: "i-lucide-search" }}
-        />
-        <ThemeSwitch
-          key="colorScheme"
-          classes={{ t: "i-lucide-sun", f: "i-lucide-moon" }}
-        />
-      </div>
+    <div class="tool">
+      <SearchToggle
+        key={key}
+        classes={{ t: "i-lucide-arrow-up-circle", f: "i-lucide-search" }}
+      />
+      <ThemeSwitch
+        key="colorScheme"
+        classes={{ t: "i-lucide-sun", f: "i-lucide-moon" }}
+      />
     </div>
-  </div>
+  </header>
   <div class="show" x-show={key} x-transition>
     <slot name="subhead" />
   </div>

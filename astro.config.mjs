@@ -19,7 +19,15 @@ export default defineConfig({
   integrations: [
     alpinejs(),
     Unocss({
-      presets: [presetUno(), presetIcons()],
+      presets: [
+        presetUno(),
+        presetIcons({
+          extraProperties: {
+            display: "inline-block",
+            "vertical-align": "middle",
+          },
+        }),
+      ],
       shortcuts: {
         "border-base": "border-gray-200 dark:border-dark-200",
         "bg-base": "bg-white dark:bg-dark-100",
