@@ -27,16 +27,16 @@ Org mode is really powerful combined with [[https://orgmode.org/manual/Working-w
 /Sidenote:/ I am not using [[https://gohugo.io/][Hugo]] for blogging anymore.
 
 * Table of contents :noexport:toc:
-- [[#micro][Micro]]
+- [[#short][Short]]
   - [[#4proxy][4,Proxy]]
   - [[#5match-type-array-and-numbered][5,Match type array and numbered]]
   - [[#6recursion][6,Recursion]]
-- [[#blog][Blog]]
+- [[#long][Long]]
   - [[#7all-the-formattings][7,All the formattings]]
 
-* Micro
+* Short
 :PROPERTIES:
-:export_hugo_bundle: micro
+:export_hugo_bundle: short
 :export_hugo_custom_front_matter+: :id (org-entry-get (point) "export_file_name" t)
 :export_hugo_custom_front_matter+: :category (org-entry-get (point) "export_hugo_bundle" t)
 :END:
@@ -90,9 +90,9 @@ Recursion for all. A quote to remember
  #+end_cite
  #+end_quote
 
-* Blog
+* Long
 :PROPERTIES:
-:export_hugo_bundle: blog
+:export_hugo_bundle: long
 :export_hugo_custom_front_matter+: :id (org-entry-get (point) "export_file_name" t)
 :export_hugo_custom_front_matter+: :category (org-entry-get (point) "export_hugo_bundle" t)
 :END:
@@ -203,8 +203,8 @@ in our age, can still do for those who study it.
 
 
 * Workbench :noexport:
-#+CALL: micro()
-#+CALL: post()
+#+CALL: short()
+#+CALL: long()
 ** TODO 8,Proxies in fantasyland :typescript:
 :PROPERTIES:
 :export_file_name: 8
@@ -318,8 +318,8 @@ in our age, can still do for those who study it.
 #+end_cite
 #+end_quote
 
-** New micro :util:
-#+NAME: micro
+** New short :util:
+#+NAME: short
 #+BEGIN_SRC emacs-lisp :var title=(read-string "title: ")
   (setq id (number-to-string (length (org-map-entries t "LEVEL=2" nil))))
   (org-insert-heading)
@@ -332,8 +332,8 @@ in our age, can still do for those who study it.
   (previous-line)
 #+END_SRC
 
-** New post :util:
-#+NAME: post
+** New long :util:
+#+NAME: long
 #+BEGIN_SRC emacs-lisp :var url=(getenv "BLOG_BASE") :var title=(read-string "title: ")
   (setq id (number-to-string (length (org-map-entries t "LEVEL=2" nil))))
   (org-insert-heading)

@@ -8,6 +8,7 @@ const tag = Astro.params?.tag;
 /* Layouts */
 import Layout from "@layouts/Layout.astro";
 import Sidebar from "@layouts/Sidebar.astro";
+import ContentHeader from "@layouts/ContentHeader.astro";
 import Menu from "@layouts/Menu.astro";
 import Main from "@layouts/Main.astro";
 import SkipLink from "@layouts/SkipLink.astro";
@@ -54,8 +55,6 @@ const styleContent = ["font-semibold", "bg-blue-200"];
   }
 </style>
 
-<script></script>
-
 <Layout title="ja|nz's logbook">
   <div class="this | center | with-sidebar">
     <Sidebar>
@@ -66,17 +65,19 @@ const styleContent = ["font-semibold", "bg-blue-200"];
           <input
             slot="header"
             type="text"
-            placeholder="Search tags"
             x-model="search"
+            placeholder="Hit / to search 👇"
+            x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
           />
           <template slot="items" x-for="x in f(search)">
             <li
               x-data={`{ tag: "${tag}" }`}
               x-init="tag === x.tag && $el.scrollIntoView(false)"
+              x-bind:class="tag === x.tag && 'active'"
               class="border h-60"
             >
               <span x-html="hl(search, x.tag)"></span>
-              <a x-bind:href="'/tag/' + x.tag" x-text="x.tag"></a>
+              <a x-bind:href="'/tag/' + x.tag + '#main'" x-text="x.tag"></a>
               <span x-text="x.date"></span>
             </li>
           </template>
@@ -86,13 +87,15 @@ const styleContent = ["font-semibold", "bg-blue-200"];
     <div id="not-sidebar">
       <AlpineSelect inp={dataContent} key={filterContent} style={styleContent}>
         <Content>
-          <div slot="header" class="|| bg-blue">Header</div>
-          <input
-            slot="header"
-            type="text"
-            placeholder="Search content"
-            x-model="search"
-          />
+          <ContentHeader slot="header">
+            <div slot="head" class="|| bg-blue">{tag ? tag : "Ja0nz"}</div>
+            <input
+              slot="search"
+              type="text"
+              placeholder="Search content"
+              x-model="search"
+            />
+          </ContentHeader>
           <Main>
             <template x-for="(x, idx) in f(search)">
               <li tabindex="0" class="border h-40">

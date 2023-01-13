@@ -1,0 +1,40 @@
+---
+import "@layouts/compositions/sidebar.css";
+import "@layouts/compositions/stack.css";
+
+import ThemeSwitch from "@components/ThemeSwitch.astro";
+---
+
+<style>
+  .stack {
+    /* compositions/stack.css */
+    --stack--spacing: auto;
+  }
+  .with-sidebar {
+    /* compositions/sidebar.css */
+    --sidebar--bar-width: auto;
+    --sidebar--gap: 0;
+    --sidebar--content-min-width: 0;
+
+    align-items: center;
+  }
+  .nav {
+    display: inline-flex;
+  }
+  .left {
+    display: flex;
+    margin-left: auto;
+  }
+</style>
+
+<div class="stack || bg-blue">
+  <div class="with-sidebar">
+    <slot name="head" />
+    <div class="nav">
+      <div class="left">
+        <ThemeSwitch />
+      </div>
+    </div>
+  </div>
+  <slot name="search" />
+</div>
