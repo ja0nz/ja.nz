@@ -3,6 +3,10 @@ import "@layouts/compositions/sidebar.css";
 import "@layouts/compositions/stack.css";
 
 import ThemeSwitch from "@components/ThemeSwitch.astro";
+import SearchToggle from "@components/SearchToggle.astro";
+
+const key = "open";
+const xData = JSON.stringify({ [key]: false });
 ---
 
 <style>
@@ -22,19 +26,34 @@ import ThemeSwitch from "@components/ThemeSwitch.astro";
     display: inline-flex;
   }
   .left {
-    display: flex;
     margin-left: auto;
+
+    /* TODO might not be needed */
+    display: flex;
+  }
+  .show {
+    /* Show wrapper */
+    display: contents;
   }
 </style>
 
-<div class="stack || bg-blue">
+<div x-data={xData} class="stack || bg-blue">
   <div class="with-sidebar">
     <slot name="head" />
     <div class="nav">
       <div class="left">
-        <ThemeSwitch />
+        <SearchToggle
+          key={key}
+          classes={{ t: "i-lucide-arrow-up-circle", f: "i-lucide-search" }}
+        />
+        <ThemeSwitch
+          key="colorScheme"
+          classes={{ t: "i-lucide-sun", f: "i-lucide-moon" }}
+        />
       </div>
     </div>
   </div>
-  <slot name="search" />
+  <div class="show" x-show={key} x-transition>
+    <slot name="subhead" />
+  </div>
 </div>
