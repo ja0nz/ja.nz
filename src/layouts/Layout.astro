@@ -9,8 +9,7 @@ const { title } = Astro.props;
 <!DOCTYPE html>
 <html
   lang="en"
-  x-data="{ colorScheme: localStorage.getItem('colorScheme') || localStorage.setItem('colorScheme', 'system')}"
-  x-init="$watch('colorScheme', x => localStorage.setItem('colorScheme', x))"
+  x-data="{ colorScheme: $persist('system')}"
   x-bind:class="{'dark': colorScheme === 'dark' || (colorScheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}"
 >
   <head>
@@ -23,6 +22,12 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <!-- Start: Alpine Plugins -->
+    <script
+      defer
+      src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"
+    ></script>
+    <!-- End: Alpine Plugins -->
   </head>
   <body>
     <slot />
