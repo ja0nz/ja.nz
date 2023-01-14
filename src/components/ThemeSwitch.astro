@@ -9,4 +9,4 @@ const { key, classes } = Astro.props;
 
 <button
   x-on:click={`${key} = ${key} === 'dark' ? 'light' : 'dark'`}
-  class={`${classes.t} dark:${classes.f}`}></button>
+  class={`${classes.t} dark:${classes.f} dark:text-white`}></button>

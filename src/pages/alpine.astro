@@ -1,5 +1,8 @@
 ---
 import AlpineSelect from "@components/AlpineSelect.astro";
+import ShowThisThat from "@components/ShowThisThat.astro";
+import Toggle from "@components/Toggle.astro";
+
 import Avatar from "@components/Avatar.astro";
 import { renderOverview, tagTimestampByLatest } from "@lib/xform";
 
@@ -17,11 +20,25 @@ const filterContent = ({ title: a, summary: b, category: c }: FM_D) =>
 
 /* Style highlight */
 const style = ["font-semibold", "bg-blue-200"];
+
+const key = "showthis";
 ---
 
 <script define:vars={{ posts }}>
   window.rr = posts;
 </script>
+
+<ShowThisThat>
+  <div slot="this">
+    <Toggle classes={{ t: "i-lucide-arrow-up-circle", f: "i-lucide-search" }} />
+    This
+  </div>
+  <div slot="that">
+    <Toggle classes={{ t: "i-lucide-arrow-up-circle", f: "i-lucide-search" }} />
+    That
+  </div>
+</ShowThisThat>
+<br />
 
 <AlpineSelect inp={dataTag} key={filterTag} style={style}>
   <input type="text" placeholder="Search tags" x-model="search" />

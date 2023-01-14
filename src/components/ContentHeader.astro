@@ -2,7 +2,7 @@
 import "@layouts/compositions/stack.css";
 
 import ThemeSwitch from "@components/ThemeSwitch.astro";
-import SearchToggle from "@components/SearchToggle.astro";
+import Toggle from "@components/Toggle.astro";
 
 const key = "open";
 const xData = JSON.stringify({ [key]: false });
@@ -20,17 +20,14 @@ const xData = JSON.stringify({ [key]: false });
   .tool {
     margin-left: auto;
   }
-  .show {
-    /* Show wrapper */
-    display: contents;
-  }
 </style>
 
 <div x-data={xData} class="stack || bg-blue">
   <header>
     <slot name="head" />
     <div class="tool">
-      <SearchToggle
+      <Toggle
+        title="search"
         key={key}
         classes={{ t: "i-lucide-arrow-up-circle", f: "i-lucide-search" }}
       />

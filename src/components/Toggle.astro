@@ -1,9 +1,9 @@
 ---
 interface Props {
-  key: string;
+  key?: string;
   classes: { t: string; f: string };
 }
-const { key, classes } = Astro.props;
+const { key = "toggle", classes } = Astro.props;
 ---
 
 <button
