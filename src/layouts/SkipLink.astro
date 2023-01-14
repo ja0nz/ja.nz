@@ -3,6 +3,11 @@ import "@layouts/blocks/button.css";
 ---
 
 <style>
+  .this {
+    position: absolute;
+    z-index: 0;
+    top: var(--top-placement, 2rem);
+  }
   .this:not(:focus) {
     border: 0;
     clip: rect(0 0 0 0);

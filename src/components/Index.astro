@@ -8,7 +8,7 @@ const tag = Astro.params?.tag;
 /* Layouts */
 import Layout from "@layouts/Layout.astro";
 import Sidebar from "@layouts/Sidebar.astro";
-import Menu from "@layouts/Menu.astro";
+import FrontSide from "@layouts/FrontSide.astro";
 import Content from "@layouts/Content.astro";
 import Main from "@layouts/Main.astro";
 import SkipLink from "@layouts/SkipLink.astro";
@@ -57,11 +57,11 @@ const styleContent = ["font-semibold", "bg-blue-200"];
 
 <Layout title="ja|nz's logbook">
   <div class="this | center | with-sidebar">
+    <SkipLink />
     <Sidebar>
       <AlpineSelect inp={dataTag} key={filterTag} style={styleTag}>
         <FlipSide>
-          <Menu slot="front">
-            <SkipLink slot="header" />
+          <FrontSide slot="front">
             <input
               slot="header"
               type="text"
@@ -81,7 +81,7 @@ const styleContent = ["font-semibold", "bg-blue-200"];
                 <span x-text="x.date"></span>
               </li>
             </template>
-          </Menu>
+          </FrontSide>
           <div slot="back">Gogo</div>
         </FlipSide>
       </AlpineSelect>
