@@ -1,0 +1,38 @@
+---
+const key = "toggleSide";
+const xData = JSON.stringify({ [key]: true });
+const xOnClick = `${key} = ! ${key}`;
+
+import "@layouts/compositions/stack.css";
+---
+
+<style>
+  .stack {
+    /* Consistent spacing of both sides */
+    --stack--spacing: 1.5rem;
+    /* Fit to Sidebar Parent hight setting */
+    height: 100%;
+  }
+  .items {
+    /* Related to max-height; Menu scroll bar  */
+    overflow-y: auto;
+  }
+  .itemss::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<div style="display: contents;" x-data={xData}>
+  <div x-show={key} x-transition class="stack">
+    <div class="stack">
+      <div x-on:click={xOnClick} class="|| bg-blue">MainMenu</div>
+      <slot name="front" />
+    </div>
+  </div>
+  <div x-show={`!${key}`} x-transition class="stack">
+    <div class="stack">
+      <div x-on:click={xOnClick} class="|| bg-blue">BackSide</div>
+      <slot name="back" />
+    </div>
+  </div>
+</div>

@@ -19,6 +19,7 @@ import "@layouts/utilities/center.css";
 /* Components */
 import AlpineSelect from "@components/AlpineSelect.astro";
 import ContentHeader from "@components/ContentHeader.astro";
+import FlipSide from "@components/FlipSide.astro";
 
 /* Lib */
 import { renderOverview, tagTimestampByLatest } from "@lib/xform";
@@ -58,29 +59,31 @@ const styleContent = ["font-semibold", "bg-blue-200"];
   <div class="this | center | with-sidebar">
     <Sidebar>
       <AlpineSelect inp={dataTag} key={filterTag} style={styleTag}>
-        <Menu>
-          <div slot="header" class="|| bg-blue">MainMenu</div>
-          <SkipLink slot="header" />
-          <input
-            slot="header"
-            type="text"
-            x-model="search"
-            placeholder="Hit / to search 👇"
-            x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
-          />
-          <template slot="items" x-for="x in f(search)">
-            <li
-              x-data={`{ tag: "${tag}" }`}
-              x-init="tag === x.tag && $el.scrollIntoView(false)"
-              x-bind:class="tag === x.tag && 'active'"
-              class="border h-60"
-            >
-              <span x-html="hl(search, x.tag)"></span>
-              <a x-bind:href="'/tag/' + x.tag + '#main'" x-text="x.tag"></a>
-              <span x-text="x.date"></span>
-            </li>
-          </template>
-        </Menu>
+        <FlipSide>
+          <Menu slot="front">
+            <SkipLink slot="header" />
+            <input
+              slot="header"
+              type="text"
+              x-model="search"
+              placeholder="Hit / to search 👇"
+              x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
+            />
+            <template slot="items" x-for="x in f(search)">
+              <li
+                x-data={`{ tag: "${tag}" }`}
+                x-init="tag === x.tag && $el.scrollIntoView(false)"
+                x-bind:class="tag === x.tag && 'active'"
+                class="border h-60"
+              >
+                <span x-html="hl(search, x.tag)"></span>
+                <a x-bind:href="'/tag/' + x.tag + '#main'" x-text="x.tag"></a>
+                <span x-text="x.date"></span>
+              </li>
+            </template>
+          </Menu>
+          <div slot="back">Gogo</div>
+        </FlipSide>
       </AlpineSelect>
     </Sidebar>
     <div id="not-sidebar">
