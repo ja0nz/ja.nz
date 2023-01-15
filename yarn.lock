@@ -403,7 +403,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.20.7":
+"@babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.20.7":
   version: 7.20.7
   resolution: "@babel/runtime@npm:7.20.7"
   dependencies:
@@ -995,6 +995,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remark-embedder/core@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@remark-embedder/core@npm:3.0.1"
+  dependencies:
+    "@babel/runtime": ^7.18.9
+    "@types/hast": ^2.3.4
+    "@types/mdast": ^3.0.10
+    hast-util-from-parse5: ^7.1.0
+    parse5: ^7.0.0
+    unified: ^10.1.2
+    unist-util-visit: ^4.1.0
+  checksum: 9af183b05c70e11c712a96579eb38875b582431331d899f10051069ece65d041a02303e02007591f9f551fcf3f60a9b6bbd984eeccffb51eaaa0ead62a272334
+  languageName: node
+  linkType: hard
+
+"@remark-embedder/transformer-oembed@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@remark-embedder/transformer-oembed@npm:3.0.0"
+  dependencies:
+    "@babel/runtime": ^7.18.9
+    "@types/make-fetch-happen": ^10.0.0
+    make-fetch-happen: ^10.2.0
+  peerDependencies:
+    "@remark-embedder/core": ^3.0.0
+  checksum: 31b180142799657cf034353bd869ed9c95f914db2836bb8b1e67a63936790d208867735a281cb5de9f9b57261680dd783da962ed3a157af40f298c686f3733aa
+  languageName: node
+  linkType: hard
+
 "@rollup/pluginutils@npm:^5.0.2":
   version: 5.0.2
   resolution: "@rollup/pluginutils@npm:5.0.2"
@@ -1246,7 +1274,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hast@npm:^2.0.0":
+"@types/hast@npm:^2.0.0, @types/hast@npm:^2.3.4":
   version: 2.3.4
   resolution: "@types/hast@npm:2.3.4"
   dependencies:
@@ -1276,7 +1304,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdast@npm:^3.0.0":
+"@types/make-fetch-happen@npm:^10.0.0":
+  version: 10.0.1
+  resolution: "@types/make-fetch-happen@npm:10.0.1"
+  dependencies:
+    "@types/node-fetch": "*"
+    "@types/retry": "*"
+    "@types/ssri": "*"
+  checksum: ba7b46301d7e270521ce8aff3f09db64105d1667ff4b8dd7e0d665cc45e69f4198102b106110b1eaa670e56aa0dabc24d31a320315d53f4b78c8e26875a70cd2
+  languageName: node
+  linkType: hard
+
+"@types/mdast@npm:^3.0.0, @types/mdast@npm:^3.0.10":
   version: 3.0.10
   resolution: "@types/mdast@npm:3.0.10"
   dependencies:
@@ -1301,6 +1340,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node-fetch@npm:*":
+  version: 3.0.2
+  resolution: "@types/node-fetch@npm:3.0.2"
+  dependencies:
+    node-fetch: "*"
+  checksum: b9f97bc4219c37f70299133b36389719cf4adacad46cea80df70f77d4a9f6999ea5be18a1ab90b34239b684cae032adeec10756cce8d2ae81c17f5e4c56fd4e9
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:*":
+  version: 18.11.18
+  resolution: "@types/node@npm:18.11.18"
+  checksum: 03f17f9480f8d775c8a72da5ea7e9383db5f6d85aa5fefde90dd953a1449bd5e4ffde376f139da4f3744b4c83942166d2a7603969a6f8ea826edfb16e6e3b49d
+  languageName: node
+  linkType: hard
+
 "@types/parse5@npm:^6.0.0":
   version: 6.0.3
   resolution: "@types/parse5@npm:6.0.3"
@@ -1319,6 +1374,22 @@ __metadata:
   version: 1.20.2
   resolution: "@types/resolve@npm:1.20.2"
   checksum: 61c2cad2499ffc8eab36e3b773945d337d848d3ac6b7b0a87c805ba814bc838ef2f262fc0f109bfd8d2e0898ff8bd80ad1025f9ff64f1f71d3d4294c9f14e5f6
+  languageName: node
+  linkType: hard
+
+"@types/retry@npm:*":
+  version: 0.12.2
+  resolution: "@types/retry@npm:0.12.2"
+  checksum: e5675035717b39ce4f42f339657cae9637cf0c0051cf54314a6a2c44d38d91f6544be9ddc0280587789b6afd056be5d99dbe3e9f4df68c286c36321579b1bf4a
+  languageName: node
+  linkType: hard
+
+"@types/ssri@npm:*":
+  version: 7.1.1
+  resolution: "@types/ssri@npm:7.1.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: 0327eb212a8d52e09f0fe4df5e0f580db9daaf2e03fc9dbbc5c1356c92fd870084588e5b0b9b58546e1a5cae9a825097a74100c463b241f38dafb49043569de3
   languageName: node
   linkType: hard
 
@@ -2717,6 +2788,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"entities@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "entities@npm:4.4.0"
+  checksum: 84d250329f4b56b40fa93ed067b194db21e8815e4eb9b59f43a086f0ecd342814f6bc483de8a77da5d64e0f626033192b1b4f1792232a7ea6b970ebe0f3187c2
+  languageName: node
+  linkType: hard
+
 "env-paths@npm:^2.2.0":
   version: 2.2.1
   resolution: "env-paths@npm:2.2.1"
@@ -4059,6 +4137,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hast-util-from-parse5@npm:^7.1.0":
+  version: 7.1.1
+  resolution: "hast-util-from-parse5@npm:7.1.1"
+  dependencies:
+    "@types/hast": ^2.0.0
+    "@types/unist": ^2.0.0
+    hastscript: ^7.0.0
+    property-information: ^6.0.0
+    vfile: ^5.0.0
+    vfile-location: ^4.0.0
+    web-namespaces: ^2.0.0
+  checksum: 79431243b65d6fb327988614b3d8addd805cdf620599ce194dce91c1a1c99dc356bfb25494821445ecff49edc3ec3f2ce0b151f5e401e2984fed81a4178b7e79
+  languageName: node
+  linkType: hard
+
 "hast-util-is-element@npm:^2.0.0":
   version: 2.1.2
   resolution: "hast-util-is-element@npm:2.1.2"
@@ -4925,7 +5018,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"make-fetch-happen@npm:^10.0.3":
+"make-fetch-happen@npm:^10.0.3, make-fetch-happen@npm:^10.2.0":
   version: 10.2.1
   resolution: "make-fetch-happen@npm:10.2.1"
   dependencies:
@@ -5741,6 +5834,8 @@ __metadata:
     "@dicebear/collection": ^5.0.2
     "@dicebear/core": ^5.0.2
     "@iconify-json/lucide": ^1.1.55
+    "@remark-embedder/core": ^3.0.1
+    "@remark-embedder/transformer-oembed": ^3.0.0
     "@thi.ng/api": ^8.6.3
     "@thi.ng/paths": ^5.1.27
     "@thi.ng/transducers": ^8.3.29
@@ -5756,6 +5851,7 @@ __metadata:
     eslint-plugin-jsx-a11y: ^6.7.0
     prettier: ^2.8.2
     prettier-plugin-astro: ^0.7.2
+    remark-breaks: ^3.0.2
     remark-heading-id: ^1.0.0
     unocss: ^0.48.3
   languageName: unknown
@@ -5784,7 +5880,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^3.2.5":
+"node-fetch@npm:*, node-fetch@npm:^3.2.5":
   version: 3.3.0
   resolution: "node-fetch@npm:3.3.0"
   dependencies:
@@ -6101,6 +6197,15 @@ __metadata:
   version: 6.0.1
   resolution: "parse5@npm:6.0.1"
   checksum: 7d569a176c5460897f7c8f3377eff640d54132b9be51ae8a8fa4979af940830b2b0c296ce75e5bd8f4041520aadde13170dbdec44889975f906098ea0002f4bd
+  languageName: node
+  linkType: hard
+
+"parse5@npm:^7.0.0":
+  version: 7.1.2
+  resolution: "parse5@npm:7.1.2"
+  dependencies:
+    entities: ^4.4.0
+  checksum: 59465dd05eb4c5ec87b76173d1c596e152a10e290b7abcda1aecf0f33be49646ea74840c69af975d7887543ea45564801736356c568d6b5e71792fd0f4055713
   languageName: node
   linkType: hard
 
@@ -6459,6 +6564,17 @@ __metadata:
     rehype-stringify: ^9.0.0
     unified: ^10.0.0
   checksum: 08174db96f2d8d3543266ed36368e66ae050698b989498e1987f645f500606dcae946265341c87041d7db8d21927f686029792df116e9fd293c46b02a779869a
+  languageName: node
+  linkType: hard
+
+"remark-breaks@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "remark-breaks@npm:3.0.2"
+  dependencies:
+    "@types/mdast": ^3.0.0
+    unified: ^10.0.0
+    unist-util-visit: ^4.0.0
+  checksum: 5f46b18818f8a77e4fbc607c99736eedbe1f8cbad3d7390ce8359f08e3b749de8778ec8812287a41f51ffef2524b0be0dd623fcdbcda5de7f13f9902851f80b3
   languageName: node
   linkType: hard
 

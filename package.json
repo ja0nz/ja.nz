@@ -17,6 +17,8 @@
     "@dicebear/collection": "^5.0.2",
     "@dicebear/core": "^5.0.2",
     "@iconify-json/lucide": "^1.1.55",
+    "@remark-embedder/core": "^3.0.1",
+    "@remark-embedder/transformer-oembed": "^3.0.0",
     "@thi.ng/api": "^8.6.3",
     "@types/alpinejs": "^3.7.1",
     "@types/eslint": "^8.4.10",
@@ -29,6 +31,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.0",
     "prettier": "^2.8.2",
     "prettier-plugin-astro": "^0.7.2",
+    "remark-breaks": "^3.0.2",
     "remark-heading-id": "^1.0.0",
     "unocss": "^0.48.3"
   }

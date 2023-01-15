@@ -1,9 +1,38 @@
 import { defineConfig } from "astro/config";
 
-import Unocss from "unocss/astro";
+/* Remark */
+import remarkBreaks from "remark-breaks";
 import remarkHeadingId from "remark-heading-id";
+import remarkEmbedder from "@remark-embedder/core";
+import oembedTransformer from "@remark-embedder/transformer-oembed";
+
+const remarkEmbedPlugin = [
+  remarkEmbedder.default,
+  {
+    transformers: [oembedTransformer.default],
+    // https://github.com/remark-embedder/transformer-oembed/issues/25#issuecomment-888613740
+    // https://github.com/remark-embedder/core#handleerror-errorinfo-errorinfo--gottenhtml--promisegottenhtml
+    handleError({ error, url, transformer }) {
+      switch (true) {
+        case transformer.name !== "@remark-embedder/transformer-oembed":
+          throw error;
+        case url.includes("twitter.com"):
+          return `<p style="color:red">ERROR: Unable to embed <a href="${url}">this tweet</a> (possibly deleted).</p>`;
+        default:
+          // we're only handling errors from this specific transformer and the twitter URL
+          // so we'll rethrow errors from any other transformer/url
+          throw error;
+      }
+    },
+  },
+];
+
+/* UnoCSS */
+import Unocss from "unocss/astro";
 import presetIcons from "@unocss/preset-icons";
 import presetUno from "@unocss/preset-uno";
+
+/* AlpineJS */
 import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
@@ -42,6 +71,6 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkHeadingId],
+    remarkPlugins: [remarkEmbedPlugin, remarkHeadingId, remarkBreaks],
   },
 });
