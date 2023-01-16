@@ -1,11 +1,15 @@
 ---
 interface Props<T> {
   inp: T[];
+  fuzzy?: boolean;
   key: Fn<T, string>;
   style: string[];
 }
 import type { Fn } from "@thi.ng/api";
-const { inp, key, style } = Astro.props;
+const { inp, key, style, fuzzy = false } = Astro.props;
+
+const regExp = fuzzy ? "$data.regExpF" : "$data.regExp";
+const filter = fuzzy ? "$data.filterF" : "$data.filter";
 
 const xData = `{
   search: "",
@@ -14,22 +18,15 @@ const xData = `{
   key: ${key.toString()}
 }`;
 const xMethods = `{
-  hl: $data.hl($data.style),
-  f: $data.f($data.inp, $data.key)
+  hl: $data.createHighlight(${regExp},$data.style),
+  f: ${filter}($data.inp, $data.key)
 }`;
 ---
 
 <script>
-  import { createFilter, highlightSearch } from "@lib/client";
-
-  // Alpine Init
-  const methodContext = () => ({
-    f: createFilter,
-    hl: highlightSearch,
-  });
-
+  import * as init from "@lib/filter";
   document.addEventListener("alpine:init", () => {
-    Alpine.data("AlpineSelect", methodContext);
+    Alpine.data("AlpineSelect", () => ({ ...init }));
   });
 </script>
 

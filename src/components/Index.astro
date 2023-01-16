@@ -87,7 +87,12 @@ const styleContent = ["font-semibold", "bg-blue-200"];
       </AlpineSelect>
     </Sidebar>
     <div id="not-sidebar">
-      <AlpineSelect inp={dataContent} key={filterContent} style={styleContent}>
+      <AlpineSelect
+        fuzzy={true}
+        inp={dataContent}
+        key={filterContent}
+        style={styleContent}
+      >
         <Content>
           <ContentHeader slot="header">
             <div slot="head" class="|| bg-blue">{tag ? tag : "Ja0nz"}</div>
