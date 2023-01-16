@@ -13,7 +13,15 @@ import {
 } from "@thi.ng/transducers";
 import { defGetter } from "@thi.ng/paths";
 import type { MarkdownInstance } from "astro";
-import type { FrontMatter, TDate, FM_D, FM_DT, Glob } from "./api";
+import type {
+  FrontMatter,
+  TMenuCard,
+  FM_D,
+  FM_DT,
+  Glob,
+  Optional,
+} from "./api";
+import { createAvatar } from "./avatar";
 
 /* Getters/Setters */
 const fM = defGetter<Glob, "frontmatter">(["frontmatter"]);
@@ -22,9 +30,9 @@ const tags = defGetter<FrontMatter, "tags">(["tags"]);
 
 /* Reducer */
 const groupTagLatest = groupByObj({
-  key: ({ tag }: TDate) => tag, // group by "tag"
+  key: ({ tag }: Optional<TMenuCard, "avatar">) => tag, // group by "tag"
   group: maxCompare(
-    (): TDate => ({ tag: "", date: 0 }), // init/neutral
+    (): Optional<TMenuCard, "tag" | "avatar"> => ({ date: 0 }), // init/neutral
     ({ date: acc }, { date: t }) => acc - t // reduce by acc > t
   ),
 });
@@ -38,23 +46,24 @@ const preflight = comp(
 );
 
 /*
- * Return [tag, timestamp] pairs; by latest first
+ * Return TMenuCard; by latest first
  * Consumend by MainMenu
  */
-export function tagTimestampByLatest(
+export function createMenuCard(
   posts: MarkdownInstance<FrontMatter>[]
-): TDate[] {
+): TMenuCard[] {
   return transduce(
     comp(
       preflight,
       filter((x) => !!tags(x)), // remove unset tags
       map((x) => <FM_DT>x), // just a noop type cast
-      mapcat<FM_DT, TDate>((x) =>
+      mapcat<FM_DT, Optional<TMenuCard, "avatar">>((x) =>
         x.tags.map((y) => ({ tag: y, date: x.date }))
       ), // make TTS
       scan(groupTagLatest), // inbetween group/reduce by tags
       takeLast(1), // continue with last reduction
-      mapcat(Object.values) // pull' n flat
+      mapcat(Object.values), // pull' n flat
+      map((x) => Object.assign(x, { avatar: createAvatar(x.tag) })) // zip in Avatars
     ),
     pushSort(({ date: acc }, { date: x }) => x - acc), // latest first
     posts

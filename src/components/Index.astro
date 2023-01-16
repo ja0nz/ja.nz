@@ -3,7 +3,7 @@ interface Props {
   tag?: string;
 }
 // use to highlight current active
-const tag = Astro.params?.tag;
+const active = Astro.params?.tag;
 
 /* Layouts */
 import Layout from "@layouts/Layout.astro";
@@ -12,6 +12,7 @@ import FrontSide from "@layouts/FrontSide.astro";
 import Content from "@layouts/Content.astro";
 import Main from "@layouts/Main.astro";
 import SkipLink from "@layouts/SkipLink.astro";
+import MenuCard from "@layouts/MenuCard.astro";
 
 import "@layouts/compositions/sidebar.css";
 import "@layouts/utilities/center.css";
@@ -22,15 +23,15 @@ import ContentHeader from "@components/ContentHeader.astro";
 import FlipSide from "@components/FlipSide.astro";
 
 /* Lib */
-import { renderOverview, tagTimestampByLatest } from "@lib/xform";
+import { renderOverview, createMenuCard } from "@lib/xform";
 
 /* Input */
-import type { FM_D, FrontMatter, TDate } from "@lib/api";
+import type { FM_D, FrontMatter, TMenuCard } from "@lib/api";
 const posts = await Astro.glob<FrontMatter>("../pages/read/**/*.md");
 
 /* Tag Search */
-const dataTag: TDate[] = tagTimestampByLatest(posts);
-const filterTag = ({ tag }: TDate) => tag;
+const dataTag: TMenuCard[] = createMenuCard(posts);
+const filterTag = ({ tag }: TMenuCard) => tag;
 const styleTag = ["font-semibold", "bg-blue-200"];
 
 /* Content Search */
@@ -69,17 +70,13 @@ const styleContent = ["font-semibold", "bg-blue-200"];
               placeholder="Hit / to search 👇"
               x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
             />
-            <template slot="items" x-for="x in f(search)">
-              <li
-                x-data={`{ tag: "${tag}" }`}
-                x-init="tag === x.tag && $el.scrollIntoView(false)"
-                x-bind:class="tag === x.tag && 'active'"
-                class="border h-60"
-              >
-                <span x-html="hl(search, x.tag)"></span>
-                <a x-bind:href="'/tag/' + x.tag + '#main'" x-text="x.tag"></a>
-                <span x-text="x.date"></span>
-              </li>
+            <template slot="items" x-for="{tag, date, avatar} in f(search)">
+              <MenuCard active={active}>
+                <a x-bind:href="'/tag/' + tag + '#main'">
+                  <span x-html="hl(search, tag)"></span>
+                </a>
+                <span x-text="date"></span>
+              </MenuCard>
             </template>
           </FrontSide>
           <div slot="back">Gogo</div>
@@ -95,7 +92,7 @@ const styleContent = ["font-semibold", "bg-blue-200"];
       >
         <Content>
           <ContentHeader slot="header">
-            <div slot="head" class="|| bg-blue">{tag ? tag : "Ja0nz"}</div>
+            <div slot="head" class="|| bg-blue">{active || "Ja0nz"}</div>
             <input
               slot="subhead"
               type="text"

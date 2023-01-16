@@ -5,7 +5,9 @@ export type Concrete<Type> = {
   [Property in keyof Type]-?: Type[Property];
 };
 
-export type Flip<T, K extends keyof T> = Concrete<Pick<T, K>> & Omit<T, K>;
+export type MarkSet<T, K extends keyof T> = Concrete<Pick<T, K>> & Omit<T, K>;
+export type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
+
 /* End Utility */
 
 export type FrontMatter = {
@@ -18,7 +20,7 @@ export type FrontMatter = {
   date?: number;
   image?: { src: string; alt: string };
 };
-export type FM_D = Flip<FrontMatter, "date">;
-export type FM_DT = Flip<FrontMatter, "date" | "tags">;
-export type TDate = { tag: string; date: number };
+export type FM_D = MarkSet<FrontMatter, "date">;
+export type FM_DT = MarkSet<FrontMatter, "date" | "tags">;
+export type TMenuCard = { tag: string; date: number; avatar: string };
 export type Glob = MarkdownInstance<FrontMatter>;
