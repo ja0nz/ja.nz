@@ -15,13 +15,13 @@ const remarkEmbedPlugin = [
     handleError({ error, url, transformer }) {
       switch (true) {
         case transformer.name !== "@remark-embedder/transformer-oembed":
+          // rethrow errors from any other transformer/url
           throw error;
         case url.includes("twitter.com"):
           return `<p style="color:red">ERROR: Unable to embed <a href="${url}">this tweet</a> (possibly deleted).</p>`;
         default:
-          // we're only handling errors from this specific transformer and the twitter URL
-          // so we'll rethrow errors from any other transformer/url
-          throw error;
+          // TODO: more specific error handling
+          return `<a href="${url}">${url}</a>`;
       }
     },
   },
