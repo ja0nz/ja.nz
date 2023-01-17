@@ -1,0 +1,17 @@
+---
+import "@layouts/compositions/stack.css";
+---
+
+<style>
+  .stack {
+    /* compositions/stack.css */
+    --stack--spacing: auto;
+
+    min-height: 100vh;
+    z-index: 1;
+    background-attachment: fixed;
+  }
+</style>
+<div class="stack | tile-light dark:tile-dark || bg-orange">
+  <slot />
+</div>

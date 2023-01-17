@@ -9,25 +9,25 @@ const active = Astro.params?.tag;
 import Layout from "@layouts/Layout.astro";
 import Sidebar from "@layouts/Sidebar.astro";
 import FrontSide from "@layouts/FrontSide.astro";
-import Content from "@layouts/Content.astro";
 import Main from "@layouts/Main.astro";
 import SkipLink from "@layouts/SkipLink.astro";
-import MenuCard from "@layouts/MenuCard.astro";
 import About from "@layouts/About.astro";
+import MainArea from "@layouts/MainArea.astro";
 
 import "@layouts/compositions/sidebar.css";
 import "@layouts/utilities/center.css";
 
+import ContentHeader from "@components/ContentHeader.astro";
+
 /* Components */
 import AlpineSelect from "@components/AlpineSelect.astro";
-import ContentHeader from "@components/ContentHeader.astro";
 import FlipSide from "@components/FlipSide.astro";
 
 /* Lib */
 import { renderOverview, createMenuCard } from "@lib/xform";
 
 /* Input */
-import type { Render, FM_D, FrontMatter, TMenuCard } from "@lib/api";
+import type { FM_D, FrontMatter, TMenuCard } from "@lib/api";
 const posts = await Astro.glob<FrontMatter>("../pages/read/**/*.md");
 
 /* Tag Search */
@@ -76,22 +76,16 @@ const styleContent = ["font-semibold", "bg-blue-200"];
         </FlipSide>
       </AlpineSelect>
     </Sidebar>
-    <div id="not-sidebar">
+    <MainArea>
       <AlpineSelect
         fuzzy={true}
         render={{ active, data: content }}
         key={filterContent}
         style={styleContent}
       >
-        <Content>
-          <ContentHeader slot="header" render={{ active, data: content }} />
-          <Main
-            slot="main"
-            requires={[AlpineSelect]}
-            render={{ active, data: content }}
-          />
-        </Content>
+        <ContentHeader render={{ active, data: content }} />
+        <Main requires={[AlpineSelect]} render={{ active, data: content }} />
       </AlpineSelect>
-    </div>
+    </MainArea>
   </div>
 </Layout>
