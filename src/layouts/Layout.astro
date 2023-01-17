@@ -61,9 +61,9 @@ const { title } = Astro.props;
     );
   }
 
-  /* Ensure some breathing before anchor tag */
-  :target {
-    scroll-margin-top: var(--margin-top, 2ex);
+  /* Alpine Cloak */
+  [x-cloak] {
+    display: none !important;
   }
 
   /* Scrollbar */

@@ -1,5 +1,17 @@
 ---
+interface Props {
+  requires?: AstroComponentFactory[];
+  inp: { state?: string; ssgData: TMenuCard[] };
+}
+const { inp } = Astro.props;
+const ssgData = inp.ssgData;
+const active = inp.state;
+
 import "@layouts/compositions/stack.css";
+
+import MenuCard from "@layouts/MenuCard.astro";
+import type { TMenuCard } from "@lib/api";
+import type { AstroComponentFactory } from "astro/dist/runtime/server";
 ---
 
 <style>
@@ -12,9 +24,34 @@ import "@layouts/compositions/stack.css";
   }
 </style>
 
-<slot name="header" />
+<input
+  slot="header"
+  type="text"
+  x-model="search"
+  placeholder="Hit / to search 👇"
+  x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
+/>
 <nav class="items">
-  <ul>
-    <slot name="items" />
+  <ul slot="items">
+    <template x-for="{tag, date, avatar} in f(search)">
+      <MenuCard active={active}>
+        <div slot="avatar" x-html="avatar"></div>
+        <a x-bind:href="'/tag/' + tag + '#main'">
+          <span x-html="hl(search, tag)"></span>
+        </a>
+        <span x-text="date"></span>
+      </MenuCard>
+    </template>
+    {
+      ssgData.map((item) => (
+        <MenuCard ssg={true} active={active}>
+          <div slot="avatar" set:html={item.avatar} />
+          <a href={`"/tag/${item.tag}#main"`}>
+            <span>{item.tag}</span>
+          </a>
+          <span>{item.date}</span>
+        </MenuCard>
+      ))
+    }
   </ul>
 </nav>

@@ -62,24 +62,12 @@ const styleContent = ["font-semibold", "bg-blue-200"];
       <SkipLink />
       <AlpineSelect inp={dataTag} key={filterTag} style={styleTag}>
         <FlipSide>
-          <FrontSide slot="front">
-            <input
-              slot="header"
-              type="text"
-              x-model="search"
-              placeholder="Hit / to search 👇"
-              x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
-            />
-            <template slot="items" x-for="{tag, date, avatar} in f(search)">
-              <MenuCard active={active}>
-                <a x-bind:href="'/tag/' + tag + '#main'">
-                  <span x-html="hl(search, tag)"></span>
-                </a>
-                <span x-text="date"></span>
-              </MenuCard>
-            </template>
-          </FrontSide>
-          <div slot="back">Gogo</div>
+          <FrontSide
+            requires={[AlpineSelect]}
+            inp={{ state: active, ssgData: dataTag }}
+            slot="front"
+          />
+          <div slot="back">Todo</div>
         </FlipSide>
       </AlpineSelect>
     </Sidebar>

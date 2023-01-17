@@ -1,8 +1,9 @@
 ---
 interface Props {
   active?: string;
+  ssg?: boolean;
 }
-const { active } = Astro.props;
+const { ssg, active } = Astro.props;
 
 import "@layouts/compositions/sidebar.css";
 import "@layouts/compositions/stack.css";
@@ -25,12 +26,13 @@ import "@layouts/compositions/stack.css";
 </style>
 
 <li
-  x-data={`{ active: "${active}" }`}
+  x-show={ssg ? "0" : "1"}
+  x-data={`{ active: "${active}", tag: $data.tag || "" }`}
   x-init="active === tag && $el.scrollIntoView(false)"
   x-bind:class="active === tag && 'active'"
   class="with-sidebar"
 >
-  <div x-html="avatar"></div>
+  <slot name="avatar" />
   <aside class="stack">
     <slot />
   </aside>

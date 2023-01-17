@@ -22,7 +22,7 @@ import "@layouts/compositions/stack.css";
       <slot name="front" />
     </div>
   </div>
-  <div x-show={`!${key}`} x-transition class="stack">
+  <div x-cloak x-show={`!${key}`} x-transition class="stack">
     <div class="stack">
       <div x-on:click={xOnClick} class="|| bg-blue">BackSide</div>
       <slot name="back" />
