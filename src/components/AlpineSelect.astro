@@ -1,25 +1,27 @@
 ---
 interface Props<T> {
-  inp: T[];
+  render: Render;
   fuzzy?: boolean;
   key: Fn<T, string>;
   style: string[];
 }
+
+import type { Render } from "@lib/api";
 import type { Fn } from "@thi.ng/api";
-const { inp, key, style, fuzzy = false } = Astro.props;
+const { render, key, style, fuzzy = false } = Astro.props;
 
 const regExp = fuzzy ? "$data.regExpF" : "$data.regExp";
 const filter = fuzzy ? "$data.filterF" : "$data.filter";
 
 const xData = `{
   search: "",
-  inp: ${JSON.stringify(inp)},
+  data: ${JSON.stringify(render.data)},
   style: ${JSON.stringify(style)},
   key: ${key.toString()}
 }`;
 const xMethods = `{
   hl: $data.createHighlight(${regExp},$data.style),
-  f: ${filter}($data.inp, $data.key)
+  f: ${filter}($data.data, $data.key)
 }`;
 ---
 

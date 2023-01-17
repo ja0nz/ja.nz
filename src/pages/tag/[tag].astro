@@ -6,7 +6,7 @@ import Index from "@components/Index.astro";
 /* Static (SSG) Mode */
 export async function getStaticPaths() {
   const posts = await Astro.glob<FrontMatter>("../read/**/*.md");
-  const dataTag: TMenuCard[] = createMenuCard(posts);
+  const dataTag: TMenuCard[] = await createMenuCard(posts);
   return dataTag.map(({ tag }: TMenuCard) => ({ params: { tag } }));
 }
 const { tag } = Astro.params;

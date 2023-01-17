@@ -1,4 +1,9 @@
 ---
+interface Props {
+  render: Render;
+}
+import type { Render } from "@lib/api";
+const { render } = Astro.props;
 import "@layouts/compositions/stack.css";
 
 const key = "open";
@@ -21,7 +26,7 @@ const xData = JSON.stringify({ [key]: false });
 
 <div x-data={xData} class="stack || bg-blue">
   <header>
-    <slot name="head" />
+    <div class="|| bg-blue">{render.active || "Ja0nz"}</div>
     <div x-cloak class="tool">
       <button
         x-on:click={`${key} = ! ${key}`}
@@ -33,6 +38,12 @@ const xData = JSON.stringify({ [key]: false });
     </div>
   </header>
   <div class="show" x-show={key} x-transition>
-    <slot name="subhead" />
+    <input
+      slot="subhead"
+      type="text"
+      placeholder="Search content"
+      x-model="search"
+      x-cloak
+    />
   </div>
 </div>

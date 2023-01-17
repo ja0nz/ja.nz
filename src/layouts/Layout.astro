@@ -7,13 +7,12 @@ const { title } = Astro.props;
 ---
 
 <script>
- import persist from '@alpinejs/persist';
- document.addEventListener("alpine:init", () => {
-   Alpine.plugin(persist);
- });
+  import persist from "@alpinejs/persist";
+  document.addEventListener("alpine:init", () => {
+    Alpine.plugin(persist);
+  });
 </script>
 
-<!DOCTYPE html>
 <html
   lang="en"
   x-data="{ colorScheme: $persist('system')}"

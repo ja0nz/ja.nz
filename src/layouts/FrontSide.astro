@@ -1,17 +1,16 @@
 ---
 interface Props {
+  render: Render;
   requires?: AstroComponentFactory[];
-  inp: { state?: string; ssgData: TMenuCard[] };
 }
-const { inp } = Astro.props;
-const ssgData = inp.ssgData;
-const active = inp.state;
-
-import "@layouts/compositions/stack.css";
+import type { AstroComponentFactory } from "astro/dist/runtime/server";
+import type { Render, TMenuCard } from "@lib/api";
+const { render } = Astro.props;
+const active = render.active;
+const ssgData = render.data as TMenuCard[];
 
 import MenuCard from "@layouts/MenuCard.astro";
-import type { TMenuCard } from "@lib/api";
-import type { AstroComponentFactory } from "astro/dist/runtime/server";
+import "@layouts/compositions/stack.css";
 ---
 
 <style>
