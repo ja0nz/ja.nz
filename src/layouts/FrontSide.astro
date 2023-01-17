@@ -26,8 +26,10 @@ import type { AstroComponentFactory } from "astro/dist/runtime/server";
 
 <input
   slot="header"
-  type="text"
   x-model="search"
+  disabled
+  x-bind:disabled="false"
+  type="text"
   placeholder="Hit / to search 👇"
   x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
 />
@@ -35,7 +37,7 @@ import type { AstroComponentFactory } from "astro/dist/runtime/server";
   <ul slot="items">
     <template x-for="{tag, date, avatar} in f(search)">
       <MenuCard active={active}>
-        <div slot="avatar" x-html="avatar"></div>
+        <img slot="avatar" width="100" height="100" x-bind:src="avatar" />
         <a x-bind:href="'/tag/' + tag + '#main'">
           <span x-html="hl(search, tag)"></span>
         </a>
@@ -45,7 +47,7 @@ import type { AstroComponentFactory } from "astro/dist/runtime/server";
     {
       ssgData.map((item) => (
         <MenuCard ssg={true} active={active}>
-          <div slot="avatar" set:html={item.avatar} />
+          <img slot="avatar" width="100" height="100" src={item.avatar} />
           <a href={`"/tag/${item.tag}#main"`}>
             <span>{item.tag}</span>
           </a>

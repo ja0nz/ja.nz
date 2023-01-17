@@ -2,6 +2,7 @@ import {
   comp,
   filter,
   groupByObj,
+  iterator,
   map,
   mapcat,
   mapKeys,
@@ -38,7 +39,7 @@ const groupTagLatest = groupByObj({
 });
 
 /* Utils */
-const preflight = comp(
+const prologue = comp(
   map(fM),
   filter((x) => !draft(x)), // remove drafts (plus ensuring date is set)
   mapKeys({ date: (x) => +new Date(x) }), // format date to number
@@ -49,12 +50,12 @@ const preflight = comp(
  * Return TMenuCard; by latest first
  * Consumend by MainMenu
  */
-export function createMenuCard(
+export async function createMenuCard(
   posts: MarkdownInstance<FrontMatter>[]
-): TMenuCard[] {
-  return transduce(
+): Promise<TMenuCard[]> {
+  const promises: IterableIterator<Promise<TMenuCard>> = iterator(
     comp(
-      preflight,
+      prologue,
       filter((x) => !!tags(x)), // remove unset tags
       map((x) => <FM_DT>x), // just a noop type cast
       mapcat<FM_DT, Optional<TMenuCard, "avatar">>((x) =>
@@ -63,10 +64,13 @@ export function createMenuCard(
       scan(groupTagLatest), // inbetween group/reduce by tags
       takeLast(1), // continue with last reduction
       mapcat(Object.values), // pull' n flat
-      map((x) => Object.assign(x, { avatar: createAvatar(x.tag) })) // zip in Avatars
+      map(async (x) => Object.assign(x, { avatar: await createAvatar(x.tag) })) // zip in Avatars
     ),
-    pushSort(({ date: acc }, { date: x }) => x - acc), // latest first
     posts
+  );
+  return pushSort(
+    ({ date: acc }, { date: x }) => x - acc,
+    await Promise.all(promises)
   );
 }
 
@@ -76,7 +80,7 @@ export function createMenuCard(
  */
 export function renderOverview(posts: MarkdownInstance<FrontMatter>[]): FM_D[] {
   return transduce(
-    preflight,
+    prologue,
     pushSort(({ date: acc }, { date: x }) => x - acc), // latest first
     posts
   );

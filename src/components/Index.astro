@@ -30,7 +30,7 @@ import type { FM_D, FrontMatter, TMenuCard } from "@lib/api";
 const posts = await Astro.glob<FrontMatter>("../pages/read/**/*.md");
 
 /* Tag Search */
-const dataTag: TMenuCard[] = createMenuCard(posts);
+const dataTag: TMenuCard[] = await createMenuCard(posts);
 const filterTag = ({ tag }: TMenuCard) => tag;
 const styleTag = ["font-semibold", "bg-blue-200"];
 
@@ -63,9 +63,9 @@ const styleContent = ["font-semibold", "bg-blue-200"];
       <AlpineSelect inp={dataTag} key={filterTag} style={styleTag}>
         <FlipSide>
           <FrontSide
+            slot="front"
             requires={[AlpineSelect]}
             inp={{ state: active, ssgData: dataTag }}
-            slot="front"
           />
           <div slot="back">Todo</div>
         </FlipSide>
@@ -86,6 +86,7 @@ const styleContent = ["font-semibold", "bg-blue-200"];
               type="text"
               placeholder="Search content"
               x-model="search"
+              x-cloak
             />
           </ContentHeader>
           <Main slot="main">
