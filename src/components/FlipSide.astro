@@ -1,5 +1,9 @@
 ---
-const key = "toggleSide";
+interface Props {
+  key: string;
+}
+
+const { key } = Astro.props;
 const xData = JSON.stringify({ [key]: true });
 const xOnClick = `${key} = ! ${key}`;
 

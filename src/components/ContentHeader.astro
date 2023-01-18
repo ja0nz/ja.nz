@@ -7,23 +7,27 @@ const { active, tags } = Astro.props.render;
 
 import MenuCard from "@layouts/MenuCard.astro";
 import "@layouts/compositions/stack.css";
+import "@layouts/utilities/center.css";
 
 const key = "open";
 const xData = JSON.stringify({ [key]: false });
 
 const [tag] = tags.filter((x) => active === x.tag);
-const avatar = tag?.avatar || "/astronaut.svg";
+const avatar = tag?.avatar;
+const lastSeen = tag?.date;
 ---
 
 <style>
-  .stack {
+  .this {
     /* compositions/stack.css */
     --stack--spacing: auto;
+    /* TODO utilities/center.css */
+    --center--measure: 200ch;
 
     position: sticky;
     top: var(--top-placement);
   }
-  .stack::before {
+  .this::before {
     content: "";
     background-repeat: no-repeat;
     background-color: inherit;
@@ -35,21 +39,31 @@ const avatar = tag?.avatar || "/astronaut.svg";
   }
 
   header {
+    min-height: var(--robot-height);
     display: inline-flex;
     align-items: center;
   }
-  .tool {
+  img {
+    width: var(--robot-height);
+    height: var(--robot-height);
+  }
+  header > :last-child {
     margin-left: auto;
   }
 </style>
 
-<div x-data={xData} class="stack || bg-blue">
-  <header>
-    <MenuCard>
-      <img slot="avatar" width="100" height="100" src={avatar} />
-      <div class="">{active || "Ja0nz"}</div>
-    </MenuCard>
-    <div x-cloak class="tool">
+<div x-data={xData} class="this | stack || bg-primary">
+  <header class="center">
+    {
+      avatar && (
+        <MenuCard>
+          <img slot="avatar" src={avatar} />
+          <div>{active}</div>
+          <div>last seen {lastSeen}</div>
+        </MenuCard>
+      )
+    }
+    <div x-cloak>
       <button
         x-on:click={`${key} = ! ${key}`}
         x-bind:class={`${key} ? 'i-lucide-arrow-up-circle' : 'i-lucide-search'`}
@@ -59,7 +73,7 @@ const avatar = tag?.avatar || "/astronaut.svg";
         class="i-lucide-sun dark:i-lucide-moon"></button>
     </div>
   </header>
-  <div class="show" x-show={key} x-transition>
+  <div class="stack" x-show={key} x-transition>
     <input
       slot="subhead"
       type="text"
