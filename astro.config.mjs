@@ -43,16 +43,18 @@ const utopia = {
 const theme = {
   colors: {
     light: "var(--color-light)",
+    lightaccent: "var(--color-light-accent)",
     dark: "var(--color-dark)",
+    darkaccent: "var(--color-dark-accent)",
     primary: "var(--color-primary)",
     secondary: "var(--color-secondary)",
   },
   spacing: utopia,
   fontSize: utopia,
   fontFamily: {
-    sans: ['Inter', "sans-serif"],
-    mono: ['Azaret Mono', "monospace"],
-    head: ['Cartridge Regular']
+    sans: ["Inter", "sans-serif"],
+    mono: ["Azaret Mono", "monospace"],
+    head: ["Cartridge Regular"],
   },
 };
 
@@ -96,10 +98,7 @@ export default defineConfig({
         "color-base": "text-gray-900 dark:text-gray-300",
         "color-fade": "text-gray-900:50 dark:text-gray-300:50",
       },
-      rules: [
-        ["tile-dark", { "background-image": "url('/bg-tile-dark.png')" }],
-        ["tile-light", { "background-image": "url('/bg-tile-light.png')" }],
-      ],
+      rules: [],
     }),
   ],
   markdown: {

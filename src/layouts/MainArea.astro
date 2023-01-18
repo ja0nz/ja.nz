@@ -5,9 +5,10 @@
   .this {
     min-height: calc(100vh - 1px);
     z-index: 1;
+    background-image: var(--bg-img);
     background-attachment: fixed;
   }
 </style>
-<div class="this | tile-light dark:tile-dark || bg-orange">
+<div class="this | bg-lightaccent dark:bg-darkaccent">
   <slot />
 </div>

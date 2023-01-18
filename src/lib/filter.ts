@@ -2,7 +2,7 @@ import type { Fn } from "@thi.ng/api";
 import { filterFuzzy } from "@thi.ng/transducers";
 
 /* Create Filter */
-export const filterF = <T>(target: T[], getFn: Fn<T, string>) => {
+export const filterFuzzFn = <T>(target: T[], getFn: Fn<T, string>) => {
   const fn = (s: T) => getFn(s).toLowerCase();
   const all = target.reduce(
     (acc: string[], x) => acc.concat(fn(x).split(" ")),
@@ -14,7 +14,7 @@ export const filterF = <T>(target: T[], getFn: Fn<T, string>) => {
   };
 };
 
-export const filter =
+export const filterFn =
   <T>(target: T[], getFn: Fn<T, string>) =>
   (search: string) => {
     const r = new RegExp(search, "ig");

@@ -4,17 +4,17 @@ import ShowThisThat from "@components/ShowThisThat.astro";
 import Toggle from "@components/Toggle.astro";
 
 import Avatar from "@components/Avatar.astro";
-import { renderOverview, tagTimestampByLatest } from "@lib/xform";
+import { createTags, createFM } from "@lib/xform";
 
 import type { FrontMatter, TDate, FM_D } from "@lib/api";
 const posts = await Astro.glob<FrontMatter>("../pages/read/**/*.md");
 
 /* Tag Search */
-const dataTag: TDate[] = tagTimestampByLatest(posts);
+const dataTag: TDate[] = createFM(posts);
 const filterTag = ({ tag }: TDate) => tag;
 
 /* Content Search */
-const dataContent: FM_D[] = renderOverview(posts);
+const dataContent: FM_D[] = createTags(posts);
 const filterContent = ({ title: a, summary: b, category: c }: FM_D) =>
   [a, b, c].join(" ");
 

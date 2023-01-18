@@ -13,14 +13,7 @@ import {
 } from "@thi.ng/transducers";
 import { defGetter } from "@thi.ng/paths";
 import type { MarkdownInstance } from "astro";
-import type {
-  FrontMatter,
-  TMenuCard,
-  FM_D,
-  FM_DT,
-  Glob,
-  Optional,
-} from "./api";
+import type { FrontMatter, Tags, FM_D, FM_DT, Glob, Optional } from "./api";
 import { createAvatar } from "./avatar";
 
 /* Getters/Setters */
@@ -30,9 +23,9 @@ const getTags = defGetter<FrontMatter, "tags">(["tags"]);
 
 /* Reducer */
 const groupTagLatest = groupByObj({
-  key: ({ tag }: Optional<TMenuCard, "avatar">) => tag, // group by "tag"
+  key: ({ tag }: Optional<Tags, "avatar">) => tag, // group by "tag"
   group: maxCompare(
-    (): Optional<TMenuCard, "tag" | "avatar"> => ({ date: 0 }), // init/neutral
+    (): Optional<Tags, "tag" | "avatar"> => ({ date: 0 }), // init/neutral
     ({ date: acc }, { date: t }) => acc - t // reduce by acc > t
   ),
 });
@@ -46,18 +39,16 @@ const prologue = comp(
 );
 
 /*
- * Return TMenuCard; by latest first
+ * Return Tags; by latest first
  * Consumend by MainMenu
  */
-export function createMenuCard(
-  posts: MarkdownInstance<FrontMatter>[]
-): TMenuCard[] {
+export function createTags(posts: MarkdownInstance<FrontMatter>[]): Tags[] {
   return transduce(
     comp(
       prologue,
       filter((x) => !!getTags(x)), // remove unset tags
       map((x) => <FM_DT>x), // just a noop type cast
-      mapcat<FM_DT, Optional<TMenuCard, "avatar">>((x) =>
+      mapcat<FM_DT, Optional<Tags, "avatar">>((x) =>
         x.tags.map((y) => ({ tag: y, date: x.date }))
       ), // make TTS
       scan(groupTagLatest), // inbetween group/reduce by tags
@@ -74,7 +65,7 @@ export function createMenuCard(
  * Return selected FrontMatter; by latest first
  * Consumed by
  */
-export function renderOverview(posts: MarkdownInstance<FrontMatter>[]): FM_D[] {
+export function createFM(posts: MarkdownInstance<FrontMatter>[]): FM_D[] {
   return transduce(
     prologue,
     pushSort(({ date: acc }, { date: x }) => x - acc), // latest first

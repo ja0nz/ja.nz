@@ -22,10 +22,11 @@ export type FrontMatter = {
 };
 export type FM_D = MarkSet<FrontMatter, "date">;
 export type FM_DT = MarkSet<FrontMatter, "date" | "tags">;
-export type TMenuCard = { tag: string; date: number; avatar: string };
+export type Tags = { tag: string; date: number; avatar: string };
 export type Glob = MarkdownInstance<FrontMatter>;
 
 export type Render = {
   active: string | undefined;
-  data: TMenuCard[] | FM_D[];
+  tags: Tags[];
+  frontmatter: FM_D[];
 };
