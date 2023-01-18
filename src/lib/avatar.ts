@@ -1,5 +1,11 @@
-import { createAvatar as cA } from "@dicebear/core";
+import { createAvatar as cA, Result } from "@dicebear/core";
 import { bottts } from "@dicebear/collection";
+import { comp } from "@thi.ng/compose";
+import { default as svgToMiniDataURI } from "mini-svg-data-uri";
 
 export const createAvatar = (seed?: string) =>
-  cA(bottts, { seed, scale: 90 }).toDataUri();
+  comp(
+    svgToMiniDataURI,
+    (x: Result) => x.toString(),
+    cA
+  )(bottts, { seed, scale: 90 });

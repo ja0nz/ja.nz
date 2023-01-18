@@ -31,7 +31,7 @@ import type { FM_D, FrontMatter, TMenuCard } from "@lib/api";
 const posts = await Astro.glob<FrontMatter>("../pages/read/**/*.md");
 
 /* Tag Search */
-const tags: TMenuCard[] = await createMenuCard(posts);
+const tags: TMenuCard[] = createMenuCard(posts);
 const filterTag = ({ tag }: TMenuCard) => tag;
 const styleTag = ["font-semibold", "bg-blue-200"];
 

@@ -2,7 +2,6 @@ import {
   comp,
   filter,
   groupByObj,
-  iterator,
   map,
   mapcat,
   mapKeys,
@@ -25,9 +24,9 @@ import type {
 import { createAvatar } from "./avatar";
 
 /* Getters/Setters */
-const fM = defGetter<Glob, "frontmatter">(["frontmatter"]);
-const draft = defGetter<FrontMatter, "draft">(["draft"]);
-const tags = defGetter<FrontMatter, "tags">(["tags"]);
+const getFM = defGetter<Glob, "frontmatter">(["frontmatter"]);
+const getDraft = defGetter<FrontMatter, "draft">(["draft"]);
+const getTags = defGetter<FrontMatter, "tags">(["tags"]);
 
 /* Reducer */
 const groupTagLatest = groupByObj({
@@ -40,8 +39,8 @@ const groupTagLatest = groupByObj({
 
 /* Utils */
 const prologue = comp(
-  map(fM),
-  filter((x) => !draft(x)), // remove drafts (plus ensuring date is set)
+  map(getFM),
+  filter((x) => !getDraft(x)), // remove drafts (plus ensuring date is set)
   mapKeys({ date: (x) => +new Date(x) }), // format date to number
   mapKeys({ title: (x) => x.split(",").slice(1).join("") }) // prepare title
 );
@@ -50,13 +49,13 @@ const prologue = comp(
  * Return TMenuCard; by latest first
  * Consumend by MainMenu
  */
-export async function createMenuCard(
+export function createMenuCard(
   posts: MarkdownInstance<FrontMatter>[]
-): Promise<TMenuCard[]> {
-  const promises: IterableIterator<Promise<TMenuCard>> = iterator(
+): TMenuCard[] {
+  return transduce(
     comp(
       prologue,
-      filter((x) => !!tags(x)), // remove unset tags
+      filter((x) => !!getTags(x)), // remove unset tags
       map((x) => <FM_DT>x), // just a noop type cast
       mapcat<FM_DT, Optional<TMenuCard, "avatar">>((x) =>
         x.tags.map((y) => ({ tag: y, date: x.date }))
@@ -64,13 +63,10 @@ export async function createMenuCard(
       scan(groupTagLatest), // inbetween group/reduce by tags
       takeLast(1), // continue with last reduction
       mapcat(Object.values), // pull' n flat
-      map(async (x) => Object.assign(x, { avatar: await createAvatar(x.tag) })) // zip in Avatars
+      map((x) => Object.assign(x, { avatar: createAvatar(x.tag) })) // zip in Avatars
     ),
+    pushSort(({ date: acc }, { date: x }) => x - acc),
     posts
-  );
-  return pushSort(
-    ({ date: acc }, { date: x }) => x - acc,
-    await Promise.all(promises)
   );
 }
 

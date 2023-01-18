@@ -27,10 +27,40 @@ const remarkEmbedPlugin = [
   },
 ];
 
+const utopia = {
+  "5-": "var(--step--5)",
+  "4-": "var(--step--4)",
+  "3-": "var(--step--3)",
+  "2-": "var(--step--2)",
+  "1-": "var(--step--1)",
+  0: "var(--step-0)",
+  1: "var(--step-1)",
+  2: "var(--step-2)",
+  3: "var(--step-3)",
+  4: "var(--step-4)",
+  5: "var(--step-5)",
+};
+const theme = {
+  colors: {
+    light: "var(--color-light)",
+    dark: "var(--color-dark)",
+    primary: "var(--color-primary)",
+    secondary: "var(--color-secondary)",
+  },
+  spacing: utopia,
+  fontSize: utopia,
+  fontFamily: {
+    sans: ['Inter', "sans-serif"],
+    mono: ['Azaret Mono', "monospace"],
+    head: ['Cartridge Regular']
+  },
+};
+
 /* UnoCSS */
 import Unocss from "unocss/astro";
 import presetIcons from "@unocss/preset-icons";
 import presetUno from "@unocss/preset-uno";
+import transformerDirectives from "@unocss/transformer-directives";
 
 /* AlpineJS */
 import alpinejs from "@astrojs/alpinejs";
@@ -48,6 +78,7 @@ export default defineConfig({
   integrations: [
     alpinejs(),
     Unocss({
+      transformers: [transformerDirectives()],
       presets: [
         presetUno(),
         presetIcons({
@@ -58,6 +89,7 @@ export default defineConfig({
           },
         }),
       ],
+      theme,
       shortcuts: {
         "border-base": "border-gray-200 dark:border-dark-200",
         "bg-base": "bg-white dark:bg-dark-100",

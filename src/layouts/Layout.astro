@@ -4,6 +4,7 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+import '@layouts/global.css';
 ---
 
 <script>
@@ -33,90 +34,3 @@ const { title } = Astro.props;
     <slot />
   </body>
 </html>
-<style is:global>
-  /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,5,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-  :root {
-    --color-primary: #ff5400;
-    --color-secondary: #86c7f0;
-
-    --step--5: clamp(0.41rem, calc(0.47rem + -0.07vw), 0.45rem);
-    --step--4: clamp(0.51rem, calc(0.55rem + -0.05vw), 0.54rem);
-    --step--3: clamp(0.64rem, calc(0.66rem + -0.02vw), 0.65rem);
-    --step--2: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem);
-    --step--1: clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem);
-    --step-0: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
-    --step-1: clamp(1.35rem, calc(1.28rem + 0.37vw), 1.56rem);
-    --step-2: clamp(1.62rem, calc(1.5rem + 0.58vw), 1.95rem);
-    --step-3: clamp(1.94rem, calc(1.77rem + 0.87vw), 2.44rem);
-    --step-4: clamp(2.33rem, calc(2.08rem + 1.25vw), 3.05rem);
-    --step-5: clamp(2.8rem, calc(2.45rem + 1.77vw), 3.82rem);
-
-    /* Original implement */
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      #da62c4 30%,
-      white 60%
-    );
-  }
-
-  /* Alpine Cloak */
-  [x-cloak] {
-    display: none !important;
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    width: 15px;
-  }
-  ::-webkit-scrollbar-button:vertical:decrement {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text transform='rotate(-44)' x='-44%' y='94%' font-size='10'>🚀</text></svg>");
-  }
-  ::-webkit-scrollbar-button:vertical:increment {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text transform='rotate(-180)' x='-100%' y='-19%' font-size='13'>🔥</text></svg>");
-  }
-  ::-webkit-scrollbar-thumb {
-    --sb-r: #860111;
-    --sb-o: #ff4605;
-    border-radius: 3px;
-    background: linear-gradient(
-          135deg,
-          var(--sb-r) 12.5%,
-          var(--sb-o) 12.5%,
-          var(--sb-o) 25%,
-          transparent 25%
-        ) -2.5px 0,
-      linear-gradient(
-          -135deg,
-          var(--sb-r) 12.5%,
-          var(--sb-o) 12.5%,
-          var(--sb-o) 25%,
-          transparent 25%
-        ) -2.5px 0,
-      linear-gradient(
-        45deg,
-        var(--sb-r) 12.5%,
-        var(--sb-o) 12.5%,
-        var(--sb-o) 25%,
-        transparent 25%
-      ),
-      linear-gradient(
-        -45deg,
-        var(--sb-r) 12.5%,
-        var(--sb-o) 12.5%,
-        var(--sb-o) 25%,
-        transparent 25%
-      );
-    background-size: 5px 5px;
-  }
-
-  html {
-    font-family: system-ui, sans-serif;
-    background-color: #f6f6f6;
-  }
-  code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-  }
-</style>
