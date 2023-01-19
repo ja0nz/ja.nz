@@ -28,14 +28,19 @@ const lastSeen = tag?.date;
     top: var(--top-placement);
   }
   .this::before {
+    @apply bg-light dark:bg-dark;
     content: "";
     background-repeat: no-repeat;
-    background-color: inherit;
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' height='25'><defs><pattern id='bg1' patternUnits='userSpaceOnUse' width='40' height='25'><text y='.9em' font-size='20'>🚀</text></pattern></defs><rect width='100%' height='100%' fill='url(%23bg1)' /></svg>");
     position: absolute;
     width: 100%;
     height: calc(var(--top-placement) + var(--rocket-overlap));
     top: calc((var(--top-placement) + var(--rocket-overlap)) * -1);
+  }
+  .placeholder {
+    /* Gap the top placing */
+    height: var(--top-placement);
+    text-align: center;
   }
 
   header {
@@ -52,8 +57,8 @@ const lastSeen = tag?.date;
   }
 </style>
 
-<div x-data={xData} class="this | stack || bg-primary">
-  <header class="center">
+<div x-data={xData} class="this | stack">
+  <header class="bg-primary">
     {
       avatar && (
         <MenuCard>
@@ -82,4 +87,29 @@ const lastSeen = tag?.date;
       x-cloak
     />
   </div>
+</div>
+
+<script>
+  const above50 = "⏬ Pull me down to 🌍 ⏬";
+  const below50 = "⏫ Beam me to the ✨ ⏫";
+
+  const callbackFn = (entries: IntersectionObserverEntry[]) => {
+    const [{ target, isIntersecting }] = entries;
+    target.innerHTML = isIntersecting ? above50 : below50;
+  };
+  const init = {
+    observer: new IntersectionObserver(callbackFn, {
+      rootMargin: "0px 0px -50% 0px",
+    }),
+  };
+
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("Placeholder", () => init);
+  });
+</script>
+<div
+  x-data="Placeholder"
+  x-init="observer.observe($el)"
+  class="placeholder | font-head"
+>
 </div>

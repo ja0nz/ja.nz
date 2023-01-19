@@ -6,8 +6,6 @@
     /* Mobile view: Stick to top */
     position: sticky;
     top: var(--top-placement);
-    /* Mobile view: Push content down a bit for the 'rocket show' */
-    margin-block-start: var(--top-placement);
     /* Fit sidebar into viewport, overflow casuses local scroll */
     max-height: calc(100vh - var(--top-placement) - 1px);
   }
@@ -15,9 +13,14 @@
   /* Mobile view */
   @media (max-width: 1114px) {
     .this {
-      max-height: initial;
-      /* Ensure spacing to bottom - needed because of the ::before content clip */
-      margin-block-end: calc(var(--top-placement) + var(--rocket-overlap));
+      max-height: 70vh;
+      /*
+      Offset to bottom, adds up to:
+       - this --top-placement shift
+       - height of the 'rocket overlay' in ContentHeider:
+         --top-placement + --rocket-overlap
+      */
+      margin-block-end: calc(var(--top-placement) * 2 + var(--rocket-overlap));
     }
   }
 </style>

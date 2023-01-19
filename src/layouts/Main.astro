@@ -16,12 +16,11 @@ const { frontmatter } = Astro.props.render;
 
   /* Ensure some breathing before tabbing in #main */
   :target {
-    scroll-margin-top: calc((var(--top-placement) + var(--rocket-overlap)));
+    scroll-margin-top: calc((var(--top-placement) + var(--robot-height)));
   }
 </style>
 
 <main class="this">
-  <div id="placeholder" style="height: var(--top-placement);"></div>
   <ul id="main" tabindex="0">
     <template x-for="(x, idx) in f(search)">
       <li tabindex="0" class="border h-40">
