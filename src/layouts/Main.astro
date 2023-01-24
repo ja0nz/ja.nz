@@ -11,64 +11,67 @@ import "@layouts/utilities/center.css";
 ---
 
 <style>
- /* Ensure some breathing before tabbing in #main */
- :target {
-   scroll-margin-top: calc((var(--top-placement) + var(--robot-height)));
- }
+  /* Ensure some breathing before tabbing in #main */
+  :target {
+    scroll-margin-top: calc((var(--top-placement) + var(--robot-height)));
+  }
+  /* Remove main focus */
+  #main:focus {
+    outline: 0;
+  }
 
- main {
-   /* compositions/center.css */
-   --center--measure: clamp(16rem, 95vw, 91rem);
-   /* blocks/box.css */
-   --box--padding: var(--step-0);
+  main {
+    /* compositions/center.css */
+    --center--measure: clamp(16rem, 95vw, 91rem);
+    /* blocks/box.css */
+    --box--padding: var(--step-0);
 
-   padding-top: 0 !important;
- }
+    padding-top: 0 !important;
+  }
 
- /* Bubble */
- li {
-   max-width: 70%;
-   border-radius: 10px;
- }
- li:focus {
-   outline: 4px dashed var(--color-secondary);
- }
- li:nth-child(odd) {
-   --box--background: blue;
- }
+  /* Bubble */
+  li {
+    max-width: 70%;
+    border-radius: 10px;
+  }
+  li:focus {
+    outline: 4px dashed var(--color-secondary);
+  }
+  li:nth-child(odd) {
+    --box--background: blue;
+  }
 
- li:nth-child(even) {
-   --box--background: red;
-   margin-left: auto;
- }
-
+  li:nth-child(even) {
+    --box--background: red;
+    margin-left: auto;
+  }
 </style>
 
 <main class="this | box">
   <div class="center">
-  <ul id="main" class="stack" tabindex="0">
-    <template x-for="(x, idx) in f(search)">
-      <li tabindex="0" class="box">
-        <h1 class="font-head text-1" x-html="hl(search, x.title)"></h1>
-        <p x-html="hl(search, x.summary)"></p>
-        <span x-html="hl(search, x.category)"></span>
-        <span x-text="x.date"></span>
-        <span x-text="x.tags"></span>
-        <span x-text="x.id"></span>
-      </li>
-    </template>
-    {
-      frontmatter.map((item) => (
-        <li x-show="0" tabindex="0" class="box">
-          <h1 class="text-2">{item.title}</h1>
-          <p>{item.summary}</p>
-          <span>{item.category}</span>
-          <span>{item.date}</span>
-          <span>{item.tags}</span>
-          <span>{item.id}</span>
+    <ul id="main" class="stack" tabindex="-1">
+      <template x-for="(x, idx) in f(search)">
+        <li tabindex="0" class="box">
+          <h1 class="font-head text-1" x-html="hl(search, x.title)"></h1>
+          <p x-html="hl(search, x.summary)"></p>
+          <span x-html="hl(search, x.category)"></span>
+          <span x-text="x.date"></span>
+          <span x-text="x.tags"></span>
+          <span x-text="x.id"></span>
         </li>
-      ))
-    }
-  </ul>
+      </template>
+      {
+        frontmatter.map((item) => (
+          <li x-show="0" tabindex="0" class="box">
+            <h1 class="text-2">{item.title}</h1>
+            <p>{item.summary}</p>
+            <span>{item.category}</span>
+            <span>{item.date}</span>
+            <span>{item.tags}</span>
+            <span>{item.id}</span>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </main>

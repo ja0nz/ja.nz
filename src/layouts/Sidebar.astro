@@ -10,19 +10,19 @@
     max-height: calc(100vh - var(--top-placement) - 1px);
   }
 
- /* Mobile view */
- @media (max-width: 1114px) {
-   .this {
-     max-height: 70vh;
-     /*
+  /* Mobile view */
+  @media (max-width: 1114px) {
+    .this {
+      max-height: 70vh;
+      /*
         Mobile view: Offset to bottom, adds up to:
         - this --top-placement shift
         - height of the 'rocket overlay' in ContentHeider:
         --top-placement + --rocket-overlap
       */
-     margin-block-end: calc(var(--top-placement) * 2 + var(--rocket-overlap));
-   }
- }
+      margin-block-end: calc(var(--top-placement) * 2 + var(--rocket-overlap));
+    }
+  }
 </style>
 
 <div class="this">
