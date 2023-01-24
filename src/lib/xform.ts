@@ -9,6 +9,7 @@ import {
   pushSort,
   scan,
   takeLast,
+  trace,
   transduce,
 } from "@thi.ng/transducers";
 import { defGetter } from "@thi.ng/paths";
@@ -35,7 +36,8 @@ const prologue = comp(
   map(getFM),
   filter((x) => !getDraft(x)), // remove drafts (plus ensuring date is set)
   mapKeys({ date: (x) => +new Date(x) }), // format date to number
-  mapKeys({ title: (x) => x.split(",").slice(1).join("") }) // prepare title
+  mapKeys({ title: (x) => x.split(",").slice(1).join("") }), // prepare title
+  filter((x) => !!getTags(x)) // remove unset tags
 );
 
 /*
@@ -46,7 +48,6 @@ export function createTags(posts: MarkdownInstance<FrontMatter>[]): Tags[] {
   return transduce(
     comp(
       prologue,
-      filter((x) => !!getTags(x)), // remove unset tags
       map((x) => <FM_DT>x), // just a noop type cast
       mapcat<FM_DT, Optional<Tags, "avatar">>((x) =>
         x.tags.map((y) => ({ tag: y, date: x.date }))
@@ -65,9 +66,16 @@ export function createTags(posts: MarkdownInstance<FrontMatter>[]): Tags[] {
  * Return selected FrontMatter; by latest first
  * Consumed by
  */
-export function createFM(posts: MarkdownInstance<FrontMatter>[]): FM_D[] {
+export function createFM(
+  posts: MarkdownInstance<FrontMatter>[],
+  active: string
+): FM_D[] {
   return transduce(
-    prologue,
+    comp(
+      prologue,
+      // filter for active tag
+      filter((x) => (active ? (<string[]>getTags(x)).includes(active) : true))
+    ),
     pushSort(({ date: acc }, { date: x }) => x - acc), // latest first
     posts
   );

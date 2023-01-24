@@ -5,7 +5,8 @@ interface Props {
 import type { FM_D, FrontMatter, Tags, Render } from "@lib/api";
 
 // use to highlight current active
-const active = Astro.params?.tag;
+const active = Astro.params?.tag || "";
+console.log(active);
 
 /* Layouts */
 import Layout from "@layouts/Layout.astro";
@@ -35,7 +36,7 @@ const posts = await Astro.glob<FrontMatter>("../pages/read/**/*.md");
 const render: Render = {
   active,
   tags: createTags(posts),
-  frontmatter: createFM(posts),
+  frontmatter: createFM(posts, active),
 };
 
 /* Toggle Sidebar */
