@@ -1,0 +1,4 @@
+.box {
+  padding: var(--box--padding);
+  background: var(--box--background);
+}
