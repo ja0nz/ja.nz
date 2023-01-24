@@ -1,0 +1,22 @@
+---
+import MenuCard from "@layouts/MenuCard.astro";
+
+interface Props {
+  toggle: string;
+}
+
+const { toggle } = Astro.props;
+---
+
+<style>
+  img {
+    height: var(--robot-height);
+    width: var(--robot-height);
+    cursor: pointer;
+  }
+</style>
+<MenuCard>
+  <img slot="avatar" x-on:click={toggle} src="/profile-astronaut.webp" />
+  <a href="/"><span class="font-head">BEEP&nbsp;BEEP</span></a>
+  <div>hello&nbsp;stranger&nbsp;👽</div>
+</MenuCard>

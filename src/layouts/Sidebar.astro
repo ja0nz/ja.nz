@@ -3,26 +3,26 @@
 
 <style>
   .this {
-    /* Mobile view: Stick to top */
+    /* Stick to top */
     position: sticky;
     top: var(--top-placement);
-    /* Fit sidebar into viewport, overflow casuses local scroll */
+    /* Normal view: Fit sidebar into viewport, overflow causes local scroll */
     max-height: calc(100vh - var(--top-placement) - 1px);
   }
 
-  /* Mobile view */
-  @media (max-width: 1114px) {
-    .this {
-      max-height: 70vh;
-      /*
-      Offset to bottom, adds up to:
-       - this --top-placement shift
-       - height of the 'rocket overlay' in ContentHeider:
-         --top-placement + --rocket-overlap
+ /* Mobile view */
+ @media (max-width: 1114px) {
+   .this {
+     max-height: 70vh;
+     /*
+        Mobile view: Offset to bottom, adds up to:
+        - this --top-placement shift
+        - height of the 'rocket overlay' in ContentHeider:
+        --top-placement + --rocket-overlap
       */
-      margin-block-end: calc(var(--top-placement) * 2 + var(--rocket-overlap));
-    }
-  }
+     margin-block-end: calc(var(--top-placement) * 2 + var(--rocket-overlap));
+   }
+ }
 </style>
 
 <div class="this">

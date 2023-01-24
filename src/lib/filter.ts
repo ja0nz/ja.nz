@@ -4,11 +4,13 @@ import { filterFuzzy } from "@thi.ng/transducers";
 /* Create Filter */
 export const filterFuzzFn = <T>(target: T[], getFn: Fn<T, string>) => {
   const fn = (s: T) => getFn(s).toLowerCase();
-  const all = target.reduce(
-    (acc: string[], x) => acc.concat(fn(x).split(" ")),
-    []
-  );
+  const all = target.flatMap((x) => fn(x).split(" "));
   return (search: string) => {
+    // Multiple words search query
+    if (search.includes(" ")) {
+      return [...filterFuzzy(search.toLowerCase(), { key: fn }, target)];
+    }
+    // Single word search query
     const uniq = [...filterFuzzy(search.toLowerCase(), all)];
     return target.filter((x) => uniq.some((y) => fn(x).includes(y)));
   };

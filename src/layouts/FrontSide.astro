@@ -19,12 +19,25 @@ import "@layouts/compositions/stack.css";
   nav::-webkit-scrollbar {
     display: none;
   }
+  .items {
+    --stack--spacing: var(--step--5);
+  }
   img {
     height: var(--robot-height);
     width: var(--robot-height);
+    border-radius: 40px;
+    background-color: rgba(1, 1, 1, 0.2);
+  }
+  li:hover {
+    background-color: var(--color-secondary);
+  }
+  li.active {
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
   }
 </style>
 
+<slot />
 <input
   slot="header"
   x-model="search"
@@ -34,33 +47,38 @@ import "@layouts/compositions/stack.css";
   placeholder="Hit / to search 👇"
   x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
 />
-<nav class="items">
-  <ul slot="items">
+<nav>
+  <ul class="items | stack" slot="items">
     <template x-for="{tag, date, avatar} in f(search)">
       <li
         x-data={`{ active: "${active}" }`}
         x-init="active === tag && $el.scrollIntoView(false)"
         x-bind:class="active === tag && 'active'"
       >
-        <MenuCard>
-          <img slot="avatar" x-bind:src="avatar" />
-          <a x-bind:href="'/tag/' + tag + '#main'">
-            <span x-html="hl(search, tag)"></span>
-          </a>
-          <span x-text="date"></span>
-        </MenuCard>
+        <a x-bind:href="'/tag/' + tag + '#main'">
+          <MenuCard>
+            <img slot="avatar" x-bind:src="avatar" />
+            <span class="font-head" x-html="hl(search, tag)"></span>
+            <div>
+              bot active: <span x-text="new Date(date).toLocaleDateString()"
+              ></span>
+            </div>
+          </MenuCard>
+        </a>
       </li>
     </template>
     {
       tags.map((item) => (
         <li x-show="0" class={active === item.tag ? "active" : ""}>
-          <MenuCard>
-            <img slot="avatar" src={item.avatar} />
-            <a href={`"/tag/${item.tag}#main"`}>
-              <span>{item.tag}</span>
-            </a>
-            <span>{item.date}</span>
-          </MenuCard>
+          <a href={`"/tag/${item.tag}#main"`}>
+            <MenuCard>
+              <img slot="avatar" src={item.avatar} />
+              <span class="font-head">{item.tag}</span>
+              <span>
+                bot active: {new Date(item.date).toLocaleDateString()}
+              </span>
+            </MenuCard>
+          </a>
         </li>
       ))
     }

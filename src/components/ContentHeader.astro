@@ -18,18 +18,17 @@ const lastSeen = tag?.date;
 ---
 
 <style>
-  .this {
-    /* compositions/stack.css */
-    --stack--spacing: auto;
-    /* TODO utilities/center.css */
-    --center--measure: 200ch;
+ .this {
+   /* compositions/stack.css */
+   --stack--spacing: auto;
 
-    position: sticky;
-    top: var(--top-placement);
-  }
+   position: sticky;
+   top: var(--top-placement);
+   @apply bg-light dark:bg-dark;
+ }
   .this::before {
-    @apply bg-light dark:bg-dark;
     content: "";
+    background-color: inherit;
     background-repeat: no-repeat;
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' height='25'><defs><pattern id='bg1' patternUnits='userSpaceOnUse' width='40' height='25'><text y='.9em' font-size='20'>🚀</text></pattern></defs><rect width='100%' height='100%' fill='url(%23bg1)' /></svg>");
     position: absolute;
@@ -58,13 +57,13 @@ const lastSeen = tag?.date;
 </style>
 
 <div x-data={xData} class="this | stack">
-  <header class="bg-primary">
+  <header>
     {
       avatar && (
         <MenuCard>
           <img slot="avatar" src={avatar} />
-          <div>{active}</div>
-          <div>last seen {lastSeen}</div>
+          <div class="font-head">{active}</div>
+          <div>latest:&nbsp;{new Date(lastSeen).toLocaleDateString()}</div>
         </MenuCard>
       )
     }
@@ -78,7 +77,7 @@ const lastSeen = tag?.date;
         class="i-lucide-sun dark:i-lucide-moon"></button>
     </div>
   </header>
-  <div class="stack" x-show={key} x-transition>
+  <div class="stack" x-show={key}>
     <input
       slot="subhead"
       type="text"

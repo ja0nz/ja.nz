@@ -1,4 +1,45 @@
 ---
+interface Props {
+  toggle: string;
+}
+
+const { toggle } = Astro.props;
 ---
 
-<div>Hello</div>
+<style>
+  .return {
+    display: inline-flex;
+    align-items: center;
+  }
+  .returnbtn {
+    @apply i-lucide-arrow-left-circle;
+    cursor: pointer;
+    width: var(--robot-height);
+    height: var(--robot-height);
+  }
+</style>
+
+<div class="return">
+  <div class="returnbtn" x-on:click={toggle}></div>
+  <div class="font-head">Menu</div>
+</div>
+<img src="/profile.webp" />
+<h2>Hey there, I'm Jan👋</h2>
+<p>
+  And this is a raw scratchpad/blog/journal about things that make me feel
+  curious. Enjoy.
+</p>
+<ul>
+  <li>
+    <a href="https://read.cv/ja0nz"><span>read.cv/ja0nz</span></a>
+  </li>
+  <li>
+    <a href="https://github.com/ja0nz"><span>github.com/ja0nz</span></a>
+  </li>
+  <li>
+    <a href="https://codepen.io/ja0nz"><span>codepen.io/ja0nz</span></a>
+  </li>
+  <li>
+    <a href="https://twitter.com/ja0nz"><span>twitter.com/ja0nz</span></a>
+  </li>
+</ul>

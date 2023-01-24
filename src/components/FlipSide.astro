@@ -5,7 +5,6 @@ interface Props {
 
 const { key } = Astro.props;
 const xData = JSON.stringify({ [key]: true });
-const xOnClick = `${key} = ! ${key}`;
 
 import "@layouts/compositions/stack.css";
 ---
@@ -22,13 +21,11 @@ import "@layouts/compositions/stack.css";
 <div style="display: contents;" x-data={xData}>
   <div x-show={key} x-transition class="stack">
     <div class="stack">
-      <div x-on:click={xOnClick} class="|| bg-blue">MainMenu</div>
       <slot name="front" />
     </div>
   </div>
   <div x-cloak x-show={`!${key}`} x-transition class="stack">
     <div class="stack">
-      <div x-on:click={xOnClick} class="|| bg-blue">BackSide</div>
       <slot name="back" />
     </div>
   </div>

@@ -23,6 +23,7 @@ import "@layouts/utilities/center.css";
 import AlpineSelect from "@components/AlpineSelect.astro";
 import FlipSide from "@components/FlipSide.astro";
 import ContentHeader from "@components/ContentHeader.astro";
+import MenuHeader from "@components/MenuHeader.astro";
 
 /* Lib */
 import { createTags, createFM } from "@lib/xform";
@@ -36,6 +37,10 @@ const render: Render = {
   tags: createTags(posts),
   frontmatter: createFM(posts),
 };
+
+/* Toggle Sidebar */
+const tsKey = "tssidebar";
+const tsxOn = `${tsKey} = ! ${tsKey}`;
 ---
 
 <style>
@@ -66,9 +71,11 @@ const render: Render = {
         filter={({ tag }: Tags) => tag}
         style={["font-semibold", "bg-blue-200"]}
       >
-        <FlipSide key="toggleSide">
-          <FrontSide slot="front" requires={[AlpineSelect]} render={render} />
-          <About slot="back" />
+        <FlipSide key={tsKey}>
+          <FrontSide slot="front" requires={[AlpineSelect]} render={render}>
+            <MenuHeader toggle={tsxOn} />
+          </FrontSide>
+          <About toggle={tsxOn} slot="back" />
         </FlipSide>
       </AlpineSelect>
     </Sidebar>
