@@ -13,10 +13,10 @@ Args
   - The space (margin) between the sidebar and non-sidebar
 
   * flex-basis: --sidebar--bar-width
-  -  How large the sidebar should be
+  - How large the sidebar should be
 
   * min-inline-size: --sidebar--content-min-width, 50%
-  -  The minimum size of the main content area
+  - The minimum size of the main content area
 */
 .with-sidebar {
   display: flex;

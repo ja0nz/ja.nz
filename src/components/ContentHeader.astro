@@ -7,6 +7,7 @@ const { active, tags } = Astro.props.render;
 
 import MenuCard from "@layouts/MenuCard.astro";
 import "@layouts/compositions/stack.css";
+import "@layouts/compositions/repel.css";
 import "@layouts/utilities/center.css";
 
 const key = "open";
@@ -18,14 +19,14 @@ const lastSeen = tag?.date;
 ---
 
 <style>
- .this {
-   /* compositions/stack.css */
-   --stack--spacing: auto;
+  .this {
+    /* compositions/stack.css */
+    --stack--spacing: auto;
 
-   position: sticky;
-   top: var(--top-placement);
-   @apply bg-light dark:bg-dark;
- }
+    position: sticky;
+    top: var(--top-placement);
+    @apply bg-light dark:bg-dark;
+  }
   .this::before {
     content: "";
     background-color: inherit;
@@ -44,27 +45,24 @@ const lastSeen = tag?.date;
 
   header {
     min-height: var(--robot-height);
-    display: inline-flex;
-    align-items: center;
   }
   img {
     width: var(--robot-height);
     height: var(--robot-height);
   }
-  header > :last-child {
-    margin-left: auto;
-  }
 </style>
 
 <div x-data={xData} class="this | stack">
-  <header>
+  <header class="repel">
     {
-      avatar && (
+      avatar ? (
         <MenuCard>
           <img slot="avatar" src={avatar} />
           <div class="font-head">{active}</div>
           <div>latest:&nbsp;{new Date(lastSeen).toLocaleDateString()}</div>
         </MenuCard>
+      ) : (
+        <div />
       )
     }
     <div x-cloak>
