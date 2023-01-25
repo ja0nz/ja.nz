@@ -16,6 +16,9 @@ import "@layouts/compositions/stack.css";
     /* Related to max-height; Menu scroll bar  */
     overflow-y: auto;
   }
+  a:focus-visible {
+    outline: none;
+  }
   nav::-webkit-scrollbar {
     display: none;
   }
@@ -28,11 +31,13 @@ import "@layouts/compositions/stack.css";
     border-radius: 40px;
     background-color: rgba(1, 1, 1, 0.2);
   }
-  li:hover {
+  li:hover,
+  li:has(a:focus-visible) {
     background-color: var(--color-secondary);
   }
   li.active {
-    border: 1px solid var(--color-primary);
+    outline: 1px solid var(--color-primary);
+    outline-offset: -1px;
     border-radius: 5px;
   }
 </style>
