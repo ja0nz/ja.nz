@@ -8,6 +8,8 @@ import type { Render } from "@lib/api";
 const { frontmatter } = Astro.props.render;
 import "@layouts/blocks/box.css";
 import "@layouts/utilities/center.css";
+import "@layouts/compositions/cluster.css";
+import "@layouts/compositions/repel.css";
 ---
 
 <style>
@@ -38,11 +40,11 @@ import "@layouts/utilities/center.css";
     outline: 4px dashed var(--color-secondary);
   }
   li:nth-child(odd) {
-    --box--background: blue;
+    --box--background: var(--bg-bubble-odd);
   }
 
   li:nth-child(even) {
-    --box--background: red;
+    --box--background: var(--bg-bubble-even);
     margin-left: auto;
   }
 </style>
@@ -52,12 +54,17 @@ import "@layouts/utilities/center.css";
     <ul id="main" class="stack" tabindex="-1">
       <template x-for="(x, idx) in f(search)">
         <li tabindex="0" class="box">
-          <h1 class="font-head text-1" x-html="hl(search, x.title)"></h1>
+          <div class="repel">
+            <h1 class="font-head text-1" x-html="hl(search, x.title)"></h1>
+            <div x-bind:class="x.category === 'long' ? 'i-lucide-star': ''">
+            </div>
+          </div>
           <p x-html="hl(search, x.summary)"></p>
-          <span x-html="hl(search, x.category)"></span>
-          <span x-text="x.date"></span>
-          <span x-text="x.tags"></span>
-          <span x-text="x.id"></span>
+          <div class="cluster">
+            <span x-text="x.date"></span>
+            <span x-text="x.tags"></span>
+            <span x-text="x.id"></span>
+          </div>
         </li>
       </template>
       {

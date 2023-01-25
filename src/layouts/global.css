@@ -16,14 +16,27 @@
   }
 }
 
+@layer dark {
+  body {
+    @apply dark:bg-dark dark:text-light;
+  }
+  .dark {
+    --bg-bubble-even: #227c9d;
+    --bg-bubble-odd: #852a85;
+  }
+}
+
 @layer themevars {
   :root {
     --color-light: #f0f2f5;
-    --color-light-accent: #f4f2ee;
+    --color-light-accent: #e1e5eb;
     --color-dark: #111b21;
     --color-dark-accent: #222e35;
     --color-primary: #ff5400;
     --color-secondary: #86c7f0;
+
+    --bg-bubble-even: #ffcb77;
+    --bg-bubble-odd: #fe6d73;
 
     /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,5,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
     --step--5: clamp(0.41rem, calc(0.47rem + -0.07vw), 0.45rem);
@@ -95,15 +108,5 @@
         transparent 25%
       );
     background-size: 5px 5px;
-  }
-}
-
-@layer dark {
-  body {
-    @apply dark:bg-dark dark:text-light;
-  }
-  .dark {
-    --bg-bubble-even: #161135;
-    --bg-bubble-odd: #852a85;
   }
 }

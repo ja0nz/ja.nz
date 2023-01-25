@@ -25,6 +25,7 @@ const lastSeen = tag?.date;
 
     position: sticky;
     top: var(--top-placement);
+    z-index: 1;
     @apply bg-light dark:bg-dark;
   }
   .this::before {
@@ -45,6 +46,7 @@ const lastSeen = tag?.date;
 
   header {
     min-height: var(--robot-height);
+    @apply bg-lightaccent dark:bg-darkaccent;
   }
   img {
     width: var(--robot-height);

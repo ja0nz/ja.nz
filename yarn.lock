@@ -2061,9 +2061,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "astro@npm:2.0.0"
+"astro@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "astro@npm:2.0.1"
   dependencies:
     "@astrojs/compiler": ^1.0.1
     "@astrojs/language-server": ^0.28.3
@@ -2102,7 +2102,7 @@ __metadata:
     preferred-pm: ^3.0.3
     prompts: ^2.4.2
     rehype: ^12.0.1
-    semver: ^7.3.7
+    semver: ^7.3.8
     server-destroy: ^1.0.1
     shiki: ^0.11.1
     slash: ^4.0.0
@@ -2119,7 +2119,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: b21efd9bb3924279ecabd97158bcd9d27a9cde0eafa737194902e5de7ca42f2cf64e8642a9056f1dde0666068ed41357a1eae4d852bc55c6239406696064feba
+  checksum: 20f8fdc6c67848ab14e0551e7bf45b49452171db91e65f9d5a298efa0fbf6eb79d2b4f12b1f181668bdbf3db285c6a120a48fcadaf719485af4c6d5b36e9b73e
   languageName: node
   linkType: hard
 
@@ -5350,7 +5350,7 @@ __metadata:
     "@unocss/preset-icons": ^0.48.5
     "@unocss/transformer-directives": ^0.48.5
     alpinejs: ^3.11.1
-    astro: ^2.0.0
+    astro: ^2.0.1
     eslint: ^8.32.0
     eslint-plugin-astro: ^0.23.0
     eslint-plugin-jsx-a11y: ^6.7.1
@@ -6304,7 +6304,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.5, semver@npm:^7.3.7":
+"semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.3.8":
   version: 7.3.8
   resolution: "semver@npm:7.3.8"
   dependencies:

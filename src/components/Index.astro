@@ -6,7 +6,6 @@ import type { FM_D, FrontMatter, Tags, Render } from "@lib/api";
 
 // use to highlight current active
 const active = Astro.params?.tag || "";
-console.log(active);
 
 /* Layouts */
 import Layout from "@layouts/Layout.astro";
@@ -85,8 +84,7 @@ const tsxOn = `${tsKey} = ! ${tsKey}`;
         fuzzy={true}
         render={render}
         key={({ frontmatter }: Render) => frontmatter}
-        filter={({ title: a, summary: b, category: c }: FM_D) =>
-          [a, b, c].join(" ")}
+        filter={({ title: a, summary: b }: FM_D) => [a, b].join(" ")}
         style={["font-semibold", "bg-blue-200"]}
       >
         <ContentHeader render={render} />
