@@ -80,6 +80,7 @@ export default defineConfig({
   integrations: [
     alpinejs(),
     Unocss({
+      injectReset: false,
       transformers: [transformerDirectives()],
       presets: [
         presetUno(),
@@ -97,6 +98,7 @@ export default defineConfig({
         "bg-base": "bg-white dark:bg-dark-100",
         "color-base": "text-gray-900 dark:text-gray-300",
         "color-fade": "text-gray-900:50 dark:text-gray-300:50",
+        "invert-link": "no-underline hover:underline",
       },
       rules: [],
     }),

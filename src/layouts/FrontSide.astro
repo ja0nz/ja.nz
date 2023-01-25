@@ -55,7 +55,7 @@ import "@layouts/compositions/stack.css";
         x-init="active === tag && $el.scrollIntoView(false)"
         x-bind:class="active === tag && 'active'"
       >
-        <a x-bind:href="'/tag/' + tag + '#main'">
+        <a class="no-underline" x-bind:href="'/tag/' + tag + '#main'">
           <MenuCard>
             <img slot="avatar" x-bind:src="avatar" />
             <span class="font-head" x-html="hl(search, tag)"></span>
@@ -70,7 +70,7 @@ import "@layouts/compositions/stack.css";
     {
       tags.map((item) => (
         <li x-show="0" class={active === item.tag ? "active" : ""}>
-          <a href={`"/tag/${item.tag}#main"`}>
+          <a class="no-underline" href={`"/tag/${item.tag}#main"`}>
             <MenuCard>
               <img slot="avatar" src={item.avatar} />
               <span class="font-head">{item.tag}</span>

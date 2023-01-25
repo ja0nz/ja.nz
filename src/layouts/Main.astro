@@ -33,12 +33,13 @@ import "@layouts/compositions/repel.css";
 
   /* Bubble */
   li {
-    max-width: 70%;
+    width: 70%;
     border-radius: 10px;
   }
-  li:focus {
+  li:focus-visible {
     outline: 4px dashed var(--color-secondary);
   }
+
   li:nth-child(odd) {
     --box--background: var(--bg-bubble-odd);
   }
@@ -53,15 +54,21 @@ import "@layouts/compositions/repel.css";
   <div class="center">
     <ul id="main" class="stack" tabindex="-1">
       <template x-for="(x, idx) in f(search)">
-        <li tabindex="0" class="box">
+        <li
+          tabindex="0"
+          x-on:keyup.enter="navigation.navigate(`/read/${x.category}/${x.id}`)"
+          class="box"
+        >
           <div class="repel">
-            <h1 class="font-head text-1" x-html="hl(search, x.title)"></h1>
+            <a x-bind:href="`/read/${x.category}/${x.id}`">
+              <h3 x-html="hl(search, x.title)"></h3>
+            </a>
             <div x-bind:class="x.category === 'long' ? 'i-lucide-star': ''">
             </div>
           </div>
           <p x-html="hl(search, x.summary)"></p>
           <div class="cluster">
-            <span x-text="x.date"></span>
+            <span x-text="new Date(x.date).toLocaleDateString()"></span>
             <span x-text="x.tags"></span>
             <span x-text="x.id"></span>
           </div>
