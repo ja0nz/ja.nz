@@ -1,12 +1,14 @@
 ---
-import type { FrontMatter, Tags } from "@lib/api";
+import { Tags, getC } from "@lib/api";
+
 import { createTags } from "@lib/xform";
 import Index from "@components/Index.astro";
 
 /* Static (SSG) Mode */
 export async function getStaticPaths() {
-  const posts = await Astro.glob<FrontMatter>("../read/**/*.md");
-  const dataTag: Tags[] = createTags(posts);
+  const longs = await getC("long");
+  const shorts = await getC("short");
+  const dataTag: Tags[] = createTags([...shorts, ...longs]);
   return dataTag.map(({ tag }: Tags) => ({ params: { tag } }));
 }
 const { tag } = Astro.params;

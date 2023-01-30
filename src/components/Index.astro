@@ -2,7 +2,7 @@
 interface Props {
   tag?: string;
 }
-import type { FM_D, FrontMatter, Tags, Render } from "@lib/api";
+import { FM_D, getC, Tags, Render } from "@lib/api";
 
 // use to highlight current active
 const active = Astro.params?.tag || "";
@@ -29,7 +29,9 @@ import MenuHeader from "@components/MenuHeader.astro";
 import { createTags, createFM } from "@lib/xform";
 
 /* Input */
-const posts = await Astro.glob<FrontMatter>("../pages/read/**/*.md");
+const longs = await getC("long");
+const shorts = await getC("short");
+const posts = [...shorts, ...longs];
 
 /* Construct render */
 const render: Render = {
@@ -53,10 +55,10 @@ const tsxOn = `${tsKey} = ! ${tsKey}`;
     --sidebar--content-min-width: 65%;
 
     /* MainMenu + ContentHeader*/
-    /* Fixed */
+    /* Static */
     --rocket-overlap: 24px;
     --top-placement: 36px;
-    /* Dyn */
+    /* Dynamic */
     --robot-height: calc(2 * var(--step-4));
   }
 </style>

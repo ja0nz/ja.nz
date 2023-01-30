@@ -9,7 +9,7 @@
 #+seq_todo: TODO DRAFT DONE
 :END:
 :OXHUGOCONFIG:
-#+hugo_base_dir: .
+#+hugo_base_dir: src
 #+hugo_section: .
 #+hugo_front_matter_format: yaml
 #+hugo_front_matter_key_replace: description>summary author>nil

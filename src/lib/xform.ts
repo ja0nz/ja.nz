@@ -18,7 +18,7 @@ import type { FrontMatter, Tags, FM_D, FM_DT, Glob, Optional } from "./api";
 import { createAvatar } from "./avatar";
 
 /* Getters/Setters */
-const getFM = defGetter<Glob, "frontmatter">(["frontmatter"]);
+const getFM = defGetter<Glob, "data">(["data"]);
 const getDraft = defGetter<FrontMatter, "draft">(["draft"]);
 const getTags = defGetter<FrontMatter, "tags">(["tags"]);
 
@@ -44,7 +44,7 @@ const prologue = comp(
  * Return Tags; by latest first
  * Consumend by MainMenu
  */
-export function createTags(posts: MarkdownInstance<FrontMatter>[]): Tags[] {
+export function createTags(posts: Glob[]): Tags[] {
   return transduce(
     comp(
       prologue,
@@ -66,10 +66,7 @@ export function createTags(posts: MarkdownInstance<FrontMatter>[]): Tags[] {
  * Return selected FrontMatter; by latest first
  * Consumed by
  */
-export function createFM(
-  posts: MarkdownInstance<FrontMatter>[],
-  active: string
-): FM_D[] {
+export function createFM(posts: Glob[], active: string): FM_D[] {
   return transduce(
     comp(
       prologue,
