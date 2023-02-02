@@ -1,0 +1,35 @@
+---
+interface Props {
+  nojs?: boolean;
+}
+const { nojs = false } = Astro.props;
+
+import "@layouts/blocks/box.css";
+---
+<style>
+ li {
+     width: 70%;
+     border-radius: 10px;
+ }
+ li:focus-visible {
+     outline: 4px dashed var(--color-secondary);
+ }
+
+ li:nth-child(odd) {
+     --box--background: var(--bg-bubble-odd);
+ }
+
+ li:nth-child(even) {
+     --box--background: var(--bg-bubble-even);
+     margin-left: auto;
+ }
+</style>
+
+<li
+    x-show={nojs ? 0 : 1}
+    tabindex="0"
+    x-on:keyup.enter="navigation.navigate(`/read/${x.id}`)"
+    class="box"
+    >
+  <slot />
+</li>

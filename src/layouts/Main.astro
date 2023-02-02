@@ -5,11 +5,12 @@ interface Props {
 }
 import type { AstroComponentFactory } from "astro/dist/runtime/server";
 import type { Render } from "@lib/api";
-const { frontmatter } = Astro.props.render;
+const { collection } = Astro.props.render;
 import "@layouts/blocks/box.css";
 import "@layouts/utilities/center.css";
 import "@layouts/compositions/cluster.css";
 import "@layouts/compositions/repel.css";
+import ContentCard from "@layouts/ContentCard.astro";
 ---
 
 <style>
@@ -31,7 +32,7 @@ import "@layouts/compositions/repel.css";
     padding-top: 0 !important;
   }
 
-  /* Bubble */
+  /* Card */
   li {
     width: 70%;
     border-radius: 10px;
@@ -54,11 +55,7 @@ import "@layouts/compositions/repel.css";
   <div class="center">
     <ul id="main" class="stack" tabindex="-1">
       <template x-for="(x, idx) in f(search)">
-        <li
-          tabindex="0"
-          x-on:keyup.enter="navigation.navigate(`/read/${x.category}/${x.id}`)"
-          class="box"
-        >
+        <ContentCard>
           <div class="repel">
             <a x-bind:href="`/read/${x.category}/${x.id}`">
               <h3 x-html="hl(search, x.title)"></h3>
@@ -72,18 +69,18 @@ import "@layouts/compositions/repel.css";
             <span x-text="x.tags"></span>
             <span x-text="x.id"></span>
           </div>
-        </li>
+        </ContentCard>
       </template>
       {
-        frontmatter.map((item) => (
-          <li x-show="0" tabindex="0" class="box">
-            <h1 class="text-2">{item.title}</h1>
-            <p>{item.summary}</p>
-            <span>{item.category}</span>
-            <span>{item.date}</span>
-            <span>{item.tags}</span>
-            <span>{item.id}</span>
-          </li>
+        collection.map(({ data }) => (
+          <ContentCard nojs={true}>
+            <h1 class="text-2">{data.title}</h1>
+            <p>{data.summary}</p>
+            <span>{data.category}</span>
+            <span>{data.date}</span>
+            <span>{data.tags}</span>
+            <span>{data.id}</span>
+          </ContentCard>
         ))
       }
     </ul>

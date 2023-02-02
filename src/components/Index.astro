@@ -26,7 +26,7 @@ import ContentHeader from "@components/ContentHeader.astro";
 import MenuHeader from "@components/MenuHeader.astro";
 
 /* Lib */
-import { createTags, createFM } from "@lib/xform";
+import { createTags, sortCollection } from "@lib/xform";
 
 /* Input */
 const longs = await getC("long");
@@ -37,7 +37,7 @@ const posts = [...shorts, ...longs];
 const render: Render = {
   active,
   tags: createTags(posts),
-  frontmatter: createFM(posts, active),
+  collection: sortCollection(posts, active),
 };
 
 /* Toggle Sidebar */
@@ -85,7 +85,7 @@ const tsxOn = `${tsKey} = ! ${tsKey}`;
       <AlpineSelect
         fuzzy={true}
         render={render}
-        key={({ frontmatter }: Render) => frontmatter}
+        key={({ collection }: Render) => collection.map(x => x.data)}
         filter={({ title: a, summary: b }: FM_D) => [a, b].join(" ")}
         style={["font-semibold", "bg-blue-200"]}
       >

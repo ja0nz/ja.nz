@@ -29,7 +29,7 @@ export type Glob = CollectionEntry<"long"> | CollectionEntry<"short">;
 export type Render = {
   active: string | undefined;
   tags: Tags[];
-  frontmatter: FM_D[];
+  collection: Glob[];
 };
 
 /* Collection Functions */
