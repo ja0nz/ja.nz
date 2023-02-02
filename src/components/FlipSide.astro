@@ -19,12 +19,12 @@ import "@layouts/compositions/stack.css";
 </style>
 
 <div style="display: contents;" x-data={xData}>
-  <div x-show={key} x-transition class="stack">
+  <div x-show={key} class="stack">
     <div class="stack">
       <slot name="front" />
     </div>
   </div>
-  <div x-cloak x-show={`!${key}`} x-transition class="stack">
+  <div x-cloak x-show={`!${key}`} class="stack">
     <div class="stack">
       <slot name="back" />
     </div>

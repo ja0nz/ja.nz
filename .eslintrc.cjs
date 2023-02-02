@@ -3,6 +3,7 @@ module.exports = {
     "plugin:astro/recommended",
     // "plugin:jsx-a11y/recommended"
   ],
+  ignorePatterns: ["dist/"],
   overrides: [
     {
       // Define the configuration for `.astro` file.
