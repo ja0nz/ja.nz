@@ -15,6 +15,7 @@
 #+hugo_front_matter_key_replace: description>summary author>nil
 #+property: header-args :eval never-export
 :END:
+#+FILETAGS: :typescript:go:zig:c:nix:structures:diff:
 
 * Intro :noexport:
 This file is written in [[https://orgmode.org/][Org Mode]] markup and may look funny in GitHub. But actually, this file alone is the *blogging engine* for https://ja.nz. It features:
@@ -31,6 +32,7 @@ Org mode is really powerful combined with [[https://orgmode.org/manual/Working-w
   - [[#4proxy][4,Proxy]]
   - [[#5match-type-array-and-numbered][5,Match type array and numbered]]
   - [[#6recursion][6,Recursion]]
+  - [[#9utility-flatten-nested-types][9,Utility: Flatten nested types]]
 - [[#long][Long]]
   - [[#7all-the-formattings][7,All the formattings]]
 
@@ -45,9 +47,7 @@ CLOSED: [2022-04-26 Di 12:35]
 :PROPERTIES:
 :export_file_name: 4
 :END:
-#+begin_description
 A nonempty string Record. Guarantees to return a string or empty/neutral string.
-#+end_description
 #+begin_src typescript
 const safeRecord = new Proxy(
   {}, {
@@ -63,9 +63,7 @@ CLOSED: [2022-04-26 Di 12:33]
 :PROPERTIES:
 :export_file_name: 5
 :END:
-#+begin_description
 Conditional type switch on Array vs Object vs subtyped object
-#+end_description
 #+begin_src typescript
 type DetectArray<T> = number extends keyof T ? true : false;
 DetectArray<string[]> // true
@@ -89,6 +87,21 @@ Recursion for all. A quote to remember
  — SICP JS; https://sourceacademy.org/sicpjs/1.1.3
  #+end_cite
  #+end_quote
+
+** DONE 9,Utility: Flatten nested types :typescript:
+:PROPERTIES:
+:export_file_name: 9
+:END:
+This mapped type is a 'noop type' in the sense that ~input type === output type~. Still, but comes in handy with *intersection/composed types* when editing code as it flattens the given input type. As an example,
+#+begin_src typescript
+type Ugly = {id: string;} & {date: Date;}
+// becomes
+type Pretty = {id: string; date: Date;}
+// with
+type Flatten<T> = {
+    [K in keyof T]: T[K];
+} & {};
+#+end_src
 
 * Long
 :PROPERTIES:
@@ -170,6 +183,8 @@ It shall be light - and it was light mode
 #+end_quote
 
 **** example (accept attr_html) :noexport:
+This one does not work properly as it will export to
+a code block but without any formattings. There is kinda no point to use it.
 #+begin_example
 For example: Let me show to you...
 #+end_example
@@ -220,7 +235,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 |-----------------+---------------|
 | https://ja.nz/8 | Location      |
 | file:static/    | Ref to assets |
-
 
 * Misc :noexport:
 :PROPERTIES:
@@ -378,3 +392,7 @@ in our age, can still do for those who study it.
 #+END_SRC
 
 #+RESULTS: clean
+** COMMENT Org Local Variables
+# Local Variables:
+# org-use-tag-inheritance: nil
+# End:

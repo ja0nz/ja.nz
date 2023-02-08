@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { toggle } = Astro.props;
+import "@layouts/compositions/stack.css";
 ---
 
 <style>
@@ -26,20 +27,19 @@ const { toggle } = Astro.props;
 <img width=360 height=360 src="/profile.webp" />
 <h2>Hey there, I'm Jan👋</h2>
 <p>
-  And this is a raw scratchpad/blog/journal about things that make me feel
-  curious. Enjoy.
+  ...and this is my journey through time, code and space. Good luck out there🖖
 </p>
-<ul>
+<ul class="stack">
   <li>
-    <a href="https://read.cv/ja0nz"><span>read.cv/ja0nz</span></a>
+    🪐 <a href="https://read.cv/ja0nz"><span>read.cv/ja0nz</span></a>
   </li>
   <li>
-    <a href="https://github.com/ja0nz"><span>github.com/ja0nz</span></a>
+    ✨ <a href="https://github.com/ja0nz"><span>github.com/ja0nz</span></a>
   </li>
   <li>
-    <a href="https://codepen.io/ja0nz"><span>codepen.io/ja0nz</span></a>
+    🌌 <a href="https://codepen.io/ja0nz"><span>codepen.io/ja0nz</span></a>
   </li>
   <li>
-    <a href="https://twitter.com/ja0nz"><span>twitter.com/ja0nz</span></a>
+    🌎 <a href="https://twitter.com/ja0nz"><span>twitter.com/ja0nz</span></a>
   </li>
 </ul>

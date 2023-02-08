@@ -13,14 +13,14 @@
 
    # https://devenv.sh/scripts/
   scripts = with pkgs; {
-    go-format.exec = "${nodePackages.prettier}/bin/prettier . --write";
-    go-repl.exec = "${nodePackages.ts-node}/bin/ts-node";
-    go-lint.exec = "${nodePackages.eslint}/bin/eslint .";
-    go-check.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro check";
-    go-build.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro build";
-    go-preview.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro preview";
-    go-dev.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro dev";
-    go-clean.exec = "rm -rf dist";
+    run-fmt.exec = "${nodePackages.prettier}/bin/prettier . --write";
+    run-repl.exec = "${nodePackages.ts-node}/bin/ts-node";
+    run-lint.exec = "${nodePackages.eslint}/bin/eslint .";
+    run-check.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro check";
+    run-build.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro build";
+    run-preview.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro preview";
+    run-dev.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro dev";
+    run-clean.exec = "rm -rf dist";
   };
 
   # https://devenv.sh/languages/
