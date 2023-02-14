@@ -7,4 +7,5 @@
   background: var(--color-secondary);
   padding: 0.6rem 1.5rem;
   position: relative;
+  border-radius: 0.25rem;
 }

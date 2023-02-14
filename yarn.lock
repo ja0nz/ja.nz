@@ -442,131 +442,131 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dicebear/adventurer-neutral@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/adventurer-neutral@npm:5.3.0"
+"@dicebear/adventurer-neutral@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/adventurer-neutral@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 19926a44fdc51b62c569264c65fe9a87000c8291ed4b693a1172426c5344bf8e78060b0794455f9c8fae93cb7c0dc319be4f6a552537097eaa98fdf12ee3299c
+  checksum: d530a5ef8ed62f644a96ffb3edaf92952c35acf552f6a961cb34d8ecd51ec47a2c3ecf051f0c345f5fdc3cb9ff0dc0ea58a812262d547fbf50eff43be27505e4
   languageName: node
   linkType: hard
 
-"@dicebear/adventurer@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/adventurer@npm:5.3.0"
+"@dicebear/adventurer@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/adventurer@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 8b8e981ddbcb2af7c3c2240cc05e70c658370e7170678f2b7d43180a2d75a34c556860571645867511f39cab9bd192d773697b7501472af9605d55003acf7559
+  checksum: bb1e2104c75af6b95e80812b0d442ee4255cccd57775561aafb4c7c1498f471290986fa787333bd600ef7187c5a156360c3b859427cc9a9f079e627684c4d32b
   languageName: node
   linkType: hard
 
-"@dicebear/avataaars-neutral@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/avataaars-neutral@npm:5.3.0"
+"@dicebear/avataaars-neutral@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/avataaars-neutral@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 732e92fa127663b95eec0dd227dd34735eb14a97c28dfef4423b0df9e0ffe3609c01b8b73577bb8d7998eab0ca3b8ac213e20d2c8360bb11da727577e77eee09
+  checksum: ee02a2e29a3cc60dd88b8152c670b2ca933193180ead8bd25176e1dde712bc9ff04bae7c70a21b6ffae16a2338d515e71ef8735d08c85ef496d5c6ac01689dc5
   languageName: node
   linkType: hard
 
-"@dicebear/avataaars@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/avataaars@npm:5.3.0"
+"@dicebear/avataaars@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/avataaars@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: fb9feda612b89dc016bb4efe6580b875667061ad353b9f937df476d2477da889473dd849ecead2654422ea66e837bb18bb49986bbffe87d9d4fa86e4053331cb
+  checksum: ae0c3e4175312a7fc3d5558eda27b9178b61424d56303dc7099527719c042bc8f950942c7e4833ffa1b1d6bb54f1e1374685af253e67a2f81e233c1ab06fac67
   languageName: node
   linkType: hard
 
-"@dicebear/big-ears-neutral@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/big-ears-neutral@npm:5.3.0"
+"@dicebear/big-ears-neutral@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/big-ears-neutral@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: d6fa42f12c2b21d29739dd9cfb4edcafcaa32aabb10b2ddb6d3ff0af5ccfe6f894c54ab3eb5acdff00779b4b23e7a4575843e52b6bf751f9daa4c70171dde874
+  checksum: d9cef25d44e2fa22a400cf8c8786af5146504f29965543c693e36e0f0241ed2c40252a0d23ef67ce9c77fd3e28cc743f3acb8e83db745571ee08c0d08a8f234d
   languageName: node
   linkType: hard
 
-"@dicebear/big-ears@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/big-ears@npm:5.3.0"
+"@dicebear/big-ears@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/big-ears@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 128574874e11029b05d62ff6bfac20469b29a6a6255df3489c0cc18afcaaaf010ed95e62a8e68d4fadcec4bcfe570da922ca634c23495f1015f04508a25ad2cf
+  checksum: fc77787983b93d0f6cfbc5ffdfa6ee171c3404cbc52951f9e552eaf252a62df52f2045bc0c3aa6a0500b0dbc6ffadb35ef273b800be5ee3c94b09aad863bcae7
   languageName: node
   linkType: hard
 
-"@dicebear/big-smile@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/big-smile@npm:5.3.0"
+"@dicebear/big-smile@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/big-smile@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 1ccfde9c6e2738a8ca67202438c26ae3df6999192af842ee85ca311035f3ca03ecfa09dd018a18add949ceaeb6b5a359e6942456c56ecdef399760e05eecf922
+  checksum: 829ca7d1406accf3b55a896b93f7b1be1151ae56b8e15169d4d20b579a9851afd733cf8a45c3e968de8b075a77ec920c73f32334717df44a00fb262b124214c4
   languageName: node
   linkType: hard
 
-"@dicebear/bottts-neutral@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/bottts-neutral@npm:5.3.0"
+"@dicebear/bottts-neutral@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/bottts-neutral@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: f1155e745e6da95e3d64ae7f41bf1722542e14bb8b1bb9b1202111b84e7fae6719049527230f40aa03da0dce1cc1183cdf8856189192963eafee0677d28c6c41
+  checksum: 3cd127899cc6838f758c2e4332695b02d46e46414d073da614253fcb49aec9289dd87f15d3dca22b7cbdd17dbc4c8b9dab2e78b140be50c26152c9290c133f97
   languageName: node
   linkType: hard
 
-"@dicebear/bottts@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/bottts@npm:5.3.0"
+"@dicebear/bottts@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/bottts@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: d95d273115359076de468d66ca4abf6d581730d4ce709b49ddd9d32d91ea20e7af44d23a4e62aa47761468eb7255491a0bcedc3ad72ebfdc49017440ef7af310
+  checksum: 4176290e9ceaec455dce58e673f7ff84dba1a7da7449778e0d0c6e53a4d8bc8ebd164f2f7f4d14fe6033d9ffc3a30d9e3d5f4884928524385ea5cd205d9d0478
   languageName: node
   linkType: hard
 
-"@dicebear/collection@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/collection@npm:5.3.0"
+"@dicebear/collection@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/collection@npm:5.3.2"
   dependencies:
-    "@dicebear/adventurer": ^5.3.0
-    "@dicebear/adventurer-neutral": ^5.3.0
-    "@dicebear/avataaars": ^5.3.0
-    "@dicebear/avataaars-neutral": ^5.3.0
-    "@dicebear/big-ears": ^5.3.0
-    "@dicebear/big-ears-neutral": ^5.3.0
-    "@dicebear/big-smile": ^5.3.0
-    "@dicebear/bottts": ^5.3.0
-    "@dicebear/bottts-neutral": ^5.3.0
-    "@dicebear/croodles": ^5.3.0
-    "@dicebear/croodles-neutral": ^5.3.0
-    "@dicebear/fun-emoji": ^5.3.0
-    "@dicebear/icons": ^5.3.0
-    "@dicebear/identicon": ^5.3.0
-    "@dicebear/initials": ^5.3.0
-    "@dicebear/lorelei": ^5.3.0
-    "@dicebear/lorelei-neutral": ^5.3.0
-    "@dicebear/micah": ^5.3.0
-    "@dicebear/miniavs": ^5.3.0
-    "@dicebear/open-peeps": ^5.3.0
-    "@dicebear/personas": ^5.3.0
-    "@dicebear/pixel-art": ^5.3.0
-    "@dicebear/pixel-art-neutral": ^5.3.0
-    "@dicebear/shapes": ^5.3.0
-    "@dicebear/thumbs": ^5.3.0
+    "@dicebear/adventurer": ^5.3.2
+    "@dicebear/adventurer-neutral": ^5.3.2
+    "@dicebear/avataaars": ^5.3.2
+    "@dicebear/avataaars-neutral": ^5.3.2
+    "@dicebear/big-ears": ^5.3.2
+    "@dicebear/big-ears-neutral": ^5.3.2
+    "@dicebear/big-smile": ^5.3.2
+    "@dicebear/bottts": ^5.3.2
+    "@dicebear/bottts-neutral": ^5.3.2
+    "@dicebear/croodles": ^5.3.2
+    "@dicebear/croodles-neutral": ^5.3.2
+    "@dicebear/fun-emoji": ^5.3.2
+    "@dicebear/icons": ^5.3.2
+    "@dicebear/identicon": ^5.3.2
+    "@dicebear/initials": ^5.3.2
+    "@dicebear/lorelei": ^5.3.2
+    "@dicebear/lorelei-neutral": ^5.3.2
+    "@dicebear/micah": ^5.3.2
+    "@dicebear/miniavs": ^5.3.2
+    "@dicebear/open-peeps": ^5.3.2
+    "@dicebear/personas": ^5.3.2
+    "@dicebear/pixel-art": ^5.3.2
+    "@dicebear/pixel-art-neutral": ^5.3.2
+    "@dicebear/shapes": ^5.3.2
+    "@dicebear/thumbs": ^5.3.2
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 9f9ca0e09c1a4271f5d1dbf7af43e8737924b133687db06653b06e80216219c8241ab97a7e65e5981f1caa6dc7f10394149fd4e79a168f115387deef28173291
+  checksum: bb7f4759a9543492315f6cdbb3d9e9737e8caa1ad526b8c66f75a0cea2dab162c5d0bd07604030dbeaafb43ce25893b015572ec8f49c4853b7f0c72301008595
   languageName: node
   linkType: hard
 
-"@dicebear/converter@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/converter@npm:5.3.0"
+"@dicebear/converter@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/converter@npm:5.3.2"
   dependencies:
     "@types/json-schema": ^7.0.7
     tmp-promise: ^3.0.3
   peerDependencies:
-    "@resvg/resvg-js": ^2.0.0
-    exiftool-vendored: ^16.4.0
+    "@resvg/resvg-js": ~2.0 || ~2.1 || ~2.2 || ~2.3
+    exiftool-vendored: ^16 || ^17 || ^18 || ^19 || ^20 || ^21
     sharp: ^0.30.0
   peerDependenciesMeta:
     "@resvg/resvg-js":
@@ -575,160 +575,160 @@ __metadata:
       optional: true
     sharp:
       optional: true
-  checksum: aa9ba82f8e57f972ae7ffcf6a2d95cb431f1bbfbf3c7f576a79e348edb9a46207516596f20e5264ba5b55ebfeb4d51a95b5abb18bfa4fefe0b50b01b903cbdbd
+  checksum: 63b405ac9a6186bedd3d6c1610af5e285e55dba9947bb582fbfe43e7c1046f9d45cb616d20d7d7b6d15a456354cad17cfe98a5b79d609d16291075c6fd26f902
   languageName: node
   linkType: hard
 
-"@dicebear/core@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/core@npm:5.3.0"
+"@dicebear/core@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/core@npm:5.3.2"
   dependencies:
-    "@dicebear/converter": ^5.3.0
-  checksum: f4f9e6f268d7cd46a1934ccd3ecdc4dc74e78c56b06acfb8ac99997afa121ff951eeb88bd5738c81593175eeb7f45a862c3b93935aec92b22bb9f73ec4ac214c
+    "@dicebear/converter": ^5.3.2
+  checksum: bc75c77601f4062e7c0996e0f2d0bfa6dc0ad891fbd331f4fbe977061e95b041acc6c0d2c91f6ed6815f88e8d6ae32d96c7fd5708ec02272df29846f35a98e6e
   languageName: node
   linkType: hard
 
-"@dicebear/croodles-neutral@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/croodles-neutral@npm:5.3.0"
+"@dicebear/croodles-neutral@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/croodles-neutral@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: ef94095c6d0c06a8d6b854c5f3aa7f1a1b5b8d7e731c8ba60068e0a08b9b3fd5f718b6699f6a079e915c7252e0869dab65848111d481da5f31147c4c638bf6e7
+  checksum: fa74bf4773eaade6b1dfa75b080ec3f0876a1ec826644e5ec1ff0f90cc73d44521c5c1b913a6ba16653b39debabbfc2427bc9c6fe218e070eae5a995e393b782
   languageName: node
   linkType: hard
 
-"@dicebear/croodles@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/croodles@npm:5.3.0"
+"@dicebear/croodles@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/croodles@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: d00bc97c7969a07c233ea13bd2c4a3fc73a11531f615ac5c7bd4824c24917fa837742fc23bf09fff8e6a557d2d8f6656262825174c7928bf9ebe8b015d74d055
+  checksum: 1cf7aab14e286cbe16a6fecbbbbabb1b73ae17b2fe08f5b301d6c342ebf72feb7e139fb0d2e49cb5a215a819db1e737f35bebbfa1116967a094e7bc64cdb75ef
   languageName: node
   linkType: hard
 
-"@dicebear/fun-emoji@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/fun-emoji@npm:5.3.0"
+"@dicebear/fun-emoji@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/fun-emoji@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: e5e1ee61dedf4eae9238b751480d4e88120a1931b088ea50c8241b78c890221f19b1ce11033ae2accc47af750c2269862e212f6746e9e73ff3c23a2d853b15bc
+  checksum: 95ba3d50991fa4473f5df4c8188c0a8968052d2dd7a678707f72770da82e53b560f6a008a7bdf6fa3c917777e2f96b23dbb12d5ec9e5dcc4c8e91643e80c43c1
   languageName: node
   linkType: hard
 
-"@dicebear/icons@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/icons@npm:5.3.0"
+"@dicebear/icons@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/icons@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 684cd251b1dfa9308b3c367ecafdc7894c2f80a143b4e5e385ea1b540ea76fcee26913a94e84a80cffa818638278346544c569f59bf238535d20b8b2fb877f68
+  checksum: 56057b544265a94b63ea9f270c336b004650ccd4884daf05c7343eab2f84417cc6b8d5f70b59a9a28051f14d230ee03f4ec5c9c6bdee297a3e248d4b77c9da7c
   languageName: node
   linkType: hard
 
-"@dicebear/identicon@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/identicon@npm:5.3.0"
+"@dicebear/identicon@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/identicon@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 1683591b95541c6e56c1767082edb0512a89691697a34b4fd172773445bbc0e433d60370ab6db24a340cc93d86c063bc2ec3d3a17b8e9a34144376692c8e6bdc
+  checksum: a3eaa3eeb87787821e2732844fd1ec9061acb508817021ec1bf51360c3539cb81a6297a9b55f026073e914dccf9e1ec5727c47c76e5dcf6bd659f1990920a15e
   languageName: node
   linkType: hard
 
-"@dicebear/initials@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/initials@npm:5.3.0"
+"@dicebear/initials@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/initials@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: bf766994c3daec1704368b4b3a2663d9efb4ced393450dc650f05683297c1f3ce8c09494b19f125f92852d94a1fa10278aad37e3059adb5120071b8fb6c88156
+  checksum: eeb5f52753016f961cdf52496991f86fcb39ba078531e6647a00e4d1b4ae92c9dbf0feb81fbdb75f0642f27277d8f7f227163ea2a1e40dd1ddec46025bff402c
   languageName: node
   linkType: hard
 
-"@dicebear/lorelei-neutral@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/lorelei-neutral@npm:5.3.0"
+"@dicebear/lorelei-neutral@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/lorelei-neutral@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: f7c7265872be8aab224a6048ec89e32d30b6a9f941b91f6941fef17b341397fe327f3da526c11c4d044fcd19d68507d2a76f4308c506ae605724569810186566
+  checksum: 1788ea9bec11f19bd4d0f3d0fd5eb53290191947d6184ee5e988c75f1aa78346ba86c7d7440004efac33329e8620379de330e8ec1a373c1f06981081b5cb0b3d
   languageName: node
   linkType: hard
 
-"@dicebear/lorelei@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/lorelei@npm:5.3.0"
+"@dicebear/lorelei@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/lorelei@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 1be66a35bad85692d8790f816fc7244b97a639ec6107c06c6f42515f2ea040ac535e5767344565026c121210c0f7e8125ac3e53bf77b1054b201c26395ca9f98
+  checksum: 7b0dcc8e0bc27c7238aedd21ac18e6358adb38b075154848b02a0268cf87a87ba84e18579c9961812c50478785d1d3522fc08843abbc9afa088d4a2e54a21d59
   languageName: node
   linkType: hard
 
-"@dicebear/micah@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/micah@npm:5.3.0"
+"@dicebear/micah@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/micah@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: c88c0d1f2985cd8790a839d6d5264a0460db0dcc8a089e992fa4ba8e9dff8125bf58b5657eadd59e2661d3153b282d8ef2ef0660c0a45e66ac6d99a9cb0487ff
+  checksum: 0224301ddd7df6c80f755d017cc114398c0b2da31114ba0afd24b70c3b9cd9f7101bf76e8721ef3af1a3520241b8b7d627325d9b122eff4099d3fe5cd6f6c353
   languageName: node
   linkType: hard
 
-"@dicebear/miniavs@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/miniavs@npm:5.3.0"
+"@dicebear/miniavs@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/miniavs@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: ba32b8a1e65a235323b04ef60ed3f6b90b9df80440456c086f1e420e8e34727dba3538982d77d4000713346d6c748468f76d5e2ac35b7689a4324e751ec67621
+  checksum: 5bf040412cdbf82440f213c485423fc8040e028b9ed58288de5ac527da87a67b1228771bd8d25ad4fba3cc69d0c06937ccfd3a7ef99825d56cd4ef1bdfe03211
   languageName: node
   linkType: hard
 
-"@dicebear/open-peeps@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/open-peeps@npm:5.3.0"
+"@dicebear/open-peeps@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/open-peeps@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 5bffd4236decc174400917fe4dd0ecd978a1b0112713b03b9f0e989230fe66384e5aa9bfaf23df54d2f917a451b051598baf1e31b308d43eaf2644cd23824fa0
+  checksum: 2fe4fda980f1234540994ccc9c3b1d0296b8c92223841512306a31f5305176a99d71774bdeb231ee6fa8efb402261809d7d726661a001b67eff418dcd9a87f0a
   languageName: node
   linkType: hard
 
-"@dicebear/personas@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/personas@npm:5.3.0"
+"@dicebear/personas@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/personas@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 83517a8441195ea6fe67041679d53c8bf68df0ed2f6ef73a826933064800e637b813043f4b51af10fd7a0dfa8ea6bc9a057ddc905cd495139d6b94fed2446b65
+  checksum: 7435ce34091cc9d0f0d02a40ee895bd375acad8858bea2e4d858f3534fa3eae94eebbbfaa5c5b39b3b07afd89ae25e52b1a7596d5f4a9063a344bb344ac181d2
   languageName: node
   linkType: hard
 
-"@dicebear/pixel-art-neutral@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/pixel-art-neutral@npm:5.3.0"
+"@dicebear/pixel-art-neutral@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/pixel-art-neutral@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: fe85884343167dc8b6ec713a414354bcde2ac8137749ed5cb2225b4b8335fba549179f1f8c46d1ca7fe79510c751090b003a59a22c412221da7b1d2f9227e145
+  checksum: b06ec8d3ddb4337936fed607667197604260b1d453fd4c62e2bf87a46b3f954453aba27bfedbdc60e857959ce7a71c8076a0d54352485b9b29c46e644940d591
   languageName: node
   linkType: hard
 
-"@dicebear/pixel-art@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/pixel-art@npm:5.3.0"
+"@dicebear/pixel-art@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/pixel-art@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 74174de1549440e6a3b8c0071c023a45d0f10443d96f7a8e952cf99fc4caec24fe65fe73ba4a556df43e8b1f8fb2c89cc744929ffff35b834fca20cb89dca380
+  checksum: 2e9658c94980caa6574dd2af26c428f22b8565c3e9422accfff8b67e4c018be1cb199363724ac71fb2931156b7cb4d22e7d081aa0cf341791bb1e5b3685554c6
   languageName: node
   linkType: hard
 
-"@dicebear/shapes@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/shapes@npm:5.3.0"
+"@dicebear/shapes@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/shapes@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 6c4fa90bcbddc09e803f23b232ba9ade35bf0a1b0c942adc0724150ad2dd01744230bdd9b1e2d7c1d52f25aa09d76976beb2209805cc1899d769a2b98a627f94
+  checksum: 9cf2beff836c0076f13bd88bf62efaa8ed622e81c573ce25be36f7849aa32aa4ea719f92d27043b5142d4ef67746562e5d15112a338d2f0ac2fa78f33bf454f4
   languageName: node
   linkType: hard
 
-"@dicebear/thumbs@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@dicebear/thumbs@npm:5.3.0"
+"@dicebear/thumbs@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@dicebear/thumbs@npm:5.3.2"
   peerDependencies:
     "@dicebear/core": ^5.0.0
-  checksum: 8ff73edab967a28c2856c07240c35b03f1343f4640ebb34173af4244dccb6214fd186d3a565e03bb035a9a4627fe338941ac7aef52d5fb583ca0d24ae0bb07e9
+  checksum: 6d5f6e0eb8900cbd198254ec799c8b978420b8d8e00ebda69e2e9c59c146c54a33d96191e1e9e94c8ba4ad321da50b8c92c38fe6adbeec9f5269d8aa2cbe4277
   languageName: node
   linkType: hard
 
@@ -974,12 +974,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify-json/lucide@npm:^1.1.59":
-  version: 1.1.59
-  resolution: "@iconify-json/lucide@npm:1.1.59"
+"@iconify-json/lucide@npm:^1.1.61":
+  version: 1.1.61
+  resolution: "@iconify-json/lucide@npm:1.1.61"
   dependencies:
     "@iconify/types": "*"
-  checksum: 65ed8aee3a802e8944471650fdf462fbe5add9434bd1958e3242eec63f38ea1534e68e6f48aa87c080f9603263c501f7f343d173c31edb237c42f32cdc1c2bcd
+  checksum: 6769ef9b35cb5a2400e6610b5ad17fef4c96d8fd4e209663e20bacc44d4016ea9cb246b73e45d1fd3668235f07028e95d45a8b59c6ea897bd3e8bfe3c39cefac
   languageName: node
   linkType: hard
 
@@ -1175,121 +1175,121 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@thi.ng/api@npm:^8.7.0":
-  version: 8.7.0
-  resolution: "@thi.ng/api@npm:8.7.0"
-  checksum: 3835a946fe1f478c42412f95e3bde2185473fe945dd90bc24f85d11a5182eca21b2a00885c87674dabc437eaae6d6e0bdc9355704028abbfca57a91bdd645c92
+"@thi.ng/api@npm:^8.7.2":
+  version: 8.7.2
+  resolution: "@thi.ng/api@npm:8.7.2"
+  checksum: fcf6115f88cba99baa5ceccf1779c194d0dd36f4553ab92e517a7f70a3012d2686d5f7d23a8ec2fb8e848a1bafa006d1ccd8fa6e86574b322b4c9d6422b9da07
   languageName: node
   linkType: hard
 
-"@thi.ng/arrays@npm:^2.5.2":
-  version: 2.5.2
-  resolution: "@thi.ng/arrays@npm:2.5.2"
+"@thi.ng/arrays@npm:^2.5.4":
+  version: 2.5.4
+  resolution: "@thi.ng/arrays@npm:2.5.4"
   dependencies:
-    "@thi.ng/api": ^8.7.0
-    "@thi.ng/checks": ^3.3.8
-    "@thi.ng/compare": ^2.1.23
-    "@thi.ng/equiv": ^2.1.18
-    "@thi.ng/errors": ^2.2.9
-    "@thi.ng/random": ^3.3.22
-  checksum: 2727d0cd4a2445c925d9ed17de0e4f56213c9b6d3350c603ad299007a4832670cb2f47d5b803f095967dd9b0a3af58a512a6bddf40d295bb4e53de3ad6c816a4
+    "@thi.ng/api": ^8.7.2
+    "@thi.ng/checks": ^3.3.9
+    "@thi.ng/compare": ^2.1.25
+    "@thi.ng/equiv": ^2.1.19
+    "@thi.ng/errors": ^2.2.11
+    "@thi.ng/random": ^3.3.24
+  checksum: 500ec4a3bc2b300e3c7cf21e049532f1c630acfc91d0960e02ece9415cbd4af49cc4005448d871026be4b2e5c3cd10ce10a7bf37d1e46f65275114e601657799
   languageName: node
   linkType: hard
 
-"@thi.ng/checks@npm:^3.3.8":
-  version: 3.3.8
-  resolution: "@thi.ng/checks@npm:3.3.8"
+"@thi.ng/checks@npm:^3.3.9":
+  version: 3.3.9
+  resolution: "@thi.ng/checks@npm:3.3.9"
   dependencies:
     tslib: ^2.5.0
-  checksum: f5cfd619402e64bc1e1346affe9ab8fa8352da4ffedcd9310f7e5326dbd87978e5af6c26dcdb7efd49ea89e8f6cff1fa298cfabb9443b10134569282cb660387
+  checksum: a4813eae866366e6090a39dde7cab7ea31b478304e0d456ffd500b01a6a3c6178ef5ca1c4cfab30867e080822e4c39d8280b6740f19b437dd4e68ecc21949e7d
   languageName: node
   linkType: hard
 
-"@thi.ng/compare@npm:^2.1.23":
-  version: 2.1.23
-  resolution: "@thi.ng/compare@npm:2.1.23"
-  dependencies:
-    "@thi.ng/api": ^8.7.0
-  checksum: fb0acda087c63a70f8ae6f132140dcaf87b1691c7a6cc16cb869f45e3a87615ae31f2ae760ef41cd6f862e13f8f29dd299ccc87ee98c6ef964d6db021c9ee64a
-  languageName: node
-  linkType: hard
-
-"@thi.ng/compose@npm:^2.1.25":
+"@thi.ng/compare@npm:^2.1.25":
   version: 2.1.25
-  resolution: "@thi.ng/compose@npm:2.1.25"
+  resolution: "@thi.ng/compare@npm:2.1.25"
   dependencies:
-    "@thi.ng/api": ^8.7.0
-    "@thi.ng/errors": ^2.2.9
-  checksum: c9a47a50aff40f30a7b8613604293c2c6542f3f6e04929cc37fd591368f0555c7969338ab832103bec35c171fddf55ed3f8f9358d526839b81e1daa239a2d68a
+    "@thi.ng/api": ^8.7.2
+  checksum: 8a835fcaf26704398dce1197705b7c8ed4affc61fac5c5f5f58f44e0dd3d9945ca1558f762371b9e97acb947a90913af2e5fbaf91c2586bd541b6fae0e0ff961
   languageName: node
   linkType: hard
 
-"@thi.ng/equiv@npm:^2.1.18":
-  version: 2.1.18
-  resolution: "@thi.ng/equiv@npm:2.1.18"
-  checksum: 4e2e1c924e28686fe1ead233b51b9b4565150128fb483c407e13400c57e9991b172c2c102539d4c0b34470a33313bc7fe0db9719b1990eb62bf701c62c4f6715
-  languageName: node
-  linkType: hard
-
-"@thi.ng/errors@npm:^2.2.9":
-  version: 2.2.9
-  resolution: "@thi.ng/errors@npm:2.2.9"
-  checksum: 36bd64783a25522ec4ab3ed0ed5a01af77570d711d211985e8956db8c9d188dced89e1b7ad0c84da31ce793bd3c6555362452a664014e4a2584376fea0582f76
-  languageName: node
-  linkType: hard
-
-"@thi.ng/hex@npm:^2.3.5":
-  version: 2.3.5
-  resolution: "@thi.ng/hex@npm:2.3.5"
-  checksum: 79e79373c0c53f8944ba200d354c5d3c2c0c8ff673f950b4f5e6a37f2acacc201702aa0b81b864561bb493988c0ebad5850ac0a3790a8d05a14872647b4b9be7
-  languageName: node
-  linkType: hard
-
-"@thi.ng/math@npm:^5.4.1":
-  version: 5.4.1
-  resolution: "@thi.ng/math@npm:5.4.1"
+"@thi.ng/compose@npm:^2.1.27":
+  version: 2.1.27
+  resolution: "@thi.ng/compose@npm:2.1.27"
   dependencies:
-    "@thi.ng/api": ^8.7.0
-  checksum: 594d90d62c769601cbd3ca3a45fb9ddf06fd07de3fe70fe71520e70710907aade0e1f853d080c8720574f46e4a1aa2633177b07765fa281b5968b3188580c462
+    "@thi.ng/api": ^8.7.2
+    "@thi.ng/errors": ^2.2.11
+  checksum: 5414f99b644bb42c024b55dc108a3c72e5589972d60c5ab2f73324ac2ba1a2f32bf415f461d40dfc8cde92935d44b4a6dda9a596d59a01b9d01b9688f2e27163
   languageName: node
   linkType: hard
 
-"@thi.ng/paths@npm:^5.1.29":
-  version: 5.1.29
-  resolution: "@thi.ng/paths@npm:5.1.29"
-  dependencies:
-    "@thi.ng/api": ^8.7.0
-    "@thi.ng/checks": ^3.3.8
-    "@thi.ng/errors": ^2.2.9
-  checksum: 6768c25eb49cba35eb7c043852954be77ad4bf758303abf1efec77c2780a5f952d1551f97565a4d5317ea80d4c4ade751193c3d228dda6a48341f62e7a03738e
+"@thi.ng/equiv@npm:^2.1.19":
+  version: 2.1.19
+  resolution: "@thi.ng/equiv@npm:2.1.19"
+  checksum: cd9e5fdf2a936e259373f46e1f7d6d425ba449f01d9c1c0fed427f5554a07888bab833217bafad1f73509b48905aeaa3df6b5ec725afe2d3c7891562f7f35194
   languageName: node
   linkType: hard
 
-"@thi.ng/random@npm:^3.3.22":
-  version: 3.3.22
-  resolution: "@thi.ng/random@npm:3.3.22"
-  dependencies:
-    "@thi.ng/api": ^8.7.0
-    "@thi.ng/checks": ^3.3.8
-    "@thi.ng/errors": ^2.2.9
-    "@thi.ng/hex": ^2.3.5
-  checksum: 145478885e973d7cedb095cc172ed3c92a05591c3e6368cb58bde905c91fb5d1050dc53ca538eacdeedf7afd6a41ce689577d81e456ca18ee2e9f0abee26cb5b
+"@thi.ng/errors@npm:^2.2.11":
+  version: 2.2.11
+  resolution: "@thi.ng/errors@npm:2.2.11"
+  checksum: 941e4414c44f30be9a3a83f410e584a2d715110ed7f37e0435e4e7af456bbd0fb9bc6c1a513d074caa1355d584c58120137fbf1224a0566196e6bc5d70dc2e50
   languageName: node
   linkType: hard
 
-"@thi.ng/transducers@npm:^8.3.31":
-  version: 8.3.31
-  resolution: "@thi.ng/transducers@npm:8.3.31"
+"@thi.ng/hex@npm:^2.3.6":
+  version: 2.3.6
+  resolution: "@thi.ng/hex@npm:2.3.6"
+  checksum: df8e70be63e77c44cd2472753937f7bc5ef1785a2d8872deda8061a8270acd999d1671227f87ea4f717952e7653f19873104eb0db96188d83c29f92197a519da
+  languageName: node
+  linkType: hard
+
+"@thi.ng/math@npm:^5.4.3":
+  version: 5.4.3
+  resolution: "@thi.ng/math@npm:5.4.3"
   dependencies:
-    "@thi.ng/api": ^8.7.0
-    "@thi.ng/arrays": ^2.5.2
-    "@thi.ng/checks": ^3.3.8
-    "@thi.ng/compare": ^2.1.23
-    "@thi.ng/compose": ^2.1.25
-    "@thi.ng/errors": ^2.2.9
-    "@thi.ng/math": ^5.4.1
-    "@thi.ng/random": ^3.3.22
-  checksum: cd7e6db088881a6508f3326c50ce4882cfed165d4b6af22532a1767aa3db6d58252c859d2e5cb36a3f8118467c897afeea227a38aef93954391ed749e538abb5
+    "@thi.ng/api": ^8.7.2
+  checksum: 8fc731f56fe3428af2d189303e686f8636ae3f778923776d3bb5fa7db8b0f35530b59de3ab06cb46a21373be8467cad91d66efae562565e3bce2c43a4f9da62a
+  languageName: node
+  linkType: hard
+
+"@thi.ng/paths@npm:^5.1.31":
+  version: 5.1.31
+  resolution: "@thi.ng/paths@npm:5.1.31"
+  dependencies:
+    "@thi.ng/api": ^8.7.2
+    "@thi.ng/checks": ^3.3.9
+    "@thi.ng/errors": ^2.2.11
+  checksum: a3070bd54b7637a720eb3fe7892fae6e0074b546ec35da61cff66526070f78e387b377f498cb0a2c9675ee857e282273cefa90edd3f2e5e2ea91ad6e6fb58f5c
+  languageName: node
+  linkType: hard
+
+"@thi.ng/random@npm:^3.3.24":
+  version: 3.3.24
+  resolution: "@thi.ng/random@npm:3.3.24"
+  dependencies:
+    "@thi.ng/api": ^8.7.2
+    "@thi.ng/checks": ^3.3.9
+    "@thi.ng/errors": ^2.2.11
+    "@thi.ng/hex": ^2.3.6
+  checksum: 73002d81027c2c2d3e05418eec9435e98c27dbf2e7db5a84e3f003f844a66d5ee91ca333935c9e106b2d093e859dadee1b7b50f72057c636aa77f6f4cf498f29
+  languageName: node
+  linkType: hard
+
+"@thi.ng/transducers@npm:^8.3.33":
+  version: 8.3.33
+  resolution: "@thi.ng/transducers@npm:8.3.33"
+  dependencies:
+    "@thi.ng/api": ^8.7.2
+    "@thi.ng/arrays": ^2.5.4
+    "@thi.ng/checks": ^3.3.9
+    "@thi.ng/compare": ^2.1.25
+    "@thi.ng/compose": ^2.1.27
+    "@thi.ng/errors": ^2.2.11
+    "@thi.ng/math": ^5.4.3
+    "@thi.ng/random": ^3.3.24
+  checksum: 5751619264888a8a1be101337f2344467fc1a9f4aa18ddaecdb22209245a31bd51d86d9a3bdc62db0de2648fea2a7fe4aee960c7e5218998c1d485322945d238
   languageName: node
   linkType: hard
 
@@ -1359,13 +1359,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^8.21.0":
-  version: 8.21.0
-  resolution: "@types/eslint@npm:8.21.0"
+"@types/eslint@npm:^8.21.1":
+  version: 8.21.1
+  resolution: "@types/eslint@npm:8.21.1"
   dependencies:
     "@types/estree": "*"
     "@types/json-schema": "*"
-  checksum: 48823b13e1ffbc6fe22c96d99f691a17507ef5a498c4aed95e3a9076ec6d44ff48ce8a632928b6f82bea92701ac8967bba0d78a5c9de4dfa3f2e12d26dae7da4
+  checksum: 584068441e4000c7b41c8928274fdcc737bc62f564928c30eb64ec41bbdbac31612f9fedaf490bceab31ec8305e99615166428188ea345d58878394683086fae
   languageName: node
   linkType: hard
 
@@ -1502,30 +1502,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.51.0":
-  version: 5.51.0
-  resolution: "@typescript-eslint/parser@npm:5.51.0"
+"@typescript-eslint/parser@npm:^5.52.0":
+  version: 5.52.0
+  resolution: "@typescript-eslint/parser@npm:5.52.0"
   dependencies:
-    "@typescript-eslint/scope-manager": 5.51.0
-    "@typescript-eslint/types": 5.51.0
-    "@typescript-eslint/typescript-estree": 5.51.0
+    "@typescript-eslint/scope-manager": 5.52.0
+    "@typescript-eslint/types": 5.52.0
+    "@typescript-eslint/typescript-estree": 5.52.0
     debug: ^4.3.4
   peerDependencies:
     eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 096ec819132839febd4f390c4bbf31687e06191092c244dbd189a64cd7383fbaba728f2765e8809cd9834c0069163ab38b0e5f0f6360157d831647d4c295f8cd
+  checksum: 1d8ff6e932f9c9db8d24b16ce89fd963f0982c38559e500aa1f8dc5cd66abd02f1659dd1a1361ce550def05331803caa69a69a039b54c94fc0f22919a2305c12
   languageName: node
   linkType: hard
 
-"@typescript-eslint/scope-manager@npm:5.51.0":
-  version: 5.51.0
-  resolution: "@typescript-eslint/scope-manager@npm:5.51.0"
+"@typescript-eslint/scope-manager@npm:5.52.0":
+  version: 5.52.0
+  resolution: "@typescript-eslint/scope-manager@npm:5.52.0"
   dependencies:
-    "@typescript-eslint/types": 5.51.0
-    "@typescript-eslint/visitor-keys": 5.51.0
-  checksum: b3c9f48b6b7a7ae2ebcad4745ef91e4727776b2cf56d31be6456b1aa063aa649539e20f9fffa83cad9ccaaa9c492f2354a1c15526a2b789e235ec58b3a82d22c
+    "@typescript-eslint/types": 5.52.0
+    "@typescript-eslint/visitor-keys": 5.52.0
+  checksum: 9a03fe30f8e90a5106c482478f213eefdd09f2f74e24d9dc59b453885466a758fe6d1cd24d706aed6188fb03c84b16ca6491cf20da6b16b8fc53cad8b8c327f2
   languageName: node
   linkType: hard
 
@@ -1546,10 +1546,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:5.51.0":
-  version: 5.51.0
-  resolution: "@typescript-eslint/types@npm:5.51.0"
-  checksum: b31021a0866f41ba5d71b6c4c7e20cc9b99d49c93bb7db63b55b2e51542fb75b4e27662ee86350da3c1318029e278a5a807facaf4cb5aeea724be8b0e021e836
+"@typescript-eslint/types@npm:5.52.0":
+  version: 5.52.0
+  resolution: "@typescript-eslint/types@npm:5.52.0"
+  checksum: 018940d61aebf7cf3f7de1b9957446e2ea01f08fe950bef4788c716a3a88f7c42765fe7d80152b0d0428fcd4bd3ace2dfa8c459ba1c59d9a84e951642180f869
   languageName: node
   linkType: hard
 
@@ -1560,12 +1560,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/typescript-estree@npm:5.51.0":
-  version: 5.51.0
-  resolution: "@typescript-eslint/typescript-estree@npm:5.51.0"
+"@typescript-eslint/typescript-estree@npm:5.52.0":
+  version: 5.52.0
+  resolution: "@typescript-eslint/typescript-estree@npm:5.52.0"
   dependencies:
-    "@typescript-eslint/types": 5.51.0
-    "@typescript-eslint/visitor-keys": 5.51.0
+    "@typescript-eslint/types": 5.52.0
+    "@typescript-eslint/visitor-keys": 5.52.0
     debug: ^4.3.4
     globby: ^11.1.0
     is-glob: ^4.0.3
@@ -1574,7 +1574,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: aec23e5cab48ee72fefa6d1ac266639ebabf6cebec1e0207ad47011d3a48186ac9a632c8e34c3bac896155f54895a497230c11d789fd81263b08eb267d7113ce
+  checksum: 67d396907fee3d6894e26411a5098a37f07e5d50343189e6361ff7db91c74a7ffe2abd630d11f14c2bda1f4af13edf52b80b11cbccb55b44079c7cec14c9e108
   languageName: node
   linkType: hard
 
@@ -1588,13 +1588,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/visitor-keys@npm:5.51.0":
-  version: 5.51.0
-  resolution: "@typescript-eslint/visitor-keys@npm:5.51.0"
+"@typescript-eslint/visitor-keys@npm:5.52.0":
+  version: 5.52.0
+  resolution: "@typescript-eslint/visitor-keys@npm:5.52.0"
   dependencies:
-    "@typescript-eslint/types": 5.51.0
+    "@typescript-eslint/types": 5.52.0
     eslint-visitor-keys: ^3.3.0
-  checksum: b49710f3c6b3b62a846a163afffd81be5eb2b1f44e25bec51ff3c9f4c3b579d74aa4cbd3753b4fc09ea3dbc64a7062f9c658c08d22bb2740a599cb703d876220
+  checksum: 33b44f0cd35b7b47f34e89d52e47b8d8200f55af306b22db4de104d79f65907458ea022e548f50d966e32fea150432ac9c1ae65b3001b0ad2ac8a17c0211f370
   languageName: node
   linkType: hard
 
@@ -2098,9 +2098,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^2.0.8":
-  version: 2.0.8
-  resolution: "astro@npm:2.0.8"
+"astro@npm:^2.0.11":
+  version: 2.0.11
+  resolution: "astro@npm:2.0.11"
   dependencies:
     "@astrojs/compiler": ^1.1.0
     "@astrojs/language-server": ^0.28.3
@@ -2156,7 +2156,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: a586d4a3ba259a1a01c1a6bafbcb5568bca313375218aa8b5b129321a0dcb65534cdf9051e0fde4d86371b1b42c3ecd5826d5ad1712dd547c4b2ec1d271b2bc9
+  checksum: e145866eb270bafe8684d7f2f91013544c0d58e3b29c8910b6d3e0541d3a3c4d195772bd152c08afd07fbba59a4521f41f44b0a7cd24be539f1aa0918d172569
   languageName: node
   linkType: hard
 
@@ -3140,9 +3140,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.33.0":
-  version: 8.33.0
-  resolution: "eslint@npm:8.33.0"
+"eslint@npm:^8.34.0":
+  version: 8.34.0
+  resolution: "eslint@npm:8.34.0"
   dependencies:
     "@eslint/eslintrc": ^1.4.1
     "@humanwhocodes/config-array": ^0.11.8
@@ -3185,7 +3185,7 @@ __metadata:
     text-table: ^0.2.0
   bin:
     eslint: bin/eslint.js
-  checksum: 727e63ab8b7acf281442323c5971f6afdd5b656fbcebc4476cf54e35af51b2f180617433fc5e1952f0449ca3f43a905527f9407ea4b8a7ea7562fc9c3f278d4c
+  checksum: 4e13e9eb05ac2248efbb6acae0b2325091235d5c47ba91a4775c7d6760778cbcd358a773ebd42f4629d2ad89e27c02f5d66eb1f737d75d9f5fc411454f83b2e5
   languageName: node
   linkType: hard
 
@@ -5381,26 +5381,26 @@ __metadata:
     "@alpinejs/persist": ^3.11.1
     "@astrojs/alpinejs": ^0.1.3
     "@astrojs/rss": ^2.1.0
-    "@dicebear/collection": ^5.3.0
-    "@dicebear/core": ^5.3.0
+    "@dicebear/collection": ^5.3.2
+    "@dicebear/core": ^5.3.2
     "@fontsource/azeret-mono": ^4.5.12
     "@fontsource/inter": ^4.5.15
-    "@iconify-json/lucide": ^1.1.59
+    "@iconify-json/lucide": ^1.1.61
     "@remark-embedder/core": ^3.0.1
     "@remark-embedder/transformer-oembed": ^3.0.0
-    "@thi.ng/api": ^8.7.0
-    "@thi.ng/compose": ^2.1.25
-    "@thi.ng/paths": ^5.1.29
-    "@thi.ng/transducers": ^8.3.31
+    "@thi.ng/api": ^8.7.2
+    "@thi.ng/compose": ^2.1.27
+    "@thi.ng/paths": ^5.1.31
+    "@thi.ng/transducers": ^8.3.33
     "@types/alpinejs": ^3.7.1
-    "@types/eslint": ^8.21.0
+    "@types/eslint": ^8.21.1
     "@types/prettier": ^2.7.2
-    "@typescript-eslint/parser": ^5.51.0
+    "@typescript-eslint/parser": ^5.52.0
     "@unocss/preset-icons": ^0.49.4
     "@unocss/transformer-directives": ^0.49.4
     alpinejs: ^3.11.1
-    astro: ^2.0.8
-    eslint: ^8.33.0
+    astro: ^2.0.11
+    eslint: ^8.34.0
     eslint-plugin-astro: ^0.23.0
     eslint-plugin-jsx-a11y: ^6.7.1
     mini-svg-data-uri: ^1.4.4

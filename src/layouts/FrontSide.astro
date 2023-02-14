@@ -9,83 +9,98 @@ const { active, tags } = Astro.props.render;
 
 import MenuCard from "@layouts/MenuCard.astro";
 import "@layouts/compositions/stack.css";
+import "@layouts/blocks/dotShadow.css";
 ---
 
 <style>
-  nav {
-    /* Related to max-height; Menu scroll bar  */
-    overflow-y: auto;
-  }
-  a:focus-visible {
-    outline: none;
-  }
-  nav::-webkit-scrollbar {
-    display: none;
-  }
-  .items {
-    --stack--spacing: var(--step--5);
-  }
-  img {
-    height: var(--robot-height);
-    width: var(--robot-height);
-    border-radius: 40px;
-    background-color: rgba(1, 1, 1, 0.2);
-  }
-  li:hover,
-  li:has(a:focus-visible) {
-    background-color: var(--color-secondary);
-  }
-  li.active {
-    outline: 1px solid var(--color-primary);
-    outline-offset: -1px;
-    border-radius: 5px;
-  }
+ .stack {
+   /* Fit to Sidebar Parent height setting */
+   height: 100%;
+
+  /* Sync with ContentHeader! */
+  --stack--spacing: var(--step-0);
+ }
+
+ nav {
+   /* Related to max-height; Menu scroll bar  */
+   overflow-y: auto;
+ }
+ a:focus-visible {
+   outline: none;
+ }
+ nav::-webkit-scrollbar {
+   display: none;
+ }
+ .items {
+   --stack--spacing: var(--step--5);
+ }
+ img {
+   height: var(--robot-height);
+   width: var(--robot-height);
+   border-radius: 40px;
+   background-color: rgba(1, 1, 1, 0.2);
+ }
+ li:hover,
+ li:has(a:focus-visible) {
+   background-color: var(--color-secondary);
+ }
+ li.active {
+   outline: 1px solid var(--color-primary);
+   outline-offset: -1px;
+   border-radius: 5px;
+ }
 </style>
 
-<slot />
-<input
-  slot="header"
-  x-model="search"
-  disabled
-  x-bind:disabled="false"
-  type="text"
-  placeholder="Hit / to search 👇"
-  x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
-/>
-<nav>
-  <ul class="items | stack" slot="items">
-    <template x-for="{tag, date, avatar} in f(search)">
-      <li
-        x-data={`{ active: "${active}" }`}
-        x-init="active === tag && $el.scrollIntoView(false)"
-        x-bind:class="active === tag && 'active'"
-      >
-        <a class="no-underline" x-bind:href="'/tag/' + tag + '#main'">
-          <MenuCard>
-            <img slot="avatar" x-bind:src="avatar" />
-            <span class="font-head" x-html="hl(search, tag)"></span>
-            <div>
-              bot active: <span x-text="new Date(date).toLocaleDateString()"
-              ></span>
-            </div>
-          </MenuCard>
-        </a>
-      </li>
-    </template>
-    {
-      tags.map((item) => (
-        <li x-show="0" class={active === item.tag ? "active" : ""}>
-          <a class="no-underline" href={`"/tag/${item.tag}#main"`}>
+<div class="stack">
+  <slot />
+  <div class="dot-shadow">
+    <input
+      class="w-full px-2- py-4-"
+      slot="header"
+      x-model="search"
+      disabled
+      x-bind:disabled="false"
+      type="text"
+      placeholder="Hit / to search 👇"
+      x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
+    />
+    </div>
+
+  <nav>
+    <ul class="items | stack" slot="items">
+      <template x-for="{tag, date, avatar} in f(search)">
+        <li
+          x-data={`{ active: "${active}" }`}
+          x-init="active === tag && $el.scrollIntoView(false)"
+          x-bind:class="active === tag && 'active'"
+        >
+          <a class="no-underline" x-bind:href="'/tag/' + tag + '#main'">
             <MenuCard>
-              <img slot="avatar" src={item.avatar} />
-              <span class="font-head">{item.tag}</span>
-              <span>
-                bot active: {new Date(item.date).toLocaleDateString()}
-              </span>
+              <img slot="avatar" x-bind:src="avatar" />
+              <span class="font-head" x-html="hl(search, tag)"></span>
+              <div>
+                bot active: <span x-text="new Date(date).toLocaleDateString()"
+                ></span>
+              </div>
             </MenuCard>
           </a>
         </li>
-      ))
-    }
-  </ul>
-</nav>
+      </template>
+      {
+        tags.map((item) => (
+          <li x-show="0" class={active === item.tag ? "active" : ""}>
+            <a class="no-underline" href={`"/tag/${item.tag}#main"`}>
+              <MenuCard>
+                <img slot="avatar" src={item.avatar} />
+                <span class="font-head">{item.tag}</span>
+                <span>
+                  bot active: {new Date(item.date).toLocaleDateString()}
+                </span>
+              </MenuCard>
+            </a>
+          </li>
+          ))
+          }
+    </ul>
+  </nav>
+</div>

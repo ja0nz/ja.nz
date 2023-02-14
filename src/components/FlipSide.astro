@@ -5,28 +5,12 @@ interface Props {
 
 const { key } = Astro.props;
 const xData = JSON.stringify({ [key]: true });
-
-import "@layouts/compositions/stack.css";
 ---
-
-<style>
-  .stack {
-    /* Consistent spacing of both sides */
-    --stack--spacing: 1.5rem;
-    /* Fit to Sidebar Parent hight setting */
-    height: 100%;
-  }
-</style>
-
 <div style="display: contents;" x-data={xData}>
-  <div x-show={key} class="stack">
-    <div class="stack">
+  <div x-show={key}>
       <slot name="front" />
-    </div>
   </div>
-  <div x-cloak x-show={`!${key}`} class="stack">
-    <div class="stack">
+  <div x-cloak x-show={`!${key}`}>
       <slot name="back" />
-    </div>
   </div>
 </div>

@@ -15,19 +15,18 @@ const xData = JSON.stringify({ [key]: false });
 
 const [tag] = tags.filter((x) => active === x.tag);
 const avatar = tag?.avatar;
-const lastSeen = tag?.date;
 ---
 
 <style>
-  .this {
-    /* compositions/stack.css */
-    --stack--spacing: auto;
+ .this {
+   /* Sync with FrontSide! */
+   --stack--spacing: var(--step-0);
 
-    position: sticky;
-    top: var(--top-placement);
-    z-index: 1;
-    @apply bg-light dark:bg-dark;
-  }
+   position: sticky;
+   top: var(--top-placement);
+   z-index: 1;
+   @apply bg-light dark:bg-dark;
+ }
   .this::before {
     content: "";
     background-color: inherit;
@@ -61,7 +60,7 @@ const lastSeen = tag?.date;
         <MenuCard>
           <img slot="avatar" src={avatar} />
           <div class="font-head">{active}</div>
-          <div>latest:&nbsp;{new Date(lastSeen).toLocaleDateString()}</div>
+          <span>👾&nbsp;<a href="https://c.xkcd.com/random/comic/">goto&nbsp;XKCD</a></span>
         </MenuCard>
       ) : (
         <div />
@@ -77,13 +76,13 @@ const lastSeen = tag?.date;
         class="i-lucide-sun dark:i-lucide-moon"></button>
     </div>
   </header>
-  <div class="stack" x-show={key}>
+  <div class="dot-shadow" x-cloak x-show={key}>
     <input
+      class="w-full px-2- py-4-"
       slot="subhead"
       type="text"
       placeholder="Search content"
       x-model="search"
-      x-cloak
     />
   </div>
 </div>
