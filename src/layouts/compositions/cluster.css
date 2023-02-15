@@ -26,7 +26,7 @@
 .cluster {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--cluster--gap, var(--space-size-1));
+  gap: var(--cluster--gap, var(--step-0));
   justify-content: var(--cluster--horizontal-alignment, flex-start);
   align-items: var(--cluster--vertical-alignment, center);
 }

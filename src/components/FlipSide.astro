@@ -6,11 +6,18 @@ interface Props {
 const { key } = Astro.props;
 const xData = JSON.stringify({ [key]: true });
 ---
-<div style="display: contents;" x-data={xData}>
+
+<style>
+  div {
+    display: contents;
+  }
+</style>
+
+<div x-data={xData}>
   <div x-show={key}>
-      <slot name="front" />
+    <slot name="front" />
   </div>
   <div x-cloak x-show={`!${key}`}>
-      <slot name="back" />
+    <slot name="back" />
   </div>
 </div>

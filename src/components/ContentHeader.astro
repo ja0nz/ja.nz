@@ -18,15 +18,15 @@ const avatar = tag?.avatar;
 ---
 
 <style>
- .this {
-   /* Sync with FrontSide! */
-   --stack--spacing: var(--step-0);
+  .this {
+    /* Sync with FrontSide! */
+    --stack--spacing: var(--step-0);
 
-   position: sticky;
-   top: var(--top-placement);
-   z-index: 1;
-   @apply bg-light dark:bg-dark;
- }
+    position: sticky;
+    top: var(--top-placement);
+    z-index: 1;
+    @apply bg-light dark:bg-dark;
+  }
   .this::before {
     content: "";
     background-color: inherit;
@@ -41,6 +41,7 @@ const avatar = tag?.avatar;
     /* Gap the top placing */
     height: var(--top-placement);
     text-align: center;
+    margin-block-start: 0;
   }
 
   header {
@@ -60,7 +61,7 @@ const avatar = tag?.avatar;
         <MenuCard>
           <img slot="avatar" src={avatar} />
           <div class="font-head">{active}</div>
-          <span>👾&nbsp;<a href="https://c.xkcd.com/random/comic/">goto&nbsp;XKCD</a></span>
+          <a href="https://c.xkcd.com/random/comic/">goto&nbsp;XKCD</a>
         </MenuCard>
       ) : (
         <div />
@@ -76,7 +77,12 @@ const avatar = tag?.avatar;
         class="i-lucide-sun dark:i-lucide-moon"></button>
     </div>
   </header>
-  <div class="dot-shadow" x-cloak x-show={key}>
+  <div
+    style="margin-block-end: 0.5rem;"
+    class="dot-shadow"
+    x-cloak
+    x-show={key}
+  >
     <input
       class="w-full px-2- py-4-"
       slot="subhead"
@@ -108,6 +114,6 @@ const avatar = tag?.avatar;
 <div
   x-data="Placeholder"
   x-init="observer.observe($el)"
-  class="placeholder | font-head"
+  class="placeholder | font-head | py-2-"
 >
 </div>

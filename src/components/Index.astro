@@ -20,7 +20,6 @@ import "@layouts/compositions/sidebar.css";
 import "@layouts/utilities/center.css";
 
 /* Components */
-import AlpineSelect from "@components/AlpineSelect.astro";
 import FlipSide from "@components/FlipSide.astro";
 import ContentHeader from "@components/ContentHeader.astro";
 import MenuHeader from "@components/MenuHeader.astro";
@@ -33,7 +32,6 @@ const longs = await getC("long");
 const shorts = await getC("short");
 const posts = [...shorts, ...longs];
 
-/* Construct render */
 const render: Render = {
   active,
   tags: createTags(posts),
@@ -67,31 +65,16 @@ const tsxOn = `${tsKey} = ! ${tsKey}`;
   <div class="this | center | with-sidebar">
     <Sidebar>
       <SkipLink />
-      <AlpineSelect
-        render={render}
-        key={({ tags }: Render) => tags}
-        filter={({ tag }: Tags) => tag}
-        style={["font-semibold", "bg-blue-200"]}
-      >
-        <FlipSide key={tsKey}>
-          <FrontSide slot="front" requires={[AlpineSelect]} render={render}>
-            <MenuHeader toggle={tsxOn} />
-          </FrontSide>
-          <About toggle={tsxOn} slot="back" />
-        </FlipSide>
-      </AlpineSelect>
+      <FlipSide key={tsKey}>
+        <FrontSide slot="front" render={render}>
+          <MenuHeader toggle={tsxOn} />
+        </FrontSide>
+        <About toggle={tsxOn} slot="back" />
+      </FlipSide>
     </Sidebar>
     <MainArea>
-      <AlpineSelect
-        fuzzy={true}
-        render={render}
-        key={({ collection }: Render) => collection.map(x => x.data)}
-        filter={({ title: a, summary: b }: FM_D) => [a, b].join(" ")}
-        style={["font-semibold", "bg-blue-200"]}
-      >
-        <ContentHeader render={render} />
-        <Main requires={[AlpineSelect]} render={render} />
-      </AlpineSelect>
+      <ContentHeader render={render} />
+      <Main render={render} />
     </MainArea>
   </div>
 </Layout>

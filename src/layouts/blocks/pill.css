@@ -1,0 +1,13 @@
+.pill {
+  display: inline-block;
+  padding: 0.3rem 0.35rem;
+  font-size: var(--step--1, 400);
+  border: 2px solid var(--color-primary);
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: center;
+}
+.pill:not([class*="bg-"]) {
+  background: ￼#c4c4c4;
+}

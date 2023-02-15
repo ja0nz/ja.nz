@@ -13,7 +13,7 @@
 
    # https://devenv.sh/scripts/
   scripts = with pkgs; {
-    run-fmt.exec = "${nodePackages.prettier}/bin/prettier . --write";
+    run-fmt.exec = "${nodePackages.prettier}/bin/prettier . --write --plugin-search-dir=$DEVENV_ROOT";
     run-repl.exec = "${nodePackages.ts-node}/bin/ts-node";
     run-lint.exec = "${nodePackages.eslint}/bin/eslint .";
     run-check.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro check";

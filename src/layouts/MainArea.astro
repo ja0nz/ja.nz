@@ -1,4 +1,5 @@
 ---
+import "@layouts/compositions/stack.css";
 ---
 
 <style>
@@ -9,6 +10,6 @@
     background-attachment: fixed;
   }
 </style>
-<div class="this | bg-light dark:bg-dark">
+<div x-data="{ search: '' }" class="this | stack | bg-light dark:bg-dark">
   <slot />
 </div>

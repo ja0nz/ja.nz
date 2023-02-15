@@ -15,7 +15,7 @@
 #+hugo_front_matter_key_replace: description>summary author>nil
 #+property: header-args :eval never-export
 :END:
-#+FILETAGS: :typescript:go:zig:c:nix:structures:diff:
+#+FILETAGS: :typescript:go:zig:c:nix:structures:diff:css:
 
 * Intro :noexport:
 This file is written in [[https://orgmode.org/][Org Mode]] markup and may look funny in GitHub. But actually, this file alone is the *blogging engine* for https://ja.nz. It features:
@@ -118,6 +118,8 @@ CLOSED: [2022-05-16 Mo 16:40]
 :END:
 #+begin_description
 This post will contain a lot of formattings. Just demo around.
+
+I just wanna know
 #+end_description
 
 *** Link

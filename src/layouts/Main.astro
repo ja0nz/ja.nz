@@ -1,22 +1,33 @@
 ---
 interface Props {
   render: Render;
-  requires?: AstroComponentFactory[];
 }
-import type { AstroComponentFactory } from "astro/dist/runtime/server";
-import type { Render } from "@lib/api";
+import type { Render, Glob } from "@lib/api";
+import { zip } from "@thi.ng/transducers";
 const { collection } = Astro.props.render;
 import "@layouts/blocks/box.css";
+import "@layouts/blocks/pill.css";
 import "@layouts/utilities/center.css";
+import "@layouts/utilities/radius.css";
 import "@layouts/compositions/cluster.css";
 import "@layouts/compositions/repel.css";
-import ContentCard from "@layouts/ContentCard.astro";
+
+/* Construct render */
+const rPromises = await Promise.all(collection.map((x) => x.render()));
+
+// TODO
+// x-on:keyup.enter={`navigation.navigate('/read/${content.data.id}')`}
 ---
 
 <style>
   /* Ensure some breathing before tabbing in #main */
   :target {
-    scroll-margin-top: calc((var(--top-placement) + var(--robot-height)));
+    scroll-margin-top: calc(
+      (
+        var(--top-placement) + var(--robot-height) +
+          var(--stack-spacing, 1.5rem)
+      )
+    );
   }
   /* Remove main focus */
   #main:focus {
@@ -51,37 +62,107 @@ import ContentCard from "@layouts/ContentCard.astro";
   }
 </style>
 
-<main class="this | box">
+<script>
+  import { highlightDOMString } from "@lib/highlightDOM";
+  // Highlight Classes for Tailwind
+  const style = ["font-semibold", "bg-blue-200"];
+
+  // Filter search
+  const filterSearch = (search: string, target: string) => {
+    const r = new RegExp(search, "i");
+    return r.test(target);
+  };
+
+  // Highlight search results
+  const highlight = (search: string, target: string) => {
+    if (search === "") return target;
+    const r = new RegExp(`(${search})`, "ig");
+    return target.replaceAll(r, `<span class="${style.join(" ")}">$1</span>`);
+  };
+
+  // Highlight search results
+  const highlightDOM = (search: string, target: string) => {
+    if (search === "") return target;
+    return highlightDOMString(
+      target,
+      search,
+      (token) => `<span class="${style.join(" ")}">${token}</span>`
+    );
+  };
+
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("Main", () => ({ filterSearch, highlightDOM, highlight }));
+  });
+</script>
+
+<main x-data="Main" class="this | box">
   <div class="center">
     <ul id="main" class="stack" tabindex="-1">
-      <template x-for="(x, idx) in f(search)">
-        <ContentCard>
-          <div class="repel">
-            <a x-bind:href="`/read/${x.category}/${x.id}`">
-              <h3 x-html="hl(search, x.title)"></h3>
-            </a>
-            <div x-bind:class="x.category === 'long' ? 'i-lucide-star': ''">
-            </div>
-          </div>
-          <p x-html="hl(search, x.summary)"></p>
-          <div class="cluster">
-            <span x-text="new Date(x.date).toLocaleDateString()"></span>
-            <span x-text="x.tags"></span>
-            <span x-text="x.id"></span>
-          </div>
-        </ContentCard>
-      </template>
       {
-        collection.map(({ data }) => (
-          <ContentCard nojs={true}>
-            <h1 class="text-2">{data.title}</h1>
-            <p>{data.summary}</p>
-            <span>{data.category}</span>
-            <span>{data.date}</span>
-            <span>{data.tags}</span>
-            <span>{data.id}</span>
-          </ContentCard>
-        ))
+        [...zip(collection, rPromises)].map(
+          ([content, body]: [Glob, unknown]) => (
+            <li
+              tabindex="0"
+              class="box | stack"
+              x-show={`filterSearch(search, $el.textContent)`}
+            >
+              {content.data.category === "long" ? (
+                <>
+                  <div class="repel">
+                    <a href={`/read/${content.data.id}`}>
+                      <h2 x-html={`highlight(search, '${content.data.title}')`}>
+                        {content.data.title}
+                      </h2>
+                    </a>
+                    <div class="i-lucide-star" />
+                  </div>
+                  <div
+                    class="stack"
+                    x-data="{ content: '' }"
+                    x-init="content = $el.innerHTML"
+                    x-html={`highlightDOM(search, content)`}
+                  >
+                    {content.data.summary
+                      ?.split("\n")
+                      .filter((x) => !!x)
+                      .map((s) => (
+                        <p>{s}</p>
+                      ))}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h3 x-html={`highlight(search, '${content.data.title}')`}>
+                    {content.data.title}
+                  </h3>
+                  <div
+                    class="stack"
+                    x-data="{ content: '' }"
+                    x-init="content = $el.innerHTML"
+                    x-html={`highlightDOM(search, content)`}
+                  >
+                    <body.Content />
+                  </div>
+                </>
+              )}
+              <div class="repel">
+                <div class="cluster">
+                  {content.data.tags.map((x) => (
+                    <a class="no-underline" href={`/tag/${x}#main`}>
+                      <span class="pill | radius | bg-light dark:bg-dark">
+                        {x}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+
+                <i class="text-1-">
+                  {new Date(content.data.date || "").toLocaleDateString()}
+                </i>
+              </div>
+            </li>
+          )
+        )
       }
     </ul>
   </div>
