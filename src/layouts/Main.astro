@@ -124,7 +124,7 @@ const xOn = (id: number) => ({
                   </h3>
                 )}
 
-                {content.data.tags?.map((x) => (
+                {content.data.tags?.map((x: string) => (
                   <a class="no-underline" href={`/tag/${x}#main`}>
                     <span class="pill | radius | bg-light dark:bg-dark">
                       {x}
@@ -141,8 +141,8 @@ const xOn = (id: number) => ({
                 {content.data.category === "long" ? (
                   content.data.summary
                     ?.split("\n")
-                    .filter((x) => !!x)
-                    .map((s) => <p>{s}</p>)
+                    .filter((x: string) => !!x)
+                    .map((s: string) => <p>{s}</p>)
                 ) : (
                   <body.Content />
                 )}

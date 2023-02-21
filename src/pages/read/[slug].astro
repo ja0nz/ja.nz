@@ -1,10 +1,11 @@
 ---
+import type { Glob } from "@lib/api";
 import { getCollection, CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 
 /* Static (SSG) Mode */
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("long", ({ data }) => !data.draft);
+  const blogEntries = await getCollection("long", ({ data }: Glob) => !data.draft);
   return blogEntries.map((entry: CollectionEntry<"long">) => ({
     params: { slug: entry.data.id },
     props: { entry },
