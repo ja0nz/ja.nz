@@ -1,13 +1,20 @@
 ---
-import { Tags, getC } from "@lib/api";
+import type { Tags } from "@lib/api";
 
 import { createTags } from "@lib/xform";
+import { CollectionEntry, getCollection } from "astro:content";
 import Index from "@components/Index.astro";
 
 /* Static (SSG) Mode */
 export async function getStaticPaths() {
-  const longs = await getC("long");
-  const shorts = await getC("short");
+  const longs = await getCollection(
+    "long",
+    ({ data }: CollectionEntry<"long">) => !data.draft
+  );
+  const shorts = await getCollection(
+    "short",
+    ({ data }: CollectionEntry<"short">) => !data.draft
+  );
   const dataTag: Tags[] = createTags([...shorts, ...longs]);
   return dataTag.map(({ tag }: Tags) => ({ params: { tag } }));
 }

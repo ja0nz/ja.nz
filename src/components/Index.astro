@@ -2,7 +2,8 @@
 interface Props {
   tag?: string;
 }
-import { getC, Render } from "@lib/api";
+import type { Render } from "@lib/api";
+import { CollectionEntry, getCollection } from "astro:content";
 
 // use to highlight current active
 const active = Astro.params?.tag || "";
@@ -28,8 +29,14 @@ import MenuHeader from "@components/MenuHeader.astro";
 import { createTags, sortCollection } from "@lib/xform";
 
 /* Input */
-const longs = await getC("long");
-const shorts = await getC("short");
+const longs = await getCollection(
+  "long",
+  ({ data }: CollectionEntry<"long">) => !data.draft
+);
+const shorts = await getCollection(
+  "short",
+  ({ data }: CollectionEntry<"short">) => !data.draft
+);
 const posts = [...shorts, ...longs];
 
 const render: Render = {

@@ -32,10 +32,5 @@ export type Render = {
   collection: Glob[];
 };
 
-/* Collection Functions */
-export function getC<T extends Collections>(col: T) {
-  return getCollection(col, ({ data }) => !data.draft);
-}
-
 /* Render unwrapped */
 export type CollectionRender = Awaited<ReturnType<Glob["render"]>>;
