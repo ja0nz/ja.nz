@@ -3,9 +3,6 @@
 @import "@unocss/reset/tailwind.css" layer(reset);
 
 @layer fonts {
-  @import "@fontsource/azeret-mono";
-  @import "@fontsource/inter";
-
   /* Cartridge Font */
   @font-face {
     font-family: "Cartridge Regular";
@@ -36,6 +33,9 @@
     --color-dark-accent: #222e35;
     --color-primary: #ff5400;
     --color-secondary: #86c7f0;
+
+    --color-dark-grey: #595959;
+    --color-light-grey: #d0d0d0;
 
     --bg-bubble-even: #ffcb77;
     --bg-bubble-odd: #77abff;
@@ -175,5 +175,11 @@
 
   p {
     line-height: var(--step-1);
+  }
+
+  pre[class*="astro-code"] {
+    padding: var(--step--1);
+    border-radius: 10px;
+    overflow: auto;
   }
 }

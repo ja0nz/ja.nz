@@ -48,6 +48,8 @@ const theme = {
     darkaccent: "var(--color-dark-accent)",
     primary: "var(--color-primary)",
     secondary: "var(--color-secondary)",
+    lightgrey: "var(--color-light-grey)",
+    darkgrey: "var(--color-dark-grey)",
   },
   spacing: utopia,
   fontSize: utopia,
@@ -105,5 +107,9 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [remarkEmbedPlugin, remarkHeadingId, remarkBreaks],
+    shikiConfig: {
+      theme: "monokai",
+      wrap: true,
+    },
   },
 });

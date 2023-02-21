@@ -8,6 +8,11 @@ const { active, tags } = Astro.props.render;
 import MenuCard from "@layouts/MenuCard.astro";
 import "@layouts/compositions/stack.css";
 import "@layouts/blocks/dotShadow.css";
+
+// TODO Hack
+const xOn = {
+  "x-on:keyup.slash.document": "document.activeElement !== $el && $el.select()",
+};
 ---
 
 <style>
@@ -81,7 +86,7 @@ import "@layouts/blocks/dotShadow.css";
       x-bind:disabled="false"
       type="text"
       placeholder="Hit / to search 👇"
-      x-on:keyup.slash.document="document.activeElement !== $el && $el.select()"
+      {...xOn}
     />
   </div>
 

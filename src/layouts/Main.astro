@@ -2,7 +2,7 @@
 interface Props {
   render: Render;
 }
-import type { Render, Glob } from "@lib/api";
+import type { Render, Glob, CollectionRender } from "@lib/api";
 import { zip } from "@thi.ng/transducers";
 const { collection } = Astro.props.render;
 import "@layouts/blocks/box.css";
@@ -13,10 +13,14 @@ import "@layouts/compositions/cluster.css";
 import "@layouts/compositions/repel.css";
 
 /* Construct render */
-const rPromises = await Promise.all(collection.map((x) => x.render()));
+const rPromises: CollectionRender[] = await Promise.all(
+  collection.map((x) => x.render())
+);
 
-// TODO
-// x-on:keyup.enter={`navigation.navigate('/read/${content.data.id}')`}
+// TODO Hack
+const xOn = (id: number) => ({
+  "x-on:keyup.enter": `navigation.navigate('/read/${id}')`,
+});
 ---
 
 <style>
@@ -65,7 +69,7 @@ const rPromises = await Promise.all(collection.map((x) => x.render()));
 <script>
   import { highlightDOMString } from "@lib/highlightDOM";
   // Highlight Classes for Tailwind
-  const style = ["font-semibold", "bg-blue-200"];
+  const style = ["bg-lightgrey", "dark:bg-darkgrey", "radius"];
 
   // Filter search
   const filterSearch = (search: string, target: string) => {
@@ -100,62 +104,56 @@ const rPromises = await Promise.all(collection.map((x) => x.render()));
     <ul id="main" class="stack" tabindex="-1">
       {
         [...zip(collection, rPromises)].map(
-          ([content, body]: [Glob, unknown]) => (
+          ([content, body]: [Glob, CollectionRender]) => (
             <li
               tabindex="0"
               class="box | stack"
               x-show={`filterSearch(search, $el.textContent)`}
+              {...xOn(content.data.id)}
             >
-              {content.data.category === "long" ? (
-                <>
-                  <div class="repel">
-                    <a href={`/read/${content.data.id}`}>
-                      <h2 x-html={`highlight(search, '${content.data.title}')`}>
-                        {content.data.title}
-                      </h2>
-                    </a>
-                    <div class="i-lucide-star" />
-                  </div>
-                  <div
-                    class="stack"
-                    x-data="{ content: '' }"
-                    x-init="content = $el.innerHTML"
-                    x-html={`highlightDOM(search, content)`}
-                  >
-                    {content.data.summary
-                      ?.split("\n")
-                      .filter((x) => !!x)
-                      .map((s) => (
-                        <p>{s}</p>
-                      ))}
-                  </div>
-                </>
-              ) : (
-                <>
+              <div class="cluster">
+                {content.data.category === "long" ? (
+                  <a href={`/read/${content.data.id}`}>
+                    <h2 x-html={`highlight(search, '${content.data.title}')`}>
+                      {content.data.title}
+                    </h2>
+                  </a>
+                ) : (
                   <h3 x-html={`highlight(search, '${content.data.title}')`}>
                     {content.data.title}
                   </h3>
-                  <div
-                    class="stack"
-                    x-data="{ content: '' }"
-                    x-init="content = $el.innerHTML"
-                    x-html={`highlightDOM(search, content)`}
-                  >
-                    <body.Content />
-                  </div>
-                </>
-              )}
-              <div class="repel">
-                <div class="cluster">
-                  {content.data.tags.map((x) => (
-                    <a class="no-underline" href={`/tag/${x}#main`}>
-                      <span class="pill | radius | bg-light dark:bg-dark">
-                        {x}
-                      </span>
-                    </a>
-                  ))}
-                </div>
+                )}
 
+                {content.data.tags?.map((x) => (
+                  <a class="no-underline" href={`/tag/${x}#main`}>
+                    <span class="pill | radius | bg-light dark:bg-dark">
+                      {x}
+                    </span>
+                  </a>
+                ))}
+              </div>
+              <div
+                class="stack"
+                x-data="{ content: '' }"
+                x-init="content = $el.innerHTML"
+                x-html={`highlightDOM(search, content)`}
+              >
+                {content.data.category === "long" ? (
+                  content.data.summary
+                    ?.split("\n")
+                    .filter((x) => !!x)
+                    .map((s) => <p>{s}</p>)
+                ) : (
+                  <body.Content />
+                )}
+                {content.data.category === "long" && (
+                  <a href={`/read/${content.data.id}`}>
+                    <b>[ read 👾 ]</b>
+                  </a>
+                )}
+              </div>
+              <div class="repel">
+                <i class="text-1-">~ {content.body.split(" ").length} words</i>
                 <i class="text-1-">
                   {new Date(content.data.date || "").toLocaleDateString()}
                 </i>

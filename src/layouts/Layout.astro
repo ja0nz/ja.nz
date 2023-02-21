@@ -4,10 +4,13 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+import "@fontsource/inter";
+import "@fontsource/azeret-mono";
 import "@layouts/global.css";
 ---
 
 <script>
+  // @ts-ignore
   import persist from "@alpinejs/persist";
   document.addEventListener("alpine:init", () => {
     Alpine.plugin(persist);
