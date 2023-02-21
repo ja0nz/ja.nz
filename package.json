@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "astro build"
+    "build": "astro check && astro build"
   },
   "dependencies": {
     "@alpinejs/persist": "^3.11.1",
