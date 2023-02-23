@@ -55,7 +55,7 @@ const theme = {
   fontSize: utopia,
   fontFamily: {
     sans: ["Inter", "sans-serif"],
-    mono: ["Azaret Mono", "monospace"],
+    mono: ["monospace"],
     head: ["Cartridge Regular"],
   },
 };

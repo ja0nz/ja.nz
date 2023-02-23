@@ -154,9 +154,11 @@ const xOn = (id: number) => ({
               </div>
               <div class="repel">
                 <i class="text-1-">~ {content.body.split(" ").length} words</i>
-                <i class="text-1-">
-                  {new Date(content.data.date || "").toLocaleDateString()}
-                </i>
+                <time datetime={content.data.date?.toISOString() || ""}>
+                  <i class="text-1-">
+                    {new Date(content.data.date || "").toLocaleDateString()}
+                  </i>
+                </time>
               </div>
             </li>
           )

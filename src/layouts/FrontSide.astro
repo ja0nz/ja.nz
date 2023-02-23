@@ -109,7 +109,10 @@ const xOn = {
                   {item.tag}
                 </span>
                 <span>
-                  last active: {new Date(item.date).toLocaleDateString()}
+                  last active:{" "}
+                  <time datetime={new Date(item.date).toISOString()}>
+                    {new Date(item.date).toLocaleDateString()}
+                  </time>
                 </span>
               </MenuCard>
             </a>

@@ -2,10 +2,14 @@
 import type { Glob } from "@lib/api";
 import { getCollection, CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import SkipLink from "@layouts/SkipLink.astro";
 
 /* Static (SSG) Mode */
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("long", ({ data }: Glob) => !data.draft);
+  const blogEntries = await getCollection(
+    "long",
+    ({ data }: Glob) => !data.draft
+  );
   return blogEntries.map((entry: CollectionEntry<"long">) => ({
     params: { slug: entry.data.id },
     props: { entry },
@@ -14,8 +18,71 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const title = entry.data.title.split(",").slice(1).join("");
+
+const date = entry.data.date.toLocaleDateString("en-US", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+import "@layouts/compositions/stack.css";
+import "@layouts/compositions/repel.css";
+import "@layouts/utilities/center.css";
 ---
 
-<Layout title={entry.data.title}>
-  <Content />
+<style>
+ .stack {
+   --stack--spacing: var(--step-3);
+ }
+
+ .return {
+   @apply text-1-;
+   display: inline-flex;
+   align-items: center;
+ }
+
+ h1 {
+   display: flex;
+   gap: 0.7ch;
+ }
+
+ h1::before {
+   content: '#';
+   margin-inline-start: -2ch;
+   @apply color-darkgrey dark:color-lightgrey;
+ }
+</style>
+
+<Layout title={title}>
+  <header class="repel | p-0">
+    <a class="return | no-underline" href="/">
+      <span class="i-lucide-arrow-left"></span><i role="link" aria-label="back home">back 🏠</i>
+    </a>
+    <button
+      x-on:click={`colorScheme = colorScheme === 'dark' ? 'light' : 'dark'`}
+      class="i-lucide-sun dark:i-lucide-moon"></button>
+  </header>
+  <div class="stack | center">
+    <SkipLink rotate="0deg" />
+
+    <h1>{title}</h1>
+    <time datetime={entry.data.date.toISOString()}>
+      <em>{date}</em>
+    </time>
+    <section class="post">
+      <em>
+        {entry.data.summary}
+      </em>
+    </section>
+    <hr />
+    <main class="stack" id="main">
+      <Content />
+    </main>
+    <footer>
+      Jan
+      i am this and that
+    </footer>
+  </div>
 </Layout>
