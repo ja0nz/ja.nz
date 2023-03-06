@@ -3,6 +3,7 @@ import type { Glob } from "@lib/api";
 import { getCollection, CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import SkipLink from "@layouts/SkipLink.astro";
+import Footer from "@layouts/Footer.astro";
 
 /* Static (SSG) Mode */
 export async function getStaticPaths() {
@@ -49,9 +50,9 @@ import "@layouts/utilities/center.css";
  }
 
  h1::before {
-   content: '#';
-   margin-inline-start: -2ch;
-   @apply color-darkgrey dark:color-lightgrey;
+     content: '#';
+     margin-inline-start: -2ch;
+     @apply color-darkgrey dark:color-lightgrey;
  }
 </style>
 
@@ -78,11 +79,8 @@ import "@layouts/utilities/center.css";
     </section>
     <hr />
     <main class="stack" id="main">
-      <Content />
+        <Content />
     </main>
-    <footer>
-      Jan
-      i am this and that
-    </footer>
   </div>
+  <Footer />
 </Layout>
