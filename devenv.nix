@@ -19,7 +19,7 @@
     run-check.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro check";
     run-build.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro build";
     run-preview.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro preview";
-    run-dev.exec = "cd $DEVENV_ROOT && ${yarn}/bin/yarn astro dev";
+    run-dev.exec = "cd $DEVENV_ROOT && NODE_OPTIONS='--inspect' ${yarn}/bin/yarn astro dev";
     run-clean.exec = "rm -rf dist";
   };
 
