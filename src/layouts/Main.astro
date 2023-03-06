@@ -18,9 +18,12 @@ const rPromises: CollectionRender[] = await Promise.all(
 );
 
 // TODO Hack
-const xOn = (id: number) => ({
-  "x-on:keyup.enter": `navigation.navigate('/read/${id}')`,
-});
+const xOn = (category: string, id: number) =>
+  category === "long"
+    ? {
+        "x-on:keyup.enter": `navigation.navigate('/read/${id}')`,
+      }
+    : {};
 ---
 
 <style>
@@ -109,7 +112,7 @@ const xOn = (id: number) => ({
               tabindex="0"
               class="box | stack"
               x-show={`filterSearch(search, $el.textContent)`}
-              {...xOn(content.data.id)}
+              {...xOn(content.data.category, content.data.id)}
             >
               <div class="cluster">
                 {content.data.category === "long" ? (
