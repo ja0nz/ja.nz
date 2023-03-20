@@ -15,7 +15,7 @@
 #+hugo_front_matter_key_replace: description>summary author>nil
 #+property: header-args :eval never-export
 :END:
-#+FILETAGS: :typescript:go:zig:c:nix:structures:diff:css:
+#+FILETAGS: :typescript:zig:nix:structures:diff:css:sicp:
 
 * Intro :noexport:
 This file is written in [[https://orgmode.org/][Org Mode]] markup and may look funny in GitHub. But actually, this file alone is the *blogging engine* for https://ja.nz. It features:
@@ -29,12 +29,10 @@ Org mode is really powerful combined with [[https://orgmode.org/manual/Working-w
 
 * Table of contents :noexport:toc:
 - [[#short][Short]]
-  - [[#4proxy][4,Proxy]]
-  - [[#5match-type-array-and-numbered][5,Match type array and numbered]]
-  - [[#6recursion][6,Recursion]]
-  - [[#9utility-flatten-nested-types][9,Utility: Flatten nested types]]
+  - [[#4nonempty-record-using-proxy][4,Nonempty record using proxy]]
+  - [[#5array-and-object-type-detection][5,Array and object type detection]]
+  - [[#6utility-flatten-nested-types][6,Utility: Flatten nested types]]
 - [[#long][Long]]
-  - [[#7all-the-formattings][7,All the formattings]]
 
 * Short
 :PROPERTIES:
@@ -42,12 +40,12 @@ Org mode is really powerful combined with [[https://orgmode.org/manual/Working-w
 :export_hugo_custom_front_matter+: :id (org-entry-get (point) "export_file_name" t)
 :export_hugo_custom_front_matter+: :category (org-entry-get (point) "export_hugo_bundle" t)
 :END:
-** DONE 4,Proxy :typescript:
+** DONE 4,Nonempty record using proxy :typescript:structures:
 CLOSED: [2022-04-26 Di 12:35]
 :PROPERTIES:
 :export_file_name: 4
 :END:
-A nonempty string Record. Guarantees to return a string or empty/neutral string.
+This structure guarantees to return a string. It's super useful for all kinds of functionality like algebraic type specification where a neutral value is required by design.
 #+begin_src typescript
 const safeRecord = new Proxy(
   {}, {
@@ -58,40 +56,27 @@ const safeRecord = new Proxy(
 );
 #+end_src
 
-** DONE 5,Match type array and numbered :typescript:
+** DONE 5,Array and object type detection :typescript:
 CLOSED: [2022-04-26 Di 12:33]
 :PROPERTIES:
 :export_file_name: 5
 :END:
-Conditional type switch on Array vs Object vs subtyped object
+Matching primitive types with =typeof= is simple. Switching on complex types instead can be a pain - looking at you array and object. Here are two helpers that can be deployed in some conditional type switching logic.
 #+begin_src typescript
 type DetectArray<T> = number extends keyof T ? true : false;
+// use in type switching
 DetectArray<string[]> // true
-DetectArray<{ [k: number]: unknown } // true
+DetectArray<{ [k: number]: unknown }> // true
 
 type DetectStringObj<T> = string extends keyof T ? true : false;
-DetectArray<{ [k: string]: unknown } // true
-DetectArray<{ x: string } // false
+DetectStringObj<{ [k: string]: unknown }> // true
+DetectStringObj<{ x: string }> // false, because { x: string } is a subtyped object
 #+end_src
 
-** DRAFT 6,Recursion
-:PROPERTIES:
-:export_file_name: 6
-:END:
-#+begin_description
-Recursion for all. A quote to remember
-#+end_description
-#+begin_quote
- The idea of recursion can be used to express what, in the case of a deeply nested combination, would otherwise be viewed as a rather complicated process.
- #+begin_cite
- — SICP JS; https://sourceacademy.org/sicpjs/1.1.3
- #+end_cite
- #+end_quote
-
-** DONE 9,Utility: Flatten nested types :typescript:
+** DONE 6,Utility: Flatten nested types :typescript:
 CLOSED: [2023-02-14 Di 17:26]
 :PROPERTIES:
-:export_file_name: 9
+:export_file_name: 6
 :END:
 This mapped type is a 'noop type' in the sense that ~input type === output type~. Still, but comes in handy with *intersection/composed types* when editing code as it flattens the given input type. As an example,
 #+begin_src typescript
@@ -110,122 +95,13 @@ type Flatten<T> = {
 :export_hugo_custom_front_matter+: :id (org-entry-get (point) "export_file_name" t)
 :export_hugo_custom_front_matter+: :category (org-entry-get (point) "export_hugo_bundle" t)
 :END:
-** DONE 7,All the formattings :started:
-CLOSED: [2022-05-16 Mo 16:40]
-:PROPERTIES:
-:export_file_name: 7
-:export_hugo_custom_front_matter+: :image '((src . /blog/cat.jpg) (alt . "A cat"))
-:END:
-#+begin_description
-This post will contain a lot of formattings. Just demo around.
-
-I just wanna know
-#+end_description
-
-*** Link
-[[file:static/blog/cat.jpg][Linktext: Jus a cat]]
-*** Pic/Img
-![[file:static/blog/cat.jpg][Alttext: Jus a cat]]
-*** Text formattings
----
-This is
-one
-paragraph!
----
-This is
-
-two paragraphs! (One more line break in org)
----
-This is \\
-one paragraph with an \<br\>
----
-I like to *write bold*. And sometimes /italic/ or even _underlined_ and even +strike-through+.
-One note: =verbatim= and ~squiqqly code~ is both the same in markdown
-
-*** Lists
-- Minus sign
-+ Plus sign
-
-*** Enumerated lists
-1. My favorite number
-2. Second guess
-
-*** Definition list
-- What is React :: react is bla bla... See [[https://react.io][more]]
-
-*** Checkboxes
-- [X] checked
-- [ ] unchecked
-*** Table
-| thead | n | o |
-| tbody | q | r |
-
-or
-
-| thead | n | o |
-|-------+---+---|
-| tbody | q | r |
-
-*** Blocks
-**** generic div
-#+begin_foo
-div class foo
-#+end_foo
-
-**** src (accept attr_html)
-#+attr_html: :class my-section :id section-a
-#+begin_src javascript
-// class="highlight"
-const answer = 42;
-console.log("this is how we do")
-#+end_src
-
-**** quote
-#+begin_quote
-It shall be light - and it was light mode
-#+end_quote
-
-**** example (accept attr_html) :noexport:
-This one does not work properly as it will export to
-a code block but without any formattings. There is kinda no point to use it.
-#+begin_example
-For example: Let me show to you...
-#+end_example
-
-**** HTML Export
-#+begin_export html
-<div class="html">sometimes inline code is the answer</div>
-#+end_export
-
-**** center
-#+begin_center
-class="org-center"
-<style>.org-center { margin-left: auto; margin-right: auto; text-align: center; }</style>
-#+end_center
-
-*** Citation
-#+begin_quote
-To teach how to live without certainty, and yet without being
-paralyzed by hesitation, is perhaps the chief thing that philosophy,
-in our age, can still do for those who study it.
-#+begin_cite
-— Bertrand Russell, A History of Western Philosophy
-#+end_cite
-#+end_quote
-
-*** meta :noexport:
-| Asset            | Description   |
-|------------------+---------------|
-| https://ja.nz/7  | Location      |
-| file:static/     | Ref to assets |
-
 
 * Workbench :noexport:
 #+CALL: short()
 #+CALL: long()
-** TODO 8,Proxies in fantasyland :typescript:
+** TODO 7,Proxies in fantasyland :typescript:
 :PROPERTIES:
-:export_file_name: 8
+:export_file_name: 7
 :END:
 #+begin_description
 This is about the various usages of Proxy in JavaScript/TypeScript
@@ -238,6 +114,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 |-----------------+---------------|
 | https://ja.nz/8 | Location      |
 | file:static/    | Ref to assets |
+
 
 * Misc :noexport:
 :PROPERTIES:
@@ -386,15 +263,6 @@ in our age, can still do for those who study it.
   ;; End meta table
 #+END_SRC
 
-** Clean content directory :inplace:
-#+CALL: clean()
-#+NAME: clean
-#+begin_src emacs-lisp :results none
-  (delete-directory "content" t)
-  (make-directory "content")
-#+END_SRC
-
-#+RESULTS: clean
 ** COMMENT Org Local Variables
 # Local Variables:
 # org-use-tag-inheritance: nil
