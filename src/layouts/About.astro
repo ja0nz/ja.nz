@@ -4,6 +4,8 @@ interface Props {
 }
 
 const { toggle } = Astro.props;
+
+import { Image } from "@astrojs/image/components";
 import "@layouts/compositions/stack.css";
 ---
 
@@ -25,7 +27,13 @@ import "@layouts/compositions/stack.css";
     <div class="returnbtn" x-on:click={toggle}></div>
     <div class="font-head">Menu</div>
   </div>
-  <img width="360" height="360" src="/profile.webp" />
+  <Image
+    width="360"
+    height="360"
+    alt="Authors profile image"
+    format="webp"
+    src="/profile.webp"
+  />
   <h2>Hey there, I'm Jan👋</h2>
   <p>
     ...and this is my journey through time, code and space. Good luck out

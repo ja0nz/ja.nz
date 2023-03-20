@@ -1,4 +1,6 @@
 ---
+import { Image } from "@astrojs/image/components";
+
 import "@layouts/compositions/sidebar.css";
 import "@layouts/compositions/stack.css";
 import "@layouts/blocks/dotShadow.css";
@@ -34,7 +36,13 @@ import "@layouts/blocks/dotShadow.css";
 
 <div class="dot-shadow | this">
   <footer class="center | with-sidebar">
-    <img width="150" height="150" src="/profile.webp" />
+    <Image
+      width="150"
+      height="150"
+      alt="Authors profile image"
+      format="webp"
+      src="/profile.webp"
+    />
     <div class="stack">
       <div>
         <div class="skew-y">

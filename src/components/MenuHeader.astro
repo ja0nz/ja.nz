@@ -1,5 +1,6 @@
 ---
 import MenuCard from "@layouts/MenuCard.astro";
+import { Image } from "@astrojs/image/components";
 
 interface Props {
   toggle: string;
@@ -12,11 +13,22 @@ const { toggle } = Astro.props;
   img {
     height: var(--robot-height);
     width: var(--robot-height);
+    margin: auto;
     cursor: pointer;
   }
 </style>
 <MenuCard>
-  <img slot="avatar" x-on:click={toggle} src="/profile-astronaut.webp" />
+  <div slot="avatar">
+    <Image
+      height="200"
+      width="200"
+      format="webp"
+      src="/profile-astronaut.webp"
+      alt="Astronaut helmet"
+      x-on:click={toggle}
+    />
+  </div>
+
   <a class="invert-link" href="/"><h2>BEEP&nbsp;BEEP</h2></a>
   <div>hello&nbsp;stranger&nbsp;👽</div>
 </MenuCard>

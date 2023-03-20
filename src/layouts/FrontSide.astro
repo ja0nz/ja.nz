@@ -101,7 +101,11 @@ const xOn = {
           >
             <a class="no-underline" href={`/tag/${item.tag}#main`}>
               <MenuCard>
-                <img slot="avatar" src={item.avatar} />
+                <img
+                  alt="generated robot head"
+                  slot="avatar"
+                  src={item.avatar}
+                />
                 <span
                   x-html={`highlight(search, '${item.tag}')`}
                   class="font-head"

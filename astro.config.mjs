@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import image from "@astrojs/image";
 
 /* Remark */
 import remarkBreaks from "remark-breaks";
@@ -81,6 +82,7 @@ export default defineConfig({
   },
   integrations: [
     alpinejs(),
+    image(),
     Unocss({
       injectReset: false,
       transformers: [transformerDirectives()],
