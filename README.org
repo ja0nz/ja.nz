@@ -33,6 +33,7 @@ Org mode is really powerful combined with [[https://orgmode.org/manual/Working-w
   - [[#5array-and-object-type-detection][5,Array and object type detection]]
   - [[#6utility-flatten-nested-types][6,Utility: Flatten nested types]]
 - [[#long][Long]]
+  - [[#7proxies-in-fantasyland][7,Proxies in fantasyland]]
 
 * Short
 :PROPERTIES:
@@ -95,10 +96,6 @@ type Flatten<T> = {
 :export_hugo_custom_front_matter+: :id (org-entry-get (point) "export_file_name" t)
 :export_hugo_custom_front_matter+: :category (org-entry-get (point) "export_hugo_bundle" t)
 :END:
-
-* Workbench :noexport:
-#+CALL: short()
-#+CALL: long()
 ** TODO 7,Proxies in fantasyland :typescript:
 :PROPERTIES:
 :export_file_name: 7
@@ -110,11 +107,15 @@ Todo stub
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 
 *** meta :noexport:
-| Asset           | Description   |
-|-----------------+---------------|
-| https://ja.nz/8 | Location      |
-| file:static/    | Ref to assets |
+| Asset            | Description   |
+|------------------+---------------|
+| https://ja.nz/7  | Location      |
+| file:static/blog | Ref to assets |
 
+
+* Workbench :noexport:
+#+CALL: short()
+#+CALL: long()
 
 * Misc :noexport:
 :PROPERTIES:
@@ -254,7 +255,7 @@ in our age, can still do for those who study it.
   (org-cycle)
   (insert "Location")
   (org-cycle)
-  (insert "file:static/blog")
+  (insert "file:static/blog ")
   (org-cycle)
   (insert "Ref to assets")
   (org-cycle)
