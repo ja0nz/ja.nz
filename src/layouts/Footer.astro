@@ -1,0 +1,51 @@
+---
+import "@layouts/compositions/sidebar.css";
+import "@layouts/compositions/stack.css";
+import "@layouts/blocks/dotShadow.css";
+---
+
+<style>
+  .this {
+    /* compositions/stack.css */
+    --stack--spacing: var(--step-0);
+
+    /* compositions/sidebar.css */
+    --sidebar--gap: var(--step-3);
+
+    margin-top: 2rem;
+    padding: var(--step-5) 0;
+    @apply bg-lightgrey dark:bg-darkgrey;
+  }
+  .skew-y > *:first-child {
+    background-color: var(--bg-bubble-odd);
+    transform: skewY(-3deg);
+  }
+  .skew-y > *:last-child {
+    z-index: 1;
+    @apply p-3-;
+  }
+  .skew-y {
+    display: inline-grid;
+  }
+  .skew-y > * {
+    grid-area: 1 / 1;
+  }
+</style>
+
+<div class="dot-shadow | this">
+  <footer class="center | with-sidebar">
+    <img width="150" height="150" src="/profile.webp" />
+    <div class="stack">
+      <div>
+        <div class="skew-y">
+          <div></div>
+          <h2>Jan</h2>
+        </div>
+      </div>
+      <div>
+        <p>Data engineer🤖 and frontend whack-a-mole🤓</p>
+        <p>Wasting a lifetime with Emacs, nix and quirky abstractions</p>
+      </div>
+    </div>
+  </footer>
+</div>
