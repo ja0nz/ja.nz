@@ -81,7 +81,8 @@
     --sb-r: #860111;
     --sb-o: #ff4605;
     border-radius: 3px;
-    background: linear-gradient(
+    background:
+      linear-gradient(
           135deg,
           var(--sb-r) 12.5%,
           var(--sb-o) 12.5%,

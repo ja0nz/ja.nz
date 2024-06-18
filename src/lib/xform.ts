@@ -35,7 +35,7 @@ const groupTagLatest = groupByObj({
   key: ({ tag }: Optional<Tags, "avatar">) => tag, // group by "tag"
   group: maxCompare(
     (): Optional<Tags, "tag" | "avatar"> => ({ date: 0 }), // init/neutral
-    ({ date: acc }, { date: t }) => acc - t // reduce by acc > t
+    ({ date: acc }, { date: t }) => acc - t, // reduce by acc > t
   ),
 });
 
@@ -53,17 +53,17 @@ export function createTags(posts: Glob[]): Tags[] {
       mapKeys({ date: (x) => +new Date(x) }), // format date to number
       map((x) => <FM_DT>x), // just a noop type cast
       mapcat<FM_DT, Optional<Tags, "avatar">>((x) =>
-        x.tags.map((y) => ({ tag: y, date: x.date }))
+        x.tags.map((y) => ({ tag: y, date: x.date })),
       ), // make TTS
       // Reduction
       scan(groupTagLatest), // inbetween group/reduce by tags
       takeLast(1), // continue with last reduction
       mapcat(Object.values), // pull' n flat
       // Enhancing
-      map((x) => Object.assign(x, { avatar: createAvatar(x.tag) })) // zip in Avatars
+      map((x) => Object.assign(x, { avatar: createAvatar(x.tag) })), // zip in Avatars
     ),
     pushSort(({ date: acc }, { date: x }) => x - acc),
-    posts
+    posts,
   );
 }
 
@@ -87,13 +87,13 @@ export function sortCollection(posts: Glob[], active?: string): Glob[] {
           return true;
         }
         return false;
-      })
+      }),
     ),
     pushSort(({ data: acc }, { data: x }) => {
       const { date: markSafeX } = <MarkSet<typeof x, "date">>x;
       const { date: markSafeAcc } = <MarkSet<typeof acc, "date">>acc;
       return +new Date(markSafeX) - +new Date(markSafeAcc);
     }), // latest first
-    posts
+    posts,
   );
 }

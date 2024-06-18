@@ -25,7 +25,7 @@ type Split = string | [string];
 function _splitToken(
   content: string,
   token: string,
-  highlight: (a: string) => string
+  highlight: (a: string) => string,
 ): Split[] {
   const acc: Split[] = [];
   for (const str of content.split(token)) {
@@ -47,12 +47,12 @@ export function highlightDOMFragment(
   html: string,
   search: string,
   highlight: (a: string) => string,
-  insentitive = true
+  insentitive = true,
 ) {
   const element = document.createRange().createContextualFragment(html);
   if (!search) return element;
   const match = element.textContent?.matchAll(
-    new RegExp(search, insentitive ? "gi" : "g")
+    new RegExp(search, insentitive ? "gi" : "g"),
   );
   if (!match) return element;
   const uniq = [...new Set([...match].map((x) => x[0]))];
@@ -71,7 +71,7 @@ export function highlightDOMFragment(
           typeof content === "string"
             ? acc.concat(_splitToken(content, s, highlight))
             : acc.concat([content]),
-        []
+        [],
       );
     }
 
@@ -82,7 +82,7 @@ export function highlightDOMFragment(
               .replaceAll("&", "&amp;")
               .replaceAll("<", "&lt;")
               .replaceAll(">", "&gt;")
-          : sfrag
+          : sfrag,
       )
       .join("");
     const fragment = document.createRange().createContextualFragment(newText);
@@ -99,7 +99,7 @@ export function highlightDOMString(
   html: string,
   search: string,
   highlight: (a: string) => string,
-  insentitive = true
+  insentitive = true,
 ) {
   if (!search) return html; // protects agains SSR error
   const element = highlightDOMFragment(html, search, highlight, insentitive);

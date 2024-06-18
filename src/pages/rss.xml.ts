@@ -1,14 +1,15 @@
 import rss from "@astrojs/rss";
-import { CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import type { APIContext } from "astro";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
 const parser = new MarkdownIt();
 
-export async function get(context: APIContext) {
+export async function GET(context: APIContext) {
   const long = await getCollection(
     "long",
-    ({ data }: CollectionEntry<"long">) => !data.draft
+    ({ data }: CollectionEntry<"long">) => !data.draft,
   );
 
   return rss({
