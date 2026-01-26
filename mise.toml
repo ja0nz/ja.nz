@@ -1,0 +1,55 @@
+[env]
+BLOG_BASE = "https://ja.nz"
+
+[tools]
+"nix:biome" = "latest"
+"nix:bun" = "latest"
+"npm:@astrojs/language-server" = "latest"
+"npm:sharp" = "latest"
+
+[tasks.fmt]
+description = "Format files with biome"
+run = '''
+biome format --write
+'''
+
+[tasks.lint]
+description = "Lint files with biome"
+run = '''
+biome lint
+'''
+
+[tasks.repl]
+description = "Bun repl"
+run = '''
+bun repl
+'''
+
+[tasks.dev]
+description = "Development server"
+run = '''
+bun --inspect=localhost:6499 ./node_modules/astro/astro.js dev
+'''
+
+[tasks.build]
+description = "Build project"
+run = '''
+bun ./node_modules/astro/astro.js build
+'''
+
+[tasks.preview]
+description = "Preview project"
+run = '''
+bun ./node_modules/astro/astro.js preview
+'''
+
+[hooks]
+enter = '''
+    echo "🌥️  Ja0nz Typewriter"
+    echo ""
+    echo "Available commands:"
+    mise tasks
+    echo ""
+    echo "Run them with 'mise r name'"
+    echo ""
+'''
