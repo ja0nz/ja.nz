@@ -1,9 +1,9 @@
 import {
   defineConfig,
   presetIcons,
-  presetWind3,
   transformerDirectives
 } from 'unocss';
+import { presetWind3 } from "@unocss/preset-wind3";
 
 const utopia = {
   "5-": "var(--step--5)",

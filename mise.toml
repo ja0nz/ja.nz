@@ -28,19 +28,19 @@ bun repl
 [tasks.dev]
 description = "Development server"
 run = '''
-bun --inspect=localhost:6499 ./node_modules/astro/astro.js dev
+node --inspect=localhost:6499 ./node_modules/astro/astro.js dev
 '''
 
 [tasks.build]
 description = "Build project"
 run = '''
-bun ./node_modules/astro/astro.js build
+bun astro build
 '''
 
 [tasks.preview]
 description = "Preview project"
 run = '''
-bun ./node_modules/astro/astro.js preview
+bun astro preview
 '''
 
 [hooks]
