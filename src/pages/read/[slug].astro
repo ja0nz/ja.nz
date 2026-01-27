@@ -1,6 +1,6 @@
 ---
 import type { Glob } from "@lib/api";
-import { getCollection, CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import SkipLink from "@layouts/SkipLink.astro";
 import Footer from "@layouts/Footer.astro";
@@ -21,7 +21,7 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 const title = entry.data.title.split(",").slice(1).join("");
 
-const date = entry.data.date.toLocaleDateString("en-US", {
+const date = entry.data.date?.toLocaleDateString("en-US", {
   weekday: "long",
   year: "numeric",
   month: "long",
@@ -69,7 +69,7 @@ import "@layouts/utilities/center.css";
     <SkipLink rotate="0deg" />
 
     <h1>{title}</h1>
-    <time datetime={entry.data.date.toISOString()}>
+    <time datetime={entry.data.date?.toISOString()}>
       <em>{date}</em>
     </time>
     <section class="post">

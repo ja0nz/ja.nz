@@ -3,7 +3,7 @@ interface Props {
   tag?: string;
 }
 import type { Render } from "@lib/api";
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 
 // use to highlight current active
 const active = Astro.params?.tag || "";

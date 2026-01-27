@@ -9,15 +9,12 @@ import {
   pushSort,
   scan,
   takeLast,
-  trace,
   transduce,
 } from "@thi.ng/transducers";
 import { defGetter } from "@thi.ng/paths";
-import type { MarkdownInstance } from "astro";
 import type {
   FrontMatter,
   Tags,
-  FM_D,
   FM_DT,
   Glob,
   Optional,
@@ -27,7 +24,7 @@ import { createAvatar } from "./avatar";
 
 /* Getters/Setters */
 const getFM = defGetter<Glob, "data">(["data"]);
-const getDraft = defGetter<FrontMatter, "draft">(["draft"]);
+// const getDraft = defGetter<FrontMatter, "draft">(["draft"]);
 const getTags = defGetter<FrontMatter, "tags">(["tags"]);
 
 /* Reducer */

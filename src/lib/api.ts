@@ -1,4 +1,4 @@
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 
 /* Utility Types */
 export type Concrete<Type> = {
