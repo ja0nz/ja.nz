@@ -32,6 +32,8 @@ Org mode is really powerful combined with [[https://orgmode.org/manual/Working-w
   - [[#4nonempty-record-using-proxy][4,Nonempty record using proxy]]
   - [[#5array-and-object-type-detection][5,Array and object type detection]]
   - [[#6utility-flatten-nested-types][6,Utility: Flatten nested types]]
+  - [[#9null-comma-nix---pulls-in-binaries-with-the-speed-of-typing][9,Null Comma Nix - pulls in binaries with the speed of typing]]
+  - [[#11mise-en-place-sets-your-stage-for-a-delightful-code-cooking][11,Mise-en-place sets your stage for a delightful code cooking]]
 - [[#long][Long]]
   - [[#7proxies-in-fantasyland][7,Proxies in fantasyland]]
 
@@ -90,6 +92,27 @@ type Flatten<T> = {
 } & {};
 #+end_src
 
+** DONE 9,Null Comma Nix - pulls in binaries with the speed of typing :nix:tool:
+CLOSED: [2026-01-27 Di 14:23]
+:PROPERTIES:
+:export_file_name: 9
+:url:      https://ja.nz/read/9
+:END:
+I only recently discovered [[https://github.com/nix-community/comma][nix-community/comma]] but can't stop praising it for its utility. Need a tool - comma has it! Need [[https://github.com/erkin/ponysay][ponysay]], but don't want to nix-rebuild or forgot how to type nix run again. How about running:
+#+begin_src sh
+, ponysay "its that easy?"
+#+end_src
+Works with *sudo* and even shell *piping*
+
+** DONE 11,Mise-en-place sets your stage for a delightful code cooking :tool:
+CLOSED: [2026-01-27 Di 15:22]
+:PROPERTIES:
+:export_file_name: 11
+:url:      https://ja.nz/read/11
+:END:
+![[file:public/meme/mise_devenv.jpg][Boyfriend meme: Devenv.sh looking at mise]]
+I am slow in the hype-cycle. [[https://devenv.sh/][Devenv.sh]] for years was my loyal *environment manager* and, with all it quirks in fish shell in particular, was good enough. One day in which I could't get [[https://devenv.sh/blog/2025/07/21/announcing-secretspec-declarative-secrets-management/][SecretSpec]] to work I found out about [[https://mise.jdx.dev/][Mise]] which its rich ecosystem. Granted there is much more magic involved then in Devenv.sh but *features, speed and reliability* is unmatched in any way. Give it try you even can pull [[https://github.com/jbadeau/mise-nix][packages from nixpkgs]] which was the last straw keeping me in devenv.sh.
+
 * Long
 :PROPERTIES:
 :export_hugo_bundle: long
@@ -106,16 +129,32 @@ This is about the various usages of Proxy in JavaScript/TypeScript
 Todo stub
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 
-*** meta :noexport:
-| Asset            | Description   |
-|------------------+---------------|
-| https://ja.nz/7  | Location      |
-| file:static/blog | Ref to assets |
-
-
 * Workbench :noexport:
 #+CALL: short()
 #+CALL: long()
+** TODO 8,Emacs can blog that?!
+:PROPERTIES:
+:export_file_name: 8
+:url:      https://ja.nz/read/8
+:END:
+#+begin_description
+One org file rules them all. A (non) technical contemplation into why org mode is the ulimate writing tool
+#+end_description
+*** Prelude 
+In enjoy Emacs - maybe a bit too much for a healthy relationship. It gives you plenty while taking one thing in particular - your time. Even after years I cant really say I reached to bottom of the rabbit hole. One of the byproducts of this "see how far it gets" process is this blogging engine in particular - a over-engineered [[https://orgmode.org][Org mode]] file which holds the entirety of all blog posts and in the same time is just ones repo's [[https://github.com/ja0nz/ja.nz][README.org]]. For my future self, but also for any interested reader, i try to outline the internals a bit.
+*** Why in Emacs
+What clearly wins is
+
+
+
+** TODO 10,MicroVM networking made easy
+:PROPERTIES:
+:export_file_name: 10
+:url:      https://ja.nz/read/10
+:END:
+#+begin_description
+
+#+end_description
 
 * Misc :noexport:
 :PROPERTIES:
@@ -215,21 +254,21 @@ in our age, can still do for those who study it.
 
 ** New short :util:
 #+NAME: short
-#+BEGIN_SRC emacs-lisp :var title=(read-string "title: ")
+#+BEGIN_SRC emacs-lisp :var url=(getenv "BLOG_BASE") :var title=(read-string "title: ") :results silent
   (setq id (number-to-string (length (org-map-entries t "LEVEL=2" nil))))
   (org-insert-heading)
   (insert (format "%s,%s" id title))
   (org-metaright)
   (org-todo "DRAFT")
-  (org-insert-structure-template "description")
   (org-set-property "export_file_name" id)
+  (org-set-property "url" (format "%s/read/%s" url id))
   (insert "\n")
   (previous-line)
 #+END_SRC
 
 ** New long :util:
 #+NAME: long
-#+BEGIN_SRC emacs-lisp :var url=(getenv "BLOG_BASE") :var title=(read-string "title: ")
+#+BEGIN_SRC emacs-lisp :var url=(getenv "BLOG_BASE") :var title=(read-string "title: ") :results silent
   (setq id (number-to-string (length (org-map-entries t "LEVEL=2" nil))))
   (org-insert-heading)
   (insert (format "%s,%s" id title))
@@ -237,31 +276,10 @@ in our age, can still do for those who study it.
   (org-todo "TODO")
   (org-insert-structure-template "description")
   (org-set-property "export_file_name" id)
+  (org-set-property "url" (format "%s/read/%s" url id))
   (insert "\n")
   (next-line)
   (insert "\n")
-  ;; Begin meta table
-  (org-insert-heading)
-  (insert "meta :noexport:")
-  (org-metaright)
-  (insert "\n")
-  (org-table-create "2x2")
-  (org-cycle)
-  (insert "Asset")
-  (org-cycle)
-  (insert "Description")
-  (org-cycle)
-  (insert (format "%s/%s" url id))
-  (org-cycle)
-  (insert "Location")
-  (org-cycle)
-  (insert "file:static/blog ")
-  (org-cycle)
-  (insert "Ref to assets")
-  (org-cycle)
-  (kill-whole-line)
-  (previous-line 6)
-  ;; End meta table
 #+END_SRC
 
 ** COMMENT Org Local Variables
